@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra<sup>®</sup> - تواصل معنا</title>
+  <title>HAyDenTra® - تواصل معنا</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -34,6 +34,7 @@
       transition: opacity 0.4s ease;
     }
 
+    /* Navbar - الشعار على اليمين و الـ ® صغيرة وفي الأعلى */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -64,13 +65,21 @@
       box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
     }
 
-    .nav-logo-right span {
+    .nav-logo-right .brand-text {
       font-size: 1.1rem;
       font-weight: 900;
       color: #fff;
       text-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+      display: inline-flex;
+      align-items: flex-start;
     }
-    .nav-logo-right span sup { font-size: 0.55rem; vertical-align: super; }
+
+    .nav-logo-right .brand-text span.trademark {
+      font-size: 0.45rem;
+      margin-right: 2px;
+      vertical-align: super;
+      line-height: 1;
+    }
 
     .menu-btn {
       background: none;
@@ -122,7 +131,7 @@
   <nav class="navbar">
     <a href="index.html" class="nav-logo-right">
       <img src="logo.png" alt="HAyDenTra Logo">
-      <span>HAyDenTra<sup>®</sup></span>
+      <span class="brand-text">HAyDenTra<span class="trademark">®</span></span>
     </a>
     <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
@@ -141,13 +150,14 @@
     <p>جاهزون لتلبية طلبات العيادات والمراكز فوراً عبر الواتساب</p>
     
     <div class="phone-buttons">
+      <!-- رقم 015 فقط المخصص للتواصل -->
       <a href="https://wa.me/201554238849?text=السلام%20عليكم،%20أريد%20طلب%20مستلزمات%20أو%20الاستفسار" target="_blank" class="phone-btn">
         <i class="fa-brands fa-whatsapp"></i> +20 155 423 8849
       </a>
     </div>
   </section>
 
-  <footer>HAyDenTra<sup>®</sup> - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra<span style="font-size: 0.5rem; vertical-align: super;">®</span> - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
