@@ -41,12 +41,11 @@
       position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.2);
     }
     
-    /* علامة الـ ® على يمين الاسم وفي الأعلى بحجم واضح ومناسب */
     .logo-brand { 
       text-decoration: none; font-size: 1.2rem; font-weight: 900; color: #fff; 
-      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); display: inline-flex; align-items: flex-start;
+      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); direction: ltr; display: inline-flex; align-items: baseline;
     }
-    .logo-brand span.trademark { font-size: 0.65rem; margin-right: 3px; vertical-align: super; line-height: 1; font-weight: 700; }
+    .logo-brand span.trademark { font-size: 0.52rem; margin-left: 1px; position: relative; top: -4px; font-weight: 700; }
     
     .menu-btn { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
@@ -71,8 +70,12 @@
     }
     .logo-glow-container img { position: relative; width: 80px; height: 80px; background: #fff; border-radius: 50%; padding: 6px; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
     
-    .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); display: inline-flex; align-items: flex-start; justify-content: center; }
-    .hero h1 span.trademark { font-size: 0.9rem; margin-right: 4px; vertical-align: super; line-height: 1; font-weight: 700; }
+    .hero h1 { 
+      font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; 
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); direction: ltr; 
+      display: inline-flex; align-items: baseline; justify-content: center; 
+    }
+    .hero h1 span.trademark { font-size: 0.7rem; margin-left: 2px; position: relative; top: -8px; font-weight: 700; }
     .hero p { font-size: 0.88rem; color: #a0aec0; margin-bottom: 2rem; }
 
     .btn-main-glow {
@@ -149,7 +152,7 @@
     </div>
   </div>
 
-  <footer>HAyDenTra<span style="font-size: 0.6rem; vertical-align: super; font-weight: 700;">®</span> - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra<span style="font-size: 0.52rem; position: relative; top: -3px; font-weight: 700;">®</span> - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
