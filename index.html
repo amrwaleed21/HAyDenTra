@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>HAyDenTra - Dental Supplies & Solutions</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #0f2b48;
+            /* أزرق داكن ناعم */
+            --primary: #1e56a0;
+            /* أزرق متوازن مريح */
+            --primary-light: #d6e4f0;
+            /* درجة زرقاء هادئة */
+            --primary-bg: #f2f6fa;
+            /* خلفية متناغمة ودافئة */
+            --accent: #00a8cc;
+            /* لمسة سماوية ناعمة */
+            --text-dark: #162432;
+            --text-muted: #5a6e7f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            background-image: radial-gradient(circle at 50% 0%, #e6eff7 0%, var(--primary-bg) 70%);
+            overflow-x: hidden;
+        }
+
+        /* الشريط العلوي (Navbar) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(15, 43, 72, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            direction: rtl;
+            border-bottom: 1px solid rgba(214, 228, 240, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        /* اللوجو واسم الشركة */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .logo-container:hover .logo-img {
+            transform: scale(1.04);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: var(--accent);
+            vertical-align: super;
+        }
+
+        /* قائمة التنقل */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 4px 8px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(15, 43, 72, 0.15);
+            gap: 4px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* القسم الرئيسي (Hero) */
+        .hero {
+            position: relative;
+            padding: 4rem 1.2rem 4.5rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(230, 239, 247, 0.5) 0%, rgba(214, 228, 240, 0.6) 100%);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo-wrapper {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 16px;
+            border-radius: 50%;
+            box-shadow: 0 12px 30px rgba(15, 43, 72, 0.08), 0 0 0 6px rgba(214, 228, 240, 0.5);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ffffff;
+            backdrop-filter: blur(8px);
+            transition: transform 0.4s ease;
+        }
+
+        .hero-logo-wrapper:hover {
+            transform: scale(1.04);
+        }
+
+        .hero-logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin: 0 0 0.4rem 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+            font-weight: 600;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 2.2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 8px 22px rgba(30, 86, 160, 0.28);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(15, 43, 72, 0.35);
+        }
+
+        /* قسم المميزات */
+        .features-section {
+            padding: 2.2rem 5%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            margin-top: -25px;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(15, 43, 72, 0.04);
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            width: 90%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 0.5rem;
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #eef4f8 100%);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 0.7rem;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .feature-item h4 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            padding: 4rem 5%;
+            text-align: center;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .section-title-wrap {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title-wrap h2 {
+            font-size: 2.1rem;
+            color: var(--primary-dark);
+            margin: 0 0 0.4rem 0;
+            font-weight: 800;
+        }
+
+        .section-title-wrap p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.2rem;
+            box-shadow: 0 10px 25px rgba(15, 43, 72, 0.03);
+            border: 1px solid rgba(214, 228, 240, 0.8);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease-out;
+            text-align: right;
+        }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 5px;
+            background: var(--card-color, var(--primary));
+        }
+
+        .product-card:nth-child(1) {
+            --card-color: #1e56a0;
+        }
+
+        .product-card:nth-child(2) {
+            --card-color: #0d9488;
+        }
+
+        .product-card:nth-child(3) {
+            --card-color: #4f46e5;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(15, 43, 72, 0.08);
+            border-color: var(--primary-light);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.9rem;
+        }
+
+        .product-card h3 {
+            margin: 0 0 0.4rem;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .product-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0 0 1rem;
+            line-height: 1.5;
+        }
+
+        .price-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-top: 0.7rem;
+            border-top: 1px dashed var(--primary-light);
+        }
+
+        .price-label {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.7rem;
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        /* قسم التواصل */
+        .contact-section {
+            background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(214, 228, 240, 0.5) 100%);
+            padding: 4rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--primary-light);
+        }
+
+        .contact-section h2 {
+            color: var(--primary-dark);
+            font-size: 1.9rem;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .contact-section p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-cards-wrap {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            padding: 0.8rem 1.6rem;
+            border-radius: 35px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            direction: ltr;
+            box-shadow: 0 4px 15px rgba(15, 43, 72, 0.04);
+            border: 1px solid var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-card i {
+            color: #25d366;
+            font-size: 1.4rem;
+        }
+
+        .whatsapp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.18);
+            border-color: #25d366;
+        }
+
+        .email-box {
+            margin-top: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffffff;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            direction: ltr;
+            border: 1px solid var(--primary-light);
+            box-shadow: 0 4px 12px rgba(15, 43, 72, 0.03);
+            word-break: break-all;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.4rem 1rem;
+            background-color: var(--primary-dark);
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        /* ========================================================= */
+        /* قواعد الاستجابة للشاشات المختلفة (Media Queries Responsive) */
+        /* ========================================================= */
+
+        /* الشاشات المتوسطة والصغيرة (الموبايل والتابلت الصغير) */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.7rem 4%;
+            }
+
+            .logo-text {
+                font-size: 1.35rem;
+            }
+
+            .logo-img {
+                height: 38px;
+            }
+
+            .nav-menu {
+                padding: 3px 6px;
+            }
+
+            .nav-menu a {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem 3.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-logo-img {
+                height: 65px;
+            }
+
+            .hero-logo-wrapper {
+                padding: 12px;
+            }
+
+            .features-section {
+                width: 92%;
+                padding: 1.5rem 1rem;
+                margin-top: -20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+
+            .whatsapp-card {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+        }
+
+        /* الشاشات الصغرى جداً (الهواتف الضيقة مثل iPhone SE) */
+        @media (max-width: 420px) {
+            .navbar {
+                flex-direction: column;
+                gap: 8px;
+                padding: 0.6rem 2%;
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-main {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- القائمة العلوية -->
+    <header class="navbar">
+        <a href="#hero" class="logo-container">
+            <img src="logo.png" alt="HAyDenTra Logo" class="logo-img">
+            <div class="logo-text">HAyDenTra<span>®</span></div>
+        </a>
+
+        <nav class="nav-menu">
+            <a href="#hero">الرئيسية</a>
+            <a href="#products">المنتجات</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي Hero -->
+    <section id="hero" class="hero">
+        <div class="hero-logo-wrapper">
+            <img src="logo.png" alt="HAyDenTra Hero Logo" class="hero-logo-img">
+        </div>
+        <h1>HAyDenTra</h1>
+        <p>Your Trusted Partner in Dental Solutions</p>
+        <a href="#products" class="btn-main">
+            <span>عرض المنتجات</span>
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4>جودة عالية</h4>
+                <p>خامات ومستلزمات طبية مطابقة لأعلى المعايير</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-truck"></i></div>
+                <h4>توصيل سريع</h4>
+                <p>خدمة شحن سريعة لجميع العيادات والمراكز</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <h4>خدمة العملاء</h4>
+                <p>متابعة واستجابة فورية لكافة الاستفسارات</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات -->
+    <section id="products" class="products-section">
+        <div class="section-title-wrap">
+            <h2>قائمة المنتجات</h2>
+            <p>تصفح منتجاتنا واطلب ما تحتاجه مباشرة عبر الواتساب</p>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- منتج 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/350x230/d6e4f0/1e56a0?text=Dental+Supplies" alt="منتج 1">
+                <h3>مستلزمات أسنان متطورة</h3>
+                <p class="product-desc">مجموعة متكاملة من الأدوات والخامات الأساسية اليومية لعيادات الأسنان.</p>
+                <div class="price-wrap">
+                    <span class="price-label">السعر:</span>
+                    <span class="price">500 ج.م</span>
+                </div>
+                <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20طلب%20منتج:%20مستلزمات%20أسنان%20متطورة"
+                    target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> طلب عبر الواتساب
+                </a>
+            </div>
+
+            <!-- منتج 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/350x230/ccfbf1/0d9488?text=Dental+Tools" alt="منتج 2">
+                <h3>أدوات وفحوصات طبية</h3>
+                <p class="product-desc">أدوات فحص جراحية ودقيقة مصنوعة من أصلب أنواع الاستيل الطبي.</p>
+                <div class="price-wrap">
+                    <span class="price-label">السعر:</span>
+                    <span class="price">850 ج.م</span>
+                </div>
+                <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20طلب%20منتج:%20أدوات%20وفحوصات%20طبية"
+                    target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> طلب عبر الواتساب
+                </a>
+            </div>
+
+            <!-- منتج 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/350x230/e0e7ff/4f46e5?text=Sanitizers" alt="منتج 3">
+                <h3>محلول ومعقم أسنان</h3>
+                <p class="product-desc">ممتلئ بالخصائص التطهيرية الفعالة للغاية لتعقيم الأدوات والأسطح.</p>
+                <div class="price-wrap">
+                    <span class="price-label">السعر:</span>
+                    <span class="price">320 ج.م</span>
+                </div>
+                <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20طلب%20منتج:%20محلول%20ومعقم%20أسنان"
+                    target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> طلب عبر الواتساب
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact-section">
+        <h2>تواصل معنا</h2>
+        <p>يمكنك التواصل المباشر معنا عبر الأرقام التالية:</p>
+
+        <div class="contact-cards-wrap">
+            <a href="https://wa.me/201224828849" target="_blank" class="whatsapp-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>+20 122 482 8849</span>
+            </a>
+
+            <a href="https://wa.me/201554238849" target="_blank" class="whatsapp-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>+20 155 423 8849</span>
+            </a>
+        </div>
+
+        <div>
+            <div class="email-box">
+                <i class="fa-regular fa-envelope"></i>
+                <span>waleed.hamed.elboghdady@gmail.com</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© HAyDenTra - Dental Supplies & Solutions. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".product-card");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+        });
+    </script>
+
+</body>
+
+</html>
