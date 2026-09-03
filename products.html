@@ -56,14 +56,17 @@
             transition: opacity 0.4s ease;
         }
 
+        /* شريط علوي ثابت (Fixed Navbar) */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.6rem 1.2rem;
-            background: rgba(8, 27, 51, 0.9);
-            position: sticky;
+            background: rgba(8, 27, 51, 0.95);
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -239,7 +242,7 @@
 
         .main-container {
             max-width: 1100px;
-            margin: 2rem auto;
+            margin: 5.5rem auto 2rem auto; /* مساحة علوية لإفساح المجال للشريط الثابت */
             padding: 0 1.2rem;
         }
 
@@ -261,7 +264,7 @@
             color: var(--text-muted);
         }
 
-        /* شريط الفلاتر والبحث الأصلي */
+        /* أدوات الفلترة والبحث المتقدمة */
         .filters-wrapper {
             display: flex;
             flex-direction: column;
@@ -274,9 +277,16 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
+        .search-sort-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .search-box {
             position: relative;
-            width: 100%;
+            flex-grow: 1;
+            min-width: 200px;
         }
 
         .search-box input {
@@ -304,6 +314,35 @@
             transform: translateY(-50%);
             color: var(--text-muted);
             font-size: 1rem;
+        }
+
+        /* فلتر الأسعار من الأعلى للأقل */
+        .sort-box {
+            min-width: 170px;
+        }
+
+        .sort-box select {
+            width: 100%;
+            background: rgba(8, 27, 51, 0.85);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .sort-box select:focus {
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .sort-box select option {
+            background: #081b33;
+            color: #fff;
         }
 
         .category-filters {
@@ -339,7 +378,7 @@
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
         }
 
-        /* شبكة المنتجات الأصلية */
+        /* شبكة المنتجات وتأثير تكبير الأيقونة عند تمرير الماوس */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -363,6 +402,7 @@
             box-shadow: 0 12px 30px rgba(0, 210, 255, 0.25);
         }
 
+        /* فراغ الصورة مع أيقونة مكان الصورة، وتكبر الأيقونة عند تمرير الماوس */
         .product-img-wrapper {
             width: 100%;
             height: 180px;
@@ -371,9 +411,19 @@
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-size: 2.8rem;
             border-bottom: 1px solid rgba(0, 210, 255, 0.15);
             position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-wrapper i.placeholder-icon {
+            font-size: 2.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img-wrapper i.placeholder-icon {
+            transform: scale(1.25);
+            color: var(--accent-glow);
         }
 
         .product-info {
@@ -386,16 +436,18 @@
         .product-name {
             font-size: 1rem;
             font-weight: 800;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             color: var(--text-main);
         }
 
+        /* تفاصيل سطر واحد تحت كل منتج */
         .product-description {
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
-            flex-grow: 1;
-            line-height: 1.5;
+            margin-bottom: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .product-bottom {
@@ -458,6 +510,7 @@
 
 <body>
 
+    <!-- الشريط العلوي الثابت -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo-right">
             <img src="logo.png" alt="HAyDenTra Logo">
@@ -488,11 +541,20 @@
             <p>تصفح أحدث الأدوات والمواد الطبية لعيادتك واطلبها فوراً عبر الواتساب</p>
         </div>
 
-        <!-- شريط البحث والفلاتر النشطة -->
+        <!-- شريط البحث والفلترة المطور (يشمل ترتيب الأسعار من الأعلى للأقل) -->
         <div class="filters-wrapper">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="ابحث عن أي منتج أو أداة...">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-sort-row">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ابحث عن أي منتج أو أداة...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="sort-box">
+                    <select id="sortSelect">
+                        <option value="default">ترتيب حسب: الافتراضي</option>
+                        <option value="high-low">السعر: من الأعلى للأقل</option>
+                        <option value="low-high">السعر: من الأقل للأعلى</option>
+                    </select>
+                </div>
             </div>
             <div class="category-filters">
                 <button class="filter-chip active" data-filter="all">الكل</button>
@@ -502,18 +564,18 @@
             </div>
         </div>
 
-        <!-- شبكة المنتجات -->
+        <!-- شبكة المنتجات (مع أسعار عشوائية مبدئية، وتفاصيل سطر واحد، وأيقونة مكان الصورة) -->
         <div class="products-grid" id="productsGrid">
             <!-- منتج 1 -->
-            <div class="product-card" data-category="materials" data-name="مادة كومبوزيت حشو تجميلي">
+            <div class="product-card" data-category="materials" data-name="مادة كومبوزيت حشو تجميلي" data-price="2450">
                 <div class="product-img-wrapper">
-                    <i class="fa-solid fa-tooth"></i>
+                    <i class="fa-solid fa-tooth placeholder-icon"></i>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">مادة كومبوزيت حشو تجميلي</h3>
                     <p class="product-description">كومبوزيت عالي الجودة للترميمات الأمامية والخلفية بمظهر طبيعي وثبات ممتاز.</p>
                     <div class="product-bottom">
-                        <span class="product-price">حسب الطلب</span>
+                        <span class="product-price">2450 ج.م</span>
                         <a href="#" onclick="orderProduct('مادة كومبوزيت حشو تجميلي')" class="order-btn">
                             <i class="fa-brands fa-whatsapp"></i> اطلب الآن
                         </a>
@@ -522,15 +584,15 @@
             </div>
 
             <!-- منتج 2 -->
-            <div class="product-card" data-category="devices" data-name="جهاز تسنين Light Cure">
+            <div class="product-card" data-category="devices" data-name="جهاز تسنين Light Cure" data-price="4800">
                 <div class="product-img-wrapper">
-                    <i class="fa-solid fa-laptop-medical"></i>
+                    <i class="fa-solid fa-laptop-medical placeholder-icon"></i>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">جهاز تسنين (Light Cure)</h3>
                     <p class="product-description">جهاز لاسلكي متطور بمعالجة ضوئية فائقة السرعة وكفاءة عالية للاستخدام اليومي.</p>
                     <div class="product-bottom">
-                        <span class="product-price">حسب الطلب</span>
+                        <span class="product-price">4800 ج.م</span>
                         <a href="#" onclick="orderProduct('جهاز تسنين Light Cure')" class="order-btn">
                             <i class="fa-brands fa-whatsapp"></i> اطلب الآن
                         </a>
@@ -539,16 +601,33 @@
             </div>
 
             <!-- منتج 3 -->
-            <div class="product-card" data-category="tools" data-name="أدوات فحص الأسنان Diagnostic Set">
+            <div class="product-card" data-category="tools" data-name="أدوات فحص الأسنان Diagnostic Set" data-price="1200">
                 <div class="product-img-wrapper">
-                    <i class="fa-solid fa-box-open"></i>
+                    <i class="fa-solid fa-box-open placeholder-icon"></i>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">أدوات فحص الأسنان (Diagnostic Set)</h3>
                     <p class="product-description">طقم استنستانس ستيل متكامل يضم المرايا والملقط والجسور بأعلى معايير الجودة.</p>
                     <div class="product-bottom">
-                        <span class="product-price">حسب الطلب</span>
+                        <span class="product-price">1200 ج.م</span>
                         <a href="#" onclick="orderProduct('أدوات فحص الأسنان Diagnostic Set')" class="order-btn">
+                            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- منتج 4 -->
+            <div class="product-card" data-category="materials" data-name="معجون تلميع الأسنان Prophy Paste" data-price="650">
+                <div class="product-img-wrapper">
+                    <i class="fa-solid fa-spray-can-sparkles placeholder-icon"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">معجون تلميع الأسنان (Prophy Paste)</h3>
+                    <p class="product-description">معجون احترافي لإزالة التصبغات وتلميع المينا بفعالية وآمان تام للأسنان.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">650 ج.م</span>
+                        <a href="#" onclick="orderProduct('معجون تلميع الأسنان Prophy Paste')" class="order-btn">
                             <i class="fa-brands fa-whatsapp"></i> اطلب الآن
                         </a>
                     </div>
@@ -581,18 +660,20 @@
         if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
-        // نظام الفلاتر والبحث التفاعلي الأصلي
+        // نظام الفلاتر والبحث وترتيب الأسعار
         const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
         const filterChips = document.querySelectorAll('.filter-chip');
-        const productCards = document.querySelectorAll('.product-card');
+        const productsGrid = document.getElementById('productsGrid');
 
         let currentCategory = 'all';
 
-        function filterProducts() {
+        function filterAndSortProducts() {
             const query = searchInput.value.toLowerCase().trim();
+            let cardsArray = Array.from(productsGrid.querySelectorAll('.product-card'));
             let visibleCount = 0;
 
-            productCards.forEach(card => {
+            cardsArray.forEach(card => {
                 const category = card.getAttribute('data-category');
                 const name = card.getAttribute('data-name').toLowerCase();
                 
@@ -607,17 +688,26 @@
                 }
             });
 
-            // التعامل مع حالة عدم وجود نتائج
-            const grid = document.getElementById('productsGrid');
-            let noResultMsg = document.getElementById('noResultsMsg');
+            // ترتيب الأسعار (من الأعلى للأقل أو العكس)
+            const sortVal = sortSelect.value;
+            if (sortVal !== 'default') {
+                cardsArray.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price'));
+                    const priceB = parseFloat(b.getAttribute('data-price'));
+                    return sortVal === 'high-low' ? priceB - priceA : priceA - priceB;
+                });
+                cardsArray.forEach(card => productsGrid.appendChild(card));
+            }
 
+            // التعامل مع حالة عدم وجود نتائج
+            let noResultMsg = document.getElementById('noResultsMsg');
             if (visibleCount === 0) {
                 if (!noResultMsg) {
                     noResultMsg = document.createElement('div');
                     noResultMsg.id = 'noResultsMsg';
                     noResultMsg.className = 'no-results';
                     noResultMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block; color: var(--accent-glow);"></i>عذراً، لا توجد منتجات تطابق بحثك.';
-                    grid.appendChild(noResultMsg);
+                    productsGrid.appendChild(noResultMsg);
                 }
             } else {
                 if (noResultMsg) {
@@ -626,21 +716,22 @@
             }
         }
 
-        searchInput.addEventListener('input', filterProducts);
+        searchInput.addEventListener('input', filterAndSortProducts);
+        sortSelect.addEventListener('change', filterAndSortProducts);
 
         filterChips.forEach(chip => {
             chip.addEventListener('click', () => {
                 filterChips.forEach(c => c.classList.remove('active'));
                 chip.classList.add('active');
                 currentCategory = chip.getAttribute('data-filter');
-                filterProducts();
+                filterAndSortProducts();
             });
         });
 
-        // دالة التوجيه المباشر للواتساب بالرقم المطلوب 01223859088
+        // دالة التوجيه المباشر للواتساب
         function orderProduct(productName) {
             const message = `السلام عليكم، أريد طلب المنتج التالي:%0a- ${productName}`;
-            const url = `https://wa.me/201223859088?text=${message}`;
+            const url = `https://wa.me/201224828849?text=${message}`;
             window.open(url, '_blank');
         }
 
