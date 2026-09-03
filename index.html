@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAyDenTra - Dental Supplies & Solutions</title>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary-dark: #0a192f;
-      --primary-blue: #0f2b48;
-      --accent-blue: #00a8cc;
-      --accent-green: #25d366;
-      --bg-gradient: linear-gradient(180deg, #0a192f 0%, #1a3a5c 100%);
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
+      --bg-dark-top: #061527;
+      --bg-dark-bottom: #0b2545;
+      --glow-color: #00d2ff;
+      --btn-blue: #0088cc;
+      --btn-green: #25d366;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
     }
 
     * {
@@ -27,26 +26,25 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f7f9;
+      color: var(--text-dark);
       width: 100%;
       overflow-x: hidden;
-      font-family: 'Cairo', sans-serif;
-      background-color: #f8fafc;
-      color: var(--text-main);
     }
 
-    /* Navbar احترافي للموبايل */
+    /* Navbar الموبايل */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1.2rem;
-      background: rgba(10, 25, 47, 0.95);
-      backdrop-filter: blur(10px);
+      background: var(--bg-dark-top);
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 210, 255, 0.15);
     }
 
     .logo-brand {
@@ -56,289 +54,293 @@
       text-decoration: none;
     }
 
-    .logo-brand img {
-      height: 32px;
-      width: auto;
-      background: #fff;
-      padding: 2px;
-      border-radius: 50%;
-    }
-
     .logo-brand span {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 900;
       color: #ffffff;
       letter-spacing: 0.5px;
     }
 
-    .menu-toggle {
+    .menu-btn {
       background: none;
       border: none;
       color: #ffffff;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       cursor: pointer;
     }
 
-    /* القائمة الجانبية للموبايل */
-    .mobile-menu {
+    /* Mobile Sidebar */
+    .sidebar {
       position: fixed;
       top: 0;
       right: -100%;
       width: 75%;
       height: 100vh;
-      background: var(--primary-dark);
+      background: var(--bg-dark-top);
       z-index: 2000;
       padding: 2rem 1.5rem;
-      transition: 0.3s ease-in-out;
-      box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+      transition: 0.3s ease;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.7);
     }
 
-    .mobile-menu.active {
+    .sidebar.active {
       right: 0;
     }
 
-    .close-menu {
+    .close-btn {
       background: none;
       border: none;
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       float: left;
       cursor: pointer;
     }
 
-    .mobile-nav-links {
-      margin-top: 3rem;
+    .sidebar-links {
+      margin-top: 3.5rem;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
 
-    .mobile-nav-links a {
+    .sidebar-links a {
       color: #ffffff;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 700;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 0.8rem;
     }
 
-    /* Hero Section */
+    /* Hero Section مع التوهج الفخم */
     .hero {
-      background: var(--bg-gradient);
-      padding: 2.5rem 1.2rem 3.5rem;
+      background: radial-gradient(circle at top, #0f3866 0%, var(--bg-dark-top) 80%);
+      padding: 2.5rem 1rem 4rem;
       text-align: center;
       color: #ffffff;
-      border-radius: 0 0 25px 25px;
+      position: relative;
     }
 
-    .hero-img {
-      width: 75px;
-      height: 75px;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 8px;
-      margin: 0 auto 1rem;
-      box-shadow: 0 0 20px rgba(0, 168, 204, 0.4);
-    }
-
-    .hero h1 {
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero p {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn-hero {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--accent-blue) 0%, #007791 100%);
-      color: #ffffff;
-      padding: 0.75rem 1.6rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 0.85rem;
-      box-shadow: 0 8px 20px rgba(0, 168, 204, 0.3);
-    }
-
-    /* المميزات السريعة */
-    .features-wrap {
-      margin: -1.8rem 1rem 1.5rem;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 1rem 0.5rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.3rem;
-      text-align: center;
-    }
-
-    .feature-card i {
-      font-size: 1.1rem;
-      color: var(--accent-blue);
-      background: rgba(0, 168, 204, 0.1);
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      border-radius: 50%;
-      margin-bottom: 0.4rem;
-    }
-
-    .feature-card h4 {
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    .feature-card p {
-      font-size: 0.58rem;
-      color: var(--text-muted);
-      line-height: 1.2;
-    }
-
-    /* قسم المنتجات */
-    .section-head {
-      text-align: center;
-      padding: 1rem 1.2rem 0.5rem;
-    }
-
-    .section-head h2 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    .section-head p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-    }
-
-    .products-grid {
-      padding: 1rem 1.2rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .product-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 0.8rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      border: 1px solid #e2e8f0;
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
-    }
-
-    .product-card img {
-      width: 90px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    .product-info {
-      flex-grow: 1;
-    }
-
-    .product-info h3 {
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 0.2rem;
-    }
-
-    .product-info p {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .btn-card-wa {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      background: var(--accent-green);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      width: 100%;
-    }
-
-    /* قسم التواصل والفوتر */
-    .contact-box {
-      background: var(--primary-dark);
-      color: #ffffff;
-      margin: 1.5rem 1.2rem;
-      padding: 1.5rem 1rem;
-      border-radius: 20px;
-      text-align: center;
-    }
-
-    .contact-box h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-box p {
-      font-size: 0.75rem;
-      color: #94a3b8;
+    /* تأثير التوهج للوجو */
+    .logo-glow-container {
+      position: relative;
+      display: inline-block;
       margin-bottom: 1rem;
     }
 
-    .wa-btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+    .logo-glow-container::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      background: var(--glow-color);
+      opacity: 0.5;
+      filter: blur(20px);
+      border-radius: 50%;
     }
 
-    .wa-link {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(37, 211, 102, 0.3);
-      padding: 0.6rem;
-      border-radius: 12px;
-      color: #fff;
+    .logo-glow-container img {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 6px;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
+      text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    }
+
+    .hero p {
+      font-size: 0.88rem;
+      color: #a0aec0;
+      margin-bottom: 1.8rem;
+    }
+
+    /* زر مستلزمات العيادة المتوهج */
+    .btn-main-glow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #00a8cc 0%, #007791 100%);
+      color: #ffffff;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
       text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 700;
-      direction: ltr;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 0 20px rgba(0, 168, 204, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* كروت المميزات */
+    .features-card {
+      margin: -2rem 1.2rem 2rem;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.2rem 0.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .feature-item i {
+      font-size: 1.3rem;
+      color: #00a8cc;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-item h4 {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .feature-item p {
+      font-size: 0.65rem;
+      color: var(--text-gray);
+      margin-top: 0.2rem;
+    }
+
+    /* قسم المنتجات */
+    .section-title {
+      text-align: center;
+      padding: 0 1.2rem 1rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #0a192f;
+    }
+
+    .section-title p {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      margin-top: 0.3rem;
+    }
+
+    .products-container {
+      padding: 0 1.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .product-box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      border: 1px solid #edf2f7;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0a192f;
+    }
+
+    .product-box p {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .btn-order {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      background: var(--btn-green);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.7rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
     }
 
-    .wa-link i {
-      color: var(--accent-green);
+    /* قسم تواصل معنا الفخم */
+    .contact-section {
+      background: linear-gradient(180deg, #061527 0%, #0a192f 100%);
+      margin: 1rem 1.2rem 2rem;
+      padding: 2rem 1.2rem;
+      border-radius: 24px;
+      text-align: center;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(6, 21, 39, 0.3);
+      border: 1px solid rgba(0, 210, 255, 0.1);
+    }
+
+    .contact-section h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-section p {
+      font-size: 0.8rem;
+      color: #a0aec0;
+      margin-bottom: 1.5rem;
+    }
+
+    .phone-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .phone-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      padding: 0.85rem;
+      border-radius: 14px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 800;
+      direction: ltr;
+      box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.05);
+    }
+
+    .phone-btn i {
+      color: var(--btn-green);
+      font-size: 1.1rem;
     }
 
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    @media (min-width: 768px) {
-      .menu-toggle { display: none; }
-      .products-grid { grid-template-columns: repeat(3, 1fr); }
-      .product-card { flex-direction: column; text-align: center; }
-      .product-card img { width: 100%; height: 160px; }
+      padding: 1rem 1rem 2rem;
+      font-size: 0.75rem;
+      color: var(--text-gray);
     }
   </style>
 </head>
@@ -347,126 +349,129 @@
   <!-- Navbar -->
   <nav class="navbar">
     <a href="#" class="logo-brand">
-      <img src="logo.png" alt="Logo">
-      <span>HAyDenTra®</span>
+      <span>®HAyDenTra</span>
     </a>
-    <button class="menu-toggle" id="openMenu"><i class="fa-solid fa-bars"></i></button>
+    <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
-    <div class="mobile-nav-links">
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="sidebar-links">
       <a href="#hero">الرئيسية</a>
       <a href="#products">المنتجات</a>
       <a href="#contact">تواصل معنا</a>
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section id="hero" class="hero">
-    <img src="logo.png" alt="HAyDenTra" class="hero-img">
+    <div class="logo-glow-container">
+      <img src="logo.png" alt="HAyDenTra Logo">
+    </div>
     <h1>HAyDenTra</h1>
     <p>Your Trusted Partner in Dental Solutions</p>
-    <a href="#products" class="btn-hero">
+    
+    <a href="#products" class="btn-main-glow">
+      <i class="fa-solid fa-arrow-right"></i>
       <span>عرض مستلزمات العيادة</span>
-      <i class="fa-solid fa-arrow-left"></i>
     </a>
   </section>
 
-  <!-- Features -->
-  <div class="features-wrap">
-    <div class="feature-card">
+  <!-- المميزات السريعة -->
+  <div class="features-card">
+    <div class="feature-item">
       <i class="fa-solid fa-shield-halved"></i>
       <h4>جودة عالية</h4>
-      <p>خامات معتمدة</p>
+      <p>خامات ومستلزمات معتمدة للعيادات</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-item">
       <i class="fa-solid fa-truck-fast"></i>
       <h4>توصيل سريع</h4>
-      <p>لكافة العيادات</p>
+      <p>شحن مباشر لكافة العيادات والمراكز</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-item">
       <i class="fa-solid fa-headset"></i>
       <h4>خدمة العملاء</h4>
-      <p>دعم واستجابة</p>
+      <p>تجاوب وتلبية فورية لكل الطلبات</p>
     </div>
   </div>
 
-  <!-- Products Section -->
+  <!-- قسم المنتجات -->
   <section id="products">
-    <div class="section-head">
-      <h2>مستلزمات وتجهيز العيادات</h2>
-      <p>اختر ما تحتاجه لعيادتك واطلبه فوراً عبر الواتساب</p>
+    <div class="section-title">
+      <h2>تجهيز ومستلزمات العيادات والمراكز الطبية</h2>
+      <p>احصل على أفضل خامات وأدوات طب الأسنان لعيادتك واطلب مباشرة عبر الواتساب</p>
     </div>
 
-    <div class="products-grid">
+    <div class="products-container">
       
-      <div class="product-card">
-        <img src="https://via.placeholder.com/150/0f2b48/ffffff?text=Supplies" alt="مستلزمات">
-        <div class="product-info">
+      <!-- كارت 1 -->
+      <div class="product-box">
+        <div class="product-header">
           <h3>مستلزمات عيادات متطورة</h3>
-          <p>مجموعة متكاملة من أدوات وخامات جراحة الأسنان.</p>
-          <a href="https://wa.me/201224828849?text=طلب:%20مستلزمات%20عيادات" target="_blank" class="btn-card-wa">
-            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-          </a>
         </div>
+        <p>مجموعة متكاملة من أدوات وخامات جراحة وطب الأسنان عالية الجودة.</p>
+        <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20مستلزمات%20العيادات" target="_blank" class="btn-order">
+          <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+        </a>
       </div>
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/150/1e56a0/ffffff?text=Tools" alt="أدوات">
-        <div class="product-info">
+      <!-- كارت 2 -->
+      <div class="product-box">
+        <div class="product-header">
           <h3>أدوات وفحوصات طبية</h3>
-          <p>استيل طبي متين ومقاوم للصدأ لأعلى دقة.</p>
-          <a href="https://wa.me/201224828849?text=طلب:%20أدوات%20طبية" target="_blank" class="btn-card-wa">
-            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-          </a>
         </div>
+        <p>استيل طبي متين ومقاوم للصدأ لأعلى دقة.</p>
+        <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20الأدوات%20والفحوصات%20الطبية" target="_blank" class="btn-order">
+          <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+        </a>
       </div>
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/150/00a8cc/ffffff?text=Sanitization" alt="تعقيم">
-        <div class="product-info">
+      <!-- كارت 3 -->
+      <div class="product-box">
+        <div class="product-header">
           <h3>مطهرات وتعقيم العيادات</h3>
-          <p>محلول معقم وفعال جداً للأدوات والأسطح.</p>
-          <a href="https://wa.me/201224828849?text=طلب:%20مطهرات%20وتعقيم" target="_blank" class="btn-card-wa">
-            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-          </a>
         </div>
+        <p>محلول معقم وفعال جداً للأدوات والأسطح.</p>
+        <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20المطهرات%20والتعقيم" target="_blank" class="btn-order">
+          <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-box">
+  <!-- قسم التواصل -->
+  <section id="contact" class="contact-section">
     <h3>تواصل معنا مباشرة</h3>
     <p>جاهزون لتلبية طلبات العيادات والمراكز فوراً</p>
-    <div class="wa-btn-group">
-      <a href="https://wa.me/201224828849" target="_blank" class="wa-link">
+    
+    <div class="phone-buttons">
+      <a href="https://wa.me/201224828849?text=السلام%20عليكم،%20أريد%20طلب%20مستلزمات%20أو%20الاستفسار" target="_blank" class="phone-btn">
         <i class="fa-brands fa-whatsapp"></i> +20 122 482 8849
       </a>
-      <a href="https://wa.me/201554238849" target="_blank" class="wa-link">
+      <a href="https://wa.me/201554238849?text=السلام%20عليكم،%20أريد%20طلب%20مستلزمات%20أو%20الاستفسار" target="_blank" class="phone-btn">
         <i class="fa-brands fa-whatsapp"></i> +20 155 423 8849
       </a>
     </div>
   </section>
 
   <footer>
-    <p>© HAyDenTra - Dental Supplies & Solutions</p>
+    HAyDenTra - Dental Supplies & Solutions ©
   </footer>
 
   <script>
-    const openMenu = document.getElementById('openMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
+    const openSidebar = document.getElementById('openSidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
 
-    openMenu.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
+    openSidebar.addEventListener('click', () => {
+      sidebar.classList.add('active');
     });
 
-    closeMenu.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('active');
     });
   </script>
 
