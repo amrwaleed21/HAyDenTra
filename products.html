@@ -14,7 +14,8 @@
             --secondary-bg: #102d4f;
             --accent-glow: #00d2ff;
             --whatsapp-green: #25d366;
-            --card-bg: #ffffff;
+            /* لون أبيض غامق مائل للأزرق الهادئ (Faded Blue-White) */
+            --card-bg: linear-gradient(135deg, #e8f0f8 0%, #d4e3f0 100%);
             --text-dark: #081b33;
             --text-main: #ffffff;
             --text-muted: #b0c4de;
@@ -57,22 +58,24 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت تماماً مع تأثير الزجاج المضيء والـ Blur */
+        /* شريط علوي ثابت نهائياً وثابت تماماً بدون اختفاء مع تأثير الزجاج الـ Blur */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.85);
+            background: rgba(8, 27, 51, 0.88);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 9999;
+            z-index: 99999;
             border-bottom: 1px solid rgba(0, 210, 255, 0.35);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            transform: none !important;
+            transition: none !important;
         }
 
         .nav-logo-right {
@@ -129,7 +132,7 @@
             height: 100dvh;
             background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
             backdrop-filter: blur(18px);
-            z-index: 99999;
+            z-index: 100000;
             padding: 1.5rem 1.2rem;
             transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
@@ -150,7 +153,7 @@
             height: 100dvh;
             background: rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 99998;
+            z-index: 99999;
             opacity: 0;
             visibility: hidden;
             transition: 0.3s ease;
@@ -266,7 +269,6 @@
             color: var(--text-muted);
         }
 
-        /* حاوية الفلاتر بشكل زجاجي أنيق ومضيء */
         .filters-wrapper {
             display: flex;
             flex-direction: column;
@@ -294,7 +296,7 @@
 
         .search-box input {
             width: 100%;
-            background: #ffffff;
+            background: #e8f0f8;
             border: 2px solid rgba(0, 210, 255, 0.5);
             border-radius: 12px;
             padding: 0.8rem 1rem 0.8rem 2.8rem;
@@ -307,12 +309,13 @@
         }
 
         .search-box input:focus {
-            border-color: #0096c7;
+            border-color: #0077b6;
+            background: #ffffff;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
         .search-box input::placeholder {
-            color: #718096;
+            color: #64748b;
             font-weight: 600;
         }
 
@@ -321,7 +324,7 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #4a5568;
+            color: #475569;
             font-size: 1rem;
         }
 
@@ -331,7 +334,7 @@
 
         .sort-box select {
             width: 100%;
-            background: #ffffff;
+            background: #e8f0f8;
             border: 2px solid rgba(0, 210, 255, 0.5);
             border-radius: 12px;
             padding: 0.8rem 1rem;
@@ -345,12 +348,13 @@
         }
 
         .sort-box select:focus {
-            border-color: #0096c7;
+            border-color: #0077b6;
+            background: #ffffff;
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
         .sort-box select option {
-            background: #ffffff;
+            background: #e8f0f8;
             color: #081b33;
         }
 
@@ -367,7 +371,7 @@
         }
 
         .filter-chip {
-            background: #ffffff;
+            background: linear-gradient(135deg, #e8f0f8 0%, #cbd5e1 100%);
             border: 2px solid rgba(0, 210, 255, 0.3);
             color: #081b33;
             padding: 0.55rem 1.1rem;
@@ -388,7 +392,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
         }
 
-        /* شبكة المنتجات ببطاقات بيضاء متنوعة وتفاصيل غنية */
+        /* شبكة المنتجات ببطاقات بيضاء غامقة مائلة للأزرق بنعومة (Faded Blue-White) */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -399,7 +403,7 @@
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            border: 2px solid rgba(0, 210, 255, 0.3);
+            border: 2px solid rgba(0, 210, 255, 0.35);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             display: flex;
             flex-direction: column;
@@ -415,12 +419,12 @@
         .product-img-wrapper {
             width: 100%;
             height: 170px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #d8e6f3 0%, #c2d6ec 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0096c7;
-            border-bottom: 2px solid #edf2f7;
+            color: #0077b6;
+            border-bottom: 2px solid rgba(0, 210, 255, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -464,7 +468,7 @@
 
         .product-description {
             font-size: 0.85rem;
-            color: #4a5568;
+            color: #334155;
             font-weight: 600;
             margin-bottom: 1rem;
             line-height: 1.5;
@@ -478,8 +482,8 @@
         }
 
         .spec-pill {
-            background: #edf2f7;
-            color: #2d3748;
+            background: rgba(0, 119, 182, 0.1);
+            color: #0f172a;
             font-size: 0.72rem;
             font-weight: 700;
             padding: 0.25rem 0.6rem;
@@ -487,10 +491,11 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            border: 1px solid rgba(0, 119, 182, 0.2);
         }
 
         .spec-pill i {
-            color: #0096c7;
+            color: #0077b6;
         }
 
         .product-bottom {
@@ -499,14 +504,14 @@
             align-items: center;
             margin-top: auto;
             padding-top: 0.8rem;
-            border-top: 1px solid #edf2f7;
+            border-top: 1px solid rgba(0, 119, 182, 0.15);
             gap: 10px;
         }
 
         .product-price {
             font-size: 1.05rem;
             font-weight: 900;
-            color: #0096c7;
+            color: #0077b6;
         }
 
         .order-btn {
@@ -538,7 +543,7 @@
             color: #081b33;
             font-size: 1rem;
             font-weight: 800;
-            background: #ffffff;
+            background: linear-gradient(135deg, #e8f0f8 0%, #d4e3f0 100%);
             border-radius: 20px;
             border: 2px solid rgba(0, 210, 255, 0.3);
         }
@@ -762,7 +767,7 @@
                     noResultMsg = document.createElement('div');
                     noResultMsg.id = 'noResultsMsg';
                     noResultMsg.className = 'no-results';
-                    noResultMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block; color: #0096c7;"></i>عذراً، لا توجد منتجات تطابق بحثك.';
+                    noResultMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block; color: #0077b6;"></i>عذراً، لا توجد منتجات تطابق بحثك.';
                     productsGrid.appendChild(noResultMsg);
                 }
             } else {
