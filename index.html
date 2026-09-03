@@ -14,7 +14,26 @@
       --text-gray: #64748b;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    body { font-family: 'Cairo', sans-serif; background-color: #f4f7f9; color: var(--text-dark); overflow-x: hidden; }
+    
+    /* تأثير الانتقال الناعم */
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f7f9;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeInPage 0.5s ease forwards;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body.fade-out {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
 
     /* Navbar شفاف ناعم مع Blur */
     .navbar {
@@ -51,15 +70,15 @@
     .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); }
     .hero p { font-size: 0.88rem; color: #a0aec0; margin-bottom: 2rem; }
 
-    /* الأزرار المتوهجة */
+    /* الأزرار المتوهجة بحجم ملموم */
     .btn-main-glow {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: linear-gradient(135deg, #00a8cc 0%, #007791 100%); color: #fff;
       padding: 0.75rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 800;
-      font-size: 0.9rem; width: fit-content; margin: 0.4rem; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;
+      font-size: 0.9rem; width: fit-content; margin: 0.4 auto; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); }
+    .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); border-color: #fff; }
 
     /* المميزات */
     .features-card {
@@ -123,7 +142,7 @@
     <div class="feature-item">
       <i class="fa-solid fa-headset"></i>
       <h4>خدمة العملاء</h4>
-      <p>تجاوب فورى</p>
+      <p>تجاوب فوري</p>
     </div>
   </div>
 
@@ -133,8 +152,20 @@
     const openSidebar = document.getElementById('openSidebar');
     const closeSidebar = document.getElementById('closeSidebar');
     const sidebar = document.getElementById('sidebar');
-    openSidebar.addEventListener('click', () => sidebar.classList.add('active'));
-    closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
+    if (openSidebar) openSidebar.addEventListener('click', () => sidebar.classList.add('active'));
+    if (closeSidebar) closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
+
+    // انتقال ناعم بين الصفحات
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => { window.location.href = href; }, 400);
+        }
+      });
+    });
   </script>
 </body>
 </html>
