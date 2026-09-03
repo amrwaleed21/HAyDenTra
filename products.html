@@ -242,7 +242,7 @@
 
         .main-container {
             max-width: 1100px;
-            margin: 5.5rem auto 2rem auto; /* مساحة علوية لإفساح المجال للشريط الثابت */
+            margin: 5.5rem auto 2rem auto;
             padding: 0 1.2rem;
         }
 
@@ -264,7 +264,6 @@
             color: var(--text-muted);
         }
 
-        /* أدوات الفلترة والبحث المتقدمة */
         .filters-wrapper {
             display: flex;
             flex-direction: column;
@@ -316,7 +315,6 @@
             font-size: 1rem;
         }
 
-        /* فلتر الأسعار من الأعلى للأقل */
         .sort-box {
             min-width: 170px;
         }
@@ -378,7 +376,6 @@
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
         }
 
-        /* شبكة المنتجات وتأثير تكبير الأيقونة عند تمرير الماوس */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -402,7 +399,6 @@
             box-shadow: 0 12px 30px rgba(0, 210, 255, 0.25);
         }
 
-        /* فراغ الصورة مع أيقونة مكان الصورة، وتكبر الأيقونة عند تمرير الماوس */
         .product-img-wrapper {
             width: 100%;
             height: 180px;
@@ -440,7 +436,6 @@
             color: var(--text-main);
         }
 
-        /* تفاصيل سطر واحد تحت كل منتج */
         .product-description {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -510,7 +505,6 @@
 
 <body>
 
-    <!-- الشريط العلوي الثابت -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo-right">
             <img src="logo.png" alt="HAyDenTra Logo">
@@ -541,7 +535,6 @@
             <p>تصفح أحدث الأدوات والمواد الطبية لعيادتك واطلبها فوراً عبر الواتساب</p>
         </div>
 
-        <!-- شريط البحث والفلترة المطور (يشمل ترتيب الأسعار من الأعلى للأقل) -->
         <div class="filters-wrapper">
             <div class="search-sort-row">
                 <div class="search-box">
@@ -564,9 +557,7 @@
             </div>
         </div>
 
-        <!-- شبكة المنتجات (مع أسعار عشوائية مبدئية، وتفاصيل سطر واحد، وأيقونة مكان الصورة) -->
         <div class="products-grid" id="productsGrid">
-            <!-- منتج 1 -->
             <div class="product-card" data-category="materials" data-name="مادة كومبوزيت حشو تجميلي" data-price="2450">
                 <div class="product-img-wrapper">
                     <i class="fa-solid fa-tooth placeholder-icon"></i>
@@ -583,7 +574,6 @@
                 </div>
             </div>
 
-            <!-- منتج 2 -->
             <div class="product-card" data-category="devices" data-name="جهاز تسنين Light Cure" data-price="4800">
                 <div class="product-img-wrapper">
                     <i class="fa-solid fa-laptop-medical placeholder-icon"></i>
@@ -600,7 +590,6 @@
                 </div>
             </div>
 
-            <!-- منتج 3 -->
             <div class="product-card" data-category="tools" data-name="أدوات فحص الأسنان Diagnostic Set" data-price="1200">
                 <div class="product-img-wrapper">
                     <i class="fa-solid fa-box-open placeholder-icon"></i>
@@ -617,7 +606,6 @@
                 </div>
             </div>
 
-            <!-- منتج 4 -->
             <div class="product-card" data-category="materials" data-name="معجون تلميع الأسنان Prophy Paste" data-price="650">
                 <div class="product-img-wrapper">
                     <i class="fa-solid fa-spray-can-sparkles placeholder-icon"></i>
@@ -660,7 +648,6 @@
         if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
-        // نظام الفلاتر والبحث وترتيب الأسعار
         const searchInput = document.getElementById('searchInput');
         const sortSelect = document.getElementById('sortSelect');
         const filterChips = document.querySelectorAll('.filter-chip');
@@ -688,7 +675,6 @@
                 }
             });
 
-            // ترتيب الأسعار (من الأعلى للأقل أو العكس)
             const sortVal = sortSelect.value;
             if (sortVal !== 'default') {
                 cardsArray.sort((a, b) => {
@@ -699,7 +685,6 @@
                 cardsArray.forEach(card => productsGrid.appendChild(card));
             }
 
-            // التعامل مع حالة عدم وجود نتائج
             let noResultMsg = document.getElementById('noResultsMsg');
             if (visibleCount === 0) {
                 if (!noResultMsg) {
@@ -728,14 +713,13 @@
             });
         });
 
-        // دالة التوجيه المباشر للواتساب
+        // دالة التوجيه المباشر للواتساب بالرقم الجديد
         function orderProduct(productName) {
             const message = `السلام عليكم، أريد طلب المنتج التالي:%0a- ${productName}`;
-            const url = `https://wa.me/201224828849?text=${message}`;
+            const url = `https://wa.me/201223859088?text=${message}`;
             window.open(url, '_blank');
         }
 
-        // تأثير الانتقال السلس بين الصفحات
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
