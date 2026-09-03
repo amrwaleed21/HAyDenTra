@@ -14,6 +14,7 @@
             --secondary-bg: #102d4f;
             --accent-glow: #00d2ff;
             --whatsapp-green: #25d366;
+            --call-blue: #0095ff;
             --card-bg: rgba(13, 38, 68, 0.75);
             --text-main: #ffffff;
             --text-muted: #b0c4de;
@@ -56,14 +57,17 @@
             transition: opacity 0.4s ease;
         }
 
+        /* شريط علوي ثابت (Fixed Navbar) */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.6rem 1.2rem;
-            background: rgba(8, 27, 51, 0.9);
-            position: sticky;
+            background: rgba(8, 27, 51, 0.95);
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -239,7 +243,7 @@
 
         .contact-container {
             max-width: 600px;
-            margin: 2.5rem auto;
+            margin: 6rem auto 2.5rem auto; /* مساحة علوية لإفساح المجال للشريط الثابت */
             padding: 0 1.2rem;
         }
 
@@ -268,6 +272,7 @@
             border: 1px solid rgba(0, 210, 255, 0.2);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             text-align: center;
+            margin-bottom: 1.5rem;
         }
 
         .contact-icon {
@@ -285,6 +290,13 @@
             box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
         }
 
+        .contact-icon.call-icon {
+            background: rgba(0, 149, 255, 0.15);
+            border-color: rgba(0, 149, 255, 0.4);
+            color: var(--call-blue);
+            box-shadow: 0 0 20px rgba(0, 149, 255, 0.3);
+        }
+
         .contact-info-title {
             font-size: 1.1rem;
             font-weight: 800;
@@ -299,7 +311,8 @@
             line-height: 1.6;
         }
 
-        .whatsapp-direct-btn {
+        /* أزرار الاتصال والواتساب المباشرة دون كتابة الأرقام نصوصاً ظاهرة */
+        .direct-action-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -308,7 +321,7 @@
             color: var(--whatsapp-green);
             border: 1px solid rgba(37, 211, 102, 0.5);
             text-decoration: none;
-            padding: 0.9rem 1.8rem;
+            padding: 0.9rem 2rem;
             border-radius: 14px;
             font-size: 1rem;
             font-weight: 800;
@@ -316,12 +329,26 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
         }
 
-        .whatsapp-direct-btn:hover {
+        .direct-action-btn:hover {
             background: var(--whatsapp-green);
             color: #fff;
             border-color: var(--whatsapp-green);
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.45);
             transform: translateY(-2px);
+        }
+
+        .direct-action-btn.call-btn {
+            background: rgba(0, 149, 255, 0.2);
+            color: var(--call-blue);
+            border-color: rgba(0, 149, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 149, 255, 0.2);
+        }
+
+        .direct-action-btn.call-btn:hover {
+            background: var(--call-blue);
+            color: #fff;
+            border-color: var(--call-blue);
+            box-shadow: 0 6px 25px rgba(0, 149, 255, 0.45);
         }
 
         footer {
@@ -337,6 +364,7 @@
 
 <body>
 
+    <!-- الشريط العلوي الثابت -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo-right">
             <img src="logo.png" alt="HAyDenTra Logo">
@@ -367,14 +395,27 @@
             <p>نحن هنا دائماً للإجابة على استفساراتكم وتلبية احتياجات عيادتكم</p>
         </div>
 
+        <!-- بطاقة الواتساب (زر مباشر بدون كتابة الرقم) -->
         <div class="contact-card">
             <div class="contact-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <h2 class="contact-info-title">راسلنا عبر واتساب مباشرة</h2>
-            <p class="contact-info-desc">للاستفسارات، طلبات العيادات، أو المساعدة الفورية، فريقنا جاهز لخدمتكم طوال الوقت عبر الرقم المعتمد:</p>
-            <a href="https://wa.me/201223859088" target="_blank" class="whatsapp-direct-btn">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> 01223859088
+            <h2 class="contact-info-title">راسلنا عبر واتساب</h2>
+            <p class="contact-info-desc">تواصل معنا فوراً للمساعدة، الاستفسار، أو متابعة طلبات العيادة بكل سهولة عبر زر المراسلة أدناه:</p>
+            <a href="https://wa.me/201224828849" target="_blank" class="direct-action-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> مراسلة واتساب مباشرة
+            </a>
+        </div>
+
+        <!-- بطاقة الاتصال الهاتفي (زر مباشر بدون كتابة الرقم) -->
+        <div class="contact-card">
+            <div class="contact-icon call-icon">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <h2 class="contact-info-title">اتصل بنا هاتفياً</h2>
+            <p class="contact-info-desc">يمكنك التحدث مباشرة مع فريق خدمة العملاء والدعم الفني عبر النقر على زر الاتصال الهاتفي أدناه:</p>
+            <a href="tel:01224828849" class="direct-action-btn call-btn">
+                <i class="fa-solid fa-phone" style="font-size: 1.1rem;"></i> اتصال هاتفى مباشر
             </a>
         </div>
     </div>
@@ -406,7 +447,7 @@
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
+                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('tel:') && !href.startsWith('#')) {
                     e.preventDefault();
                     document.body.classList.add('fade-out');
                     setTimeout(() => { window.location.href = href; }, 400);
