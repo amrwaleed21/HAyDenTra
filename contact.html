@@ -21,8 +21,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html,
-        body {
+        html, body {
             background-color: #081b33;
             color: #ffffff;
             font-family: 'Cairo', sans-serif;
@@ -43,15 +42,8 @@
         }
 
         @keyframes fadeInPage {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         body.fade-out {
@@ -117,7 +109,6 @@
             border-color: rgba(0, 210, 255, 0.4);
         }
 
-        /* القائمة الجانبية بمكس واضح بين الكحلي والأبيض الشفاف الـ Glassy */
         .sidebar {
             position: fixed;
             top: 0;
@@ -170,6 +161,258 @@
             margin-bottom: 1.5rem;
         }
 
+        .sidebar-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .sidebar-logo-area img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+        }
+
+        .sidebar-logo-area .brand-text {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.85rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-links a:hover,
+        .sidebar-links a:active {
+            background: rgba(0, 210, 255, 0.25);
+            border-color: rgba(0, 210, 255, 0.5);
+            padding-right: 1.3rem;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+
+        .section-title p {
+            font-size: 0.8rem;
+            color: #b0c4de;
+            margin-top: 0.3rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: rgba(13, 38, 68, 0.7);
+            border-radius: 16px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--glow-blue);
+        }
+
+        .contact-info h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-info p {
+            font-size: 0.8rem;
+            color: #b0c4de;
+            direction: ltr;
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.75rem;
+            color: #b0c4de;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo-right">
+            <img src="logo.png" alt="HAyDenTra Logo">
+            <span class="brand-text">HAyDenTra®</span>
+        </a>
+        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-area">
+                <img src="logo.png" alt="HAyDenTra Logo">
+                <span class="brand-text">HAyDenTra®</span>
+            </a>
+            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="sidebar-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="products.html">المنتجات والمستلزمات</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <div class="section-title">
+            <h2>تواصل معنا وخدمة العملاء</h2>
+            <p>يسعدنا الإجابة على استفساراتكم وتلبية احتياجاتكم في أي وقت</p>
+        </div>
+
+        <div class="contact-cards">
+            <!-- رقم الاستفسارات والطلبات المحدث (012) -->
+            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20لدي%20استفسار" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #25d366; background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.4);">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>رقم الاستفسارات والطلبات (واتساب)</h3>
+                    <p>+20 122 385 9088</p>
+                </div>
+            </a>
+
+            <!-- البريد الإلكتروني -->
+            <a href="mailto:waleed.hamed.elboghdady@gmail.com" class="contact-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>البريد الإلكتروني</h3>
+                    <p>waleed.hamed.elboghdady@gmail.com</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
+
+    <script>
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleSidebar(open) {
+            if (open) {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            } else {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        }
+
+        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
+        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => { window.location.href = href; }, 400);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
         .sidebar-logo-area {
             display: flex;
             align-items: center;
