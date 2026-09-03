@@ -31,12 +31,13 @@
 
     body.fade-out { opacity: 0; transition: opacity 0.4s ease; }
 
-    /* تأثير زجاج الشاشة الخلفية (Blur) مضبوط تماماً كالرئيسية */
+    /* تم تعديل الشفافية وزيادة التعتيم ليعطي مظهر الزجاج الداكن بوضوح تماماً */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0.8rem 1.2rem; background: rgba(6, 21, 39, 0.75);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+      padding: 0.8rem 1.2rem; background: rgba(6, 21, 39, 0.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.25);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .nav-logo-right { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -52,7 +53,7 @@
 
     .sidebar {
       position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
-      background: rgba(6, 21, 39, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 2000; padding: 2rem 1.5rem; transition: 0.3s ease;
+      background: rgba(6, 21, 39, 0.96); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 2000; padding: 2rem 1.5rem; transition: 0.3s ease;
     }
     .sidebar.active { right: 0; }
     .close-btn { background: none; border: none; color: #fff; font-size: 1.6rem; float: left; cursor: pointer; }
