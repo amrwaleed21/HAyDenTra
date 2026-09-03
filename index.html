@@ -14,7 +14,8 @@
             --secondary-bg: #102d4f;
             --accent-glow: #00d2ff;
             --whatsapp-green: #25d366;
-            --card-bg: rgba(13, 38, 68, 0.75);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #081b33;
             --text-main: #ffffff;
             --text-muted: #b0c4de;
         }
@@ -56,41 +57,42 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت تماماً فوق كل المحتوى */
+        /* شريط علوي ثابت تماماً مع تأثير الزجاج المضيء والـ Blur */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 1.2rem;
-            background: rgba(8, 27, 51, 0.95);
+            padding: 0.7rem 1.2rem;
+            background: rgba(8, 27, 51, 0.85);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.35);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .nav-logo-right {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             text-decoration: none;
         }
 
         .nav-logo-right img {
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: #fff;
             padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
         }
 
         .nav-logo-right .brand-text {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
@@ -99,12 +101,12 @@
         }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: #fff;
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             font-size: 1.2rem;
             cursor: pointer;
             display: flex;
@@ -114,8 +116,8 @@
         }
 
         .menu-btn:hover {
-            background: rgba(0, 210, 255, 0.2);
-            border-color: rgba(0, 210, 255, 0.4);
+            background: rgba(0, 210, 255, 0.25);
+            border-color: rgba(0, 210, 255, 0.5);
         }
 
         .sidebar {
@@ -125,7 +127,7 @@
             width: 78%;
             height: 100vh;
             height: 100dvh;
-            background: linear-gradient(145deg, rgba(16, 45, 79, 0.95) 0%, rgba(8, 27, 51, 0.98) 100%);
+            background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
             backdrop-filter: blur(18px);
             z-index: 99999;
             padding: 1.5rem 1.2rem;
@@ -146,8 +148,8 @@
             width: 100vw;
             height: 100vh;
             height: 100dvh;
-            background: rgba(2, 6, 23, 0.65);
-            backdrop-filter: blur(4px);
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(5px);
             z-index: 99998;
             opacity: 0;
             visibility: hidden;
@@ -243,7 +245,7 @@
         /* المحتوى الرئيسي مع مسافة علوية كافية لكي لا يختفي تحت الشريط الثابت */
         .hero-container {
             max-width: 700px;
-            margin: 5.5rem auto 2rem auto;
+            margin: 6.5rem auto 2rem auto;
             padding: 1.5rem 1.2rem;
             display: flex;
             flex-direction: column;
@@ -256,12 +258,12 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .hero-logo-box img {
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             background: #fff;
             padding: 4px;
@@ -286,8 +288,36 @@
         .hero-subtitle {
             font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 2.2rem;
+            margin-bottom: 2rem;
             font-weight: 600;
+        }
+
+        /* بطاقة ترحيبية بيضاء جذابة وأنيقة */
+        .welcome-white-card {
+            background: #ffffff;
+            color: var(--text-dark);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 210, 255, 0.3);
+            text-align: center;
+        }
+
+        .welcome-white-card h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #081b33;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-white-card p {
+            font-size: 0.85rem;
+            color: #4a5568;
+            font-weight: 600;
+            line-height: 1.5;
         }
 
         .hero-actions {
@@ -295,56 +325,53 @@
             flex-direction: column;
             gap: 1rem;
             width: 100%;
-            max-width: 380px;
-            margin-bottom: 2.5rem;
+            max-width: 400px;
+            margin-bottom: 2.2rem;
         }
 
         .action-main-btn {
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(0, 150, 200, 0.3));
-            color: #fff;
-            border: 1px solid rgba(0, 210, 255, 0.5);
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            color: #081b33;
+            border: 2px solid #00d2ff;
             padding: 1rem 1.5rem;
             border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 900;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.25);
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
             transition: 0.25s ease;
         }
 
         .action-main-btn:hover {
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.35), rgba(0, 150, 200, 0.5));
-            border-color: var(--accent-glow);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+            background: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
             transform: translateY(-2px);
         }
 
         .action-secondary-btn {
-            background: rgba(13, 38, 68, 0.75);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #ffffff;
+            color: #081b33;
+            border: 2px solid #25d366;
             padding: 1rem 1.5rem;
             border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 900;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
             transition: 0.25s ease;
         }
 
         .action-secondary-btn:hover {
-            background: rgba(37, 211, 102, 0.2);
-            border-color: rgba(37, 211, 102, 0.5);
-            color: var(--whatsapp-green);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+            background: #f0fff4;
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
             transform: translateY(-2px);
         }
 
@@ -354,7 +381,7 @@
             width: 100%;
             max-width: 600px;
             border-radius: 20px;
-            padding: 1.2rem 1rem;
+            padding: 1.3rem 1rem;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -432,12 +459,17 @@
         </div>
         <p class="hero-subtitle">Your Trusted Partner in Dental Solutions</p>
 
+        <div class="welcome-white-card">
+            <h3>مرحباً بكم في عالم مستلزمات الأسنان المتطورة</h3>
+            <p>نقدم لعيادتك أحدث الأجهزة والمواد الطبية المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.</p>
+        </div>
+
         <div class="hero-actions">
             <a href="products.html" class="action-main-btn">
-                <i class="fa-solid fa-box-open"></i> عرض المنتجات والمستلزمات
+                <i class="fa-solid fa-box-open" style="color: #0096c7;"></i> عرض المنتجات والمستلزمات
             </a>
-            <a href="https://wa.me/201223859088" target="_blank" class="action-secondary-btn">
-                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.2rem;"></i> تواصل معنا مباشرة
+            <a href="https://wa.me/201224828849" target="_blank" class="action-secondary-btn">
+                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.3rem;"></i> تواصل معنا مباشرة
             </a>
         </div>
 
