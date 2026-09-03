@@ -56,7 +56,7 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت */
+        /* شريط علوي ثابت تماماً فوق كل المحتوى */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -240,10 +240,10 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
-        /* المحتوى الرئيسي للواجهة الأساسية */
+        /* المحتوى الرئيسي مع مسافة علوية كافية لكي لا يختفي تحت الشريط الثابت */
         .hero-container {
             max-width: 700px;
-            margin: 5rem auto 2rem auto;
+            margin: 5.5rem auto 2rem auto;
             padding: 1.5rem 1.2rem;
             display: flex;
             flex-direction: column;
@@ -348,7 +348,6 @@
             transform: translateY(-2px);
         }
 
-        /* بطاقات الميزات السفلية */
         .features-card-container {
             background: #ffffff;
             color: #081b33;
