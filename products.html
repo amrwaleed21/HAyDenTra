@@ -1,326 +1,657 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra® - المنتجات</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --bg-dark-top: #061527;
-      --btn-green: #25d366;
-      --glow-blue: #00d2ff;
-      --text-dark: #0f172a;
-      --text-gray: #64748b;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: #f4f7f9;
-      color: var(--text-dark);
-      opacity: 0;
-      animation: fadeInPage 0.5s ease forwards;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAyDenTra® - المنتجات والمستلزمات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --btn-green: #25d366;
+            --glow-blue: #00d2ff;
+        }
 
-    body.sidebar-open { overflow: hidden; position: fixed; width: 100%; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    @keyframes fadeInPage {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        html,
+        body {
+            background-color: #081b33;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    body.fade-out { opacity: 0; transition: opacity 0.4s ease; }
+        body {
+            background: linear-gradient(135deg, #081b33 0%, #102d4f 50%, #061527 100%);
+            opacity: 0;
+            animation: fadeInPage 0.5s ease forwards;
+        }
 
-    .navbar {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.6rem 1.2rem; background: rgba(6, 21, 39, 0.75);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.2);
-    }
+        body.sidebar-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
 
-    .nav-logo-right {
-      display: flex; align-items: center; gap: 8px; text-decoration: none;
-    }
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
 
-    .nav-logo-right img {
-      width: 35px; height: 35px; border-radius: 50%; background: #fff; padding: 2px;
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .nav-logo-right .brand-text {
-      font-size: 1.1rem; font-weight: 900; color: #fff;
-      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
-      direction: ltr; unicode-bidi: embed;
-    }
+        body.fade-out {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
 
-    .menu-btn { background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background: rgba(8, 27, 51, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
 
-    .sidebar {
-      position: fixed; top: 0; right: -100%; width: 78%; height: 100vh; height: 100dvh;
-      background: rgba(6, 21, 39, 0.92);
-      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-      z-index: 99999; padding: 2rem 1.5rem; transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: -15px 0 50px rgba(0,0,0,0.7); overflow-y: auto;
-      border-left: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .sidebar.active { right: 0; }
+        .nav-logo-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
 
-    .sidebar-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh;
-      background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      z-index: 99998; opacity: 0; visibility: hidden; transition: 0.3s ease;
-    }
-    .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .nav-logo-right img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+        }
 
-    .close-btn { background: none; border: none; color: #fff; font-size: 1.6rem; float: left; cursor: pointer; opacity: 0.8; transition: 0.2s; }
-    .close-btn:hover { opacity: 1; }
-    .sidebar-links { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
-    .sidebar-links a { 
-      color: #fff; text-decoration: none; font-size: 1.05rem; font-weight: 700; 
-      background: rgba(255, 255, 255, 0.05); padding: 0.8rem 1rem; border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.2s ease;
-    }
-    .sidebar-links a:hover, .sidebar-links a:active {
-      background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4); padding-right: 1.3rem;
-    }
+        .nav-logo-right .brand-text {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            direction: ltr;
+            unicode-bidi: embed;
+        }
 
-    .section-title { text-align: center; padding: 1.8rem 1.2rem 1rem; }
-    .section-title h2 { font-size: 1.3rem; font-weight: 900; color: #0a192f; }
-    .section-title p { font-size: 0.78rem; color: var(--text-gray); margin-top: 0.3rem; }
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
 
-    .filter-search-container { padding: 0 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    .search-box { position: relative; width: 100%; }
-    .search-box input {
-      width: 100%; padding: 0.7rem 2.5rem 0.7rem 1rem; border-radius: 12px;
-      border: 1px solid #cbd5e1; background: #fff; font-family: 'Cairo', sans-serif;
-      font-size: 0.85rem; outline: none; transition: all 0.3s;
-    }
-    .search-box input:focus { border-color: #00a8cc; box-shadow: 0 0 8px rgba(0, 168, 204, 0.2); }
-    .search-box i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-gray); font-size: 0.95rem; }
+        .menu-btn:hover {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.4);
+        }
 
-    .filter-buttons { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
-    .filter-btn {
-      background: #fff; border: 1px solid #cbd5e1; padding: 0.45rem 1rem; border-radius: 20px;
-      font-family: 'Cairo', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-dark);
-      cursor: pointer; white-space: nowrap; transition: all 0.2s;
-    }
-    .filter-btn.active, .filter-btn:hover { background: #061527; color: #fff; border-color: #061527; }
+        /* القائمة الجانبية بمكس واضح بين الكحلي والأبيض الشفاف الـ Glassy */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 78%;
+            height: 100vh;
+            height: 100dvh;
+            background: linear-gradient(145deg, rgba(16, 45, 79, 0.85) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(8, 27, 51, 0.9) 100%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 99999;
+            padding: 1.5rem 1.2rem;
+            transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+        }
 
-    .products-container { padding: 0 1.2rem 2rem; display: flex; flex-direction: column; gap: 1rem; }
-    .product-box {
-      background: #ffffff; border-radius: 16px; padding: 1rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #edf2f7;
-      display: flex; gap: 1rem; align-items: center; transition: transform 0.2s;
-    }
-    .product-img-box {
-      width: 95px; height: 95px; background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-      border-radius: 12px; overflow: hidden; flex-shrink: 0; border: 1.5px dashed #94a3b8;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #64748b; text-align: center; position: relative;
-    }
-    .product-img-box i { font-size: 1.6rem; margin-bottom: 2px; color: #00a8cc; }
-    .product-img-box span { font-size: 0.58rem; font-weight: 800; color: #334155; }
+        .sidebar.active {
+            right: 0;
+        }
 
-    .product-content { flex-grow: 1; display: flex; flex-direction: column; align-items: flex-start; }
-    .product-content h3 { font-size: 0.95rem; font-weight: 800; color: #0a192f; margin-bottom: 0.2rem; }
-    .product-content .price { font-size: 0.85rem; font-weight: 900; color: #00a8cc; margin-bottom: 0.3rem; }
-    .product-content p { font-size: 0.72rem; color: var(--text-gray); margin-bottom: 0.7rem; line-height: 1.4; }
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(2, 6, 23, 0.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
 
-    .btn-order {
-      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-      background: var(--btn-green); color: #ffffff; text-decoration: none;
-      padding: 0.5rem 1.2rem; border-radius: 10px; font-size: 0.78rem; font-weight: 800;
-      width: fit-content; box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-order:hover, .btn-order:active {
-      transform: translateY(-2px) scale(1.03); box-shadow: 0 0 25px rgba(37, 211, 102, 0.95); border-color: #ffffff;
-    }
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    .no-results { text-align: center; padding: 2rem; color: var(--text-gray); font-size: 0.85rem; display: none; }
-    footer { text-align: center; padding: 1rem 1rem 2rem; font-size: 0.75rem; color: var(--text-gray); }
-  </style>
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .sidebar-logo-area img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+        }
+
+        .sidebar-logo-area .brand-text {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.85rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-links a:hover,
+        .sidebar-links a:active {
+            background: rgba(0, 210, 255, 0.25);
+            border-color: rgba(0, 210, 255, 0.5);
+            padding-right: 1.3rem;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            padding: 2rem 1.2rem 1rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+
+        .section-title p {
+            font-size: 0.75rem;
+            color: #b0c4de;
+            margin-top: 0.3rem;
+        }
+
+        /* أدوات البحث والفلترة */
+        .filter-search-container {
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            padding: 0 1.2rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(13, 38, 68, 0.8);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.7rem 2.5rem 0.7rem 1rem;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--glow-blue);
+            font-size: 0.9rem;
+        }
+
+        .sort-box {
+            min-width: 170px;
+        }
+
+        .sort-box select {
+            width: 100%;
+            background: rgba(13, 38, 68, 0.8);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.7rem 1rem;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .sort-box select:focus {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .sort-box select option {
+            background: #081b33;
+            color: #fff;
+        }
+
+        .products-grid {
+            padding: 0 1.2rem 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .product-card {
+            background: rgba(13, 38, 68, 0.7);
+            border-radius: 16px;
+            padding: 0.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 130px;
+            background: #0f172a;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 0.7rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .product-name {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            font-size: 0.7rem;
+            color: #b0c4de;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: var(--glow-blue);
+            margin-bottom: 0.7rem;
+        }
+
+        .whatsapp-order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .whatsapp-order-btn:hover {
+            background: var(--btn-green);
+            color: #fff;
+            border-color: var(--btn-green);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #b0c4de;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 1rem 2rem;
+            font-size: 0.75rem;
+            color: #b0c4de;
+        }
+    </style>
 </head>
+
 <body>
 
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo-right">
-      <img src="logo.png" alt="HAyDenTra Logo">
-      <span class="brand-text">HAyDenTra®</span>
-    </a>
-    <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-  </nav>
-
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-  <div class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
-    <div class="sidebar-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="products.html">المنتجات والمستلزمات</a>
-      <a href="contact.html">تواصل معنا</a>
-    </div>
-  </div>
-
-  <div class="section-title">
-    <h2>تجهيز ومستلزمات العيادات والمراكز الطبية</h2>
-    <p>تصفح خامات وأدوات طب الأسنان المتاحة واستفسر عنها مباشرة عبر الواتساب</p>
-  </div>
-
-  <div class="filter-search-container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="ابحث عن منتج، أداة، أو مستلزم...">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </div>
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">الكل</button>
-      <button class="filter-btn" data-filter="high-to-low">الأعلى سعراً إلى الأقل</button>
-      <button class="filter-btn" data-filter="low-to-high">الأقل سعراً إلى الأعلى</button>
-    </div>
-  </div>
-
-  <div class="products-container" id="productsContainer">
-    <div class="product-box" data-price="2450">
-      <div class="product-img-box"><i class="fa-solid fa-image"></i><span>صورة المنتج</span></div>
-      <div class="product-content">
-        <h3>مستلزمات عيادات متطورة</h3>
-        <div class="price">2,450 ج.م</div>
-        <p>مجموعة متكاملة من أدوات وخامات جراحة وطب الأسنان عالية الجودة.</p>
-        <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20الاستفسار%20بخصوص%20منتج:%20مستلزمات%20عيادات%20متطورة%20(بسعر%202,450%20ج.م)" target="_blank" class="btn-order">
-          <i class="fa-brands fa-whatsapp"></i> استفسار عن المنتج
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo-right">
+            <img src="logo.png" alt="HAyDenTra Logo">
+            <span class="brand-text">HAyDenTra®</span>
         </a>
-      </div>
+        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-area">
+                <img src="logo.png" alt="HAyDenTra Logo">
+                <span class="brand-text">HAyDenTra®</span>
+            </a>
+            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="sidebar-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="products.html">المنتجات والمستلزمات</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
     </div>
 
-    <div class="product-box" data-price="1200">
-      <div class="product-img-box"><i class="fa-solid fa-image"></i><span>صورة المنتج</span></div>
-      <div class="product-content">
-        <h3>أدوات وفحوصات طبية</h3>
-        <div class="price">1,200 ج.م</div>
-        <p>استيل طبي متين ومقاوم للصدأ لأعلى دقة تشخيصية.</p>
-        <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20الاستفسار%20بخصوص%20منتج:%20أدوات%20وفحوصات%20طبية%20(بسعر%201,200%20ج.م)" target="_blank" class="btn-order">
-          <i class="fa-brands fa-whatsapp"></i> استفسار عن المنتج
-        </a>
-      </div>
+    <div class="section-title">
+        <h2>قائمة المنتجات والمستلزمات الطبية</h2>
+        <p>أحدث المعدات والمستلزمات بجودة عالية لتلبية احتياجات عيادتك</p>
     </div>
 
-    <div class="product-box" data-price="450">
-      <div class="product-img-box"><i class="fa-solid fa-image"></i><span>صورة المنتج</span></div>
-      <div class="product-content">
-        <h3>مطهرات وتعقيم العيادات</h3>
-        <div class="price">450 ج.م</div>
-        <p>محلول معقم وفعال جداً للأدوات والأسطح الطبية الحساسة.</p>
-        <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20الاستفسار%20بخصوص%20منتج:%20مطهرات%20وتعقيم%20العيادات%20(بسعر%20450%20ج.م)" target="_blank" class="btn-order">
-          <i class="fa-brands fa-whatsapp"></i> استفسار عن المنتج
-        </a>
-      </div>
+    <!-- شريط البحث والفلترة -->
+    <div class="filter-search-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن اسم المنتج...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="sort-box">
+            <select id="sortPrice">
+                <option value="default">ترتيب حسب السعر</option>
+                <option value="high-to-low">من الأعلى للأقل</option>
+                <option value="low-to-high">من الأقل للأعلى</option>
+            </select>
+        </div>
     </div>
 
-    <div class="product-box" data-price="5500">
-      <div class="product-img-box"><i class="fa-solid fa-image"></i><span>صورة المنتج</span></div>
-      <div class="product-content">
-        <h3>جهاز الكشف الضوئي (Curing Light)</h3>
-        <div class="price">5,500 ج.م</div>
-        <p>جهاز لاسلكي متطور بمعالجة سريعة وقوية للحشو الضوئي.</p>
-        <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20الاستفسار%20بخصوص%20منتج:%20جهاز%20الكشف%20الضوئي%20(بسعر%205,500%20ج.م)" target="_blank" class="btn-order">
-          <i class="fa-brands fa-whatsapp"></i> استفسار عن المنتج
-        </a>
-      </div>
+    <!-- شبكة المنتجات -->
+    <div class="products-grid" id="productsGrid">
+        <div class="product-card" data-name="جهاز تسنين كومبوزيت" data-price="4500">
+            <img src="product1.jpg" alt="جهاز تسنين" class="product-img">
+            <div>
+                <h3 class="product-name">جهاز تسنين / كومبوزيت</h3>
+                <p class="product-desc">ضمان حقيقي وجودة عالية للاستخدام اليومي.</p>
+                <div class="product-price">4,500 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20جهاز%20تسنين%20/%20كومبوزيت"
+                target="_blank" class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="product-card" data-name="مستلزمات حشو وعلاج" data-price="1200">
+            <img src="product2.jpg" alt="مستلزمات حشو" class="product-img">
+            <div>
+                <h3 class="product-name">مستلزمات حشو وعلاج</h3>
+                <p class="product-desc">خامات أصلية وموثوقة لعيادات الأسنان.</p>
+                <div class="product-price">1,200 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20مستلزمات%20حشو%20وعلاج"
+                target="_blank" class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="product-card" data-name="جهاز تنظيف جير لاسلكي" data-price="3800">
+            <img src="product1.jpg" alt="جهاز تنظيف جير" class="product-img">
+            <div>
+                <h3 class="product-name">جهاز تنظيف جير لاسلكي</h3>
+                <p class="product-desc">قوة فائقة وبطارية تدوم طويلاً.</p>
+                <div class="product-price">3,800 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20جهاز%20تنظيف%20جير%20لاسلكي"
+                target="_blank" class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="product-card" data-name="مجموعة أدوات جراحية للأسنان" data-price="2450">
+            <img src="product2.jpg" alt="أدوات جراحية" class="product-img">
+            <div>
+                <h3 class="product-name">مجموعة أدوات جراحية للأسنان</h3>
+                <p class="product-desc">ستانلس ستيل مقاوم للصدأ مع حقيبة حفظ.</p>
+                <div class="product-price">2,450 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20مجموعة%20أدوات%20جراحية"
+                target="_blank" class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="product-card" data-name="كشاف إضاءة ليد للعيادات" data-price="6700">
+            <img src="product1.jpg" alt="كشاف ليد" class="product-img">
+            <div>
+                <h3 class="product-name">كشاف إضاءة ليد للعيادات</h3>
+                <p class="product-desc">إضاءة ساطعة وواضحة بدون ظلال.</p>
+                <div class="product-price">6,700 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20كشاف%20إضاءة%20ليد" target="_blank"
+                class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="product-card" data-name="محاليل تعقيم وتطهير الأسطح" data-price="450">
+            <img src="product2.jpg" alt="محاليل تعقيم" class="product-img">
+            <div>
+                <h3 class="product-name">محاليل تعقيم وتطهير الأسطح</h3>
+                <p class="product-desc">حماية كاملة ومعتمدة ضد البكتيريا والفيروسات.</p>
+                <div class="product-price">450 ج.م</div>
+            </div>
+            <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20طلب%20محاليل%20تعقيم" target="_blank"
+                class="whatsapp-order-btn">
+                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </a>
+        </div>
+
+        <div class="no-results" id="noResults">عذراً، لا توجد منتجات تطابق بحثك.</div>
     </div>
 
-    <div class="product-box" data-price="850">
-      <div class="product-img-box"><i class="fa-solid fa-image"></i><span>صورة المنتج</span></div>
-      <div class="product-content">
-        <h3>طقم كشافات ومرايات فحص دقيقة</h3>
-        <div class="price">850 ج.م</div>
-        <p>مرايات فحص مع إضاءة مرنة لسهولة الرؤية والوصول للمناطق الضيقة.</p>
-        <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20الاستفسار%20بخصوص%20منتج:%20طقم%20كشافات%20ومرايات%20فحص%20(بسعر%20850%20ج.م)" target="_blank" class="btn-order">
-          <i class="fa-brands fa-whatsapp"></i> استفسار عن المنتج
-        </a>
-      </div>
-    </div>
-  </div>
+    <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
 
-  <div class="no-results" id="noResults">عذراً، لم نتمكن من العثور على منتج مطابق لبحثك.</div>
+    <script>
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-  <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
-
-  <script>
-    const openSidebar = document.getElementById('openSidebar');
-    const closeSidebar = document.getElementById('closeSidebar');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-    function toggleSidebar(open) {
-      if (open) {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-        document.body.classList.add('sidebar-open');
-      } else {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-      }
-    }
-
-    if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-    if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-    if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
-
-    const searchInput = document.getElementById('searchInput');
-    const productsContainer = document.getElementById('productsContainer');
-    const productBoxes = Array.from(productsContainer.getElementsByClassName('product-box'));
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const noResults = document.getElementById('noResults');
-
-    let currentFilter = 'all';
-
-    function filterAndSortProducts() {
-      const query = searchInput.value.trim().toLowerCase();
-      
-      let filtered = productBoxes.filter(box => {
-        const title = box.querySelector('h3').textContent.toLowerCase();
-        const desc = box.querySelector('p').textContent.toLowerCase();
-        return title.includes(query) || desc.includes(query);
-      });
-
-      if (currentFilter === 'high-to-low') {
-        filtered.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
-      } else if (currentFilter === 'low-to-high') {
-        filtered.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
-      }
-
-      productsContainer.innerHTML = '';
-      if (filtered.length === 0) {
-        noResults.style.display = 'block';
-      } else {
-        noResults.style.display = 'none';
-        filtered.forEach(box => productsContainer.appendChild(box));
-      }
-    }
-
-    searchInput.addEventListener('input', filterAndSortProducts);
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        filterAndSortProducts();
-      });
-    });
-
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
-          e.preventDefault();
-          document.body.classList.add('fade-out');
-          setTimeout(() => { window.location.href = href; }, 400);
+        function toggleSidebar(open) {
+            if (open) {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            } else {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
         }
-      });
-    });
-  </script>
+
+        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
+        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+
+        // نظام البحث والفلترة والترتيب
+        const searchInput = document.getElementById('searchInput');
+        const sortPrice = document.getElementById('sortPrice');
+        const productsGrid = document.getElementById('productsGrid');
+        const noResults = document.getElementById('noResults');
+
+        function filterAndSortProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const sortVal = sortPrice.value;
+            let cardsArray = Array.from(productsGrid.querySelectorAll('.product-card'));
+            let visibleCount = 0;
+
+            // تطبيق البحث بالاسم
+            cardsArray.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // إظهار رسالة عدم وجود نتائج
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+
+            // تطبيق الترتيب حسب السعر
+            if (sortVal !== 'default') {
+                cardsArray.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price'));
+                    const priceB = parseFloat(b.getAttribute('data-price'));
+                    if (sortVal === 'high-to-low') {
+                        return priceB - priceA;
+                    } else if (sortVal === 'low-to-high') {
+                        return priceA - priceB;
+                    }
+                });
+
+                // إعادة ترتيب العناصر في DOM
+                cardsArray.forEach(card => productsGrid.appendChild(card));
+            }
+        }
+
+        searchInput.addEventListener('input', filterAndSortProducts);
+        sortPrice.addEventListener('change', filterAndSortProducts);
+
+        // تأثير الانتقال السلس بين الصفحات
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => { window.location.href = href; }, 400);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
