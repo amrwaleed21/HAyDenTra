@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra® - المنتجات</title>
+  <title>HAyDenTra<sup>®</sup> - المنتجات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -34,7 +34,6 @@
       transition: opacity 0.4s ease;
     }
 
-    /* Navbar مع اللوجو والاسم على اليمين */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -71,6 +70,7 @@
       color: #fff;
       text-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
     }
+    .nav-logo-right span sup { font-size: 0.55rem; vertical-align: super; }
 
     .menu-btn {
       background: none;
@@ -131,7 +131,7 @@
   <nav class="navbar">
     <a href="index.html" class="nav-logo-right">
       <img src="logo.png" alt="HAyDenTra Logo">
-      <span>HAyDenTra®</span>
+      <span>HAyDenTra<sup>®</sup></span>
     </a>
     <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
@@ -191,7 +191,7 @@
     </div>
   </div>
 
-  <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra<sup>®</sup> - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
