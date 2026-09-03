@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra - الرئيسية</title>
+  <title>HAyDenTra® - الرئيسية</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -15,7 +15,6 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     
-    /* تأثير الانتقال الناعم */
     body {
       font-family: 'Cairo', sans-serif;
       background-color: #f4f7f9;
@@ -35,7 +34,6 @@
       transition: opacity 0.4s ease;
     }
 
-    /* Navbar شفاف ناعم مع Blur */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.8rem 1.2rem; background: rgba(6, 21, 39, 0.75);
@@ -45,7 +43,6 @@
     .logo-brand { text-decoration: none; font-size: 1.2rem; font-weight: 900; color: #fff; text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); }
     .menu-btn { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-    /* Sidebar */
     .sidebar {
       position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
       background: rgba(6, 21, 39, 0.95); backdrop-filter: blur(15px);
@@ -56,7 +53,6 @@
     .sidebar-links { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
     .sidebar-links a { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.8rem; }
 
-    /* Hero Section */
     .hero {
       background: radial-gradient(circle at top, #0f3866 0%, var(--bg-dark-top) 80%);
       padding: 3rem 1rem 4rem; text-align: center; color: #ffffff;
@@ -70,7 +66,6 @@
     .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); }
     .hero p { font-size: 0.88rem; color: #a0aec0; margin-bottom: 2rem; }
 
-    /* الأزرار المتوهجة بحجم ملموم */
     .btn-main-glow {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: linear-gradient(135deg, #00a8cc 0%, #007791 100%); color: #fff;
@@ -80,7 +75,6 @@
     }
     .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); border-color: #fff; }
 
-    /* المميزات */
     .features-card {
       margin: -2rem 1.2rem 2rem; background: #ffffff; border-radius: 18px;
       padding: 1.2rem 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.06);
@@ -96,7 +90,7 @@
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="logo-brand">®HAyDenTra</a>
+    <a href="index.html" class="logo-brand">HAyDenTra®</a>
     <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
@@ -113,7 +107,7 @@
     <div class="logo-glow-container">
       <img src="logo.png" alt="HAyDenTra Logo">
     </div>
-    <h1>HAyDenTra</h1>
+    <h1>HAyDenTra®</h1>
     <p>Your Trusted Partner in Dental Solutions</p>
     
     <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
@@ -146,7 +140,7 @@
     </div>
   </div>
 
-  <footer>HAyDenTra - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
@@ -155,7 +149,6 @@
     if (openSidebar) openSidebar.addEventListener('click', () => sidebar.classList.add('active'));
     if (closeSidebar) closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
 
-    // انتقال ناعم بين الصفحات
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
