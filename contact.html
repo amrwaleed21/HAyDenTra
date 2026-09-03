@@ -1,183 +1,425 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra® - تواصل معنا</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --bg-dark-top: #061527;
-      --btn-green: #25d366;
-      --glow-blue: #00d2ff;
-      --text-dark: #0f172a;
-      --text-gray: #64748b;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: #f4f7f9;
-      color: var(--text-dark);
-      opacity: 0;
-      animation: fadeInPage 0.5s ease forwards;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAyDenTra® - تواصل معنا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --btn-green: #25d366;
+            --glow-blue: #00d2ff;
+        }
 
-    body.sidebar-open { overflow: hidden; position: fixed; width: 100%; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    @keyframes fadeInPage {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        html,
+        body {
+            background-color: #081b33;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    body.fade-out { opacity: 0; transition: opacity 0.4s ease; }
+        body {
+            background: linear-gradient(135deg, #081b33 0%, #102d4f 50%, #061527 100%);
+            opacity: 0;
+            animation: fadeInPage 0.5s ease forwards;
+        }
 
-    .navbar {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.6rem 1.2rem; background: rgba(6, 21, 39, 0.75);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.2);
-    }
+        body.sidebar-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
 
-    .nav-logo-right {
-      display: flex; align-items: center; gap: 8px; text-decoration: none;
-    }
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
 
-    .nav-logo-right img {
-      width: 35px; height: 35px; border-radius: 50%; background: #fff; padding: 2px;
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .nav-logo-right .brand-text {
-      font-size: 1.1rem; font-weight: 900; color: #fff;
-      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
-      direction: ltr; unicode-bidi: embed;
-    }
+        body.fade-out {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
 
-    .menu-btn { background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background: rgba(8, 27, 51, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
 
-    .sidebar {
-      position: fixed; top: 0; right: -100%; width: 78%; height: 100vh; height: 100dvh;
-      background: rgba(6, 21, 39, 0.92);
-      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-      z-index: 99999; padding: 2rem 1.5rem; transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: -15px 0 50px rgba(0,0,0,0.7); overflow-y: auto;
-      border-left: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .sidebar.active { right: 0; }
+        .nav-logo-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
 
-    .sidebar-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh;
-      background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      z-index: 99998; opacity: 0; visibility: hidden; transition: 0.3s ease;
-    }
-    .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .nav-logo-right img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+        }
 
-    .close-btn { background: none; border: none; color: #fff; font-size: 1.6rem; float: left; cursor: pointer; opacity: 0.8; transition: 0.2s; }
-    .close-btn:hover { opacity: 1; }
-    .sidebar-links { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
-    .sidebar-links a { 
-      color: #fff; text-decoration: none; font-size: 1.05rem; font-weight: 700; 
-      background: rgba(255, 255, 255, 0.05); padding: 0.8rem 1rem; border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.2s ease;
-    }
-    .sidebar-links a:hover, .sidebar-links a:active {
-      background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4); padding-right: 1.3rem;
-    }
+        .nav-logo-right .brand-text {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            direction: ltr;
+            unicode-bidi: embed;
+        }
 
-    .contact-section {
-      background: linear-gradient(180deg, #061527 0%, #0a192f 100%);
-      margin: 2rem 1.2rem; padding: 2.5rem 1.2rem; border-radius: 24px;
-      text-align: center; color: #ffffff; box-shadow: 0 10px 30px rgba(6, 21, 39, 0.4);
-      border: 1px solid rgba(0, 210, 255, 0.2);
-    }
-    .contact-section h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .contact-section p { font-size: 0.85rem; color: #a0aec0; margin-bottom: 2rem; }
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
 
-    .phone-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    
-    .phone-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: rgba(37, 211, 102, 0.12); border: 1.5px solid var(--btn-green);
-      padding: 0.85rem 1.8rem; border-radius: 14px; color: #ffffff; text-decoration: none;
-      font-size: 0.95rem; font-weight: 800; direction: ltr; width: fit-content; min-width: 240px;
-      box-shadow: 0 0 10px rgba(37, 211, 102, 0.25); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .phone-btn i { color: var(--btn-green); font-size: 1.2rem; filter: drop-shadow(0 0 4px var(--btn-green)); }
-    .phone-btn:hover, .phone-btn:active {
-      transform: translateY(-2px) scale(1.03); background: rgba(37, 211, 102, 0.25);
-      box-shadow: 0 0 25px rgba(37, 211, 102, 0.9); border-color: #ffffff;
-    }
+        .menu-btn:hover {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.4);
+        }
 
-    footer { text-align: center; padding: 1rem 1rem 2rem; font-size: 0.75rem; color: var(--text-gray); }
-  </style>
+        /* القائمة الجانبية بمكس واضح بين الكحلي والأبيض الشفاف الـ Glassy */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 78%;
+            height: 100vh;
+            height: 100dvh;
+            background: linear-gradient(145deg, rgba(16, 45, 79, 0.85) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(8, 27, 51, 0.9) 100%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 99999;
+            padding: 1.5rem 1.2rem;
+            transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(2, 6, 23, 0.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .sidebar-logo-area img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+        }
+
+        .sidebar-logo-area .brand-text {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.85rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-links a:hover,
+        .sidebar-links a:active {
+            background: rgba(0, 210, 255, 0.25);
+            border-color: rgba(0, 210, 255, 0.5);
+            padding-right: 1.3rem;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            padding: 2rem 1.2rem 1rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+
+        .section-title p {
+            font-size: 0.75rem;
+            color: #b0c4de;
+            margin-top: 0.3rem;
+        }
+
+        .contact-container {
+            padding: 0 1.2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(13, 38, 68, 0.7);
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .contact-icon.whatsapp {
+            background: rgba(37, 211, 102, 0.15);
+            color: var(--btn-green);
+        }
+
+        .contact-icon.phone {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--glow-blue);
+        }
+
+        .contact-info h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-info p {
+            font-size: 0.75rem;
+            color: #b0c4de;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 1rem 2rem;
+            font-size: 0.75rem;
+            color: #b0c4de;
+        }
+    </style>
 </head>
+
 <body>
 
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo-right">
-      <img src="logo.png" alt="HAyDenTra Logo">
-      <span class="brand-text">HAyDenTra®</span>
-    </a>
-    <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-  </nav>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo-right">
+            <img src="logo.png" alt="HAyDenTra Logo">
+            <span class="brand-text">HAyDenTra®</span>
+        </a>
+        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+    </nav>
 
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-  <div class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
-    <div class="sidebar-links">
-      <a href="index.html">الرئيسية</a>
-      <a href="products.html">المنتجات والمستلزمات</a>
-      <a href="contact.html">تواصل معنا</a>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-area">
+                <img src="logo.png" alt="HAyDenTra Logo">
+                <span class="brand-text">HAyDenTra®</span>
+            </a>
+            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="sidebar-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="products.html">المنتجات والمستلزمات</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
     </div>
-  </div>
 
-  <section class="contact-section">
-    <h3>تواصل معنا مباشرة</h3>
-    <p>جاهزون للإجابة عن استفساراتكم وتلبية احتياجات عيادتكم عبر الواتساب</p>
-    
-    <div class="phone-buttons">
-      <a href="https://wa.me/201554238849?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20المستلزمات%20والخدمات%20المتاحة" target="_blank" class="phone-btn">
-        <i class="fa-brands fa-whatsapp"></i> +20 155 423 8849
-      </a>
+    <div class="section-title">
+        <h2>نحن هنا لتلبية احتياجات عيادتك</h2>
+        <p>تواصل معنا عبر وسائل الاتصال المباشرة لأي استفسار أو طلبات خاصة</p>
     </div>
-  </section>
 
-  <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
+    <div class="contact-container">
+        <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20مستلزمات%20الأسنان."
+            target="_blank" class="contact-card">
+            <div class="contact-icon whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="contact-info">
+                <h3>المحادثة عبر واتساب</h3>
+                <p>تجاوب فوري على مدار الساعة للطلبات والاستفسارات</p>
+            </div>
+        </a>
 
-  <script>
-    const openSidebar = document.getElementById('openSidebar');
-    const closeSidebar = document.getElementById('closeSidebar');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
+        <a href="tel:01224828849" class="contact-card">
+            <div class="contact-icon phone">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="contact-info">
+                <h3>اتصال هاتفي مباشر</h3>
+                <p>تحدث معنا مباشرة عبر الرقم: 01224828849</p>
+            </div>
+        </a>
+    </div>
 
-    function toggleSidebar(open) {
-      if (open) {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-        document.body.classList.add('sidebar-open');
-      } else {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-      }
-    }
+    <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
 
-    if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-    if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-    if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+    <script>
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
-          e.preventDefault();
-          document.body.classList.add('fade-out');
-          setTimeout(() => { window.location.href = href; }, 400);
+        function toggleSidebar(open) {
+            if (open) {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            } else {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
         }
-      });
-    });
-  </script>
+
+        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
+        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => { window.location.href = href; }, 400);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
