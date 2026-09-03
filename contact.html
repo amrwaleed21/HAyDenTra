@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --btn-green: #25d366;
-            --glow-blue: #00d2ff;
+            --primary-bg: #081b33;
+            --secondary-bg: #102d4f;
+            --accent-glow: #00d2ff;
+            --whatsapp-green: #25d366;
+            --card-bg: rgba(13, 38, 68, 0.75);
+            --text-main: #ffffff;
+            --text-muted: #b0c4de;
         }
 
         * {
@@ -22,8 +27,8 @@
         }
 
         html, body {
-            background-color: #081b33;
-            color: #ffffff;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
@@ -62,6 +67,7 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .nav-logo-right {
@@ -116,9 +122,8 @@
             width: 78%;
             height: 100vh;
             height: 100dvh;
-            background: linear-gradient(145deg, rgba(16, 45, 79, 0.85) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(8, 27, 51, 0.9) 100%);
+            background: linear-gradient(145deg, rgba(16, 45, 79, 0.95) 0%, rgba(8, 27, 51, 0.98) 100%);
             backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
             z-index: 99999;
             padding: 1.5rem 1.2rem;
             transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -140,7 +145,6 @@
             height: 100dvh;
             background: rgba(2, 6, 23, 0.65);
             backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             z-index: 99998;
             opacity: 0;
             visibility: hidden;
@@ -235,341 +239,98 @@
 
         .contact-container {
             max-width: 600px;
-            margin: 2rem auto;
+            margin: 2.5rem auto;
             padding: 0 1.2rem;
         }
 
-        .section-title {
+        .page-header {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .section-title h2 {
-            font-size: 1.3rem;
+        .page-header h1 {
+            font-size: 1.5rem;
             font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+            color: var(--text-main);
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+            margin-bottom: 0.4rem;
         }
 
-        .section-title p {
-            font-size: 0.8rem;
-            color: #b0c4de;
-            margin-top: 0.3rem;
-        }
-
-        .contact-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .page-header p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         .contact-card {
-            background: rgba(13, 38, 68, 0.7);
+            background: var(--card-bg);
             border-radius: 16px;
-            padding: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            padding: 2rem 1.5rem;
             border: 1px solid rgba(0, 210, 255, 0.2);
-            text-decoration: none;
-            color: #fff;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(0, 210, 255, 0.5);
-            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
+            text-align: center;
         }
 
         .contact-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(0, 210, 255, 0.15);
-            border: 1px solid rgba(0, 210, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--glow-blue);
-        }
-
-        .contact-info h3 {
-            font-size: 0.95rem;
-            font-weight: 800;
-            margin-bottom: 0.2rem;
-        }
-
-        .contact-info p {
-            font-size: 0.8rem;
-            color: #b0c4de;
-            direction: ltr;
-            text-align: right;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.75rem;
-            color: #b0c4de;
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo-right">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <span class="brand-text">HAyDenTra®</span>
-        </a>
-        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-    </nav>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="index.html" class="sidebar-logo-area">
-                <img src="logo.png" alt="HAyDenTra Logo">
-                <span class="brand-text">HAyDenTra®</span>
-            </a>
-            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="sidebar-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="products.html">المنتجات والمستلزمات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </div>
-    </div>
-
-    <div class="contact-container">
-        <div class="section-title">
-            <h2>تواصل معنا وخدمة العملاء</h2>
-            <p>يسعدنا الإجابة على استفساراتكم وتلبية احتياجاتكم في أي وقت</p>
-        </div>
-
-        <div class="contact-cards">
-            <!-- رقم الاستفسارات والطلبات المحدث (012) -->
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20لدي%20استفسار" target="_blank" class="contact-card">
-                <div class="contact-icon" style="color: #25d366; background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.4);">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div class="contact-info">
-                    <h3>رقم الاستفسارات والطلبات (واتساب)</h3>
-                    <p>+20 122 385 9088</p>
-                </div>
-            </a>
-
-            <!-- البريد الإلكتروني -->
-            <a href="mailto:waleed.hamed.elboghdady@gmail.com" class="contact-card">
-                <div class="contact-icon">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="contact-info">
-                    <h3>البريد الإلكتروني</h3>
-                    <p>waleed.hamed.elboghdady@gmail.com</p>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
-
-    <script>
-        const openSidebar = document.getElementById('openSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-        function toggleSidebar(open) {
-            if (open) {
-                sidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                document.body.classList.add('sidebar-open');
-            } else {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
-        }
-
-        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
-
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => { window.location.href = href; }, 400);
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
-        .sidebar-logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .sidebar-logo-area img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-        }
-
-        .sidebar-logo-area .brand-text {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
-
-        .close-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 0, 0, 0.2);
-            border-color: rgba(255, 0, 0, 0.4);
-        }
-
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .sidebar-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.85rem 1.1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .sidebar-links a:hover,
-        .sidebar-links a:active {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
-            padding-right: 1.3rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-        }
-
-        .section-title {
-            text-align: center;
-            padding: 2rem 1.2rem 1rem;
-        }
-
-        .section-title h2 {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-        }
-
-        .section-title p {
-            font-size: 0.75rem;
-            color: #b0c4de;
-            margin-top: 0.3rem;
-        }
-
-        .contact-container {
-            padding: 0 1.2rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: rgba(13, 38, 68, 0.7);
-            border-radius: 16px;
-            padding: 1.2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: #ffffff;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
-            border-color: rgba(0, 210, 255, 0.5);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-
-        .contact-icon.whatsapp {
+            width: 70px;
+            height: 70px;
             background: rgba(37, 211, 102, 0.15);
-            color: var(--btn-green);
+            border: 2px solid rgba(37, 211, 102, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            color: var(--whatsapp-green);
+            font-size: 2rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
         }
 
-        .contact-icon.phone {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--glow-blue);
-        }
-
-        .contact-info h3 {
-            font-size: 0.95rem;
+        .contact-info-title {
+            font-size: 1.1rem;
             font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
         }
 
-        .contact-info p {
-            font-size: 0.75rem;
-            color: #b0c4de;
+        .contact-info-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .whatsapp-direct-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(37, 211, 102, 0.2);
+            color: var(--whatsapp-green);
+            border: 1px solid rgba(37, 211, 102, 0.5);
+            text-decoration: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-direct-btn:hover {
+            background: var(--whatsapp-green);
+            color: #fff;
+            border-color: var(--whatsapp-green);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.45);
+            transform: translateY(-2px);
         }
 
         footer {
             text-align: center;
-            padding: 1.5rem 1rem 2rem;
+            padding: 2.5rem 1rem;
             font-size: 0.75rem;
-            color: #b0c4de;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -600,35 +361,25 @@
         </div>
     </div>
 
-    <div class="section-title">
-        <h2>نحن هنا لتلبية احتياجات عيادتك</h2>
-        <p>تواصل معنا عبر وسائل الاتصال المباشرة لأي استفسار أو طلبات خاصة</p>
-    </div>
-
     <div class="contact-container">
-        <a href="https://wa.me/201501224828?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20مستلزمات%20الأسنان."
-            target="_blank" class="contact-card">
-            <div class="contact-icon whatsapp">
+        <div class="page-header">
+            <h1>تواصل معنا</h1>
+            <p>نحن هنا دائماً للإجابة على استفساراتكم وتلبية احتياجات عيادتكم</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <div class="contact-info">
-                <h3>المحادثة عبر واتساب</h3>
-                <p>تجاوب فوري على مدار الساعة للطلبات والاستفسارات</p>
-            </div>
-        </a>
-
-        <a href="tel:01224828849" class="contact-card">
-            <div class="contact-icon phone">
-                <i class="fa-solid fa-phone"></i>
-            </div>
-            <div class="contact-info">
-                <h3>اتصال هاتفي مباشر</h3>
-                <p>تحدث معنا مباشرة عبر الرقم: 01224828849</p>
-            </div>
-        </a>
+            <h2 class="contact-info-title">راسلنا عبر واتساب مباشرة</h2>
+            <p class="contact-info-desc">للاستفسارات، طلبات العيادات، أو المساعدة الفورية، فريقنا جاهز لخدمتكم طوال الوقت عبر الرقم المعتمد:</p>
+            <a href="https://wa.me/201223859088" target="_blank" class="whatsapp-direct-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> 01223859088
+            </a>
+        </div>
     </div>
 
-    <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
+    <footer>HAyDenTra® - Dental Supplies & Solutions © 2026</footer>
 
     <script>
         const openSidebar = document.getElementById('openSidebar');
@@ -655,7 +406,7 @@
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
                     e.preventDefault();
                     document.body.classList.add('fade-out');
                     setTimeout(() => { window.location.href = href; }, 400);
