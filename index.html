@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAyDenTra® - الرئيسية</title>
+    <title>HAyDenTra® - الصفحة الرئيسية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,7 +56,7 @@
             transition: opacity 0.4s ease;
         }
 
-        /* الشريط العلوي الثابت تماماً مهما قلبت الصفحة */
+        /* شريط علوي ثابت */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -240,102 +240,168 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
+        /* المحتوى الرئيسي للواجهة الأساسية */
         .hero-container {
-            max-width: 900px;
-            margin: 6rem auto 2rem auto; /* مساحة علوية لإفساح المجال للشريط الثابت */
-            padding: 0 1.2rem;
+            max-width: 700px;
+            margin: 5rem auto 2rem auto;
+            padding: 1.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .hero-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 3rem 1.5rem;
-            border: 1px solid rgba(0, 210, 255, 0.25);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
+        .hero-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.2rem;
         }
 
-        .hero-logo-large {
+        .hero-logo-box img {
             width: 90px;
             height: 90px;
             border-radius: 50%;
             background: #fff;
             padding: 4px;
-            margin: 0 auto 1.5rem auto;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
+            animation: pulseLogo 3s infinite ease-in-out;
         }
 
-        .hero-logo-large img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
+        @keyframes pulseLogo {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+            50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.9); }
         }
 
-        .hero-title {
-            font-size: 1.8rem;
+        .hero-logo-box .brand-title {
+            font-size: 2.2rem;
             font-weight: 900;
-            color: var(--text-main);
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-            margin-bottom: 0.8rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
             direction: ltr;
+            unicode-bidi: embed;
         }
 
-        .hero-desc {
+        .hero-subtitle {
             font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
+            margin-bottom: 2.2rem;
+            font-weight: 600;
         }
 
         .hero-actions {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 380px;
+            margin-bottom: 2.5rem;
         }
 
-        .main-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--accent-glow);
-            border: 1px solid rgba(0, 210, 255, 0.4);
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-size: 0.95rem;
+        .action-main-btn {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(0, 150, 200, 0.3));
+            color: #fff;
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1.05rem;
             font-weight: 800;
-            transition: 0.25s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.25);
+            transition: 0.25s ease;
         }
 
-        .main-btn:hover {
-            background: var(--accent-glow);
-            color: #081b33;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        .action-main-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.35), rgba(0, 150, 200, 0.5));
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
             transform: translateY(-2px);
+        }
+
+        .action-secondary-btn {
+            background: rgba(13, 38, 68, 0.75);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: 0.25s ease;
+        }
+
+        .action-secondary-btn:hover {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: rgba(37, 211, 102, 0.5);
+            color: var(--whatsapp-green);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* بطاقات الميزات السفلية */
+        .features-card-container {
+            background: #ffffff;
+            color: #081b33;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 1.2rem 1rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            padding: 0 5px;
+        }
+
+        .feature-item i {
+            font-size: 1.4rem;
+            color: #0096c7;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-title {
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: #081b33;
+            margin-bottom: 0.15rem;
+        }
+
+        .feature-desc {
+            font-size: 0.7rem;
+            color: #555;
+            font-weight: 600;
         }
 
         footer {
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 1.5rem 1rem;
             font-size: 0.75rem;
             color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 3rem;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- الشريط العلوي الثابت -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo-right">
             <img src="logo.png" alt="HAyDenTra Logo">
@@ -360,26 +426,42 @@
         </div>
     </div>
 
-    <!-- محتوى الصفحة الرئيسية -->
     <div class="hero-container">
-        <div class="hero-card">
-            <div class="hero-logo-large">
-                <img src="logo.png" alt="HAyDenTra Logo">
+        <div class="hero-logo-box">
+            <img src="logo.png" alt="HAyDenTra Logo">
+            <h1 class="brand-title">HAyDenTra®</h1>
+        </div>
+        <p class="hero-subtitle">Your Trusted Partner in Dental Solutions</p>
+
+        <div class="hero-actions">
+            <a href="products.html" class="action-main-btn">
+                <i class="fa-solid fa-box-open"></i> عرض المنتجات والمستلزمات
+            </a>
+            <a href="https://wa.me/201223859088" target="_blank" class="action-secondary-btn">
+                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.2rem;"></i> تواصل معنا مباشرة
+            </a>
+        </div>
+
+        <div class="features-card-container">
+            <div class="feature-item">
+                <i class="fa-solid fa-headset"></i>
+                <span class="feature-title">خدمة العملاء</span>
+                <span class="feature-desc">تجاوب فوري</span>
             </div>
-            <h1 class="hero-title">HAyDenTra®</h1>
-            <p class="hero-desc">الوجهة المتكاملة لأحدث مستلزمات، أدوات، ومواد طب الأسنان لعيادات عصرية واحترافية.</p>
-            <div class="hero-actions">
-                <a href="products.html" class="main-btn">
-                    <i class="fa-solid fa-box-open"></i> تصفح المنتجات
-                </a>
-                <a href="contact.html" class="main-btn" style="background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-green); border-color: rgba(37, 211, 102, 0.4);">
-                    <i class="fa-brands fa-whatsapp"></i> تواصل معنا
-                </a>
+            <div class="feature-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span class="feature-title">توصيل سريع</span>
+                <span class="feature-desc">شحن مباشر</span>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span class="feature-title">جودة عالية</span>
+                <span class="feature-desc">خامات معتمدة</span>
             </div>
         </div>
-    </div>
 
-    <footer>HAyDenTra® - Dental Supplies & Solutions © 2026</footer>
+        <footer>HAyDenTra® - Dental Supplies & Solutions</footer>
+    </div>
 
     <script>
         const openSidebar = document.getElementById('openSidebar');
@@ -403,11 +485,10 @@
         if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
-        // تأثير الانتقال السلس بين الصفحات
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('tel:') && !href.startsWith('#')) {
+                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
                     e.preventDefault();
                     document.body.classList.add('fade-out');
                     setTimeout(() => { window.location.href = href; }, 400);
