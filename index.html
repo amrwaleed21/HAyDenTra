@@ -51,7 +51,7 @@
 
     .sidebar {
       position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
-      background: rgba(6, 21, 39, 0.95); backdrop-filter: blur(15px);
+      background: rgba(6, 21, 39, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
       z-index: 2000; padding: 2rem 1.5rem; transition: 0.3s ease; box-shadow: -5px 0 25px rgba(0,0,0,0.8);
     }
     .sidebar.active { right: 0; }
@@ -82,7 +82,7 @@
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: linear-gradient(135deg, #00a8cc 0%, #007791 100%); color: #fff;
       padding: 0.75rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 800;
-      font-size: 0.9rem; width: fit-content; margin: 0.4rem auto; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+      font-size: 0.9rem; width: fit-content; margin: 0.4rem auto; box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); border-color: #fff; }
