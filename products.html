@@ -233,194 +233,126 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
+        .products-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+        }
+
         .section-title {
             text-align: center;
-            padding: 2rem 1.2rem 1rem;
+            margin-bottom: 2rem;
         }
 
         .section-title h2 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
         }
 
         .section-title p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #b0c4de;
             margin-top: 0.3rem;
         }
 
-        .filter-search-container {
-            max-width: 900px;
-            margin: 0 auto 1.5rem;
-            padding: 0 1.2rem;
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 200px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            background: rgba(13, 38, 68, 0.8);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 12px;
-            padding: 0.7rem 2.5rem 0.7rem 1rem;
-            color: #fff;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.85rem;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--glow-blue);
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
-        }
-
-        .search-box i {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--glow-blue);
-            font-size: 0.9rem;
-        }
-
-        .sort-box {
-            min-width: 170px;
-        }
-
-        .sort-box select {
-            width: 100%;
-            background: rgba(13, 38, 68, 0.8);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 12px;
-            padding: 0.7rem 1rem;
-            color: #fff;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.85rem;
-            outline: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .sort-box select:focus {
-            border-color: var(--glow-blue);
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
-        }
-
-        .sort-box select option {
-            background: #081b33;
-            color: #fff;
-        }
-
         .products-grid {
-            padding: 0 1.2rem 2.5rem;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .product-card {
             background: rgba(13, 38, 68, 0.7);
             border-radius: 16px;
-            padding: 0.8rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
             border: 1px solid rgba(0, 210, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .product-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
             border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
         }
 
         .product-img {
             width: 100%;
-            height: 130px;
-            background: #0f172a;
-            border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 0.7rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .product-name {
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 0.2rem;
-            line-height: 1.3;
-        }
-
-        .product-desc {
-            font-size: 0.7rem;
-            color: #b0c4de;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .product-price {
-            font-size: 0.95rem;
-            font-weight: 900;
-            color: var(--glow-blue);
-            margin-bottom: 0.7rem;
-        }
-
-        .whatsapp-order-btn {
+            height: 180px;
+            background: rgba(8, 27, 51, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            color: #b0c4de;
+            font-size: 2.5rem;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+        }
+
+        .product-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+            color: #fff;
+        }
+
+        .product-desc {
+            font-size: 0.8rem;
+            color: #b0c4de;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            gap: 10px;
+        }
+
+        .product-price {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: var(--glow-blue);
+        }
+
+        .buy-btn {
             background: rgba(37, 211, 102, 0.15);
             color: #25d366;
             border: 1px solid rgba(37, 211, 102, 0.4);
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 0.5rem 0.9rem;
             border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
             transition: 0.2s;
         }
 
-        .whatsapp-order-btn:hover {
+        .buy-btn:hover {
             background: var(--btn-green);
             color: #fff;
             border-color: var(--btn-green);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem 1rem;
-            color: #b0c4de;
-            font-size: 0.9rem;
-            display: none;
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
         }
 
         footer {
             text-align: center;
-            padding: 1.5rem 1rem 2rem;
+            padding: 2rem 1rem;
             font-size: 0.75rem;
             color: #b0c4de;
         }
@@ -453,99 +385,64 @@
         </div>
     </div>
 
-    <div class="section-title">
-        <h2>قائمة المنتجات والمستلزمات الطبية</h2>
-        <p>أحدث المعدات والمستلزمات بجودة عالية لتلبية احتياجات عيادتك</p>
-    </div>
-
-    <div class="filter-search-container">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="ابحث عن اسم المنتج...">
-            <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="products-container">
+        <div class="section-title">
+            <h2>منتجات ومستلزمات الأسنان</h2>
+            <p>اختر ما يناسب عيادتك واطلب مباشرة عبر الواتساب</p>
         </div>
-        <div class="sort-box">
-            <select id="sortPrice">
-                <option value="default">ترتيب حسب السعر</option>
-                <option value="high-to-low">من الأعلى للأقل</option>
-                <option value="low-to-high">من الأقل للأعلى</option>
-            </select>
-        </div>
-    </div>
 
-    <div class="products-grid" id="productsGrid">
-        <div class="product-card" data-name="جهاز تسنين كومبوزيت" data-price="4500">
-            <img src="product1.jpg" alt="جهاز تسنين" class="product-img">
-            <div>
-                <h3 class="product-name">جهاز تسنين / كومبوزيت</h3>
-                <p class="product-desc">ضمان حقيقي وجودة عالية للاستخدام اليومي.</p>
-                <div class="product-price">4,500 ج.م</div>
+        <div class="products-grid">
+            <!-- منتج 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fa-solid fa-tooth"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">مادة كومبوزيت حشو تجميلي</h3>
+                    <p class="product-desc">كومبوزيت عالي الجودة للترميمات الأمامية والخلفية بمظهر طبيعي وثبات ممتاز.</p>
+                    <div class="product-footer">
+                        <span class="product-price">متوفر حسب الطلب</span>
+                        <a href="#" onclick="orderProduct('مادة كومبوزيت حشو تجميلي')" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20جهاز%20تسنين%20/%20كومبوزيت" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
-        </div>
 
-        <div class="product-card" data-name="مستلزمات حشو وعلاج" data-price="1200">
-            <img src="product2.jpg" alt="مستلزمات حشو" class="product-img">
-            <div>
-                <h3 class="product-name">مستلزمات حشو وعلاج</h3>
-                <p class="product-desc">خامات أصلية وموثوقة لعيادات الأسنان.</p>
-                <div class="product-price">1,200 ج.م</div>
+            <!-- منتج 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fa-solid fa-laptop-medical"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">جهاز تسنين (Light Cure)</h3>
+                    <p class="product-desc">جهاز لاسلكي متطور بمعالجة ضوئية فائقة السرعة وكفاءة عالية للاستخدام اليومي.</p>
+                    <div class="product-footer">
+                        <span class="product-price">متوفر حسب الطلب</span>
+                        <a href="#" onclick="orderProduct('جهاز تسنين Light Cure')" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20مستلزمات%20حشو%20وعلاج" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
-        </div>
 
-        <div class="product-card" data-name="جهاز تنظيف جير لاسلكي" data-price="3800">
-            <img src="product1.jpg" alt="جهاز تنظيف جير" class="product-img">
-            <div>
-                <h3 class="product-name">جهاز تنظيف جير لاسلكي</h3>
-                <p class="product-desc">قوة فائقة وبطارية تدوم طويلاً.</p>
-                <div class="product-price">3,800 ج.م</div>
+            <!-- منتج 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">أدوات فحص الأسنان (Diagnostic Set)</h3>
+                    <p class="product-desc">طقم استنستانس ستيل متكامل يضم المرايا والملقط والجسور بأعلى معايير الجودة.</p>
+                    <div class="product-footer">
+                        <span class="product-price">متوفر حسب الطلب</span>
+                        <a href="#" onclick="orderProduct('أدوات فحص الأسنان Diagnostic Set')" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20جهاز%20تنظيف%20جير%20لاسلكي" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
         </div>
-
-        <div class="product-card" data-name="مجموعة أدوات جراحية للأسنان" data-price="2450">
-            <img src="product2.jpg" alt="أدوات جراحية" class="product-img">
-            <div>
-                <h3 class="product-name">مجموعة أدوات جراحية للأسنان</h3>
-                <p class="product-desc">ستانلس ستيل مقاوم للصدأ مع حقيبة حفظ.</p>
-                <div class="product-price">2,450 ج.م</div>
-            </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20مجموعة%20أدوات%20جراحية" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
-        </div>
-
-        <div class="product-card" data-name="كشاف إضاءة ليد للعيادات" data-price="6700">
-            <img src="product1.jpg" alt="كشاف ليد" class="product-img">
-            <div>
-                <h3 class="product-name">كشاف إضاءة ليد للعيادات</h3>
-                <p class="product-desc">إضاءة ساطعة وواضحة بدون ظلال.</p>
-                <div class="product-price">6,700 ج.م</div>
-            </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20كشاف%20إضاءة%20ليد" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
-        </div>
-
-        <div class="product-card" data-name="محاليل تعقيم وتطهير الأسطح" data-price="450">
-            <img src="product2.jpg" alt="محاليل تعقيم" class="product-img">
-            <div>
-                <h3 class="product-name">محاليل تعقيم وتطهير الأسطح</h3>
-                <p class="product-desc">حماية كاملة ومعتمدة ضد البكتيريا والفيروسات.</p>
-                <div class="product-price">450 ج.م</div>
-            </div>
-            <a href="https://wa.me/201223859088?text=السلام%20عليكم،%20أريد%20طلب%20محاليل%20تعقيم" target="_blank" class="whatsapp-order-btn">
-                <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
-            </a>
-        </div>
-
-        <div class="no-results" id="noResults">عذراً، لا توجد منتجات تطابق بحثك.</div>
     </div>
 
     <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
@@ -572,55 +469,17 @@
         if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
-        const searchInput = document.getElementById('searchInput');
-        const sortPrice = document.getElementById('sortPrice');
-        const productsGrid = document.getElementById('productsGrid');
-        const noResults = document.getElementById('noResults');
-
-        function filterAndSortProducts() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            const sortVal = sortPrice.value;
-            let cardsArray = Array.from(productsGrid.querySelectorAll('.product-card'));
-            let visibleCount = 0;
-
-            cardsArray.forEach(card => {
-                const name = card.getAttribute('data-name').toLowerCase();
-                if (name.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-
-            if (sortVal !== 'default') {
-                cardsArray.sort((a, b) => {
-                    const priceA = parseFloat(a.getAttribute('data-price'));
-                    const priceB = parseFloat(b.getAttribute('data-price'));
-                    if (sortVal === 'high-to-low') {
-                        return priceB - priceA;
-                    } else if (sortVal === 'low-to-high') {
-                        return priceA - priceB;
-                    }
-                });
-
-                cardsArray.forEach(card => productsGrid.appendChild(card));
-            }
+        // دالة التوجيه المباشر للواتساب برقم 201223859088 مع اسم المنتج
+        function orderProduct(productName) {
+            const message = `السلام عليكم، أريد طلب المنتج التالي:%0a- ${productName}`;
+            const url = `https://wa.me/201223859088?text=${message}`;
+            window.open(url, '_blank');
         }
-
-        searchInput.addEventListener('input', filterAndSortProducts);
-        sortPrice.addEventListener('change', filterAndSortProducts);
 
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== '') {
+                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
                     e.preventDefault();
                     document.body.classList.add('fade-out');
                     setTimeout(() => { window.location.href = href; }, 400);
