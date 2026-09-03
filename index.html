@@ -14,7 +14,6 @@
             --secondary-bg: #102d4f;
             --accent-glow: #00d2ff;
             --whatsapp-green: #25d366;
-            --card-bg: rgba(255, 255, 255, 0.95);
             --text-dark: #081b33;
             --text-main: #ffffff;
             --text-muted: #b0c4de;
@@ -57,22 +56,24 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت تماماً مع تأثير الزجاج المضيء والـ Blur */
+        /* شريط علوي ثابت وثابت تماماً بدون اختفاء مع تأثير الزجاج المضيء والـ Blur */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.85);
+            background: rgba(8, 27, 51, 0.88);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 9999;
+            z-index: 99999;
             border-bottom: 1px solid rgba(0, 210, 255, 0.35);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            transform: none !important;
+            transition: none !important;
         }
 
         .nav-logo-right {
@@ -129,7 +130,7 @@
             height: 100dvh;
             background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
             backdrop-filter: blur(18px);
-            z-index: 99999;
+            z-index: 100000;
             padding: 1.5rem 1.2rem;
             transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
@@ -150,7 +151,7 @@
             height: 100dvh;
             background: rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 99998;
+            z-index: 99999;
             opacity: 0;
             visibility: hidden;
             transition: 0.3s ease;
@@ -242,7 +243,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
-        /* المحتوى الرئيسي مع مسافة علوية كافية لكي لا يختفي تحت الشريط الثابت */
         .hero-container {
             max-width: 700px;
             margin: 6.5rem auto 2rem auto;
@@ -292,9 +292,9 @@
             font-weight: 600;
         }
 
-        /* بطاقة ترحيبية بيضاء جذابة وأنيقة */
+        /* بطاقة ترحيبية بتصميم أبيض غامق مائل للأزرق الهادئ (Faded Blue-White) */
         .welcome-white-card {
-            background: #ffffff;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
             color: var(--text-dark);
             width: 100%;
             max-width: 500px;
@@ -302,7 +302,7 @@
             padding: 1.5rem;
             margin-bottom: 1.8rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(0, 210, 255, 0.3);
+            border: 2px solid rgba(0, 210, 255, 0.35);
             text-align: center;
         }
 
@@ -315,7 +315,7 @@
 
         .welcome-white-card p {
             font-size: 0.85rem;
-            color: #4a5568;
+            color: #334155;
             font-weight: 600;
             line-height: 1.5;
         }
@@ -330,7 +330,7 @@
         }
 
         .action-main-btn {
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
             color: #081b33;
             border: 2px solid #00d2ff;
             padding: 1rem 1.5rem;
@@ -353,7 +353,7 @@
         }
 
         .action-secondary-btn {
-            background: #ffffff;
+            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
             color: #081b33;
             border: 2px solid #25d366;
             padding: 1rem 1.5rem;
@@ -370,13 +370,13 @@
         }
 
         .action-secondary-btn:hover {
-            background: #f0fff4;
+            background: #ffffff;
             box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
             transform: translateY(-2px);
         }
 
         .features-card-container {
-            background: #ffffff;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
             color: #081b33;
             width: 100%;
             max-width: 600px;
@@ -387,6 +387,7 @@
             align-items: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin-bottom: 1.5rem;
+            border: 2px solid rgba(0, 210, 255, 0.3);
         }
 
         .feature-item {
@@ -400,7 +401,7 @@
 
         .feature-item i {
             font-size: 1.4rem;
-            color: #0096c7;
+            color: #0077b6;
             margin-bottom: 0.4rem;
         }
 
@@ -413,7 +414,7 @@
 
         .feature-desc {
             font-size: 0.7rem;
-            color: #555;
+            color: #475569;
             font-weight: 600;
         }
 
@@ -466,7 +467,7 @@
 
         <div class="hero-actions">
             <a href="products.html" class="action-main-btn">
-                <i class="fa-solid fa-box-open" style="color: #0096c7;"></i> عرض المنتجات والمستلزمات
+                <i class="fa-solid fa-box-open" style="color: #0077b6;"></i> عرض المنتجات والمستلزمات
             </a>
             <a href="https://wa.me/201224828849" target="_blank" class="action-secondary-btn">
                 <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.3rem;"></i> تواصل معنا مباشرة
