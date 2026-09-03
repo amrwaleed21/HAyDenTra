@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAyDenTra<sup>®</sup> - الرئيسية</title>
+  <title>HAyDenTra® - الرئيسية</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -40,8 +40,14 @@
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.2);
     }
-    .logo-brand { text-decoration: none; font-size: 1.2rem; font-weight: 900; color: #fff; text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); }
-    .logo-brand sup { font-size: 0.55rem; vertical-align: super; }
+    
+    /* جعل الـ ® صغيرة وعلى يمين الكلمة في الأعلى */
+    .logo-brand { 
+      text-decoration: none; font-size: 1.2rem; font-weight: 900; color: #fff; 
+      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); display: inline-flex; align-items: flex-start;
+    }
+    .logo-brand span.trademark { font-size: 0.45rem; margin-right: 2px; vertical-align: super; line-height: 1; }
+    
     .menu-btn { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
     .sidebar {
@@ -64,15 +70,16 @@
       width: 95px; height: 95px; background: var(--glow-blue); opacity: 0.6; filter: blur(22px); border-radius: 50%;
     }
     .logo-glow-container img { position: relative; width: 80px; height: 80px; background: #fff; border-radius: 50%; padding: 6px; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
-    .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); }
-    .hero h1 sup { font-size: 0.9rem; vertical-align: super; }
+    
+    .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); display: inline-flex; align-items: flex-start; justify-content: center; }
+    .hero h1 span.trademark { font-size: 0.7rem; margin-right: 3px; vertical-align: super; line-height: 1; }
     .hero p { font-size: 0.88rem; color: #a0aec0; margin-bottom: 2rem; }
 
     .btn-main-glow {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: linear-gradient(135deg, #00a8cc 0%, #007791 100%); color: #fff;
       padding: 0.75rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 800;
-      font-size: 0.9rem; width: fit-content; margin: 0.4 auto; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+      font-size: 0.9rem; width: fit-content; margin: 0.4rem auto; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); border-color: #fff; }
@@ -92,7 +99,7 @@
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="logo-brand">HAyDenTra<sup>®</sup></a>
+    <a href="index.html" class="logo-brand">HAyDenTra<span class="trademark">®</span></a>
     <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
@@ -109,7 +116,7 @@
     <div class="logo-glow-container">
       <img src="logo.png" alt="HAyDenTra Logo">
     </div>
-    <h1>HAyDenTra<sup>®</sup></h1>
+    <h1>HAyDenTra<span class="trademark">®</span></h1>
     <p>Your Trusted Partner in Dental Solutions</p>
     
     <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
@@ -142,7 +149,7 @@
     </div>
   </div>
 
-  <footer>HAyDenTra<sup>®</sup> - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra<span style="font-size: 0.5rem; vertical-align: super;">®</span> - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
