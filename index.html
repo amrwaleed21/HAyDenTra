@@ -24,15 +24,14 @@
       animation: fadeInPage 0.5s ease forwards;
     }
 
+    body.sidebar-open { overflow: hidden; }
+
     @keyframes fadeInPage {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    body.fade-out {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
+    body.fade-out { opacity: 0; transition: opacity 0.4s ease; }
 
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
@@ -43,21 +42,39 @@
     
     .logo-brand { 
       text-decoration: none; font-size: 1.2rem; font-weight: 900; color: #fff; 
-      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); direction: ltr; display: inline-flex; align-items: baseline;
+      text-shadow: 0 0 8px rgba(0, 210, 255, 0.5); direction: ltr; unicode-bidi: embed;
     }
-    .logo-brand span.trademark { font-size: 0.52rem; margin-left: 1px; position: relative; top: -4px; font-weight: 700; }
     
     .menu-btn { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
     .sidebar {
-      position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
-      background: rgba(6, 21, 39, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-      z-index: 2000; padding: 2rem 1.5rem; transition: 0.3s ease; box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+      position: fixed; top: 0; right: -100%; width: 78%; height: 100vh; height: 100dvh;
+      background: rgba(6, 21, 39, 0.82);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      z-index: 99999; padding: 2rem 1.5rem; transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+      box-shadow: -15px 0 50px rgba(0,0,0,0.7); overflow-y: auto;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
     }
     .sidebar.active { right: 0; }
-    .close-btn { background: none; border: none; color: #fff; font-size: 1.6rem; float: left; cursor: pointer; }
-    .sidebar-links { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
-    .sidebar-links a { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.8rem; }
+    
+    .sidebar-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh;
+      background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      z-index: 99998; opacity: 0; visibility: hidden; transition: 0.3s ease;
+    }
+    .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+    .close-btn { background: none; border: none; color: #fff; font-size: 1.6rem; float: left; cursor: pointer; opacity: 0.8; transition: 0.2s; }
+    .close-btn:hover { opacity: 1; }
+    .sidebar-links { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .sidebar-links a { 
+      color: #fff; text-decoration: none; font-size: 1.05rem; font-weight: 700; 
+      background: rgba(255, 255, 255, 0.05); padding: 0.8rem 1rem; border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.2s ease;
+    }
+    .sidebar-links a:hover, .sidebar-links a:active {
+      background: rgba(0, 210, 255, 0.15); border-color: rgba(0, 210, 255, 0.4); padding-right: 1.3rem;
+    }
 
     .hero {
       background: radial-gradient(circle at top, #0f3866 0%, var(--bg-dark-top) 80%);
@@ -72,17 +89,16 @@
     
     .hero h1 { 
       font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem; 
-      text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); direction: ltr; 
-      display: inline-flex; align-items: baseline; justify-content: center; 
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.5); 
+      direction: ltr; unicode-bidi: embed; display: inline-block;
     }
-    .hero h1 span.trademark { font-size: 0.7rem; margin-left: 2px; position: relative; top: -8px; font-weight: 700; }
     .hero p { font-size: 0.88rem; color: #a0aec0; margin-bottom: 2rem; }
 
     .btn-main-glow {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: linear-gradient(135deg, #00a8cc 0%, #007791 100%); color: #fff;
       padding: 0.75rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 800;
-      font-size: 0.9rem; width: fit-content; margin: 0.4rem auto; box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+      font-size: 0.9rem; width: fit-content; margin: 0.4rem auto; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .btn-main-glow:hover, .btn-main-glow:active { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px rgba(0, 210, 255, 1); border-color: #fff; }
@@ -102,10 +118,11 @@
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="logo-brand">HAyDenTra<span class="trademark">®</span></a>
+    <a href="index.html" class="logo-brand">HAyDenTra®</a>
     <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <div class="sidebar" id="sidebar">
     <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
     <div class="sidebar-links">
@@ -119,7 +136,7 @@
     <div class="logo-glow-container">
       <img src="logo.png" alt="HAyDenTra Logo">
     </div>
-    <h1>HAyDenTra<span class="trademark">®</span></h1>
+    <h1>HAyDenTra®</h1>
     <p>Your Trusted Partner in Dental Solutions</p>
     
     <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
@@ -152,14 +169,29 @@
     </div>
   </div>
 
-  <footer>HAyDenTra<span style="font-size: 0.52rem; position: relative; top: -3px; font-weight: 700;">®</span> - Dental Supplies & Solutions ©</footer>
+  <footer>HAyDenTra® - Dental Supplies & Solutions ©</footer>
 
   <script>
     const openSidebar = document.getElementById('openSidebar');
     const closeSidebar = document.getElementById('closeSidebar');
     const sidebar = document.getElementById('sidebar');
-    if (openSidebar) openSidebar.addEventListener('click', () => sidebar.classList.add('active'));
-    if (closeSidebar) closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    function toggleSidebar(open) {
+      if (open) {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+        document.body.classList.add('sidebar-open');
+      } else {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+      }
+    }
+
+    if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
+    if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function(e) {
