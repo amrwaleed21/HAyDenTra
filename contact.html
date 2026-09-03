@@ -14,7 +14,7 @@
             --secondary-bg: #102d4f;
             --accent-glow: #00d2ff;
             --whatsapp-green: #25d366;
-            --card-bg: #ffffff;
+            --card-bg: linear-gradient(135deg, #e8f0f8 0%, #d4e3f0 100%);
             --text-dark: #081b33;
             --text-main: #ffffff;
             --text-muted: #b0c4de;
@@ -57,22 +57,24 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت تماماً مع تأثير الزجاج المضيء والـ Blur */
+        /* شريط علوي ثابت نهائياً وثابت تماماً بدون اختفاء مع تأثير الزجاج الـ Blur */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.85);
+            background: rgba(8, 27, 51, 0.88);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 9999;
+            z-index: 99999;
             border-bottom: 1px solid rgba(0, 210, 255, 0.35);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            transform: none !important;
+            transition: none !important;
         }
 
         .nav-logo-right {
@@ -129,7 +131,7 @@
             height: 100dvh;
             background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
             backdrop-filter: blur(18px);
-            z-index: 99999;
+            z-index: 100000;
             padding: 1.5rem 1.2rem;
             transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
@@ -150,7 +152,7 @@
             height: 100dvh;
             background: rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 99998;
+            z-index: 99999;
             opacity: 0;
             visibility: hidden;
             transition: 0.3s ease;
@@ -267,7 +269,7 @@
 
         .contact-desc {
             font-size: 0.95rem;
-            color: #4a5568;
+            color: #334155;
             font-weight: 600;
             margin-bottom: 2rem;
             line-height: 1.6;
