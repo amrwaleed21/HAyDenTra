@@ -13,7 +13,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, #071224 0%, #0c203b 50%, #06101e 100%);
+            background: linear-gradient(180deg, #07101f 0%, #0a192f 50%, #030712 100%);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -21,19 +21,19 @@
             align-items: center;
         }
 
-        /* الشريط العلوي الثابت */
+        /* الشريط العلوي: القائمة على اليسار، الشعار والاسم على اليمين */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(7, 18, 36, 0.95);
+            background: rgba(7, 16, 31, 0.95);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 12px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -41,30 +41,30 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             cursor: pointer;
         }
 
-        .brand-header {
+        .brand-container {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #fff;
             font-weight: bold;
-            font-size: 1.15rem;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            color: #fff;
         }
 
-        .brand-header img {
-            width: 28px;
-            height: 28px;
+        .brand-container img {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #fff;
         }
 
         /* المحتوى الرئيسي */
-        .content-wrapper {
-            margin-top: 100px;
+        .main-wrapper {
+            margin-top: 90px;
             width: 100%;
             max-width: 480px;
             padding: 20px;
@@ -74,43 +74,45 @@
             text-align: center;
         }
 
-        /* اللوجو الدائري المتوهج باستخدام صورة png */
-        .glowing-logo-box {
-            width: 110px;
-            height: 110px;
+        /* اللوجو الدائري المضيء (Glowing) */
+        .glowing-logo-wrapper {
+            margin-bottom: 15px;
+        }
+
+        .glowing-logo {
+            width: 100px;
+            height: 100px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* تأثير التوهج الأزرق المطلوب (Glowing) */
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 15px rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7), 0 0 15px rgba(255, 255, 255, 0.9);
             overflow: hidden;
+            margin: 0 auto;
         }
 
-        .glowing-logo-box img {
-            width: 85%;
-            height: 85%;
+        .glowing-logo img {
+            width: 80%;
+            height: 80%;
             object-fit: contain;
         }
 
-        .site-title {
-            font-size: 2.1rem;
+        h1.site-title {
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
-        .site-subtitle {
+        p.site-subtitle {
             font-size: 0.9rem;
             color: #94a3b8;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         /* زر عرض المستلزمات والتواصل */
-        .action-btn {
+        .primary-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -126,21 +128,16 @@
             text-decoration: none;
             box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4);
             margin-bottom: 12px;
-            transition: transform 0.2s ease;
         }
 
-        .action-btn.contact-btn {
-            background: rgba(12, 32, 59, 0.8);
+        .primary-btn.secondary {
+            background: rgba(14, 30, 54, 0.8);
             border-color: rgba(56, 189, 248, 0.3);
             box-shadow: none;
         }
 
-        .action-btn:hover {
-            transform: scale(1.02);
-        }
-
-        /* بطاقات المميزات البيضاء السفلى */
-        .features-container {
+        /* بطاقة المميزات البيضاء */
+        .features-card {
             background: #ffffff;
             color: #0f172a;
             width: 100%;
@@ -154,42 +151,41 @@
             margin-bottom: 30px;
         }
 
-        .feature-box {
+        .feature-item {
             flex: 1;
             padding: 0 4px;
         }
 
-        .feature-box .f-icon {
+        .feature-item .icon {
             font-size: 1.4rem;
             margin-bottom: 4px;
         }
 
-        .feature-box h4 {
+        .feature-item h4 {
             font-size: 0.85rem;
             font-weight: bold;
             color: #0f172a;
             margin-bottom: 2px;
         }
 
-        .feature-box p {
+        .feature-item p {
             font-size: 0.7rem;
             color: #64748b;
         }
 
-        /* قسم مستلزمات وتجهيز العيادات الإضافي بالأسفل */
-        .section-title-box {
+        /* عنوان القسم السفلي */
+        .section-header {
             text-align: center;
-            margin-top: 15px;
-            margin-bottom: 15px;
+            margin-top: 10px;
         }
 
-        .section-title-box h2 {
-            font-size: 1.5rem;
+        .section-header h2 {
+            font-size: 1.4rem;
             font-weight: bold;
             margin-bottom: 5px;
         }
 
-        .section-title-box p {
+        .section-header p {
             font-size: 0.85rem;
             color: #94a3b8;
         }
@@ -197,57 +193,59 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي -->
+    <!-- الشريط العلوي (القائمة يسار، اللوجو والاسم يمين) -->
     <header class="navbar">
-        <button class="menu-btn">☰</button>
-        <div class="brand-header">
-            <span>®HAyDenTra</span>
+        <div class="brand-container">
             <img src="logo.png" alt="Logo">
+            <span>®HAyDenTra</span>
         </div>
+        <button class="menu-btn">☰</button>
     </header>
 
     <!-- المحتوى الرئيسي -->
-    <div class="content-wrapper">
-        <!-- اللوجو الدائري المتوهج (Glowing Logo) -->
-        <div class="glowing-logo-box">
-            <img src="logo.png" alt="HAyDenTra Logo">
+    <main class="main-wrapper">
+        <!-- اللوجو الدائري المضيء -->
+        <div class="glowing-logo-wrapper">
+            <div class="glowing-logo">
+                <img src="logo.png" alt="HAyDenTra Logo">
+            </div>
         </div>
 
         <h1 class="site-title">HAyDenTra</h1>
         <p class="site-subtitle">Your Trusted Partner in Dental Solutions</p>
 
-        <!-- أزرار التوجيه -->
-        <a href="products.html" class="action-btn">
+        <!-- أزرار الانتقال -->
+        <a href="products.html" class="primary-btn">
             <span>←</span> عرض مستلزمات العيادة
         </a>
-        <a href="contact.html" class="action-btn contact-btn">
+        <a href="contact.html" class="primary-btn secondary">
             <span>📞</span> تواصل معنا مباشرة
         </a>
 
-        <!-- البطاقات البيضاء -->
-        <div class="features-container">
-            <div class="feature-box">
-                <div class="f-icon">🎧</div>
+        <!-- كارت المميزات الأبيض -->
+        <div class="features-card">
+            <div class="feature-item">
+                <div class="icon">🎧</div>
                 <h4>خدمة العملاء</h4>
                 <p>دعم واستجابة</p>
             </div>
-            <div class="feature-box">
-                <div class="f-icon">🚚</div>
+            <div class="feature-item">
+                <div class="icon">🚚</div>
                 <h4>توصيل سريع</h4>
                 <p>لكافة العيادات</p>
             </div>
-            <div class="feature-box">
-                <div class="f-icon">🛡️</div>
+            <div class="feature-item">
+                <div class="icon">🛡️</div>
                 <h4>جودة عالية</h4>
                 <p>خامات معتمدة</p>
             </div>
         </div>
 
-        <div class="section-title-box">
+        <div class="section-header">
             <h2>مستلزمات وتجهيز العيادات</h2>
             <p>اختر ما تحتاجه لعيادتك واطلبه فوراً عبر الواتساب</p>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
