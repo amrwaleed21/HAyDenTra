@@ -325,7 +325,7 @@
         }
 
         /* =========================
-           MAIN
+           MAIN & HERO BACKGROUND
         ========================= */
 
         main {
@@ -335,11 +335,30 @@
         .hero {
             width: min(100%, 850px);
             margin: 0 auto;
-            padding: 75px 18px 20px;
+            padding: 40px 18px 20px;
             text-align: center;
+            position: relative;
+        }
+
+        /* إضافة صورة عيادة أسنان خلف الكارت كخلفية مموهة هادئة */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(92%, 650px);
+            height: 380px;
+            background: url("DentalTools.jpg") center/cover no-repeat;
+            opacity: 0.15;
+            filter: blur(8px);
+            border-radius: 35px;
+            z-index: 0;
         }
 
         .main-logo-circle {
+            position: relative;
+            z-index: 1;
             width: 92px;
             height: 92px;
 
@@ -366,9 +385,10 @@
 
         .main-brand {
             position: relative;
+            z-index: 1;
             display: inline-block;
 
-            margin-top: 20px;
+            margin-top: 15px;
 
             font-family: Arial, sans-serif;
             font-size: 39px;
@@ -390,64 +410,60 @@
         }
 
         .tagline {
-            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+            margin-top: 15px;
 
             color: #0369a1;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 19px;
+            font-weight: 700;
             letter-spacing: .2px;
         }
 
         /* =========================
-           WELCOME CARD
+           WELCOME CARD (تعديل التصميم المطابق للصورة)
         ========================= */
 
         .welcome-card {
-            width: min(100%, 650px);
+            position: relative;
+            z-index: 1;
+            width: min(100%, 600px);
 
-            margin: 45px auto 0;
-            padding: 38px 25px 42px;
+            margin: 30px auto 0;
+            padding: 35px 25px;
 
             border-radius: 28px;
 
-            position: relative;
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.88), rgba(240, 249, 255, 0.92)),
-                url("DentalTools.jpg") center / cover;
-            color: #0f172a;
+            /* خلفية بيضاء شفافة بأسلوب Glassmorphism مريح للعين */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
-            border: 1px solid rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.9);
 
             box-shadow:
-                0 15px 35px rgba(186, 230, 253, 0.4),
-                0 0 25px rgba(56, 189, 248, 0.15);
+                0 20px 40px rgba(186, 230, 253, 0.4),
+                0 4px 12px rgba(2, 132, 199, 0.05);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .welcome-card h1 {
-            font-size: clamp(31px, 7vw, 48px);
-            line-height: 1.55;
+            font-size: clamp(26px, 6vw, 36px);
+            line-height: 1.3;
             font-weight: 900;
-            color: #0284c7;
+            color: #0f172a;
+            margin-bottom: 12px;
         }
 
         .welcome-card p {
-            margin-top: 27px;
-
-            font-size: clamp(16px, 3.5vw, 21px);
-            line-height: 2;
-
-            color: #334155;
-        }
-
-        .welcome-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 12%;
-            left: 12%;
-            height: 3px;
-            border-radius: 0 0 8px 8px;
-            background: #0284c7;
+            font-size: clamp(14px, 3.2vw, 17px);
+            line-height: 1.8;
+            font-weight: 600;
+            color: #475569;
+            max-width: 480px;
         }
 
         /* =========================
@@ -459,17 +475,16 @@
             justify-content: center;
             gap: 12px;
 
-            margin-top: 30px;
+            margin-top: 25px;
 
-            flex-wrap: wrap;
+            width: 100%;
         }
 
         .main-btn {
-            min-width: 180px;
+            width: min(100%, 260px);
+            padding: 14px 22px;
 
-            padding: 13px 22px;
-
-            border-radius: 15px;
+            border-radius: 14px;
 
             font-family: "Cairo", sans-serif;
             font-size: 16px;
@@ -489,15 +504,9 @@
             box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
         }
 
-        .contact-btn {
-            color: #0284c7;
-            background: #ffffff;
-            border: 1px solid rgba(2, 132, 199, 0.3);
-            box-shadow: 0 4px 12px rgba(186, 230, 253, 0.3);
-        }
-
-        .main-btn:hover {
+        .products-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(2, 132, 199, 0.4);
         }
 
         /* =========================
@@ -604,7 +613,7 @@
             }
 
             .hero {
-                padding-top: 86px;
+                padding-top: 30px;
             }
 
             .main-logo-circle {
@@ -614,22 +623,18 @@
 
             .main-brand {
                 font-size: 37px;
-                margin-top: 19px;
+                margin-top: 15px;
             }
 
             .tagline {
-                font-size: 18px;
-                margin-top: 23px;
+                font-size: 17px;
+                margin-top: 12px;
             }
 
             .welcome-card {
-                margin-top: 42px;
-                padding: 35px 18px 38px;
-                border-radius: 35px;
-            }
-
-            .welcome-card p {
-                font-size: 16px;
+                margin-top: 25px;
+                padding: 30px 18px;
+                border-radius: 28px;
             }
 
             .features-grid {
@@ -664,7 +669,7 @@
             }
 
             .tagline {
-                font-size: 16px;
+                font-size: 15px;
             }
         }
 
@@ -684,7 +689,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
     <header class="topbar">
         <div class="nav-inner">
 
@@ -706,10 +710,8 @@
         </div>
     </header>
 
-    <!-- OVERLAY -->
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
         <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
@@ -746,7 +748,6 @@
 
     </aside>
 
-    <!-- MAIN -->
     <main>
 
         <section class="hero">
@@ -766,11 +767,7 @@
 
             <div class="welcome-card">
 
-                <h2>
-                    مرحباً بكم<br>
-                    <br>
-
-                </h2>
+                <h1>مرحباً بكم</h1>
 
                 <p>
                     نقدم لعيادتك أحدث الأجهزة والمواد الطبية
@@ -778,24 +775,16 @@
                 </p>
 
                 <div class="hero-buttons">
-
                     <a href="products.html" class="main-btn products-btn">
-                        <i class="fa-solid fa-box-open"></i>
+                        <i class="fa-solid fa-gift"></i>
                         استكشف المنتجات
                     </a>
-
-                    <a href="contact.html" class="main-btn contact-btn">
-                        <i class="fa-solid fa-comments"></i>
-                        تواصل معنا
-                    </a>
-
                 </div>
 
             </div>
 
         </section>
 
-        <!-- الكروت فقط بدون عنوان مميزات الشركة -->
         <section class="features-grid">
 
             <div class="feature-card">
