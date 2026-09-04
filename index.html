@@ -57,7 +57,7 @@
             height: 74px;
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.85);
             border-bottom: 1px solid rgba(186, 230, 253, 0.6);
 
             backdrop-filter: blur(18px) saturate(150%);
@@ -325,7 +325,7 @@
         }
 
         /* =========================
-           MAIN & HERO BACKGROUND
+           MAIN & HERO FULL WIDTH BG
         ========================= */
 
         main {
@@ -333,25 +333,36 @@
         }
 
         .hero {
-            width: min(100%, 850px);
-            margin: 0 auto;
-            padding: 40px 18px 20px;
-            text-align: center;
             position: relative;
+            width: 100%;
+            padding: 35px 18px 25px;
+            text-align: center;
+            overflow: hidden;
         }
 
-        /* إضافة صورة DentalTools.jpg كخلفية شفافة خلف منطقة الـ Hero والكارت */
-        .hero-bg-wrapper {
+        /* خلفية بعرض الشاشة الكلي واضحة وغير مختفية */
+        .hero-bg-full {
             position: absolute;
-            top: 180px;
+            top: 150px;
             left: 50%;
             transform: translateX(-50%);
-            width: min(92%, 650px);
-            height: 420px;
+            width: 100vw;
+            height: 480px;
             background: url("DentalTools.jpg") center/cover no-repeat;
-            opacity: 0.35;
-            filter: blur(3px);
-            border-radius: 35px;
+            opacity: 0.75;
+            filter: blur(1px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 480px;
+            background: linear-gradient(180deg, rgba(232, 245, 249, 0.5) 0%, rgba(219, 239, 254, 0.3) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -427,22 +438,22 @@
         .welcome-card {
             position: relative;
             z-index: 1;
-            width: min(100%, 620px);
+            width: min(92%, 600px);
 
             margin: 30px auto 0;
             padding: 35px 25px;
 
             border-radius: 28px;
 
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
 
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.95);
 
             box-shadow:
-                0 20px 40px rgba(186, 230, 253, 0.4),
-                0 4px 12px rgba(2, 132, 199, 0.05);
+                0 20px 45px rgba(15, 23, 42, 0.12),
+                0 4px 20px rgba(2, 132, 199, 0.1);
 
             display: flex;
             flex-direction: column;
@@ -461,7 +472,7 @@
             font-size: clamp(14px, 3.2vw, 17px);
             line-height: 1.8;
             font-weight: 600;
-            color: #475569;
+            color: #334155;
             max-width: 480px;
         }
 
@@ -471,23 +482,23 @@
 
         .hero-buttons {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 12px;
 
             margin-top: 25px;
 
             width: 100%;
-            flex-wrap: wrap;
         }
 
         .main-btn {
-            min-width: 170px;
-            padding: 13px 20px;
+            width: min(100%, 280px);
+            padding: 14px 22px;
 
-            border-radius: 14px;
+            border-radius: 15px;
 
             font-family: "Cairo", sans-serif;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
 
             display: inline-flex;
@@ -501,19 +512,19 @@
         .products-btn {
             color: #fff;
             background: linear-gradient(135deg, #0284c7, #0369a1);
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
         }
 
         .products-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 10px 22px rgba(2, 132, 199, 0.45);
         }
 
         .contact-btn {
             color: #0284c7;
             background: #ffffff;
-            border: 1px solid rgba(2, 132, 199, 0.3);
-            box-shadow: 0 4px 12px rgba(186, 230, 253, 0.3);
+            border: 1px solid rgba(2, 132, 199, 0.35);
+            box-shadow: 0 4px 14px rgba(186, 230, 253, 0.4);
         }
 
         .contact-btn:hover {
@@ -526,9 +537,11 @@
         ========================= */
 
         .features-grid {
+            position: relative;
+            z-index: 1;
             width: min(100%, 850px);
 
-            margin: 28px auto 0;
+            margin: 35px auto 0;
             padding: 0 12px 35px;
 
             display: grid;
@@ -543,7 +556,7 @@
 
             border-radius: 18px;
 
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(186, 230, 253, 0.8);
 
             backdrop-filter: blur(10px);
@@ -625,12 +638,13 @@
             }
 
             .hero {
-                padding-top: 30px;
+                padding-top: 25px;
             }
 
-            .hero-bg-wrapper {
-                top: 170px;
-                height: 400px;
+            .hero-bg-full,
+            .hero-bg-overlay {
+                top: 140px;
+                height: 520px;
             }
 
             .main-logo-circle {
@@ -769,7 +783,8 @@
 
         <section class="hero">
 
-            <div class="hero-bg-wrapper"></div>
+            <div class="hero-bg-full"></div>
+            <div class="hero-bg-overlay"></div>
 
             <div class="main-logo-circle">
                 <img src="logo.png" alt="HAyDenTra Logo">
