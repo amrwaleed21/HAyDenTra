@@ -243,6 +243,61 @@
         }
 
 
+        /* LOGIN HOME BUTTON */
+
+        .login-home-btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 10px;
+
+            border-radius: 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+            font-family: "Cairo", sans-serif;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            transition: .25s;
+
+        }
+
+
+        .login-home-btn:hover {
+
+            background:
+                rgba(0,210,255,.14);
+
+            border-color:
+                rgba(80,220,255,.35);
+
+            color: #55ddff;
+
+        }
+
+
         .error {
 
             margin-top: 12px;
@@ -853,6 +908,20 @@
         </button>
 
 
+        <!-- الرجوع للرئيسية قبل تسجيل الدخول -->
+
+        <a
+            href="index.html"
+            class="login-home-btn"
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            العودة إلى الصفحة الرئيسية
+
+        </a>
+
+
         <div
             class="error"
             id="loginError"
@@ -932,8 +1001,6 @@
             إدارة المنتجات
         </h1>
 
-
-        <!-- ADD / EDIT -->
 
         <section class="panel">
 
@@ -1036,8 +1103,6 @@
         </section>
 
 
-        <!-- PRODUCTS -->
-
         <section class="panel">
 
             <h2>
@@ -1065,12 +1130,9 @@
 <script>
 
 
-/* =========================
-   SUPABASE
-========================= */
-
 const SUPABASE_URL =
     "https://hcvajgyjiflkcsdjvzib.supabase.co";
+
 
 const SUPABASE_KEY =
     "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
@@ -1088,9 +1150,7 @@ let editingId = null;
 let oldImageUrl = "";
 
 
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 async function login() {
 
@@ -1119,6 +1179,7 @@ async function login() {
             "اكتب البريد الإلكتروني وكلمة المرور.";
 
         return;
+
     }
 
 
@@ -1140,18 +1201,16 @@ async function login() {
         console.error(error);
 
         return;
+
     }
 
 
     await checkAdmin();
 
-
 }
 
 
-/* =========================
-   CHECK ADMIN
-========================= */
+/* CHECK ADMIN */
 
 async function checkAdmin() {
 
@@ -1196,13 +1255,10 @@ async function checkAdmin() {
 
     showAdmin();
 
-
 }
 
 
-/* =========================
-   SHOW ADMIN
-========================= */
+/* SHOW ADMIN */
 
 function showAdmin() {
 
@@ -1235,22 +1291,18 @@ function showLogin() {
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* LOGOUT */
 
 async function logout() {
 
     await supabaseClient.auth.signOut();
 
-    location.reload();
+    window.location.href = "index.html";
 
 }
 
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* LOAD PRODUCTS */
 
 async function loadProducts() {
 
@@ -1397,9 +1449,7 @@ async function loadProducts() {
 }
 
 
-/* =========================
-   SAVE PRODUCT
-========================= */
+/* SAVE PRODUCT */
 
 async function saveProduct() {
 
@@ -1469,8 +1519,6 @@ async function saveProduct() {
         oldImageUrl;
 
 
-    /* UPLOAD IMAGE */
-
     if (imageFile) {
 
         const extension =
@@ -1526,8 +1574,6 @@ async function saveProduct() {
     }
 
 
-    /* EDIT */
-
     if (editingId) {
 
         const {
@@ -1571,8 +1617,6 @@ async function saveProduct() {
 
     }
 
-
-    /* ADD */
 
     else {
 
@@ -1621,9 +1665,7 @@ async function saveProduct() {
 }
 
 
-/* =========================
-   EDIT
-========================= */
+/* EDIT */
 
 async function editProduct(id) {
 
@@ -1702,9 +1744,7 @@ async function editProduct(id) {
 }
 
 
-/* =========================
-   DELETE
-========================= */
+/* DELETE */
 
 async function deleteProduct(id) {
 
@@ -1750,9 +1790,7 @@ async function deleteProduct(id) {
 }
 
 
-/* =========================
-   RESET
-========================= */
+/* RESET */
 
 function resetForm() {
 
@@ -1795,9 +1833,7 @@ function resetForm() {
 }
 
 
-/* =========================
-   ESCAPE
-========================= */
+/* ESCAPE */
 
 function escapeHTML(text) {
 
@@ -1831,9 +1867,7 @@ function escapeHTML(text) {
 }
 
 
-/* =========================
-   START
-========================= */
+/* START */
 
 async function start() {
 
