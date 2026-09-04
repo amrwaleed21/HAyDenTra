@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>HAyDenTra® | مستلزمات الأسنان</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -27,11 +38,24 @@
 
         body {
             min-height: 100dvh;
+
             font-family: "Cairo", sans-serif;
+
             color: #fff;
+
             background:
-                radial-gradient(circle at 50% 30%, rgba(0, 183, 255, .18), transparent 35%),
-                linear-gradient(180deg, #061522 0%, #07395a 55%, #06243a 100%);
+                radial-gradient(
+                    circle at 50% 28%,
+                    rgba(0, 185, 255, .18),
+                    transparent 34%
+                ),
+                linear-gradient(
+                    180deg,
+                    #061522 0%,
+                    #07395a 55%,
+                    #06243a 100%
+                );
+
             overflow-x: hidden;
         }
 
@@ -40,33 +64,52 @@
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
 
-        /* ================= NAVBAR ================= */
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
 
         .topbar {
             position: fixed;
+
             top: 0;
             right: 0;
             left: 0;
+
             z-index: 1000;
 
             min-height: 74px;
 
             background: rgba(5, 22, 42, .58);
-            border-bottom: 1px solid rgba(255, 255, 255, .13);
 
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border-bottom:
+                1px solid rgba(255, 255, 255, .13);
 
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+            backdrop-filter:
+                blur(18px) saturate(160%);
+
+            -webkit-backdrop-filter:
+                blur(18px) saturate(160%);
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, .25);
         }
 
         .nav-inner {
             width: min(1100px, 94%);
+
             min-height: 74px;
+
             margin: auto;
 
             display: flex;
@@ -76,23 +119,68 @@
             padding: 8px 0;
         }
 
+
+        /* =========================
+           BRAND
+        ========================= */
+
         .brand {
             display: flex;
             align-items: center;
+
             gap: 10px;
+
+            direction: ltr;
 
             font-size: 20px;
             font-weight: 900;
         }
 
         .brand-name {
+            position: relative;
+
+            display: inline-block;
+
             direction: ltr;
+
             white-space: nowrap;
+
+            font-size: 20px;
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -.5px;
         }
+
+        /* علامة ® فوق الاسم من اليمين */
+
+        .brand-name::before {
+            content: "®";
+
+            position: absolute;
+
+            right: -2px;
+            top: -11px;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            line-height: 1;
+
+            color: #fff;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
 
         .logo-wrap {
             width: 50px;
             height: 50px;
+
+            flex-shrink: 0;
 
             border-radius: 50%;
 
@@ -108,30 +196,39 @@
                     rgba(255,255,255,.75) 100%
                 );
 
-            border: 1px solid rgba(255,255,255,.95);
+            border:
+                1px solid rgba(255,255,255,.95);
 
             box-shadow:
                 0 0 9px rgba(255,255,255,.95),
                 0 0 24px rgba(0,229,255,.8),
                 0 0 45px rgba(0,229,255,.35);
-
-            flex-shrink: 0;
         }
 
         .logo-wrap img {
             width: 72%;
             height: 72%;
+
             object-fit: contain;
         }
+
+
+        /* =========================
+           MENU BUTTON
+        ========================= */
 
         .menu-btn {
             width: 54px;
             height: 54px;
 
             border-radius: 18px;
-            border: 1px solid rgba(255,255,255,.25);
 
-            background: rgba(255,255,255,.08);
+            border:
+                1px solid rgba(255,255,255,.25);
+
+            background:
+                rgba(255,255,255,.08);
+
             color: white;
 
             font-size: 29px;
@@ -149,22 +246,31 @@
         }
 
         .menu-btn:hover {
-            background: rgba(255,255,255,.16);
+            background: rgba(255,255,255,.15);
+
             transform: translateY(-2px);
         }
 
-        /* ================= SIDEBAR ================= */
+
+        /* =========================
+           OVERLAY
+        ========================= */
 
         .overlay {
             position: fixed;
+
             inset: 0;
+
             z-index: 1050;
 
-            background: rgba(0,0,0,.42);
+            background:
+                rgba(0,0,0,.42);
+
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
 
             opacity: 0;
+
             visibility: hidden;
 
             transition: .3s ease;
@@ -175,28 +281,45 @@
             visibility: visible;
         }
 
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
         .sidebar {
             position: fixed;
+
             top: 0;
             right: 0;
+
             z-index: 1100;
 
             width: min(82%, 350px);
+
             height: 100dvh;
 
             padding: 25px 20px;
 
-            background: rgba(7, 29, 53, .68);
+            background:
+                rgba(7,29,53,.68);
 
-            border-left: 1px solid rgba(255,255,255,.16);
+            border-left:
+                1px solid rgba(255,255,255,.16);
 
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            backdrop-filter:
+                blur(24px) saturate(160%);
 
-            box-shadow: -10px 0 40px rgba(0,0,0,.3);
+            -webkit-backdrop-filter:
+                blur(24px) saturate(160%);
 
-            transform: translateX(105%);
-            transition: transform .35s cubic-bezier(.4,0,.2,1);
+            box-shadow:
+                -10px 0 40px rgba(0,0,0,.3);
+
+            transform:
+                translateX(105%);
+
+            transition:
+                transform .35s cubic-bezier(.4,0,.2,1);
 
             overflow-y: auto;
         }
@@ -207,13 +330,16 @@
 
         .sidebar-head {
             display: flex;
+
             align-items: center;
             justify-content: space-between;
 
             padding-bottom: 20px;
+
             margin-bottom: 15px;
 
-            border-bottom: 1px solid rgba(255,255,255,.12);
+            border-bottom:
+                1px solid rgba(255,255,255,.12);
         }
 
         .sidebar-logo {
@@ -221,43 +347,59 @@
             height: 72px;
         }
 
+        .sidebar-title {
+            direction: ltr;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            margin-top: 5px;
+        }
+
         .close-btn {
             width: 44px;
             height: 44px;
 
-            border: 1px solid rgba(255,255,255,.18);
             border-radius: 14px;
 
-            background: rgba(255,255,255,.08);
+            border:
+                1px solid rgba(255,255,255,.18);
+
+            background:
+                rgba(255,255,255,.08);
+
             color: white;
 
             font-size: 22px;
-            cursor: pointer;
-        }
 
-        .sidebar-title {
-            font-size: 17px;
-            font-weight: 800;
-            direction: ltr;
+            cursor: pointer;
         }
 
         .side-links {
             display: flex;
+
             flex-direction: column;
+
             gap: 10px;
         }
 
         .side-links a {
             display: flex;
+
             align-items: center;
+
             gap: 14px;
 
             padding: 15px;
 
             border-radius: 15px;
 
-            background: rgba(255,255,255,.07);
-            border: 1px solid rgba(255,255,255,.08);
+            background:
+                rgba(255,255,255,.07);
+
+            border:
+                1px solid rgba(255,255,255,.08);
 
             font-weight: 700;
 
@@ -266,59 +408,114 @@
 
         .side-links a:hover,
         .side-links a.active {
-            background: rgba(0,200,255,.16);
-            border-color: rgba(0,220,255,.35);
-            transform: translateX(-4px);
+            background:
+                rgba(0,200,255,.16);
+
+            border-color:
+                rgba(0,220,255,.35);
+
+            transform:
+                translateX(-4px);
         }
 
         .side-links i {
             width: 25px;
+
             text-align: center;
+
             color: #75eaff;
         }
 
-        /* ================= MAIN ================= */
+
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
             width: min(1100px, 94%);
+
             margin: auto;
 
-            padding-top: calc(90px + env(safe-area-inset-top));
-            padding-bottom: calc(30px + env(safe-area-inset-bottom));
+            padding-top:
+                calc(90px + env(safe-area-inset-top));
+
+            padding-bottom:
+                calc(30px + env(safe-area-inset-bottom));
         }
 
-        /* ================= HERO ================= */
 
-        .hero {
-            text-align: center;
-            padding: 25px 0 20px;
+        /* =========================
+           MAIN LOGO
+           نفس المقاس المستخدم في
+           الصفحات الأخرى
+        ========================= */
+
+        .page-logo {
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 15px;
         }
 
-        .hero-logo {
-            width: 105px;
-            height: 105px;
-            margin: 0 auto 18px;
-        }
+        .page-brand {
+            position: relative;
 
-        .hero-brand {
+            display: inline-block;
+
             direction: ltr;
-            font-size: clamp(36px, 9vw, 58px);
+
+            font-size: 42px;
+
+            line-height: 1;
+
             font-weight: 900;
+
+            letter-spacing: -.8px;
 
             text-shadow:
                 0 0 10px rgba(255,255,255,.8),
                 0 0 25px rgba(0,220,255,.5);
+        }
 
-            margin-bottom: 8px;
+        .page-brand::before {
+            content: "®";
+
+            position: absolute;
+
+            right: -4px;
+            top: -13px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+
+            padding:
+                25px 0 20px;
         }
 
         .hero-subtitle {
+            margin-top: 13px;
+
             color: #b8cde1;
-            font-size: clamp(17px, 4vw, 25px);
+
+            font-size: 21px;
+
             font-weight: 500;
         }
 
-        /* ================= WELCOME CARD ================= */
+
+        /* =========================
+           WELCOME CARD
+        ========================= */
 
         .welcome-card {
             margin-top: 25px;
@@ -327,10 +524,14 @@
 
             text-align: center;
 
-            background: rgba(240,245,250,.94);
+            background:
+                rgba(240,245,250,.94);
+
             color: #071b31;
 
-            border: 5px solid #6ee7ff;
+            border:
+                5px solid #6ee7ff;
+
             border-radius: 42px;
 
             box-shadow:
@@ -341,23 +542,35 @@
         }
 
         .welcome-card h1 {
-            font-size: clamp(30px, 7vw, 48px);
+            font-size:
+                clamp(30px, 7vw, 48px);
+
             line-height: 1.6;
+
             font-weight: 900;
+
             margin-bottom: 25px;
         }
 
         .welcome-card p {
             color: #34465a;
-            font-size: clamp(16px, 4vw, 22px);
+
+            font-size:
+                clamp(16px, 4vw, 22px);
+
             line-height: 2;
         }
 
-        /* ================= BUTTONS ================= */
+
+        /* =========================
+           BUTTONS
+        ========================= */
 
         .hero-buttons {
             display: flex;
+
             justify-content: center;
+
             gap: 12px;
 
             flex-wrap: wrap;
@@ -373,8 +586,10 @@
             border-radius: 15px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
+
             gap: 9px;
 
             font-weight: 800;
@@ -388,30 +603,47 @@
 
         .btn-primary {
             color: white;
-            background: linear-gradient(135deg,#007bb5,#00bce9);
-            box-shadow: 0 7px 20px rgba(0,180,240,.25);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #007bb5,
+                    #00bce9
+                );
+
+            box-shadow:
+                0 7px 20px rgba(0,180,240,.25);
         }
 
         .btn-contact {
-            color: #fff;
-            background: linear-gradient(135deg,#24384e,#0b2139);
-            border: 1px solid rgba(255,255,255,.16);
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #24384e,
+                    #0b2139
+                );
+
+            border:
+                1px solid rgba(255,255,255,.16);
         }
 
-        /* ================= FEATURES ================= */
 
-        .section-title {
-            text-align: center;
-            margin: 45px 0 20px;
-
-            font-size: clamp(24px, 6vw, 34px);
-            font-weight: 900;
-        }
+        /* =========================
+           FEATURES
+           بدون عنوان مميزات الشركة
+        ========================= */
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
             gap: 12px;
+
+            margin-top: 30px;
         }
 
         .feature-card {
@@ -421,14 +653,19 @@
 
             text-align: center;
 
-            background: rgba(255,255,255,.09);
-            border: 1px solid rgba(255,255,255,.13);
+            background:
+                rgba(255,255,255,.09);
+
+            border:
+                1px solid rgba(255,255,255,.13);
+
             border-radius: 20px;
 
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
 
-            box-shadow: 0 10px 30px rgba(0,0,0,.12);
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.12);
         }
 
         .feature-icon {
@@ -443,26 +680,37 @@
             place-items: center;
 
             color: #75eaff;
-            background: rgba(0,210,255,.1);
+
+            background:
+                rgba(0,210,255,.1);
 
             font-size: 21px;
         }
 
         .feature-card h3 {
-            font-size: clamp(13px, 3.3vw, 18px);
+            font-size:
+                clamp(13px, 3.3vw, 18px);
+
             margin-bottom: 6px;
         }
 
         .feature-card p {
             color: #b9ccdd;
-            font-size: clamp(10px, 2.6vw, 14px);
+
+            font-size:
+                clamp(10px, 2.6vw, 14px);
+
             line-height: 1.7;
         }
 
-        /* ================= FOOTER ================= */
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            width: min(1100px, 94%);
+            width: min(1100px,94%);
+
             margin: 25px auto 0;
 
             padding:
@@ -472,24 +720,54 @@
             text-align: center;
 
             color: #a9c0d4;
+
             font-size: 13px;
         }
 
-        /* ================= MOBILE ================= */
 
-        @media (max-width: 420px) {
-            .topbar,
-            .nav-inner {
-                min-height: 68px;
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .brand-name {
+                font-size: 20px;
             }
 
-            .nav-inner {
-                padding: 7px 0;
+            .page-brand {
+                font-size: 42px;
             }
 
-            .brand {
+            .hero-subtitle {
                 font-size: 17px;
+            }
+
+            .welcome-card {
+                padding: 30px 16px;
+
+                border-radius: 32px;
+            }
+
+            .features-grid {
                 gap: 7px;
+            }
+
+            .feature-card {
+                padding: 15px 5px;
+
+                border-radius: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .page-brand {
+                font-size: 37px;
             }
 
             .logo-wrap {
@@ -501,221 +779,399 @@
                 width: 52px;
                 height: 52px;
             }
-
-            main {
-                padding-top: calc(80px + env(safe-area-inset-top));
-            }
-
-            .welcome-card {
-                padding: 30px 16px;
-                border-radius: 32px;
-            }
-
-            .features-grid {
-                gap: 7px;
-            }
-
-            .feature-card {
-                padding: 15px 5px;
-                border-radius: 15px;
-            }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
     <header class="topbar">
+
         <div class="nav-inner">
 
             <a href="index.html" class="brand">
-                <span class="brand-name">®HAyDenTra</span>
+
+                <span class="brand-name">
+                    HAyDenTra
+                </span>
 
                 <span class="logo-wrap">
                     <img src="logo.png" alt="HAyDenTra">
                 </span>
+
             </a>
 
-            <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="فتح القائمة">
+
                 <i class="fas fa-bars"></i>
+
             </button>
 
         </div>
+
     </header>
 
-    <!-- OVERLAY -->
-    <div class="overlay" id="overlay"></div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
+
+    <!-- OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay">
+    </div>
+
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar">
+
 
         <div class="sidebar-head">
 
+
             <div>
+
                 <div class="logo-wrap sidebar-logo">
-                    <img src="logo.png" alt="HAyDenTra">
+
+                    <img
+                        src="logo.png"
+                        alt="HAyDenTra">
+
                 </div>
 
-                <div class="sidebar-title">®HAyDenTra</div>
+
+                <div class="sidebar-title">
+                    HAyDenTra
+                </div>
+
             </div>
 
-            <button class="close-btn" id="closeBtn">
+
+            <button
+                class="close-btn"
+                id="closeBtn">
+
                 <i class="fas fa-xmark"></i>
+
             </button>
 
         </div>
 
+
+
         <nav class="side-links">
 
-            <a href="index.html" class="active">
+
+            <a
+                href="index.html"
+                class="active">
+
                 <i class="fas fa-house"></i>
-                <span>الرئيسية</span>
+
+                <span>
+                    الرئيسية
+                </span>
+
             </a>
+
 
             <a href="products.html">
+
                 <i class="fas fa-tooth"></i>
-                <span>المنتجات</span>
+
+                <span>
+                    المنتجات
+                </span>
+
             </a>
 
+
             <a href="contact.html">
+
                 <i class="fas fa-phone"></i>
-                <span>تواصل معنا</span>
+
+                <span>
+                    تواصل معنا
+                </span>
+
             </a>
+
 
         </nav>
 
     </aside>
 
-    <!-- MAIN -->
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
+
 
         <section class="hero">
 
-            <div class="logo-wrap hero-logo">
-                <img src="logo.png" alt="HAyDenTra Logo">
+
+            <div class="logo-wrap page-logo">
+
+                <img
+                    src="logo.png"
+                    alt="HAyDenTra Logo">
+
             </div>
 
-            <div class="hero-brand">®HAyDenTra</div>
+
+            <div class="page-brand">
+                HAyDenTra
+            </div>
+
 
             <div class="hero-subtitle">
+
                 Your Trusted Partner in Dental Solutions
+
             </div>
 
+
         </section>
+
+
+
+        <!-- WELCOME -->
 
         <section class="welcome-card">
 
+
             <h1>
+
                 مرحباً بكم في عالم<br>
                 مستلزمات الأسنان<br>
                 المتطورة
+
             </h1>
 
+
             <p>
+
                 نقدم لعيادتك أحدث الأجهزة والمواد الطبية
                 المعتمدة بأعلى معايير الجودة العالمية
                 وبأسعار تنافسية.
+
             </p>
+
 
             <div class="hero-buttons">
 
-                <a href="products.html" class="btn btn-primary">
+
+                <a
+                    href="products.html"
+                    class="btn btn-primary">
+
                     <i class="fas fa-box-open"></i>
+
                     استكشف المنتجات
+
                 </a>
 
-                <a href="contact.html" class="btn btn-contact">
+
+                <a
+                    href="contact.html"
+                    class="btn btn-contact">
+
                     <i class="fas fa-comments"></i>
+
                     تواصل معنا
+
                 </a>
+
 
             </div>
 
+
         </section>
 
-        <h2 class="section-title">
-            مميزات الشركة
-        </h2>
+
+
+        <!-- FEATURES -->
 
         <section class="features-grid">
 
+
             <article class="feature-card">
 
+
                 <div class="feature-icon">
+
                     <i class="fas fa-headset"></i>
+
                 </div>
 
-                <h3>خدمة العملاء</h3>
+
+                <h3>
+                    خدمة العملاء
+                </h3>
+
 
                 <p>
                     دعم ومتابعة لمساعدتك في اختيار المنتجات المناسبة.
                 </p>
 
+
             </article>
+
+
 
             <article class="feature-card">
 
+
                 <div class="feature-icon">
+
                     <i class="fas fa-truck-fast"></i>
+
                 </div>
 
-                <h3>توصيل سريع</h3>
+
+                <h3>
+                    توصيل سريع
+                </h3>
+
 
                 <p>
                     تجهيز وتسليم الطلبات بأسرع وقت ممكن.
                 </p>
 
+
             </article>
+
+
 
             <article class="feature-card">
 
+
                 <div class="feature-icon">
+
                     <i class="fas fa-award"></i>
+
                 </div>
 
-                <h3>جودة موثوقة</h3>
+
+                <h3>
+                    جودة موثوقة
+                </h3>
+
 
                 <p>
                     منتجات مختارة وفق معايير جودة عالية.
                 </p>
 
+
             </article>
+
 
         </section>
 
+
     </main>
 
+
+
     <footer>
+
         © 2026 HAyDenTra® — جميع الحقوق محفوظة
+
     </footer>
 
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script>
-        const menuBtn = document.getElementById("menuBtn");
-        const closeBtn = document.getElementById("closeBtn");
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const closeBtn =
+            document.getElementById("closeBtn");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const overlay =
+            document.getElementById("overlay");
+
 
         function openMenu() {
+
             sidebar.classList.add("active");
+
             overlay.classList.add("active");
+
             document.body.classList.add("menu-open");
+
         }
+
 
         function closeMenu() {
+
             sidebar.classList.remove("active");
+
             overlay.classList.remove("active");
+
             document.body.classList.remove("menu-open");
+
         }
 
-        menuBtn.addEventListener("click", openMenu);
-        closeBtn.addEventListener("click", closeMenu);
-        overlay.addEventListener("click", closeMenu);
 
-        document.querySelectorAll(".side-links a").forEach(link => {
-            link.addEventListener("click", closeMenu);
-        });
+        menuBtn.addEventListener(
+            "click",
+            openMenu
+        );
+
+
+        closeBtn.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        document
+            .querySelectorAll(".side-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+
     </script>
+
 
 </body>
 </html>
