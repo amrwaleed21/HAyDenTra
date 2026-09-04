@@ -57,24 +57,19 @@
             transition: opacity 0.4s ease;
         }
 
-        /* شريط علوي ثابت نهائياً وثابت تماماً بدون اختفاء مع تأثير الزجاج الـ Blur */
+        /* شريط علوي يتحرك مع الصفحة طبيعياً */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.7rem 1.2rem;
             background: rgba(8, 27, 51, 0.88);
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             z-index: 99999;
             border-bottom: 1px solid rgba(0, 210, 255, 0.35);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            transform: none !important;
-            transition: none !important;
         }
 
         .nav-logo-right {
@@ -246,7 +241,7 @@
 
         .contact-container {
             max-width: 600px;
-            margin: 7rem auto 2rem auto;
+            margin: 2.5rem auto;
             padding: 0 1.2rem;
         }
 
@@ -362,11 +357,11 @@
             <p class="contact-desc">نحن هنا دائماً للإجابة عن استفساراتكم وتلبية طلبات عياداتكم بأسرع وقت ممكن.</p>
             
             <div class="contact-methods">
-                <a href="https://wa.me/201224828849" target="_blank" class="contact-btn whatsapp-btn">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> مراسلة عبر الواتساب (01224828849)
+                <a href="https://wa.me/201223859088" target="_blank" class="contact-btn whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> مراسلة عبر الواتساب
                 </a>
-                <a href="tel:01224828849" class="contact-btn phone-btn">
-                    <i class="fa-solid fa-phone" style="font-size: 1.2rem; color: #00d2ff;"></i> اتصال هاتفي مباشر (01224828849)
+                <a href="tel:201224828849" class="contact-btn phone-btn">
+                    <i class="fa-solid fa-phone" style="font-size: 1.2rem; color: #00d2ff;"></i> اتصال هاتفي مباشر
                 </a>
             </div>
         </div>
