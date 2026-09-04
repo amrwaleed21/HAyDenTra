@@ -8,10 +8,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         * {
@@ -48,9 +51,7 @@
             color: inherit;
         }
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* NAVBAR */
 
         .topbar {
             position: fixed;
@@ -171,9 +172,7 @@
             transition: .25s;
         }
 
-        /* =========================
-           SIDEBAR
-        ========================= */
+        /* SIDEBAR */
 
         .overlay {
             position: fixed;
@@ -329,9 +328,7 @@
             border-color: rgba(80,220,255,.28);
         }
 
-        /* =========================
-           PAGE
-        ========================= */
+        /* PAGE */
 
         main {
             padding-top: 74px;
@@ -408,9 +405,7 @@
             font-size: 16px;
         }
 
-        /* =========================
-           FILTERS
-        ========================= */
+        /* FILTERS */
 
         .filters {
             width: min(100% - 30px,1000px);
@@ -499,9 +494,7 @@
             color: #fff;
         }
 
-        /* =========================
-           PRODUCTS
-        ========================= */
+        /* PRODUCTS */
 
         .products-grid {
             width: min(100% - 30px,1100px);
@@ -544,6 +537,14 @@
             background:
                 radial-gradient(circle,rgba(0,190,230,.12),transparent 55%),
                 #e5ebf1;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-image i {
@@ -619,6 +620,13 @@
             margin-left: 5px;
         }
 
+        .loading {
+            width: min(100% - 30px,1100px);
+            margin: 40px auto;
+            text-align: center;
+            color: #b8d0e2;
+        }
+
         .no-results {
             text-align: center;
 
@@ -643,9 +651,7 @@
             border-top: 1px solid rgba(255,255,255,.06);
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media(max-width:600px) {
 
@@ -705,6 +711,7 @@
 <body>
 
 <header class="topbar">
+
     <div class="nav-inner">
 
         <div class="nav-brand">
@@ -725,6 +732,7 @@
         </button>
 
     </div>
+
 </header>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
@@ -798,9 +806,19 @@
             >
 
             <select id="sortSelect" class="sort-select">
-                <option value="default">ترتيب المنتجات</option>
-                <option value="high">السعر: من الأعلى للأقل</option>
-                <option value="low">السعر: من الأقل للأعلى</option>
+
+                <option value="default">
+                    ترتيب المنتجات
+                </option>
+
+                <option value="high">
+                    السعر: من الأعلى للأقل
+                </option>
+
+                <option value="low">
+                    السعر: من الأقل للأعلى
+                </option>
+
             </select>
 
         </div>
@@ -829,191 +847,9 @@
 
     <section class="products-grid" id="productsGrid">
 
-        <article
-            class="product-card"
-            data-category="materials"
-            data-name="مادة كومبوزيت حشو تجميلي"
-            data-price="2450"
-        >
-
-            <div class="product-image">
-                <i class="fa-solid fa-tooth"></i>
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    مواد
-                </div>
-
-                <h2 class="product-name">
-                    مادة كومبوزيت حشو تجميلي
-                </h2>
-
-                <p class="product-description">
-                    مادة عالية الجودة للحشوات التجميلية
-                    بمظهر طبيعي وثبات ممتاز.
-                </p>
-
-                <div class="product-bottom">
-
-                    <span class="price">
-                        2,450 ج.م
-                    </span>
-
-                    <button
-                        class="order-btn"
-                        onclick="orderProduct('مادة كومبوزيت حشو تجميلي',2450)"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                        اطلب الآن
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article
-            class="product-card"
-            data-category="devices"
-            data-name="جهاز تسنين Light Cure"
-            data-price="4800"
-        >
-
-            <div class="product-image">
-                <i class="fa-solid fa-lightbulb"></i>
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    أجهزة
-                </div>
-
-                <h2 class="product-name">
-                    جهاز تسنين Light Cure
-                </h2>
-
-                <p class="product-description">
-                    جهاز ضوئي عملي وفعال للاستخدام
-                    في عيادات الأسنان.
-                </p>
-
-                <div class="product-bottom">
-
-                    <span class="price">
-                        4,800 ج.م
-                    </span>
-
-                    <button
-                        class="order-btn"
-                        onclick="orderProduct('جهاز تسنين Light Cure',4800)"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                        اطلب الآن
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article
-            class="product-card"
-            data-category="tools"
-            data-name="أدوات فحص الأسنان Diagnostic Set"
-            data-price="1200"
-        >
-
-            <div class="product-image">
-                <i class="fa-solid fa-toolbox"></i>
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    أدوات
-                </div>
-
-                <h2 class="product-name">
-                    أدوات فحص الأسنان
-                    (Diagnostic Set)
-                </h2>
-
-                <p class="product-description">
-                    طقم ستانلس ستيل عملي للفحص
-                    والاستخدام اليومي.
-                </p>
-
-                <div class="product-bottom">
-
-                    <span class="price">
-                        1,200 ج.م
-                    </span>
-
-                    <button
-                        class="order-btn"
-                        onclick="orderProduct('أدوات فحص الأسنان Diagnostic Set',1200)"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                        اطلب الآن
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article
-            class="product-card"
-            data-category="materials"
-            data-name="معجون تلميع الأسنان Prophy Paste"
-            data-price="650"
-        >
-
-            <div class="product-image">
-                <i class="fa-solid fa-pump-soap"></i>
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    مواد
-                </div>
-
-                <h2 class="product-name">
-                    معجون تلميع الأسنان
-                    (Prophy Paste)
-                </h2>
-
-                <p class="product-description">
-                    معجون تلميع بفعالية وأمان تام
-                    للاستخدام الاحترافي.
-                </p>
-
-                <div class="product-bottom">
-
-                    <span class="price">
-                        650 ج.م
-                    </span>
-
-                    <button
-                        class="order-btn"
-                        onclick="orderProduct('معجون تلميع الأسنان Prophy Paste',650)"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                        اطلب الآن
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
+        <div class="loading" id="loading">
+            جاري تحميل المنتجات...
+        </div>
 
     </section>
 
@@ -1029,118 +865,345 @@
 
 <script>
 
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+/* =========================
+   SUPABASE
+========================= */
 
-    function openMenu() {
-        sidebar.classList.add("active");
-        overlay.classList.add("active");
-        document.body.classList.add("menu-open");
+const SUPABASE_URL =
+    "https://hcvajgyjiflkcsdjvzib.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================
+   MENU
+========================= */
+
+const sidebar =
+    document.getElementById("sidebar");
+
+const overlay =
+    document.getElementById("overlay");
+
+function openMenu() {
+
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+
+    document.body.classList.add("menu-open");
+}
+
+function closeMenu() {
+
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+}
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+        closeMenu();
     }
 
-    function closeMenu() {
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.classList.remove("menu-open");
+});
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+const productsGrid =
+    document.getElementById("productsGrid");
+
+const loading =
+    document.getElementById("loading");
+
+const noResults =
+    document.getElementById("noResults");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const sortSelect =
+    document.getElementById("sortSelect");
+
+const chips =
+    document.querySelectorAll(".chip");
+
+let allProducts = [];
+
+let currentCategory = "all";
+
+
+async function loadProducts() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("products")
+            .select("*")
+            .order("created_at", {
+                ascending: false
+            });
+
+    if (error) {
+
+        console.error(error);
+
+        loading.innerHTML =
+            "حدث خطأ أثناء تحميل المنتجات.";
+
+        return;
     }
 
-    document.addEventListener("keydown", function(e) {
-        if (e.key === "Escape") {
-            closeMenu();
+    allProducts = data || [];
+
+    renderProducts(allProducts);
+}
+
+
+function renderProducts(products) {
+
+    productsGrid.innerHTML = "";
+
+    if (products.length === 0) {
+
+        noResults.style.display = "block";
+
+        return;
+    }
+
+    noResults.style.display = "none";
+
+
+    products.forEach(product => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "product-card";
+
+        let imageHTML = "";
+
+        if (product.image_url) {
+
+            imageHTML = `
+                <img
+                    src="${escapeHTML(product.image_url)}"
+                    alt="${escapeHTML(product.name)}"
+                    loading="lazy"
+                >
+            `;
+
+        } else {
+
+            let icon =
+                "fa-tooth";
+
+            if (product.category === "devices")
+                icon = "fa-lightbulb";
+
+            if (product.category === "tools")
+                icon = "fa-toolbox";
+
+            imageHTML = `
+                <i class="fa-solid ${icon}"></i>
+            `;
         }
+
+
+        let categoryName = "مواد";
+
+        if (product.category === "devices")
+            categoryName = "أجهزة";
+
+        if (product.category === "tools")
+            categoryName = "أدوات";
+
+
+        card.dataset.category =
+            product.category;
+
+        card.dataset.name =
+            product.name;
+
+        card.dataset.price =
+            product.price;
+
+
+        card.innerHTML = `
+
+            <div class="product-image">
+                ${imageHTML}
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${categoryName}
+                </div>
+
+                <h2 class="product-name">
+                    ${escapeHTML(product.name)}
+                </h2>
+
+                <p class="product-description">
+                    ${escapeHTML(product.description || "")}
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ${Number(product.price).toLocaleString("en-US")} ج.م
+                    </span>
+
+                    <button
+                        class="order-btn"
+                        onclick="orderProduct(
+                            ${JSON.stringify(product.name)},
+                            ${Number(product.price)}
+                        )"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        اطلب الآن
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        productsGrid.appendChild(card);
+
+    });
+
+    updateProducts();
+}
+
+
+/* =========================
+   SEARCH / FILTER / SORT
+========================= */
+
+function updateProducts() {
+
+    const searchText =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    let cards =
+        Array.from(
+            productsGrid.querySelectorAll(
+                ".product-card"
+            )
+        );
+
+    let visibleCards = [];
+
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name
+                .toLowerCase();
+
+        const category =
+            card.dataset.category;
+
+
+        const matchesSearch =
+            name.includes(searchText);
+
+        const matchesCategory =
+            currentCategory === "all" ||
+            category === currentCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            card.style.display = "";
+
+            visibleCards.push(card);
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
     });
 
 
-    /* =========================
-       PRODUCT FILTER
-    ========================= */
+    const sortValue =
+        sortSelect.value;
 
-    const searchInput = document.getElementById("searchInput");
-    const sortSelect = document.getElementById("sortSelect");
-    const productsGrid = document.getElementById("productsGrid");
-    const noResults = document.getElementById("noResults");
-    const chips = document.querySelectorAll(".chip");
 
-    let currentCategory = "all";
+    if (sortValue !== "default") {
 
-    function updateProducts() {
+        visibleCards.sort((a,b) => {
 
-        const searchText =
-            searchInput.value.trim().toLowerCase();
+            const priceA =
+                Number(a.dataset.price);
 
-        const cards =
-            Array.from(productsGrid.querySelectorAll(".product-card"));
+            const priceB =
+                Number(b.dataset.price);
 
-        let visibleCards = [];
 
-        cards.forEach(card => {
-
-            const name =
-                card.dataset.name.toLowerCase();
-
-            const category =
-                card.dataset.category;
-
-            const matchesSearch =
-                name.includes(searchText);
-
-            const matchesCategory =
-                currentCategory === "all" ||
-                category === currentCategory;
-
-            if (matchesSearch && matchesCategory) {
-                card.style.display = "";
-                visibleCards.push(card);
-            } else {
-                card.style.display = "none";
-            }
+            return sortValue === "high"
+                ? priceB - priceA
+                : priceA - priceB;
 
         });
 
-        const sortValue = sortSelect.value;
 
-        if (sortValue !== "default") {
+        visibleCards.forEach(card => {
 
-            visibleCards.sort((a,b) => {
+            productsGrid.appendChild(card);
 
-                const priceA =
-                    Number(a.dataset.price);
+        });
 
-                const priceB =
-                    Number(b.dataset.price);
-
-                return sortValue === "high"
-                    ? priceB - priceA
-                    : priceA - priceB;
-
-            });
-
-            visibleCards.forEach(card => {
-                productsGrid.appendChild(card);
-            });
-        }
-
-        noResults.style.display =
-            visibleCards.length === 0
-                ? "block"
-                : "none";
     }
 
 
-    searchInput.addEventListener(
-        "input",
-        updateProducts
-    );
-
-    sortSelect.addEventListener(
-        "change",
-        updateProducts
-    );
+    noResults.style.display =
+        visibleCards.length === 0
+            ? "block"
+            : "none";
+}
 
 
-    chips.forEach(chip => {
+searchInput.addEventListener(
+    "input",
+    updateProducts
+);
 
-        chip.addEventListener("click", function() {
+
+sortSelect.addEventListener(
+    "change",
+    updateProducts
+);
+
+
+chips.forEach(chip => {
+
+    chip.addEventListener(
+        "click",
+        function() {
 
             chips.forEach(c =>
                 c.classList.remove("active")
@@ -1152,26 +1215,52 @@
                 this.dataset.category;
 
             updateProducts();
-        });
 
-    });
+        }
+    );
+
+});
 
 
-    /* =========================
-       WHATSAPP
-    ========================= */
+/* =========================
+   WHATSAPP
+========================= */
 
-    function orderProduct(name, price) {
+function orderProduct(name, price) {
 
-        const message =
-            `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${price} ج.م`;
+    const message =
+        `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${price} ج.م`;
 
-        const url =
-            "https://wa.me/201223859088?text=" +
-            encodeURIComponent(message);
+    const url =
+        "https://wa.me/201223859088?text=" +
+        encodeURIComponent(message);
 
-        window.open(url, "_blank");
-    }
+    window.open(
+        url,
+        "_blank"
+    );
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* START */
+
+loadProducts();
 
 </script>
 
