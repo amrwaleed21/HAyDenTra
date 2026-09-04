@@ -1,51 +1,34 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <title>HAyDenTra® | المنتجات</title>
-
+    <title>المنتجات | HAyDenTra®</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
 
         * {
             box-sizing: border-box;
-
-            margin: 0;
-            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-
 
         html {
             min-height: 100%;
-
-            background: #061522;
+            background:
+                radial-gradient(circle at 50% 20%, #0b4e70, #062c45 45%, #031a2a 100%);
         }
 
-
         body {
+            margin: 0;
             min-height: 100dvh;
 
             font-family: "Cairo", sans-serif;
@@ -53,60 +36,31 @@
             color: white;
 
             background:
-                radial-gradient(
-                    circle at 50% 15%,
-                    rgba(0,180,255,.15),
-                    transparent 32%
-                ),
-                linear-gradient(
-                    180deg,
-                    #061522 0%,
-                    #07395a 55%,
-                    #06243a 100%
-                );
+                radial-gradient(circle at 50% 20%, #0b4e70, #062c45 45%, #031a2a 100%);
 
             overflow-x: hidden;
         }
-
 
         body.menu-open {
             overflow: hidden;
         }
 
-
-        a {
-            text-decoration: none;
-
-            color: inherit;
-        }
-
-
-        button,
-        input,
-        select {
-            font-family: inherit;
-        }
-
-
         /* ================= NAVBAR ================= */
 
         .topbar {
-
             position: fixed;
-
             top: 0;
-            right: 0;
             left: 0;
+            right: 0;
+
+            height: 76px;
 
             z-index: 1000;
 
-            min-height: 74px;
-
-            background:
-                rgba(5,22,42,.58);
+            background: rgba(3,24,40,0.68);
 
             border-bottom:
-                1px solid rgba(255,255,255,.13);
+                1px solid rgba(255,255,255,0.13);
 
             backdrop-filter:
                 blur(18px) saturate(160%);
@@ -115,217 +69,154 @@
                 blur(18px) saturate(160%);
 
             box-shadow:
-                0 8px 30px rgba(0,0,0,.25);
+                0 8px 30px rgba(0,0,0,0.25);
         }
 
-
-        .nav-inner {
-
-            width: min(1100px,94%);
-
-            min-height: 74px;
-
+        .nav-container {
+            width: min(1200px,94%);
+            height: 100%;
             margin: auto;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            padding: 8px 0;
+            direction: ltr;
         }
 
+        .menu-btn {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid rgba(255,255,255,0.25);
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 29px;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
         /* ================= BRAND ================= */
 
         .brand {
-
             display: flex;
-
             align-items: center;
-
-            gap: 10px;
-
-            direction: ltr;
-
-            font-size: 20px;
-
-            font-weight: 900;
+            gap: 12px;
+            direction: rtl;
         }
 
-
-        .brand-name {
-
-            position: relative;
-
-            display: inline-block;
-
-            direction: ltr;
-
-            white-space: nowrap;
-
-            font-size: 20px;
-
-            font-weight: 900;
-
-            line-height: 1;
-
-            letter-spacing: -.5px;
-        }
-
-
-        .brand-name::before {
-
-            content: "®";
-
-            position: absolute;
-
-            right: -2px;
-
-            top: -11px;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            line-height: 1;
-
-            color: white;
-        }
-
-
-        /* ================= LOGO ================= */
-
-        .logo-wrap {
-
-            width: 50px;
-            height: 50px;
-
-            flex-shrink: 0;
+        .logo-circle {
+            width: 62px;
+            height: 62px;
 
             border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
 
             background:
                 radial-gradient(
                     circle,
                     #fff 0%,
-                    #fff 58%,
-                    #f2fbff 76%,
+                    #fff 65%,
+                    #f2fbff 82%,
                     rgba(255,255,255,.75) 100%
                 );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             border:
                 1px solid rgba(255,255,255,.95);
 
             box-shadow:
-                0 0 9px rgba(255,255,255,.95),
-                0 0 24px rgba(0,229,255,.8),
-                0 0 45px rgba(0,229,255,.35);
+                0 0 10px rgba(255,255,255,.95),
+                0 0 25px rgba(0,229,255,.85),
+                0 0 48px rgba(0,229,255,.45);
         }
 
-
-        .logo-wrap img {
-
-            width: 72%;
-            height: 72%;
-
+        .logo-circle img {
+            width: 73%;
+            height: 73%;
             object-fit: contain;
         }
 
+        .brand-name {
+            position: relative;
+            display: inline-block;
 
-        /* ================= MENU ================= */
-
-        .menu-btn {
-
-            width: 54px;
-            height: 54px;
-
-            border-radius: 18px;
-
-            border:
-                1px solid rgba(255,255,255,.25);
-
-            background:
-                rgba(255,255,255,.08);
+            font-size: 27px;
+            font-weight: 900;
+            line-height: 1;
 
             color: white;
-
-            font-size: 29px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            cursor: pointer;
-
-            backdrop-filter: blur(12px);
-
-            -webkit-backdrop-filter: blur(12px);
         }
 
+        .brand-name .registered {
+            position: absolute;
 
-        /* ================= OVERLAY ================= */
+            top: -0.08em;
+            right: -0.38em;
+
+            font-size: .45em;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* ================= SIDEBAR ================= */
 
         .overlay {
-
             position: fixed;
-
             inset: 0;
 
             z-index: 1050;
 
-            background:
-                rgba(0,0,0,.42);
+            background: rgba(0,0,0,.42);
 
             backdrop-filter: blur(2px);
-
             -webkit-backdrop-filter: blur(2px);
 
             opacity: 0;
-
             visibility: hidden;
 
             transition: .3s ease;
         }
 
-
         .overlay.active {
-
             opacity: 1;
-
             visibility: visible;
         }
 
-
-        /* ================= SIDEBAR ================= */
-
         .sidebar {
-
             position: fixed;
 
             top: 0;
             right: 0;
 
-            z-index: 1100;
-
-            width: min(82%,350px);
-
+            width: min(350px,82%);
             height: 100dvh;
 
-            padding: 25px 20px;
+            z-index: 1100;
+
+            padding: 30px 20px;
 
             background:
-                rgba(7,29,53,.68);
+                rgba(5,28,48,.72);
 
             border-left:
-                1px solid rgba(255,255,255,.16);
+                1px solid rgba(255,255,255,.15);
 
             backdrop-filter:
                 blur(24px) saturate(160%);
@@ -334,10 +225,9 @@
                 blur(24px) saturate(160%);
 
             box-shadow:
-                -10px 0 40px rgba(0,0,0,.3);
+                -15px 0 45px rgba(0,0,0,.35);
 
-            transform:
-                translateX(105%);
+            transform: translateX(110%);
 
             transition:
                 transform .35s cubic-bezier(.4,0,.2,1);
@@ -345,56 +235,31 @@
             overflow-y: auto;
         }
 
-
         .sidebar.active {
-
-            transform:
-                translateX(0);
+            transform: translateX(0);
         }
 
-
-        .sidebar-head {
-
+        .sidebar-header {
             display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding-bottom: 20px;
-
-            margin-bottom: 15px;
-
-            border-bottom:
-                1px solid rgba(255,255,255,.12);
+            justify-content: center;
+            margin-bottom: 35px;
         }
 
-
-        .sidebar-logo {
-
-            width: 72px;
-            height: 72px;
+        .sidebar .logo-circle {
+            width: 82px;
+            height: 82px;
         }
 
+        .close-menu {
+            position: absolute;
 
-        .sidebar-title {
+            top: 18px;
+            left: 18px;
 
-            direction: ltr;
+            width: 42px;
+            height: 42px;
 
-            font-size: 17px;
-
-            font-weight: 800;
-
-            margin-top: 5px;
-        }
-
-
-        .close-btn {
-
-            width: 44px;
-            height: 44px;
-
-            border-radius: 14px;
+            border-radius: 50%;
 
             border:
                 1px solid rgba(255,255,255,.18);
@@ -404,1212 +269,741 @@
 
             color: white;
 
-            font-size: 22px;
+            font-size: 20px;
 
             cursor: pointer;
         }
 
-
-        .side-links {
-
+        .sidebar-links {
             display: flex;
-
             flex-direction: column;
-
-            gap: 10px;
+            gap: 12px;
         }
 
+        .sidebar-links a {
+            color: white;
+            text-decoration: none;
 
-        .side-links a {
+            padding: 15px 18px;
 
-            display: flex;
-
-            align-items: center;
-
-            gap: 14px;
-
-            padding: 15px;
-
-            border-radius: 15px;
-
-            background:
-                rgba(255,255,255,.07);
+            border-radius: 16px;
 
             border:
-                1px solid rgba(255,255,255,.08);
+                1px solid rgba(255,255,255,.10);
 
+            background:
+                rgba(255,255,255,.06);
+
+            font-size: 16px;
             font-weight: 700;
+
+            display: flex;
+            align-items: center;
+            gap: 13px;
 
             transition: .25s ease;
         }
 
-
-        .side-links a:hover,
-        .side-links a.active {
-
+        .sidebar-links a:hover {
             background:
-                rgba(0,200,255,.16);
+                rgba(0,210,255,.15);
 
             border-color:
-                rgba(0,220,255,.35);
-
-            transform:
-                translateX(-4px);
+                rgba(0,229,255,.35);
         }
-
-
-        .side-links i {
-
-            width: 25px;
-
-            text-align: center;
-
-            color: #75eaff;
-        }
-
 
         /* ================= MAIN ================= */
 
         main {
-
-            width: min(1100px,94%);
-
+            width: min(1200px,94%);
             margin: auto;
 
-            padding-top:
-                calc(100px + env(safe-area-inset-top));
-
-            padding-bottom:
-                calc(30px + env(safe-area-inset-bottom));
+            padding:
+                calc(76px + env(safe-area-inset-top) + 35px)
+                0
+                30px;
         }
-
 
         /* ================= HEADER ================= */
 
         .page-header {
-
             text-align: center;
-
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
+        .page-header h1 {
+            margin: 0;
 
-        .page-logo {
-
-            width: 100px;
-            height: 100px;
-
-            margin:
-                0 auto 15px;
-        }
-
-
-        .page-brand {
-
-            position: relative;
-
-            display: inline-block;
-
-            direction: ltr;
-
-            font-size: 42px;
-
-            line-height: 1;
-
+            font-size: clamp(27px,5vw,43px);
             font-weight: 900;
-
-            letter-spacing: -.8px;
-
-            text-shadow:
-                0 0 10px rgba(255,255,255,.8),
-                0 0 25px rgba(0,220,255,.5);
         }
-
-
-        .page-brand::before {
-
-            content: "®";
-
-            position: absolute;
-
-            right: -4px;
-
-            top: -13px;
-
-            font-size: 12px;
-
-            font-weight: 800;
-        }
-
 
         .page-header p {
+            margin: 8px 0 0;
 
-            margin-top: 13px;
+            color: #b8d0e0;
 
-            color: #b9cfe0;
-
-            font-size: 15px;
+            font-size: 16px;
         }
-
 
         /* ================= FILTERS ================= */
 
         .filters {
-
             padding: 18px;
+
+            border-radius: 22px;
 
             background:
                 rgba(255,255,255,.08);
 
             border:
-                1px solid rgba(255,255,255,.12);
+                1px solid rgba(255,255,255,.14);
 
-            border-radius: 22px;
+            backdrop-filter:
+                blur(16px);
 
-            backdrop-filter: blur(15px);
-
-            -webkit-backdrop-filter: blur(15px);
+            -webkit-backdrop-filter:
+                blur(16px);
 
             margin-bottom: 25px;
         }
 
-
-        .search-sort {
-
+        .filter-row {
             display: grid;
 
             grid-template-columns:
                 1fr 180px;
 
-            gap: 10px;
+            gap: 12px;
         }
 
-
         .search-box,
-        .sort-select {
-
+        .sort-box {
             width: 100%;
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            border-radius: 14px;
 
             padding: 13px 15px;
 
-            border-radius: 13px;
+            background:
+                rgba(0,0,0,.20);
+
+            color: white;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .search-box::placeholder {
+            color: #aac0cf;
+        }
+
+        .sort-box option {
+            color: #071b31;
+        }
+
+        .chips {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 13px;
+        }
+
+        .chip {
+            padding: 8px 15px;
+
+            border-radius: 999px;
 
             border:
                 1px solid rgba(255,255,255,.15);
 
             background:
-                rgba(255,255,255,.09);
-
-            color: white;
-
-            outline: none;
-        }
-
-
-        .search-box::placeholder {
-
-            color: #aabed0;
-        }
-
-
-        .sort-select option {
-
-            background: #102b43;
-
-            color: white;
-        }
-
-
-        .chips {
-
-            display: flex;
-
-            gap: 8px;
-
-            margin-top: 12px;
-
-            overflow-x: auto;
-
-            padding-bottom: 2px;
-        }
-
-
-        .chip {
-
-            flex-shrink: 0;
-
-            padding: 8px 15px;
-
-            border-radius: 30px;
-
-            border:
-                1px solid rgba(255,255,255,.14);
-
-            background:
                 rgba(255,255,255,.07);
 
-            color: #d7e5ef;
-
-            font-weight: 700;
+            color: white;
 
             cursor: pointer;
+
+            font-family: inherit;
+            font-weight: 700;
+
+            transition: .2s;
         }
 
+        .chip.active,
+        .chip:hover {
+            background:
+                #087fae;
 
-        .chip.active {
-
-            background: #087ea9;
-
-            border-color: #5fe4ff;
-
-            color: white;
+            border-color:
+                #51dfff;
         }
-
 
         /* ================= PRODUCTS ================= */
 
         .products-grid {
-
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit,minmax(250px,1fr));
+                repeat(auto-fit,minmax(260px,1fr));
 
-            gap: 17px;
+            gap: 18px;
         }
-
 
         .product-card {
-
             overflow: hidden;
 
-            background:
-                rgba(239,244,249,.96);
-
-            color: #102338;
-
-            border-radius: 22px;
-
-            border:
-                1px solid rgba(255,255,255,.8);
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,.15);
-
-            transition: .25s ease;
-        }
-
-
-        .product-card:hover {
-
-            transform:
-                translateY(-5px);
-
-            box-shadow:
-                0 18px 35px rgba(0,0,0,.23);
-        }
-
-
-        .product-image {
-
-            height: 175px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
+            border-radius: 24px;
 
             background:
-                radial-gradient(
-                    circle,
-                    #ffffff 0%,
-                    #e7eef4 70%
+                linear-gradient(
+                    145deg,
+                    rgba(239,244,249,.98),
+                    rgba(217,228,238,.98)
                 );
 
-            color: #17648d;
+            color: #071b31;
 
-            font-size: 65px;
+            border:
+                1px solid rgba(255,255,255,.65);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.20);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
         }
 
+        .product-card:hover {
+            transform: translateY(-5px);
 
-        .product-info {
-
-            padding: 18px;
+            box-shadow:
+                0 18px 38px rgba(0,0,0,.28);
         }
 
-
-        .product-category {
-
-            display: inline-block;
-
-            padding: 4px 10px;
-
-            border-radius: 20px;
-
-            background: #d9f5fc;
-
-            color: #08617e;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            margin-bottom: 8px;
-        }
-
-
-        .product-info h2 {
-
-            font-size: 18px;
-
-            line-height: 1.6;
-
-            margin-bottom: 8px;
-        }
-
-
-        .product-info p {
-
-            min-height: 50px;
-
-            color: #617386;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-
-            margin-bottom: 12px;
-        }
-
-
-        .product-bottom {
+        .product-image {
+            height: 190px;
 
             display: flex;
-
             align-items: center;
-
-            justify-content: space-between;
-
-            gap: 8px;
-        }
-
-
-        .price {
-
-            font-size: 18px;
-
-            font-weight: 900;
-
-            color: #0b4564;
-        }
-
-
-        /* ================= ORDER BUTTON ================= */
-
-        .order-btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
             justify-content: center;
 
+            background:
+                linear-gradient(
+                    135deg,
+                    #dce8f1,
+                    #eef4f8
+                );
+        }
+
+        .product-image i {
+            font-size: 65px;
+            color: #1c668a;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h2 {
+            margin: 0 0 8px;
+
+            font-size: 20px;
+            line-height: 1.5;
+
+            font-weight: 900;
+        }
+
+        .product-content p {
+            margin: 0 0 14px;
+
+            color: #526274;
+
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+        .price {
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        /* GRAY + NAVY ORDER BUTTON */
+
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             gap: 7px;
 
-            padding: 10px 13px;
+            padding: 10px 15px;
 
             border-radius: 12px;
 
+            text-decoration: none;
+
+            color: white;
+
             background:
                 linear-gradient(
                     135deg,
-                    #aab4be 0%,
-                    #e1e5e8 45%,
-                    #526579 100%
+                    #172c42,
+                    #66727f
                 );
-
-            color: #071d32;
 
             border:
-                1px solid #536b80;
+                1px solid rgba(7,27,49,.25);
 
-            font-weight: 900;
-
-            cursor: pointer;
-
-            box-shadow:
-                inset 0 1px rgba(255,255,255,.8),
-                0 4px 10px rgba(0,0,0,.13);
+            font-family: inherit;
+            font-weight: 800;
 
             transition: .2s ease;
+
+            cursor: pointer;
         }
 
-
         .order-btn:hover {
-
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
 
             background:
                 linear-gradient(
                     135deg,
-                    #c3cbd2,
-                    #edf0f2,
-                    #64778a
+                    #0d2238,
+                    #4e5c69
                 );
         }
 
-
-        .order-btn i {
-
-            color: #07506e;
-        }
-
-
         .no-results {
-
             display: none;
 
-            padding: 35px;
-
             text-align: center;
 
-            color: #bcd0df;
+            padding: 45px 15px;
+
+            color: #b9cfdd;
+
+            font-size: 18px;
         }
 
-
-        /* ================= FOOTER ================= */
-
         footer {
-
-            width: min(1100px,94%);
-
-            margin: 25px auto 0;
-
-            padding:
-                18px 10px
-                calc(18px + env(safe-area-inset-bottom));
-
             text-align: center;
 
-            color: #a9c0d4;
+            margin-top: 35px;
+            padding-bottom: 20px;
+
+            color: #9fb4c5;
 
             font-size: 13px;
         }
-
 
         /* ================= MOBILE ================= */
 
         @media(max-width:600px) {
 
-            .search-sort {
+            .brand-name {
+                font-size: 24px;
+            }
 
+            .logo-circle {
+                width: 58px;
+                height: 58px;
+            }
+
+            main {
+                width: 94%;
+            }
+
+            .filter-row {
                 grid-template-columns: 1fr;
             }
 
-
             .products-grid {
-
-                grid-template-columns:
-                    repeat(2,minmax(0,1fr));
-
-                gap: 10px;
+                grid-template-columns: 1fr;
             }
-
 
             .product-image {
-
-                height: 130px;
-
-                font-size: 48px;
+                height: 170px;
             }
-
-
-            .product-info {
-
-                padding: 12px;
-            }
-
-
-            .product-info h2 {
-
-                font-size: 14px;
-            }
-
-
-            .product-info p {
-
-                font-size: 11px;
-
-                min-height: 55px;
-            }
-
-
-            .price {
-
-                font-size: 14px;
-            }
-
-
-            .order-btn {
-
-                padding: 8px 9px;
-
-                font-size: 11px;
-            }
-
-
-            .page-brand {
-
-                font-size: 42px;
-            }
-
         }
 
+        @media(max-width:380px) {
 
-        @media(max-width:360px) {
-
-            .products-grid {
-
-                grid-template-columns: 1fr;
+            .brand-name {
+                font-size: 21px;
             }
 
-
-            .page-brand {
-
-                font-size: 37px;
+            .logo-circle {
+                width: 52px;
+                height: 52px;
             }
 
+            .product-content h2 {
+                font-size: 18px;
+            }
         }
 
     </style>
-
 </head>
 
-
 <body>
-
 
     <!-- NAVBAR -->
 
     <header class="topbar">
 
-        <div class="nav-inner">
+        <div class="nav-container">
 
-
-            <a
-                href="index.html"
-                class="brand">
-
-                <span class="brand-name">
-                    HAyDenTra
-                </span>
-
-
-                <span class="logo-wrap">
-
-                    <img
-                        src="logo.png"
-                        alt="HAyDenTra">
-
-                </span>
-
-            </a>
-
-
-            <button
-                class="menu-btn"
-                id="menuBtn">
-
-                <i class="fas fa-bars"></i>
-
+            <button class="menu-btn" onclick="openMenu()">
+                <i class="fa-solid fa-bars"></i>
             </button>
 
+            <div class="brand">
+
+                <div class="brand-name">
+                    HAyDenTra
+                    <span class="registered">®</span>
+                </div>
+
+                <div class="logo-circle">
+                    <img src="logo.png" alt="HAyDenTra Logo">
+                </div>
+
+            </div>
 
         </div>
 
     </header>
 
-
-
-    <!-- OVERLAY -->
-
-    <div
-        class="overlay"
-        id="overlay">
-    </div>
-
-
-
     <!-- SIDEBAR -->
 
-    <aside
-        class="sidebar"
-        id="sidebar">
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+    <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-head">
+        <button class="close-menu" onclick="closeMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
 
+        <div class="sidebar-header">
 
-            <div>
-
-                <div class="logo-wrap sidebar-logo">
-
-                    <img
-                        src="logo.png"
-                        alt="HAyDenTra">
-
-                </div>
-
-
-                <div class="sidebar-title">
-                    HAyDenTra
-                </div>
-
+            <div class="logo-circle">
+                <img src="logo.png" alt="HAyDenTra Logo">
             </div>
-
-
-            <button
-                class="close-btn"
-                id="closeBtn">
-
-                <i class="fas fa-xmark"></i>
-
-            </button>
-
 
         </div>
 
-
-
-        <nav class="side-links">
-
+        <nav class="sidebar-links">
 
             <a href="index.html">
-
-                <i class="fas fa-house"></i>
-
-                <span>
-                    الرئيسية
-                </span>
-
+                <i class="fa-solid fa-house"></i>
+                الرئيسية
             </a>
 
-
-            <a
-                href="products.html"
-                class="active">
-
-                <i class="fas fa-tooth"></i>
-
-                <span>
-                    المنتجات
-                </span>
-
+            <a href="products.html">
+                <i class="fa-solid fa-tooth"></i>
+                المنتجات
             </a>
-
 
             <a href="contact.html">
-
-                <i class="fas fa-phone"></i>
-
-                <span>
-                    تواصل معنا
-                </span>
-
+                <i class="fa-solid fa-phone"></i>
+                تواصل معنا
             </a>
-
 
         </nav>
 
-
     </aside>
-
-
 
     <!-- MAIN -->
 
     <main>
 
-
         <section class="page-header">
 
-
-            <div class="logo-wrap page-logo">
-
-                <img
-                    src="logo.png"
-                    alt="HAyDenTra">
-
-            </div>
-
-
-            <div class="page-brand">
-                HAyDenTra
-            </div>
-
+            <h1>
+                منتجات ومستلزمات الأسنان
+            </h1>
 
             <p>
-                مجموعة مختارة من المواد والأجهزة والأدوات الطبية
+                اختر ما يناسب عيادتك من منتجاتنا
             </p>
 
-
         </section>
-
-
 
         <!-- FILTERS -->
 
         <section class="filters">
 
-
-            <div class="search-sort">
-
+            <div class="filter-row">
 
                 <input
+                    type="text"
                     id="searchInput"
                     class="search-box"
-                    type="search"
-                    placeholder="ابحث عن منتج...">
+                    placeholder="ابحث عن منتج..."
+                >
 
-
-                <select
-                    id="sortSelect"
-                    class="sort-select">
-
+                <select id="sortSelect" class="sort-box">
 
                     <option value="default">
                         الترتيب الافتراضي
                     </option>
 
-
                     <option value="high">
                         السعر من الأعلى للأقل
                     </option>
-
 
                     <option value="low">
                         السعر من الأقل للأعلى
                     </option>
 
-
                 </select>
 
-
             </div>
-
-
 
             <div class="chips">
 
-
-                <button
-                    class="chip active"
-                    data-category="all">
-
+                <button class="chip active" data-category="all">
                     الكل
-
                 </button>
 
-
-                <button
-                    class="chip"
-                    data-category="materials">
-
+                <button class="chip" data-category="materials">
                     المواد
-
                 </button>
 
-
-                <button
-                    class="chip"
-                    data-category="devices">
-
+                <button class="chip" data-category="devices">
                     الأجهزة
-
                 </button>
 
-
-                <button
-                    class="chip"
-                    data-category="tools">
-
+                <button class="chip" data-category="tools">
                     الأدوات
-
                 </button>
-
 
             </div>
 
-
         </section>
-
-
 
         <!-- PRODUCTS -->
 
-        <section
-            class="products-grid"
-            id="productsGrid">
-
-
-            <!-- PRODUCT 1 -->
+        <section class="products-grid" id="productsGrid">
 
             <article
                 class="product-card"
-                data-category="materials"
                 data-name="مادة كومبوزيت حشو تجميلي"
-                data-price="2450">
-
+                data-category="materials"
+                data-price="2450"
+            >
 
                 <div class="product-image">
-
-                    <i class="fas fa-tooth"></i>
-
+                    <i class="fa-solid fa-tooth"></i>
                 </div>
 
-
-                <div class="product-info">
-
-
-                    <span class="product-category">
-                        مواد
-                    </span>
-
+                <div class="product-content">
 
                     <h2>
                         مادة كومبوزيت حشو تجميلي
                     </h2>
 
-
                     <p>
-                        مادة حشو تجميلي عالية الجودة
-                        للاستخدامات التجميلية والترميمية.
+                        مادة عالية الجودة للحشوات التجميلية
+                        بمظهر طبيعي ومتانة ممتازة.
                     </p>
-
 
                     <div class="product-bottom">
 
-
                         <span class="price">
-                            2450 ج.م
+                            2,450 ج.م
                         </span>
 
-
-                        <button
+                        <a
+                            href="#"
                             class="order-btn"
-                            onclick="orderProduct('مادة كومبوزيت حشو تجميلي',2450)">
-
-                            <i class="fab fa-whatsapp"></i>
-
+                            onclick="orderProduct('مادة كومبوزيت حشو تجميلي'); return false;"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
                             اطلب الآن
-
-                        </button>
-
+                        </a>
 
                     </div>
 
-
                 </div>
-
 
             </article>
 
-
-
-            <!-- PRODUCT 2 -->
-
             <article
                 class="product-card"
-                data-category="devices"
                 data-name="جهاز تسنين Light Cure"
-                data-price="4800">
-
+                data-category="devices"
+                data-price="4800"
+            >
 
                 <div class="product-image">
-
-                    <i class="fas fa-lightbulb"></i>
-
+                    <i class="fa-solid fa-lightbulb"></i>
                 </div>
 
-
-                <div class="product-info">
-
-
-                    <span class="product-category">
-                        أجهزة
-                    </span>
-
+                <div class="product-content">
 
                     <h2>
                         جهاز تسنين Light Cure
                     </h2>
 
-
                     <p>
-                        جهاز إضاءة عالي الكفاءة
-                        لتصلب مواد الحشو بسرعة وفعالية.
+                        جهاز ضوئي عملي وفعال لتصلب المواد
+                        المستخدمة في طب الأسنان.
                     </p>
-
 
                     <div class="product-bottom">
 
-
                         <span class="price">
-                            4800 ج.م
+                            4,800 ج.م
                         </span>
 
-
-                        <button
+                        <a
+                            href="#"
                             class="order-btn"
-                            onclick="orderProduct('جهاز تسنين Light Cure',4800)">
-
-                            <i class="fab fa-whatsapp"></i>
-
+                            onclick="orderProduct('جهاز تسنين Light Cure'); return false;"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
                             اطلب الآن
-
-                        </button>
-
+                        </a>
 
                     </div>
 
-
                 </div>
-
 
             </article>
 
-
-
-            <!-- PRODUCT 3 -->
-
             <article
                 class="product-card"
-                data-category="tools"
                 data-name="أدوات فحص الأسنان Diagnostic Set"
-                data-price="1200">
-
+                data-category="tools"
+                data-price="1200"
+            >
 
                 <div class="product-image">
-
-                    <i class="fas fa-screwdriver-wrench"></i>
-
+                    <i class="fa-solid fa-toolbox"></i>
                 </div>
 
-
-                <div class="product-info">
-
-
-                    <span class="product-category">
-                        أدوات
-                    </span>
-
+                <div class="product-content">
 
                     <h2>
                         أدوات فحص الأسنان
                         (Diagnostic Set)
                     </h2>
 
-
                     <p>
-                        طقم أدوات فحص احترافي
-                        من الستانلس ستيل للاستخدام اليومي.
+                        طقم ستانلس ستيل عملي ومناسب
+                        للفحص والاستخدام اليومي.
                     </p>
-
 
                     <div class="product-bottom">
 
-
                         <span class="price">
-                            1200 ج.م
+                            1,200 ج.م
                         </span>
 
-
-                        <button
+                        <a
+                            href="#"
                             class="order-btn"
-                            onclick="orderProduct('أدوات فحص الأسنان Diagnostic Set',1200)">
-
-                            <i class="fab fa-whatsapp"></i>
-
+                            onclick="orderProduct('أدوات فحص الأسنان Diagnostic Set'); return false;"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
                             اطلب الآن
-
-                        </button>
-
+                        </a>
 
                     </div>
 
-
                 </div>
-
 
             </article>
 
-
-
-            <!-- PRODUCT 4 -->
-
             <article
                 class="product-card"
-                data-category="materials"
                 data-name="معجون تلميع الأسنان Prophy Paste"
-                data-price="650">
-
+                data-category="materials"
+                data-price="650"
+            >
 
                 <div class="product-image">
-
-                    <i class="fas fa-pump-soap"></i>
-
+                    <i class="fa-solid fa-droplet"></i>
                 </div>
 
-
-                <div class="product-info">
-
-
-                    <span class="product-category">
-                        مواد
-                    </span>
-
+                <div class="product-content">
 
                     <h2>
                         معجون تلميع الأسنان
                         (Prophy Paste)
                     </h2>
 
-
                     <p>
-                        معجون تلميع احترافي لتنظيف
-                        وتلميع الأسنان بفعالية وأمان تام.
+                        معجون تلميع عالي الجودة لإزالة
+                        التصبغات وتحسين مظهر الأسنان.
                     </p>
 
-
                     <div class="product-bottom">
-
 
                         <span class="price">
                             650 ج.م
                         </span>
 
-
-                        <button
+                        <a
+                            href="#"
                             class="order-btn"
-                            onclick="orderProduct('معجون تلميع الأسنان Prophy Paste',650)">
-
-                            <i class="fab fa-whatsapp"></i>
-
+                            onclick="orderProduct('معجون تلميع الأسنان Prophy Paste'); return false;"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
                             اطلب الآن
-
-                        </button>
-
+                        </a>
 
                     </div>
 
-
                 </div>
-
 
             </article>
 
-
         </section>
 
-
-
-        <div
-            class="no-results"
-            id="noResults">
-
-            <i class="fas fa-box-open"></i>
-
-            <br><br>
-
-            لا توجد منتجات مطابقة للبحث.
-
+        <div class="no-results" id="noResults">
+            لم يتم العثور على منتجات مطابقة للبحث.
         </div>
 
+        <footer>
+            © 2026 HAyDenTra® — جميع الحقوق محفوظة
+        </footer>
 
     </main>
 
-
-
-    <footer>
-
-        © 2026 HAyDenTra® — جميع الحقوق محفوظة
-
-    </footer>
-
-
-
     <script>
 
-
-        /* ================= MENU ================= */
-
-        const menuBtn =
-            document.getElementById("menuBtn");
-
-        const closeBtn =
-            document.getElementById("closeBtn");
-
-        const sidebar =
-            document.getElementById("sidebar");
-
-        const overlay =
-            document.getElementById("overlay");
-
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
 
         function openMenu() {
-
             sidebar.classList.add("active");
-
             overlay.classList.add("active");
-
             document.body.classList.add("menu-open");
-
         }
-
 
         function closeMenu() {
-
             sidebar.classList.remove("active");
-
             overlay.classList.remove("active");
-
             document.body.classList.remove("menu-open");
-
         }
-
-
-        menuBtn.addEventListener(
-            "click",
-            openMenu
-        );
-
-
-        closeBtn.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        document
-            .querySelectorAll(".side-links a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
-
-            });
-
-
 
         /* ================= PRODUCTS ================= */
 
@@ -1619,183 +1013,143 @@
         const sortSelect =
             document.getElementById("sortSelect");
 
-        const chips =
-            document.querySelectorAll(".chip");
-
         const grid =
             document.getElementById("productsGrid");
 
         const noResults =
             document.getElementById("noResults");
 
+        const chips =
+            document.querySelectorAll(".chip");
 
-        let currentCategory = "all";
+        let selectedCategory = "all";
 
-
-        function filterProducts() {
+        function updateProducts() {
 
             const search =
-                searchInput.value
-                    .trim()
-                    .toLowerCase();
-
+                searchInput.value.trim().toLowerCase();
 
             const cards =
                 Array.from(
                     document.querySelectorAll(".product-card")
                 );
 
-
-            let visibleCount = 0;
-
-
             cards.forEach(card => {
-
 
                 const name =
                     card.dataset.name.toLowerCase();
 
-
                 const category =
                     card.dataset.category;
-
 
                 const matchesSearch =
                     name.includes(search);
 
-
                 const matchesCategory =
-                    currentCategory === "all" ||
-                    category === currentCategory;
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
 
-
-                if (
-                    matchesSearch &&
-                    matchesCategory
-                ) {
-
-                    card.style.display = "";
-
-                    visibleCount++;
-
-                } else {
-
-                    card.style.display = "none";
-
-                }
-
+                card.style.display =
+                    matchesSearch && matchesCategory
+                    ? ""
+                    : "none";
             });
 
+            let visibleCards =
+                cards.filter(card =>
+                    card.style.display !== "none"
+                );
+
+            const sort =
+                sortSelect.value;
+
+            if (sort === "high") {
+
+                visibleCards.sort(
+                    (a,b) =>
+                        Number(b.dataset.price) -
+                        Number(a.dataset.price)
+                );
+
+            }
+
+            if (sort === "low") {
+
+                visibleCards.sort(
+                    (a,b) =>
+                        Number(a.dataset.price) -
+                        Number(b.dataset.price)
+                );
+
+            }
+
+            visibleCards.forEach(card =>
+                grid.appendChild(card)
+            );
 
             noResults.style.display =
-                visibleCount === 0
-                    ? "block"
-                    : "none";
-
+                visibleCards.length === 0
+                ? "block"
+                : "none";
         }
-
 
         searchInput.addEventListener(
             "input",
-            filterProducts
+            updateProducts
         );
-
-
-        chips.forEach(chip => {
-
-            chip.addEventListener(
-                "click",
-                () => {
-
-
-                    chips.forEach(c =>
-                        c.classList.remove("active")
-                    );
-
-
-                    chip.classList.add("active");
-
-
-                    currentCategory =
-                        chip.dataset.category;
-
-
-                    filterProducts();
-
-                }
-            );
-
-        });
-
 
         sortSelect.addEventListener(
             "change",
-            () => {
-
-
-                const cards =
-                    Array.from(
-                        document.querySelectorAll(".product-card")
-                    );
-
-
-                const value =
-                    sortSelect.value;
-
-
-                if (value === "high") {
-
-                    cards.sort(
-                        (a,b) =>
-                            Number(b.dataset.price) -
-                            Number(a.dataset.price)
-                    );
-
-                }
-
-
-                else if (value === "low") {
-
-                    cards.sort(
-                        (a,b) =>
-                            Number(a.dataset.price) -
-                            Number(b.dataset.price)
-                    );
-
-                }
-
-
-                cards.forEach(card =>
-                    grid.appendChild(card)
-                );
-
-
-                filterProducts();
-
-            }
+            updateProducts
         );
 
+        chips.forEach(chip => {
+
+            chip.addEventListener("click", () => {
+
+                chips.forEach(c =>
+                    c.classList.remove("active")
+                );
+
+                chip.classList.add("active");
+
+                selectedCategory =
+                    chip.dataset.category;
+
+                updateProducts();
+            });
+
+        });
 
         /* ================= WHATSAPP ================= */
 
-        function orderProduct(name, price) {
+        function orderProduct(product) {
 
+            const phone =
+                "201223859088";
 
             const message =
-                `مرحباً، أريد طلب المنتج:%0A%0A` +
-                `المنتج: ${name}%0A` +
-                `السعر: ${price} ج.م`;
+                "مرحباً، أريد طلب المنتج: " +
+                product;
 
+            const url =
+                "https://wa.me/" +
+                phone +
+                "?text=" +
+                encodeURIComponent(message);
 
-            window.open(
-                "https://wa.me/201223859088?text=" + message,
-                "_blank"
-            );
-
+            window.open(url, "_blank");
         }
 
-    </script>
+        document.addEventListener("keydown", function(e) {
 
+            if (e.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
