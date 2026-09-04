@@ -1228,11 +1228,16 @@ chips.forEach(chip => {
 
 function orderProduct(name, price) {
 
+    const phone =
+        "201223859088";
+
     const message =
-        `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${price} ج.م`;
+        `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${Number(price).toLocaleString("en-US")} ج.م`;
 
     const url =
-        "https://wa.me/201223859088?text=" +
+        "https://wa.me/" +
+        phone +
+        "?text=" +
         encodeURIComponent(message);
 
     window.open(
