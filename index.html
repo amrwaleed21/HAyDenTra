@@ -1,533 +1,221 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAyDenTra® - الصفحة الرئيسية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>الصفحة الرئيسية - المنصة الرقمية</title>
     <style>
-        :root {
-            --primary-bg: #081b33;
-            --secondary-bg: #102d4f;
-            --accent-glow: #00d2ff;
-            --whatsapp-green: #25d366;
-            --text-dark: #081b33;
-            --text-main: #ffffff;
-            --text-muted: #b0c4de;
-        }
-
-        * {
+        /* إعادة ضبط عامة وتصميم الأساسيات */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html, body {
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            font-family: 'Cairo', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #081b33 0%, #102d4f 50%, #061527 100%);
-            opacity: 0;
-            animation: fadeInPage 0.5s ease forwards;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.8;
+            min-height: 300vh; /* لتمديد الصفحة وتجربة التمرير والثبات بدقة */
         }
 
-        body.sidebar-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-        }
-
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        body.fade-out {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        /* شريط علوي ثابت وثابت تماماً بدون اختفاء مع تأثير الزجاج المضيء والـ Blur */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.88);
+        /* تنسيق الشريط العلوي الثابت مع تدرج رصاصي وكحلي متداخل (Faded) */
+        .main-navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 99999;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.35);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(51, 65, 85, 0.92) 50%, rgba(100, 116, 139, 0.88) 100%);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            transform: none !important;
-            transition: none !important;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
         }
 
-        .nav-logo-right {
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
         }
 
-        .nav-logo-right img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
-        }
-
-        .nav-logo-right .brand-text {
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
-
-        .menu-btn {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            cursor: pointer;
+        .navbar-nav {
             display: flex;
+            gap: 30px;
+            list-style: none;
             align-items: center;
-            justify-content: center;
-            transition: 0.2s;
         }
 
-        .menu-btn:hover {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 78%;
-            height: 100vh;
-            height: 100dvh;
-            background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
-            backdrop-filter: blur(18px);
-            z-index: 100000;
-            padding: 1.5rem 1.2rem;
-            transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
-            overflow-y: auto;
-            border-left: 1px solid rgba(255, 255, 255, 0.25);
-        }
-
-        .sidebar.active {
-            right: 0;
-        }
-
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 99999;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .sidebar-logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .sidebar-logo-area img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-        }
-
-        .sidebar-logo-area .brand-text {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
-
-        .close-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 0, 0, 0.2);
-            border-color: rgba(255, 0, 0, 0.4);
-        }
-
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .sidebar-links a {
-            color: #fff;
+        .navbar-nav li a {
+            color: #cbd5e1;
             text-decoration: none;
             font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .navbar-nav li a:hover, 
+        .navbar-nav li a.active {
+            color: #ffffff;
+        }
+
+        .navbar-nav li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: #38bdf8;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav li a:hover::after,
+        .navbar-nav li a.active::after {
+            width: 100%;
+        }
+
+        .navbar-action {
+            display: flex;
+            align-items: center;
+        }
+
+        .direct-call-btn {
+            color: #ffffff;
+            text-decoration: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.98rem;
             font-weight: 700;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.85rem 1.1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .sidebar-links a:hover,
-        .sidebar-links a:active {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
-            padding-right: 1.3rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-        }
-
-        .hero-container {
-            max-width: 700px;
-            margin: 6.5rem auto 2rem auto;
-            padding: 1.5rem 1.2rem;
-            display: flex;
-            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
             align-items: center;
-            text-align: center;
-        }
-
-        .hero-logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-logo-box img {
-            width: 95px;
-            height: 95px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 4px;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
-            animation: pulseLogo 3s infinite ease-in-out;
-        }
-
-        @keyframes pulseLogo {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
-            50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.9); }
-        }
-
-        .hero-logo-box .brand-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
+            gap: 8px;
             direction: ltr;
-            unicode-bidi: embed;
         }
 
-        .hero-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-weight: 600;
+        .direct-call-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         }
 
-        /* بطاقة ترحيبية بتصميم أبيض غامق مائل للأزرق الهادئ (Faded Blue-White) */
-        .welcome-white-card {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            color: var(--text-dark);
-            width: 100%;
-            max-width: 500px;
+        /* هيكل المحتوى الرئيسي مع مسافة آمنة من الأعلى لكي لا يختفي تحت الشريط الثابت */
+        .page-container {
+            margin-top: 150px;
+            padding: 40px 8%;
+        }
+
+        .hero-section {
+            background: #ffffff;
             border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.8rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(0, 210, 255, 0.35);
+            padding: 60px 40px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 40px;
         }
 
-        .welcome-white-card h3 {
+        .hero-section h1 {
+            font-size: 2.8rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-section p {
             font-size: 1.2rem;
-            font-weight: 900;
-            color: #081b33;
-            margin-bottom: 0.5rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
         }
 
-        .welcome-white-card p {
-            font-size: 0.85rem;
-            color: #334155;
-            font-weight: 600;
-            line-height: 1.5;
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 2.2rem;
-        }
-
-        .action-main-btn {
-            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
-            color: #081b33;
-            border: 2px solid #00d2ff;
-            padding: 1rem 1.5rem;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
-            transition: 0.25s ease;
-        }
-
-        .action-main-btn:hover {
+        .content-card {
             background: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .action-secondary-btn {
-            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
-            color: #081b33;
-            border: 2px solid #25d366;
-            padding: 1rem 1.5rem;
+            padding: 35px;
             border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
-            transition: 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
         }
 
-        .action-secondary-btn:hover {
-            background: #ffffff;
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
-            transform: translateY(-2px);
+        .content-card:hover {
+            transform: translateY(-5px);
         }
 
-        .features-card-container {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            color: #081b33;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 20px;
-            padding: 1.3rem 1rem;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1.5rem;
-            border: 2px solid rgba(0, 210, 255, 0.3);
-        }
-
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            padding: 0 5px;
-        }
-
-        .feature-item i {
+        .content-card h3 {
             font-size: 1.4rem;
-            color: #0077b6;
-            margin-bottom: 0.4rem;
+            color: #1e293b;
+            margin-bottom: 15px;
         }
 
-        .feature-title {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: #081b33;
-            margin-bottom: 0.15rem;
-        }
-
-        .feature-desc {
-            font-size: 0.7rem;
-            color: #475569;
-            font-weight: 600;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .content-card p {
+            color: #64748b;
+            font-size: 1rem;
         }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo-right">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <span class="brand-text">HAyDenTra®</span>
-        </a>
-        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-    </nav>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="index.html" class="sidebar-logo-area">
-                <img src="logo.png" alt="HAyDenTra Logo">
-                <span class="brand-text">HAyDenTra®</span>
-            </a>
-            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+    <!-- الشريط العلوي الثابت والمستقر فوق كل العناصر -->
+    <header class="main-navbar">
+        <a href="index.html" class="navbar-brand">المنصة الرقمية</a>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="products.html">المنتجات</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+        <div class="navbar-action">
+            <a href="tel:201224828849" class="direct-call-btn">📞 +20 122 482 8849</a>
         </div>
-        <div class="sidebar-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="products.html">المنتجات والمستلزمات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </div>
-    </div>
+    </header>
 
-    <div class="hero-container">
-        <div class="hero-logo-box">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <h1 class="brand-title">HAyDenTra®</h1>
-        </div>
-        <p class="hero-subtitle">Your Trusted Partner in Dental Solutions</p>
+    <!-- محتوى الصفحة الرئيسية -->
+    <main class="page-container">
+        <section class="hero-section">
+            <h1>أهلاً بك في الصفحة الرئيسية</h1>
+            <p>تم تصميم هذا الشريط العلوي ليكون ثابتاً ومستقراً تماماً في أعلى الشاشة مهما قمت بالتمرير صعوداً أو هبوطاً.</p>
+        </section>
 
-        <div class="welcome-white-card">
-            <h3>مرحباً بكم في عالم مستلزمات الأسنان المتطورة</h3>
-            <p>نقدم لعيادتك أحدث الأجهزة والمواد الطبية المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.</p>
-        </div>
-
-        <div class="hero-actions">
-            <a href="products.html" class="action-main-btn">
-                <i class="fa-solid fa-box-open" style="color: #0077b6;"></i> عرض المنتجات والمستلزمات
-            </a>
-            <a href="https://wa.me/201224828849" target="_blank" class="action-secondary-btn">
-                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.3rem;"></i> تواصل معنا مباشرة
-            </a>
-        </div>
-
-        <div class="features-card-container">
-            <div class="feature-item">
-                <i class="fa-solid fa-headset"></i>
-                <span class="feature-title">خدمة العملاء</span>
-                <span class="feature-desc">تجاوب فوري</span>
+        <div class="section-grid">
+            <div class="content-card">
+                <h3>ميزة الثبات المطلق</h3>
+                <p>الشريط العلوي مبرمج بخاصية التثبيت المتقدمة مع تأثيرات الضبابية والتدرجات اللونية الفاخرة.</p>
             </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <span class="feature-title">توصيل سريع</span>
-                <span class="feature-desc">شحن مباشر</span>
+            <div class="content-card">
+                <h3>التواصل السريع</h3>
+                <p>رقم الاتصال المباشر مفعل وجاهز للعمل الفوري عبر الأجهزة الذكية والأجهزة المكتبية.</p>
             </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span class="feature-title">جودة عالية</span>
-                <span class="feature-desc">خامات معتمدة</span>
+            <div class="content-card">
+                <h3>تصميم متجاوب</h3>
+                <p>واجهات مستخدم عصرية متكاملة تتناسب بسلاسة مع كافة أحجام الشاشات والهواتف المحمولة.</p>
             </div>
         </div>
+    </main>
 
-        <footer>HAyDenTra® - Dental Supplies & Solutions</footer>
-    </div>
-
-    <script>
-        const openSidebar = document.getElementById('openSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-        function toggleSidebar(open) {
-            if (open) {
-                sidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                document.body.classList.add('sidebar-open');
-            } else {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
-        }
-
-        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
-
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => { window.location.href = href; }, 400);
-                }
-            });
-        });
-    </script>
 </body>
-
 </html>
