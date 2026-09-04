@@ -1,224 +1,683 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <title>HAyDenTra® | مستلزمات الأسنان</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        /* خلفية أزرق مع أبيض سايحين على بعض Fade */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            min-height: 100%;
+            background:
+                radial-gradient(circle at 50% 25%, rgba(0, 210, 255, .14), transparent 35%),
+                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
+        }
+
         body {
-            min-height: 100vh;
+            min-height: 100dvh;
             font-family: "Cairo", sans-serif;
-            color: #0f2d4a;
-            background: radial-gradient(circle at 50% 10%, #e0f2fe 0%, #f0f9ff 45%, #ffffff 100%);
-            background-attachment: fixed;
+            color: #fff;
+            background:
+                radial-gradient(circle at 50% 28%, rgba(0, 210, 255, .12), transparent 35%),
+                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
             overflow-x: hidden;
         }
-        body.menu-open { overflow: hidden; }
-        a { text-decoration: none; color: inherit; }
 
-        /* ========================= NAVBAR (Glassmorphism) ========================= */
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
         .topbar {
-            position: fixed; top: 0; right: 0; left: 0; height: 74px; z-index: 1000;
-            background: rgba(255, 255, 255, 0.65);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.08);
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 74px;
+            z-index: 1000;
+
+            background: rgba(4, 22, 40, .68);
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+
+            backdrop-filter: blur(18px) saturate(150%);
+            -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
         }
+
         .nav-inner {
-            height: 100%; max-width: 1200px; margin: auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; direction: ltr;
+            height: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            direction: ltr;
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; direction: ltr; }
-        
-        /* دائرة اللوجو خلفيتها بيضاء صريحة */
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            direction: ltr;
+        }
+
         .nav-logo-circle {
-            width: 50px; height: 50px; flex-shrink: 0; border-radius: 50%;
-            background: #ffffff;
-            display: grid; place-items: center;
-            border: 2px solid #e0f2fe;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15);
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+
+            border-radius: 50%;
+            background: #fff;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            box-shadow:
+                0 0 8px rgba(255,255,255,.9),
+                0 0 20px rgba(0,229,255,.65),
+                0 0 34px rgba(0,229,255,.25);
         }
-        .nav-logo-circle img { width: 75%; height: 75%; object-fit: contain; }
-        
+
+        .nav-logo-circle img {
+            width: 72%;
+            height: 72%;
+            object-fit: contain;
+        }
+
         .brand-name {
-            position: relative; display: inline-block;
-            font-family: 'Plus Jakarta Sans', Arial, sans-serif; font-weight: 900; font-size: 26px;
-            line-height: 1; color: #0284c7; white-space: nowrap;
+            position: relative;
+            display: inline-block;
+
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 27px;
+            line-height: 1;
+            color: #fff;
+            white-space: nowrap;
+
+            text-shadow:
+                0 0 5px rgba(255,255,255,.8),
+                0 0 13px rgba(0,229,255,.35);
         }
-        .brand-name .registered { position: absolute; top: -6px; right: -9px; font-size: 10px; font-weight: 800; color: #0369a1; }
+
+        .brand-name .registered {
+            position: absolute;
+            top: -7px;
+            right: -9px;
+
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 700;
+        }
 
         .menu-btn {
-            width: 52px; height: 52px; border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            color: #0284c7; font-size: 24px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-        }
-        .menu-btn:hover { background: #ffffff; transform: scale(1.05); color: #0369a1; }
+            width: 58px;
+            height: 58px;
 
-        /* ========================= SIDEBAR (Glass Blur) ========================= */
-        .overlay {
-            position: fixed; inset: 0; z-index: 1050;
-            background: rgba(15, 23, 42, 0.25);
-            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-            opacity: 0; visibility: hidden; transition: .3s ease;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,.22);
+
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            color: #fff;
+            font-size: 31px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 22px rgba(0,0,0,.18),
+                inset 0 1px rgba(255,255,255,.08);
+
+            transition: .25s;
         }
-        .overlay.active { opacity: 1; visibility: visible; }
+
+        .menu-btn:hover {
+            background: rgba(255,255,255,.14);
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1050;
+
+            background: rgba(0,0,0,.38);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .sidebar {
-            position: fixed; top: 0; right: 0; width: min(80%, 340px); height: 100dvh;
-            z-index: 1100; padding: 30px 22px;
-            background: rgba(255, 255, 255, 0.82);
-            border-left: 1px solid rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(25px) saturate(190%); -webkit-backdrop-filter: blur(25px) saturate(190%);
-            box-shadow: -15px 0 45px rgba(2, 132, 199, 0.12);
-            transform: translateX(110%); transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: fixed;
+            top: 0;
+            right: 0;
+
+            width: min(80%, 350px);
+            height: 100dvh;
+
+            z-index: 1100;
+
+            padding: 28px 20px;
+
+            background: rgba(6, 27, 48, .72);
+            border-left: 1px solid rgba(255,255,255,.15);
+
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+
+            box-shadow: -15px 0 45px rgba(0,0,0,.25);
+
+            transform: translateX(110%);
+            transition: transform .35s ease;
+
             overflow-y: auto;
         }
-        .sidebar.active { transform: translateX(0); }
-        .close-btn {
-            position: absolute; top: 20px; left: 20px; width: 40px; height: 40px;
-            border-radius: 50%; border: none; background: #e0f2fe; color: #0284c7;
-            font-size: 18px; cursor: pointer; transition: .2s;
+
+        .sidebar.active {
+            transform: translateX(0);
         }
-        .close-btn:hover { background: #bae6fd; }
-        
+
         .sidebar-header {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #e0f2fe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+
+            border-bottom: 1px solid rgba(255,255,255,.12);
         }
+
         .sidebar-logo {
-            width: 70px; height: 70px; border-radius: 50%; background: #ffffff;
-            display: grid; place-items: center; border: 2px solid #e0f2fe;
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+            width: 72px;
+            height: 72px;
+
+            border-radius: 50%;
+            background: #fff;
+
+            display: grid;
+            place-items: center;
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,.9),
+                0 0 25px rgba(0,229,255,.65);
         }
-        .sidebar-logo img { width: 75%; height: 75%; object-fit: contain; }
+
+        .sidebar-logo img {
+            width: 72%;
+            height: 72%;
+            object-fit: contain;
+        }
+
         .sidebar-brand {
-            margin-top: 12px; position: relative; font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 24px; font-weight: 900; color: #0284c7; direction: ltr;
+            margin-top: 13px;
+
+            position: relative;
+            display: inline-block;
+
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 900;
+            direction: ltr;
         }
-        .sidebar-brand .registered { position: absolute; top: -4px; right: -8px; font-size: 9px; }
+
+        .sidebar-brand .registered {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            font-size: 9px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.18);
+
+            background: rgba(255,255,255,.08);
+            color: #fff;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
 
         .side-link {
-            display: flex; align-items: center; gap: 14px; padding: 14px 18px; margin-bottom: 12px;
-            border-radius: 16px; background: rgba(255,255,255,0.6); border: 1px solid rgba(224, 242, 254, 0.8);
-            font-size: 16px; font-weight: 700; color: #0369a1; transition: .3s;
-        }
-        .side-link i { width: 24px; text-align: center; color: #0284c7; }
-        .side-link:hover, .side-link.active {
-            background: #0284c7; color: #ffffff; border-color: #0284c7;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25); transform: translateX(-4px);
-        }
-        .side-link:hover i, .side-link.active i { color: #ffffff; }
+            display: flex;
+            align-items: center;
+            gap: 14px;
 
-        /* ========================= MAIN CONTENT ========================= */
-        main { padding-top: 74px; }
-        .hero { width: min(100%, 850px); margin: 0 auto; padding: 50px 20px 20px; text-align: center; }
+            padding: 15px 16px;
+            margin-bottom: 10px;
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.08);
+
+            font-size: 16px;
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .side-link i {
+            width: 25px;
+            text-align: center;
+            color: #55ddff;
+        }
+
+        .side-link:hover,
+        .side-link.active {
+            background: rgba(0,210,255,.13);
+            border-color: rgba(80,220,255,.28);
+            transform: translateX(-3px);
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            padding-top: 74px;
+        }
+
+        .hero {
+            width: min(100%, 850px);
+            margin: 0 auto;
+            padding: 75px 18px 20px;
+            text-align: center;
+        }
+
+        .main-logo-circle {
+            width: 92px;
+            height: 92px;
+
+            margin: 0 auto;
+
+            border-radius: 50%;
+            background: #fff;
+
+            display: grid;
+            place-items: center;
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,.95),
+                0 0 26px rgba(0,229,255,.75),
+                0 0 48px rgba(0,229,255,.32);
+        }
+
+        .main-logo-circle img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .main-brand {
+            position: relative;
+            display: inline-block;
+
+            margin-top: 20px;
+
+            font-family: Arial, sans-serif;
+            font-size: 39px;
+            line-height: 1;
+            font-weight: 900;
+            direction: ltr;
+
+            color: #fff;
+
+            text-shadow:
+                0 0 6px rgba(255,255,255,.85),
+                0 0 17px rgba(0,229,255,.35);
+        }
+
+        .main-brand .registered {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+
+            font-size: 13px;
+            line-height: 1;
+        }
 
         .tagline {
-            display: inline-block; padding: 8px 20px; border-radius: 50px;
-            background: rgba(255, 255, 255, 0.8); border: 1px solid #bae6fd;
-            color: #0284c7; font-size: 15px; font-weight: 700;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08);
-            animation: popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            margin-top: 25px;
+
+            color: #bdd3e7;
+            font-size: 20px;
+            font-weight: 500;
         }
 
-        /* Pop-Up Animation للكروت */
+        /* =========================
+           WELCOME CARD
+        ========================= */
+
         .welcome-card {
-            width: min(100%, 680px); margin: 35px auto 0; padding: 40px 28px;
-            border-radius: 32px; background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 20px 50px rgba(14, 165, 233, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            animation: popUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .welcome-card h1 { font-size: clamp(28px, 6vw, 42px); line-height: 1.4; font-weight: 900; color: #0c4a6e; }
-        .welcome-card p { margin-top: 20px; font-size: clamp(15px, 3.2vw, 19px); line-height: 1.9; color: #334155; }
+            width: min(100%, 650px);
 
-        /* Buttons */
-        .hero-buttons { display: flex; justify-content: center; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+            margin: 45px auto 0;
+            padding: 38px 25px 42px;
+
+            border-radius: 38px;
+
+            background: rgba(239,244,249,.96);
+            color: #081d33;
+
+            border: 5px solid #63ddff;
+
+            box-shadow:
+                0 0 13px rgba(100,225,255,.85),
+                0 0 35px rgba(0,200,255,.25);
+        }
+
+        .welcome-card h1 {
+            font-size: clamp(31px, 7vw, 48px);
+            line-height: 1.55;
+            font-weight: 900;
+        }
+
+        .welcome-card p {
+            margin-top: 27px;
+
+            font-size: clamp(16px, 3.5vw, 21px);
+            line-height: 2;
+
+            color: #34485b;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            margin-top: 30px;
+
+            flex-wrap: wrap;
+        }
+
         .main-btn {
-            min-width: 180px; padding: 14px 26px; border-radius: 16px;
-            font-family: "Cairo", sans-serif; font-size: 16px; font-weight: 800;
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .products-btn {
-            color: #ffffff; background: linear-gradient(135deg, #0284c7, #0369a1);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.3);
-        }
-        .contact-btn {
-            color: #0369a1; background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #bae6fd; box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-        }
-        .main-btn:hover { transform: translateY(-3px) scale(1.02); }
+            min-width: 180px;
 
-        /* Features Grid */
+            padding: 13px 22px;
+
+            border-radius: 15px;
+
+            font-family: "Cairo", sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            transition: .25s;
+        }
+
+        .products-btn {
+            color: #fff;
+            background: linear-gradient(135deg,#009bc4,#0874a2);
+            box-shadow: 0 8px 20px rgba(0,160,210,.25);
+        }
+
+        .contact-btn {
+            color: #fff;
+            background: linear-gradient(135deg,#172d45,#304b63);
+            border: 1px solid rgba(255,255,255,.18);
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
         .features-grid {
-            width: min(100%, 850px); margin: 30px auto 50px; padding: 0 15px;
-            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+            width: min(100%, 850px);
+
+            margin: 28px auto 0;
+            padding: 0 12px 35px;
+
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
         }
+
         .feature-card {
-            padding: 22px 12px; text-align: center; border-radius: 22px;
-            background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.06);
-            opacity: 0; animation: popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: .3s ease;
+            padding: 17px 9px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background: rgba(8,32,54,.62);
+            border: 1px solid rgba(105,224,255,.17);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            box-shadow: 0 8px 25px rgba(0,0,0,.12);
         }
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); background: #ffffff; }
-        .feature-card i { font-size: 28px; color: #0284c7; margin-bottom: 10px; }
-        .feature-card h3 { font-size: clamp(13px, 3vw, 17px); font-weight: 800; color: #0f172a; }
-        .feature-card p { margin-top: 6px; font-size: clamp(10px, 2.4vw, 13px); line-height: 1.6; color: #64748b; }
+
+        .feature-card i {
+            font-size: 25px;
+            color: #5fe3ff;
+            margin-bottom: 8px;
+        }
+
+        .feature-card h3 {
+            font-size: clamp(11px, 3vw, 16px);
+            font-weight: 800;
+        }
+
+        .feature-card p {
+            margin-top: 5px;
+
+            font-size: clamp(8px, 2.4vw, 12px);
+            line-height: 1.6;
+
+            color: #b8ccdc;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            width: 100%; padding: 22px 15px; text-align: center; color: #64748b; font-size: 13px;
-            background: rgba(255, 255, 255, 0.6); border-top: 1px solid rgba(224, 242, 254, 0.8);
-            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 18px 15px 25px;
+
+            text-align: center;
+
+            color: #91a9bb;
+            font-size: 12px;
+
+            background: rgba(2,17,30,.32);
+            border-top: 1px solid rgba(255,255,255,.06);
         }
 
-        /* Smooth Pop-Up Keyframes */
-        @keyframes popUp {
-            0% { opacity: 0; transform: scale(0.88) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            .topbar {
+                height: 74px;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-logo-circle {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-name {
+                font-size: 25px;
+            }
+
+            .brand-name .registered {
+                top: -6px;
+                right: -8px;
+                font-size: 9px;
+            }
+
+            .menu-btn {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hero {
+                padding-top: 78px;
+            }
+
+            .main-logo-circle {
+                width: 88px;
+                height: 88px;
+            }
+
+            .main-brand {
+                font-size: 37px;
+                margin-top: 19px;
+            }
+
+            .tagline {
+                font-size: 18px;
+                margin-top: 23px;
+            }
+
+            .welcome-card {
+                margin-top: 42px;
+                padding: 35px 18px 38px;
+                border-radius: 35px;
+            }
+
+            .welcome-card p {
+                font-size: 16px;
+            }
+
+            .features-grid {
+                gap: 8px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .feature-card {
+                padding: 15px 6px;
+            }
         }
 
-        @media (max-width: 600px) {
-            .hero { padding-top: 40px; }
-            .welcome-card { margin-top: 25px; padding: 30px 18px; border-radius: 26px; }
-            .features-grid { gap: 10px; }
-            .feature-card { padding: 18px 8px; }
+        @media (max-width: 360px) {
+
+            .brand-name {
+                font-size: 22px;
+            }
+
+            .nav-logo-circle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .menu-btn {
+                width: 55px;
+                height: 55px;
+            }
+
+            .main-brand {
+                font-size: 33px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVBAR -->
     <header class="topbar">
         <div class="nav-inner">
+
             <div class="nav-brand">
                 <div class="nav-logo-circle">
                     <img src="logo.png" alt="HAyDenTra Logo">
                 </div>
+
                 <div class="brand-name">
-                    HAyDenTra <span class="registered">®</span>
+                    HAyDenTra
+                    <span class="registered">®</span>
                 </div>
             </div>
+
             <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
         </div>
     </header>
 
@@ -227,64 +686,113 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
+
         <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
             <i class="fa-solid fa-xmark"></i>
         </button>
+
         <div class="sidebar-header">
+
             <div class="sidebar-logo">
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
+
             <div class="sidebar-brand">
-                HAyDenTra <span class="registered">®</span>
+                HAyDenTra
+                <span class="registered">®</span>
             </div>
+
         </div>
+
         <a href="index.html" class="side-link active">
-            <i class="fa-solid fa-house"></i> <span>الرئيسية</span>
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
         </a>
+
         <a href="products.html" class="side-link">
-            <i class="fa-solid fa-tooth"></i> <span>المنتجات</span>
+            <i class="fa-solid fa-tooth"></i>
+            <span>المنتجات</span>
         </a>
+
         <a href="contact.html" class="side-link">
-            <i class="fa-solid fa-phone"></i> <span>تواصل معنا</span>
+            <i class="fa-solid fa-phone"></i>
+            <span>تواصل معنا</span>
         </a>
+
     </aside>
 
     <!-- MAIN -->
     <main>
+
         <section class="hero">
-            <span class="tagline">Your Trusted Partner in Dental Solutions</span>
-            
-            <div class="welcome-card">
-                <h1>مرحباً بكم في عالم<br>مستلزمات الأسنان المتطورة</h1>
-                <p>نقدم لعيادتك أحدث الأجهزة والمواد الطبية المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.</p>
-                <div class="hero-buttons">
-                    <a href="products.html" class="main-btn products-btn">
-                        <i class="fa-solid fa-box-open"></i> استكشف المنتجات
-                    </a>
-                    <a href="contact.html" class="main-btn contact-btn">
-                        <i class="fa-solid fa-comments"></i> تواصل معنا
-                    </a>
-                </div>
+
+            <div class="main-logo-circle">
+                <img src="logo.png" alt="HAyDenTra Logo">
             </div>
+
+            <div class="main-brand">
+                HAyDenTra
+                <span class="registered">®</span>
+            </div>
+
+            <p class="tagline">
+                Your Trusted Partner in Dental Solutions
+            </p>
+
+            <div class="welcome-card">
+
+                <h1>
+                    مرحباً بكم في عالم<br>
+                    مستلزمات الأسنان<br>
+                    المتطورة
+                </h1>
+
+                <p>
+                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
+                    المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="products.html" class="main-btn products-btn">
+                        <i class="fa-solid fa-box-open"></i>
+                        استكشف المنتجات
+                    </a>
+
+                    <a href="contact.html" class="main-btn contact-btn">
+                        <i class="fa-solid fa-comments"></i>
+                        تواصل معنا
+                    </a>
+
+                </div>
+
+            </div>
+
         </section>
 
+        <!-- الكروت فقط بدون عنوان مميزات الشركة -->
         <section class="features-grid">
+
             <div class="feature-card">
                 <i class="fa-solid fa-headset"></i>
                 <h3>خدمة العملاء</h3>
                 <p>دعم ومتابعة مستمرة</p>
             </div>
+
             <div class="feature-card">
                 <i class="fa-solid fa-truck-fast"></i>
                 <h3>توصيل سريع</h3>
                 <p>توصيل آمن وسريع</p>
             </div>
+
             <div class="feature-card">
                 <i class="fa-solid fa-certificate"></i>
                 <h3>جودة عالية</h3>
                 <p>منتجات موثوقة</p>
             </div>
+
         </section>
+
     </main>
 
     <footer>
@@ -308,8 +816,11 @@
         }
 
         document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") closeMenu();
+            if (e.key === "Escape") {
+                closeMenu();
+            }
         });
     </script>
+
 </body>
 </html>
