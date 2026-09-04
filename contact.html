@@ -1,407 +1,800 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAyDenTra® - تواصل معنا</title>
+
+    <title>تواصل معنا | HAyDenTra®</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
     <style>
-        :root {
-            --primary-bg: #081b33;
-            --secondary-bg: #102d4f;
-            --accent-glow: #00d2ff;
-            --whatsapp-green: #25d366;
-            --card-bg: linear-gradient(135deg, #e8f0f8 0%, #d4e3f0 100%);
-            --text-dark: #081b33;
-            --text-main: #ffffff;
-            --text-muted: #b0c4de;
-        }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            font-family: 'Cairo', sans-serif;
+
+        html {
+            min-height: 100%;
+            background: #061a2e;
+        }
+
+
+        body {
             min-height: 100vh;
+
+            font-family: "Cairo", sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(0,180,255,0.12),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #061827,
+                    #08294a,
+                    #061a2e
+                );
+
+            color: white;
+
             overflow-x: hidden;
         }
 
-        body {
-            background: linear-gradient(135deg, #081b33 0%, #102d4f 50%, #061527 100%);
-            opacity: 0;
-            animation: fadeInPage 0.5s ease forwards;
-        }
 
-        body.sidebar-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-        }
+        /* ================= NAVBAR ================= */
 
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        body.fade-out {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        /* شريط علوي يتحرك مع الصفحة طبيعياً */
         .navbar {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 72px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.88);
-            width: 100%;
+            justify-content: space-between;
+
+            padding: 8px 22px;
+
+            background: rgba(5,24,40,0.68);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(97,220,255,0.28);
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.28),
+                0 0 25px rgba(0,190,255,0.08);
+
             z-index: 99999;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.35);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
         }
 
-        .nav-logo-right {
+
+        .nav-logo {
             display: flex;
             align-items: center;
             gap: 10px;
+
+            color: white;
             text-decoration: none;
+
+            font-size: 20px;
+            font-weight: 800;
         }
 
-        .nav-logo-right img {
-            width: 38px;
-            height: 38px;
+
+        .logo-circle {
+            width: 48px;
+            height: 48px;
+
             border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
-        }
 
-        .nav-logo-right .brand-text {
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
+            background: white;
 
-        .menu-btn {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            cursor: pointer;
+            padding: 5px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s;
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,0.9),
+                0 0 25px rgba(0,220,255,0.8),
+                0 0 45px rgba(0,200,255,0.35);
         }
+
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+        }
+
+
+        .menu-btn {
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.09);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.25s;
+        }
+
 
         .menu-btn:hover {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
+            background: rgba(0,200,255,0.18);
+            transform: scale(1.05);
         }
 
-        .sidebar {
+
+        /* ================= SIDEBAR ================= */
+
+        .overlay {
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 78%;
-            height: 100vh;
-            height: 100dvh;
-            background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
-            backdrop-filter: blur(18px);
-            z-index: 100000;
-            padding: 1.5rem 1.2rem;
-            transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
-            overflow-y: auto;
-            border-left: 1px solid rgba(255, 255, 255, 0.25);
-        }
+            inset: 0;
 
-        .sidebar.active {
-            right: 0;
-        }
+            background: rgba(0,0,0,0.45);
 
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 99999;
+            backdrop-filter: blur(4px);
+
             opacity: 0;
             visibility: hidden;
-            transition: 0.3s ease;
+
+            transition: 0.3s;
+
+            z-index: 100000;
         }
 
-        .sidebar-overlay.active {
+
+        .overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
+
+        .sidebar {
+            position: fixed;
+
+            top: 10px;
+            right: 10px;
+
+            width: min(340px, calc(100% - 20px));
+            height: calc(100vh - 20px);
+
+            padding: 25px 18px;
+
+            background: rgba(6,28,48,0.78);
+
+            border: 1px solid rgba(111,224,255,0.3);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                -15px 0 50px rgba(0,0,0,0.4),
+                0 0 35px rgba(0,190,255,0.12);
+
+            transform: translateX(120%);
+
+            transition: transform 0.35s ease;
+
+            z-index: 100001;
+        }
+
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+
         .sidebar-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
+            justify-content: space-between;
+
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
 
-        .sidebar-logo-area {
+
+        .sidebar-brand {
             display: flex;
             align-items: center;
-            gap: 8px;
-            text-decoration: none;
+            gap: 10px;
+
+            font-weight: 800;
         }
 
-        .sidebar-logo-area img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+
+        .sidebar .logo-circle {
+            width: 52px;
+            height: 52px;
         }
 
-        .sidebar-logo-area .brand-text {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
 
         .close-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            font-size: 1.2rem;
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.08);
+
+            color: white;
+
+            font-size: 20px;
+
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
         }
 
-        .close-btn:hover {
-            background: rgba(255, 0, 0, 0.2);
-            border-color: rgba(255, 0, 0, 0.4);
-        }
 
         .sidebar-links {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+
+            gap: 12px;
         }
+
 
         .sidebar-links a {
-            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 15px 17px;
+
+            color: white;
             text-decoration: none;
-            font-size: 1.05rem;
+
+            background: rgba(255,255,255,0.07);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 15px;
+
+            font-size: 16px;
             font-weight: 700;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.85rem 1.1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
+
+            transition: 0.25s;
         }
+
+
+        .sidebar-links a i {
+            width: 28px;
+
+            text-align: center;
+
+            color: #48dfff;
+        }
+
 
         .sidebar-links a:hover,
-        .sidebar-links a:active {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
-            padding-right: 1.3rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        .sidebar-links a.active {
+            background: rgba(0,194,255,0.15);
+
+            border-color: rgba(73,220,255,0.4);
+
+            transform: translateX(-4px);
         }
 
-        .contact-container {
-            max-width: 600px;
-            margin: 2.5rem auto;
-            padding: 0 1.2rem;
-        }
 
-        .contact-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2.5rem 1.5rem;
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            color: var(--text-dark);
-        }
+        /* ================= MAIN ================= */
 
-        .contact-title {
-            font-size: 1.6rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            color: #081b33;
-        }
+        main {
+            min-height: 100vh;
 
-        .contact-desc {
-            font-size: 0.95rem;
-            color: #334155;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+            padding:
+                120px
+                20px
+                45px;
 
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .contact-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            text-decoration: none;
-            padding: 1.1rem;
-            border-radius: 16px;
-            font-size: 1.05rem;
+        }
+
+
+        .contact-container {
+            width: min(850px, 100%);
+
+            text-align: center;
+        }
+
+
+        .contact-logo {
+            width: 135px;
+            height: 135px;
+
+            margin: 0 auto 20px;
+
+            padding: 10px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 0 18px white,
+                0 0 45px rgba(0,220,255,0.8),
+                0 0 75px rgba(0,190,255,0.3);
+        }
+
+
+        .contact-logo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+        }
+
+
+        h1 {
+            font-size: clamp(30px, 7vw, 45px);
+
             font-weight: 900;
+
+            margin-bottom: 10px;
+        }
+
+
+        .subtitle {
+            color: #b7cce0;
+
+            font-size: 17px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .contact-card {
+            background: rgba(240,245,250,0.96);
+
+            color: #071b31;
+
+            border-radius: 28px;
+
+            padding: 35px 25px;
+
+            border: 2px solid rgba(57,216,255,0.65);
+
+            box-shadow:
+                0 15px 50px rgba(0,0,0,0.25);
+        }
+
+
+        .contact-card h2 {
+            font-size: 27px;
+
+            font-weight: 900;
+
+            margin-bottom: 25px;
+        }
+
+
+        .contact-buttons {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .contact-btn {
+            min-height: 95px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 13px;
+
+            border-radius: 20px;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e2e6ea,
+                    #b5bdc5
+                );
+
+            color: #071b31;
+
+            border: 2px solid #18354f;
+
+            box-shadow:
+                0 8px 22px rgba(0,0,0,0.18),
+                inset 0 1px 0 white;
+
             transition: 0.25s;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .whatsapp-btn {
-            background: #25d366;
-            color: #fff;
-            border: 2px solid #20ba5a;
+
+        .contact-btn:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 28px rgba(0,0,0,0.25);
         }
 
-        .whatsapp-btn:hover {
-            background: #20ba5a;
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
-            transform: translateY(-2px);
+
+        .contact-btn.whatsapp {
+            border-color: #22c96b;
         }
 
-        .phone-btn {
-            background: #081b33;
-            color: #ffffff;
-            border: 2px solid #00d2ff;
+
+        .contact-btn.whatsapp i {
+            color: #19bd60;
+            font-size: 30px;
         }
 
-        .phone-btn:hover {
-            background: #102d4f;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
-            transform: translateY(-2px);
+
+        .contact-btn.phone i {
+            color: #078fc5;
+            font-size: 27px;
         }
+
 
         footer {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 3rem;
+            margin-top: 30px;
+
+            color: #8da7bd;
+
+            font-size: 13px;
         }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: 66px;
+
+                padding: 7px 14px;
+            }
+
+
+            .nav-logo {
+                font-size: 16px;
+            }
+
+
+            .nav-logo .logo-circle {
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .menu-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+
+            main {
+                padding:
+                    100px
+                    14px
+                    30px;
+            }
+
+
+            .contact-logo {
+                width: 120px;
+                height: 120px;
+            }
+
+
+            .contact-card {
+                padding: 28px 16px;
+            }
+
+
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-btn {
+                min-height: 85px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo-right">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <span class="brand-text">HAyDenTra®</span>
-        </a>
-        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-    </nav>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="index.html" class="sidebar-logo-area">
-                <img src="logo.png" alt="HAyDenTra Logo">
-                <span class="brand-text">HAyDenTra®</span>
-            </a>
-            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="sidebar-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="products.html">المنتجات والمستلزمات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </div>
-    </div>
+    <!-- ================= NAVBAR ================= -->
 
-    <div class="contact-container">
-        <div class="contact-card">
-            <h1 class="contact-title">تواصل معنا</h1>
-            <p class="contact-desc">نحن هنا دائماً للإجابة عن استفساراتكم وتلبية طلبات عياداتكم بأسرع وقت ممكن.</p>
-            
-            <div class="contact-methods">
-                <a href="https://wa.me/201223859088" target="_blank" class="contact-btn whatsapp-btn">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> مراسلة عبر الواتساب
-                </a>
-                <a href="tel:201224828849" class="contact-btn phone-btn">
-                    <i class="fa-solid fa-phone" style="font-size: 1.2rem; color: #00d2ff;"></i> اتصال هاتفي مباشر
-                </a>
+    <header class="navbar">
+
+        <a href="index.html" class="nav-logo">
+
+            <div class="logo-circle">
+
+                <img src="logo.png" alt="HAyDenTra">
+
             </div>
-        </div>
-    </div>
 
-    <footer>HAyDenTra® - Dental Supplies & Solutions © 2026</footer>
+            <span>HAyDenTra®</span>
+
+        </a>
+
+
+        <button class="menu-btn" id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="overlay" id="overlay"></div>
+
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-brand">
+
+                <div class="logo-circle">
+
+                    <img src="logo.png" alt="HAyDenTra">
+
+                </div>
+
+                <span>HAyDenTra®</span>
+
+            </div>
+
+
+            <button class="close-btn" id="closeBtn">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-links">
+
+            <a href="index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>الرئيسية</span>
+
+            </a>
+
+
+            <a href="products.html">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <span>المنتجات والمستلزمات</span>
+
+            </a>
+
+
+            <a href="contact.html" class="active">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>تواصل معنا</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <div class="contact-container">
+
+
+            <div class="contact-logo">
+
+                <img src="logo.png" alt="HAyDenTra">
+
+            </div>
+
+
+            <h1>
+                تواصل معنا
+            </h1>
+
+
+            <p class="subtitle">
+                نحن جاهزون لمساعدتك والإجابة عن جميع استفساراتك
+            </p>
+
+
+            <section class="contact-card">
+
+                <h2>
+                    اختر طريقة التواصل المناسبة
+                </h2>
+
+
+                <div class="contact-buttons">
+
+
+                    <!-- WhatsApp -->
+
+                    <a
+                        class="contact-btn whatsapp"
+                        href="https://wa.me/201223859088"
+                        target="_blank"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        <span>
+                            تواصل عبر واتساب
+                        </span>
+
+                    </a>
+
+
+                    <!-- Phone -->
+
+                    <a
+                        class="contact-btn phone"
+                        href="tel:201224828849"
+                    >
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <span>
+                            اتصل بنا
+                        </span>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                © 2026 HAyDenTra® — جميع الحقوق محفوظة
+            </footer>
+
+        </div>
+
+    </main>
+
 
     <script>
-        const openSidebar = document.getElementById('openSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-        function toggleSidebar(open) {
-            if (open) {
-                sidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                document.body.classList.add('sidebar-open');
-            } else {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const closeBtn =
+            document.getElementById("closeBtn");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const overlay =
+            document.getElementById("overlay");
+
+
+        function openMenu() {
+
+            sidebar.classList.add("active");
+
+            overlay.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
         }
 
-        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
 
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('tel:') && !href.startsWith('#')) {
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => { window.location.href = href; }, 400);
-                }
-            });
+        function closeMenu() {
+
+            sidebar.classList.remove("active");
+
+            overlay.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        menuBtn.addEventListener(
+            "click",
+            openMenu
+        );
+
+
+        closeBtn.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        document.querySelectorAll(".sidebar a").forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
         });
-    </script>
-</body>
 
+    </script>
+
+</body>
 </html>
