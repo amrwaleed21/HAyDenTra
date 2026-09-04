@@ -1,30 +1,54 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>HAyDenTra® | تواصل معنا</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <style>
+
         * {
+
             box-sizing: border-box;
+
             margin: 0;
             padding: 0;
         }
 
+
         html {
+
             min-height: 100%;
+
             background: #061522;
         }
 
+
         body {
+
             min-height: 100dvh;
 
             font-family: "Cairo", sans-serif;
@@ -47,27 +71,43 @@
             overflow-x: hidden;
         }
 
+
         body.menu-open {
+
             overflow: hidden;
         }
 
+
         a {
+
             color: inherit;
+
             text-decoration: none;
         }
 
-        /* NAVBAR */
+
+        button {
+
+            font-family: inherit;
+        }
+
+
+        /* ================= NAVBAR ================= */
 
         .topbar {
+
             position: fixed;
+
             top: 0;
             right: 0;
             left: 0;
+
             z-index: 1000;
 
             min-height: 74px;
 
-            background: rgba(5,22,42,.58);
+            background:
+                rgba(5,22,42,.58);
 
             border-bottom:
                 1px solid rgba(255,255,255,.13);
@@ -82,7 +122,9 @@
                 0 8px 30px rgba(0,0,0,.25);
         }
 
+
         .nav-inner {
+
             width: min(1100px,94%);
 
             min-height: 74px;
@@ -90,33 +132,86 @@
             margin: auto;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding: 8px 0;
         }
 
+
+        /* ================= BRAND ================= */
+
         .brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
 
+            direction: ltr;
+
             font-size: 20px;
+
             font-weight: 900;
         }
 
+
         .brand-name {
+
+            position: relative;
+
+            display: inline-block;
+
             direction: ltr;
+
             white-space: nowrap;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -.5px;
         }
 
+
+        .brand-name::before {
+
+            content: "®";
+
+            position: absolute;
+
+            right: -2px;
+
+            top: -11px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            line-height: 1;
+
+            color: white;
+        }
+
+
+        /* ================= LOGO ================= */
+
         .logo-wrap {
+
             width: 50px;
             height: 50px;
+
+            flex-shrink: 0;
 
             border-radius: 50%;
 
             display: grid;
+
             place-items: center;
 
             background:
@@ -128,7 +223,8 @@
                     rgba(255,255,255,.75) 100%
                 );
 
-            border: 1px solid rgba(255,255,255,.95);
+            border:
+                1px solid rgba(255,255,255,.95);
 
             box-shadow:
                 0 0 9px rgba(255,255,255,.95),
@@ -136,60 +232,86 @@
                 0 0 45px rgba(0,229,255,.35);
         }
 
+
         .logo-wrap img {
+
             width: 72%;
             height: 72%;
+
             object-fit: contain;
         }
 
+
+        /* ================= MENU ================= */
+
         .menu-btn {
+
             width: 54px;
             height: 54px;
 
             border-radius: 18px;
 
-            border: 1px solid rgba(255,255,255,.25);
+            border:
+                1px solid rgba(255,255,255,.25);
 
-            background: rgba(255,255,255,.08);
+            background:
+                rgba(255,255,255,.08);
 
             color: white;
 
             font-size: 29px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             cursor: pointer;
 
             backdrop-filter: blur(12px);
+
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* SIDEBAR */
+
+        /* ================= OVERLAY ================= */
 
         .overlay {
+
             position: fixed;
+
             inset: 0;
+
             z-index: 1050;
 
-            background: rgba(0,0,0,.42);
+            background:
+                rgba(0,0,0,.42);
 
             backdrop-filter: blur(2px);
+
             -webkit-backdrop-filter: blur(2px);
 
             opacity: 0;
+
             visibility: hidden;
 
             transition: .3s ease;
         }
 
+
         .overlay.active {
+
             opacity: 1;
+
             visibility: visible;
         }
 
+
+        /* ================= SIDEBAR ================= */
+
         .sidebar {
+
             position: fixed;
 
             top: 0;
@@ -198,11 +320,13 @@
             z-index: 1100;
 
             width: min(82%,350px);
+
             height: 100dvh;
 
             padding: 25px 20px;
 
-            background: rgba(7,29,53,.68);
+            background:
+                rgba(7,29,53,.68);
 
             border-left:
                 1px solid rgba(255,255,255,.16);
@@ -216,7 +340,8 @@
             box-shadow:
                 -10px 0 40px rgba(0,0,0,.3);
 
-            transform: translateX(105%);
+            transform:
+                translateX(105%);
 
             transition:
                 transform .35s cubic-bezier(.4,0,.2,1);
@@ -224,41 +349,59 @@
             overflow-y: auto;
         }
 
+
         .sidebar.active {
-            transform: translateX(0);
+
+            transform:
+                translateX(0);
         }
 
+
         .sidebar-head {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding-bottom: 20px;
+
             margin-bottom: 15px;
 
             border-bottom:
                 1px solid rgba(255,255,255,.12);
         }
 
+
         .sidebar-logo {
+
             width: 72px;
             height: 72px;
         }
 
+
         .sidebar-title {
+
             direction: ltr;
+
             font-size: 17px;
+
             font-weight: 800;
+
+            margin-top: 5px;
         }
 
+
         .close-btn {
+
             width: 44px;
             height: 44px;
 
+            border-radius: 14px;
+
             border:
                 1px solid rgba(255,255,255,.18);
-
-            border-radius: 14px;
 
             background:
                 rgba(255,255,255,.08);
@@ -270,15 +413,23 @@
             cursor: pointer;
         }
 
+
         .side-links {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 10px;
         }
 
+
         .side-links a {
+
             display: flex;
+
             align-items: center;
+
             gap: 14px;
 
             padding: 15px;
@@ -296,24 +447,35 @@
             transition: .25s ease;
         }
 
+
         .side-links a:hover,
         .side-links a.active {
+
             background:
                 rgba(0,200,255,.16);
 
             border-color:
                 rgba(0,220,255,.35);
+
+            transform:
+                translateX(-4px);
         }
 
+
         .side-links i {
+
             width: 25px;
+
             text-align: center;
+
             color: #75eaff;
         }
 
-        /* MAIN */
+
+        /* ================= MAIN ================= */
 
         main {
+
             width: min(800px,94%);
 
             margin: auto;
@@ -325,37 +487,79 @@
                 calc(30px + env(safe-area-inset-bottom));
         }
 
+
+        /* ================= HEADER ================= */
+
         .contact-header {
+
             text-align: center;
+
             margin-bottom: 25px;
         }
 
-        .contact-header .logo-wrap {
+
+        .page-logo {
+
             width: 100px;
             height: 100px;
 
-            margin: 0 auto 15px;
+            margin:
+                0 auto 15px;
         }
 
-        .contact-header h1 {
-            font-size:
-                clamp(28px,7vw,43px);
+
+        .page-brand {
+
+            position: relative;
+
+            display: inline-block;
+
+            direction: ltr;
+
+            font-size: 42px;
+
+            line-height: 1;
 
             font-weight: 900;
 
-            margin-bottom: 8px;
+            letter-spacing: -.8px;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,.8),
+                0 0 25px rgba(0,220,255,.5);
         }
+
+
+        .page-brand::before {
+
+            content: "®";
+
+            position: absolute;
+
+            right: -4px;
+
+            top: -13px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
 
         .contact-header p {
+
+            margin-top: 13px;
+
             color: #b9cfdf;
 
-            font-size:
-                clamp(14px,3.7vw,18px);
+            font-size: 15px;
         }
 
-        /* CARD */
+
+        /* ================= CARD ================= */
 
         .contact-card {
+
             padding: 30px 20px;
 
             text-align: center;
@@ -375,7 +579,9 @@
                 0 0 35px rgba(0,200,255,.25);
         }
 
+
         .contact-card h2 {
+
             font-size:
                 clamp(23px,6vw,32px);
 
@@ -384,7 +590,9 @@
             margin-bottom: 12px;
         }
 
+
         .contact-card > p {
+
             color: #536679;
 
             line-height: 1.9;
@@ -394,7 +602,11 @@
             margin-bottom: 25px;
         }
 
+
+        /* ================= OPTIONS ================= */
+
         .contact-options {
+
             display: grid;
 
             grid-template-columns:
@@ -403,15 +615,16 @@
             gap: 12px;
         }
 
+
         .contact-option {
+
             min-width: 0;
 
             padding: 20px 10px;
 
             border-radius: 18px;
 
-            background:
-                #edf2f6;
+            background: #edf2f6;
 
             border:
                 1px solid #d6e0e7;
@@ -419,11 +632,16 @@
             transition: .25s ease;
         }
 
+
         .contact-option:hover {
-            transform: translateY(-3px);
+
+            transform:
+                translateY(-3px);
         }
 
+
         .contact-icon {
+
             width: 55px;
             height: 55px;
 
@@ -432,6 +650,7 @@
             border-radius: 50%;
 
             display: grid;
+
             place-items: center;
 
             background: #dceef6;
@@ -441,21 +660,33 @@
             font-size: 23px;
         }
 
+
         .contact-option h3 {
+
             font-size: 16px;
+
             margin-bottom: 5px;
         }
 
+
         .contact-option p {
+
             color: #637688;
+
             font-size: 12px;
+
             margin-bottom: 12px;
         }
 
+
+        /* ================= BUTTONS ================= */
+
         .contact-btn {
+
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             gap: 7px;
@@ -471,23 +702,34 @@
             transition: .2s ease;
         }
 
+
         .whatsapp {
+
             background: #1eaf61;
+
             color: white;
         }
+
 
         .phone {
+
             background: #102f4a;
+
             color: white;
         }
 
+
         .contact-btn:hover {
-            transform: translateY(-2px);
+
+            transform:
+                translateY(-2px);
         }
 
-        /* FOOTER */
+
+        /* ================= FOOTER ================= */
 
         footer {
+
             width: min(800px,94%);
 
             margin: 25px auto 0;
@@ -503,213 +745,419 @@
             font-size: 13px;
         }
 
+
+        /* ================= MOBILE ================= */
+
         @media(max-width:500px) {
 
             .contact-options {
+
                 grid-template-columns: 1fr;
             }
 
+
             .contact-card {
+
                 padding: 25px 14px;
+
                 border-radius: 25px;
             }
 
+
+            .page-brand {
+
+                font-size: 42px;
+            }
+
         }
+
+
+        @media(max-width:360px) {
+
+            .page-brand {
+
+                font-size: 37px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<header class="topbar">
 
-    <div class="nav-inner">
+    <!-- NAVBAR -->
 
-        <a href="index.html" class="brand">
+    <header class="topbar">
 
-            <span class="brand-name">
-                ®HAyDenTra
-            </span>
+        <div class="nav-inner">
 
-            <span class="logo-wrap">
-                <img src="logo.png" alt="HAyDenTra">
-            </span>
 
-        </a>
+            <a
+                href="index.html"
+                class="brand">
 
-        <button class="menu-btn" id="menuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
 
+                <span class="brand-name">
+                    HAyDenTra
+                </span>
+
+
+                <span class="logo-wrap">
+
+                    <img
+                        src="logo.png"
+                        alt="HAyDenTra">
+
+                </span>
+
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay">
     </div>
 
-</header>
 
-<div class="overlay" id="overlay"></div>
 
-<aside class="sidebar" id="sidebar">
+    <!-- SIDEBAR -->
 
-    <div class="sidebar-head">
+    <aside
+        class="sidebar"
+        id="sidebar">
 
-        <div>
 
-            <div class="logo-wrap sidebar-logo">
-                <img src="logo.png" alt="HAyDenTra">
-            </div>
+        <div class="sidebar-head">
 
-            <div class="sidebar-title">
-                ®HAyDenTra
-            </div>
 
-        </div>
+            <div>
 
-        <button class="close-btn" id="closeBtn">
-            <i class="fas fa-xmark"></i>
-        </button>
 
-    </div>
+                <div class="logo-wrap sidebar-logo">
 
-    <nav class="side-links">
+                    <img
+                        src="logo.png"
+                        alt="HAyDenTra">
 
-        <a href="index.html">
-            <i class="fas fa-house"></i>
-            <span>الرئيسية</span>
-        </a>
-
-        <a href="products.html">
-            <i class="fas fa-tooth"></i>
-            <span>المنتجات</span>
-        </a>
-
-        <a href="contact.html" class="active">
-            <i class="fas fa-phone"></i>
-            <span>تواصل معنا</span>
-        </a>
-
-    </nav>
-
-</aside>
-
-<main>
-
-    <section class="contact-header">
-
-        <div class="logo-wrap">
-            <img src="logo.png" alt="HAyDenTra">
-        </div>
-
-        <h1>
-            تواصل معنا
-        </h1>
-
-        <p>
-            نحن هنا لمساعدتك والإجابة على جميع استفساراتك
-        </p>
-
-    </section>
-
-    <section class="contact-card">
-
-        <h2>
-            يسعدنا تواصلك معنا
-        </h2>
-
-        <p>
-            يمكنك التواصل معنا من خلال واتساب أو الاتصال
-            مباشرة للحصول على المعلومات وطلب المنتجات.
-        </p>
-
-        <div class="contact-options">
-
-            <div class="contact-option">
-
-                <div class="contact-icon">
-                    <i class="fab fa-whatsapp"></i>
                 </div>
 
-                <h3>
-                    واتساب
-                </h3>
 
-                <p>
-                    تواصل معنا مباشرة عبر واتساب
-                </p>
-
-                <a
-                    class="contact-btn whatsapp"
-                    href="https://wa.me/201223859088"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <i class="fab fa-whatsapp"></i>
-                    افتح واتساب
-                </a>
-
-            </div>
-
-            <div class="contact-option">
-
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
+                <div class="sidebar-title">
+                    HAyDenTra
                 </div>
 
-                <h3>
-                    الهاتف
-                </h3>
-
-                <p>
-                    اتصل بنا مباشرة
-                </p>
-
-                <a
-                    class="contact-btn phone"
-                    href="tel:201224828849"
-                >
-                    <i class="fas fa-phone"></i>
-                    اتصل الآن
-                </a>
 
             </div>
+
+
+            <button
+                class="close-btn"
+                id="closeBtn">
+
+                <i class="fas fa-xmark"></i>
+
+            </button>
+
 
         </div>
 
-    </section>
 
-</main>
 
-<footer>
-    © 2026 HAyDenTra® — جميع الحقوق محفوظة
-</footer>
+        <nav class="side-links">
 
-<script>
 
-    const menuBtn = document.getElementById("menuBtn");
-    const closeBtn = document.getElementById("closeBtn");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+            <a href="index.html">
 
-    function openMenu() {
-        sidebar.classList.add("active");
-        overlay.classList.add("active");
-        document.body.classList.add("menu-open");
-    }
+                <i class="fas fa-house"></i>
 
-    function closeMenu() {
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.classList.remove("menu-open");
-    }
+                <span>
+                    الرئيسية
+                </span>
 
-    menuBtn.addEventListener("click", openMenu);
+            </a>
 
-    closeBtn.addEventListener("click", closeMenu);
 
-    overlay.addEventListener("click", closeMenu);
+            <a href="products.html">
 
-    document.querySelectorAll(".side-links a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-    });
+                <i class="fas fa-tooth"></i>
 
-</script>
+                <span>
+                    المنتجات
+                </span>
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="active">
+
+                <i class="fas fa-phone"></i>
+
+                <span>
+                    تواصل معنا
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+        <section class="contact-header">
+
+
+            <div class="logo-wrap page-logo">
+
+                <img
+                    src="logo.png"
+                    alt="HAyDenTra">
+
+            </div>
+
+
+            <div class="page-brand">
+                HAyDenTra
+            </div>
+
+
+            <p>
+                نحن هنا لمساعدتك والإجابة على جميع استفساراتك
+            </p>
+
+
+        </section>
+
+
+
+        <!-- CONTACT CARD -->
+
+        <section class="contact-card">
+
+
+            <h2>
+                يسعدنا تواصلك معنا
+            </h2>
+
+
+            <p>
+
+                يمكنك التواصل معنا من خلال واتساب
+                أو الاتصال مباشرة للحصول على
+                المعلومات وطلب المنتجات.
+
+            </p>
+
+
+
+            <div class="contact-options">
+
+
+                <!-- WHATSAPP -->
+
+                <div class="contact-option">
+
+
+                    <div class="contact-icon">
+
+                        <i class="fab fa-whatsapp"></i>
+
+                    </div>
+
+
+                    <h3>
+                        واتساب
+                    </h3>
+
+
+                    <p>
+                        تواصل معنا مباشرة عبر واتساب
+                    </p>
+
+
+                    <a
+                        class="contact-btn whatsapp"
+                        href="https://wa.me/201223859088"
+                        target="_blank"
+                        rel="noopener">
+
+
+                        <i class="fab fa-whatsapp"></i>
+
+                        افتح واتساب
+
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="contact-option">
+
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-phone"></i>
+
+                    </div>
+
+
+                    <h3>
+                        الهاتف
+                    </h3>
+
+
+                    <p>
+                        اتصل بنا مباشرة
+                    </p>
+
+
+                    <a
+                        class="contact-btn phone"
+                        href="tel:201224828849">
+
+
+                        <i class="fas fa-phone"></i>
+
+                        اتصل الآن
+
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <footer>
+
+        © 2026 HAyDenTra® — جميع الحقوق محفوظة
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+
+        const closeBtn =
+            document.getElementById("closeBtn");
+
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+
+        const overlay =
+            document.getElementById("overlay");
+
+
+
+        function openMenu() {
+
+            sidebar.classList.add("active");
+
+            overlay.classList.add("active");
+
+            document.body.classList.add("menu-open");
+
+        }
+
+
+
+        function closeMenu() {
+
+            sidebar.classList.remove("active");
+
+            overlay.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+        }
+
+
+
+        menuBtn.addEventListener(
+            "click",
+            openMenu
+        );
+
+
+        closeBtn.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        document
+            .querySelectorAll(".side-links a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+
+    </script>
+
 
 </body>
 </html>
