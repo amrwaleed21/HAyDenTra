@@ -2,824 +2,187 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAyDenTra® | مستلزمات الأسنان</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            min-height: 100%;
-            background:
-                radial-gradient(circle at 50% 25%, rgba(0, 210, 255, .14), transparent 35%),
-                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            min-height: 100dvh;
             font-family: "Cairo", sans-serif;
-            color: #fff;
-            background:
-                radial-gradient(circle at 50% 28%, rgba(0, 210, 255, .12), transparent 35%),
-                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
+            background-color: #f8fafc;
+            color: #0f172a;
             overflow-x: hidden;
         }
+        a { text-decoration: none; color: inherit; }
 
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
+        /* Topbar */
         .topbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 74px;
-            z-index: 1000;
-
-            background: rgba(4, 22, 40, .68);
-            border-bottom: 1px solid rgba(255, 255, 255, .12);
-
-            backdrop-filter: blur(18px) saturate(150%);
-            -webkit-backdrop-filter: blur(18px) saturate(150%);
-
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+            position: fixed; top: 0; right: 0; left: 0; height: 70px; z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%;
         }
-
-        .nav-inner {
-            height: 100%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            direction: ltr;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            direction: ltr;
-        }
-
+        .nav-brand { display: flex; align-items: center; gap: 10px; direction: ltr; }
         .nav-logo-circle {
-            width: 50px;
-            height: 50px;
-            flex-shrink: 0;
-
-            border-radius: 50%;
-            background: #fff;
-
-            display: grid;
-            place-items: center;
-
-            border: 1px solid rgba(255,255,255,.9);
-
-            box-shadow:
-                0 0 8px rgba(255,255,255,.9),
-                0 0 20px rgba(0,229,255,.65),
-                0 0 34px rgba(0,229,255,.25);
+            width: 42px; height: 42px; border-radius: 50%; background: #000;
+            display: grid; place-items: center; border: 2px solid #2563eb;
         }
-
-        .nav-logo-circle img {
-            width: 72%;
-            height: 72%;
-            object-fit: contain;
-        }
-
+        .nav-logo-circle img { width: 70%; height: 70%; object-fit: contain; }
         .brand-name {
-            position: relative;
-            display: inline-block;
-
-            font-family: Arial, sans-serif;
-            font-weight: 900;
-            font-size: 27px;
-            line-height: 1;
-            color: #fff;
-            white-space: nowrap;
-
-            text-shadow:
-                0 0 5px rgba(255,255,255,.8),
-                0 0 13px rgba(0,229,255,.35);
+            position: relative; font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800; font-size: 22px; color: #0f172a;
         }
-
-        .brand-name .registered {
-            position: absolute;
-            top: -7px;
-            right: -9px;
-
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            line-height: 1;
-            font-weight: 700;
-        }
+        .brand-name .registered { position: absolute; top: -2px; right: -8px; font-size: 9px; color: #2563eb; }
 
         .menu-btn {
-            width: 58px;
-            height: 58px;
-
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,.22);
-
-            background: rgba(255,255,255,.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            color: #fff;
-            font-size: 31px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 8px 22px rgba(0,0,0,.18),
-                inset 0 1px rgba(255,255,255,.08);
-
-            transition: .25s;
+            width: 44px; height: 44px; border-radius: 12px;
+            background: #f1f5f9; border: 1px solid #cbd5e1;
+            font-size: 20px; color: #0f172a; cursor: pointer;
+            transition: .2s ease;
         }
+        .menu-btn:hover { background: #e2e8f0; }
 
-        .menu-btn:hover {
-            background: rgba(255,255,255,.14);
-            transform: translateY(-1px);
-        }
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1050;
-
-            background: rgba(0,0,0,.38);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition: .3s;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-
-            width: min(80%, 350px);
-            height: 100dvh;
-
-            z-index: 1100;
-
-            padding: 28px 20px;
-
-            background: rgba(6, 27, 48, .72);
-            border-left: 1px solid rgba(255,255,255,.15);
-
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-
-            box-shadow: -15px 0 45px rgba(0,0,0,.25);
-
-            transform: translateX(110%);
-            transition: transform .35s ease;
-
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            transform: translateX(0);
-        }
-
-        .sidebar-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            padding-bottom: 25px;
-            margin-bottom: 20px;
-
-            border-bottom: 1px solid rgba(255,255,255,.12);
-        }
-
-        .sidebar-logo {
-            width: 72px;
-            height: 72px;
-
-            border-radius: 50%;
-            background: #fff;
-
-            display: grid;
-            place-items: center;
-
-            box-shadow:
-                0 0 10px rgba(255,255,255,.9),
-                0 0 25px rgba(0,229,255,.65);
-        }
-
-        .sidebar-logo img {
-            width: 72%;
-            height: 72%;
-            object-fit: contain;
-        }
-
-        .sidebar-brand {
-            margin-top: 13px;
-
-            position: relative;
-            display: inline-block;
-
-            font-family: Arial, sans-serif;
-            font-size: 25px;
-            font-weight: 900;
-            direction: ltr;
-        }
-
-        .sidebar-brand .registered {
-            position: absolute;
-            top: -5px;
-            right: -8px;
-            font-size: 9px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 18px;
-            left: 18px;
-
-            width: 42px;
-            height: 42px;
-
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.18);
-
-            background: rgba(255,255,255,.08);
-            color: #fff;
-
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .side-link {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            padding: 15px 16px;
-            margin-bottom: 10px;
-
-            border-radius: 15px;
-
-            background: rgba(255,255,255,.06);
-            border: 1px solid rgba(255,255,255,.08);
-
-            font-size: 16px;
-            font-weight: 700;
-
-            transition: .25s;
-        }
-
-        .side-link i {
-            width: 25px;
-            text-align: center;
-            color: #55ddff;
-        }
-
-        .side-link:hover,
-        .side-link.active {
-            background: rgba(0,210,255,.13);
-            border-color: rgba(80,220,255,.28);
-            transform: translateX(-3px);
-        }
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main {
-            padding-top: 74px;
-        }
-
+        /* Hero Section */
         .hero {
-            width: min(100%, 850px);
-            margin: 0 auto;
-            padding: 75px 18px 20px;
-            text-align: center;
+            padding: 130px 5% 60px;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+        }
+        .hero-text {
+            animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-badge {
+            display: inline-block; padding: 6px 14px; border-radius: 20px;
+            background: #eff6ff; color: #2563eb; font-weight: 700; font-size: 13px; margin-bottom: 15px;
+        }
+        .hero-title {
+            font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.2; color: #0f172a;
+        }
+        .hero-desc {
+            margin-top: 18px; font-size: 17px; color: #64748b; line-height: 1.7;
+        }
+        .hero-buttons { display: flex; gap: 12px; margin-top: 25px; }
+        .btn-primary {
+            padding: 12px 24px; border-radius: 12px; background: #2563eb; color: #fff;
+            font-weight: 700; transition: .2s ease; box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+        }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .btn-secondary {
+            padding: 12px 24px; border-radius: 12px; background: #fff; border: 1px solid #cbd5e1;
+            color: #0f172a; font-weight: 700; transition: .2s ease;
+        }
+        .btn-secondary:hover { background: #f8fafc; transform: translateY(-2px); }
+
+        .hero-card {
+            background: #fff; border-radius: 24px; padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+            animation: popIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .main-logo-circle {
-            width: 92px;
-            height: 92px;
-
-            margin: 0 auto;
-
-            border-radius: 50%;
-            background: #fff;
-
-            display: grid;
-            place-items: center;
-
-            box-shadow:
-                0 0 10px rgba(255,255,255,.95),
-                0 0 26px rgba(0,229,255,.75),
-                0 0 48px rgba(0,229,255,.32);
-        }
-
-        .main-logo-circle img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-        }
-
-        .main-brand {
-            position: relative;
-            display: inline-block;
-
-            margin-top: 20px;
-
-            font-family: Arial, sans-serif;
-            font-size: 39px;
-            line-height: 1;
-            font-weight: 900;
-            direction: ltr;
-
-            color: #fff;
-
-            text-shadow:
-                0 0 6px rgba(255,255,255,.85),
-                0 0 17px rgba(0,229,255,.35);
-        }
-
-        .main-brand .registered {
-            position: absolute;
-            top: -6px;
-            right: -10px;
-
-            font-size: 13px;
-            line-height: 1;
-        }
-
-        .tagline {
-            margin-top: 25px;
-
-            color: #bdd3e7;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        /* =========================
-           WELCOME CARD
-        ========================= */
-
-        .welcome-card {
-            width: min(100%, 650px);
-
-            margin: 45px auto 0;
-            padding: 38px 25px 42px;
-
-            border-radius: 38px;
-
-            background: rgba(239,244,249,.96);
-            color: #081d33;
-
-            border: 5px solid #63ddff;
-
-            box-shadow:
-                0 0 13px rgba(100,225,255,.85),
-                0 0 35px rgba(0,200,255,.25);
-        }
-
-        .welcome-card h1 {
-            font-size: clamp(31px, 7vw, 48px);
-            line-height: 1.55;
-            font-weight: 900;
-        }
-
-        .welcome-card p {
-            margin-top: 27px;
-
-            font-size: clamp(16px, 3.5vw, 21px);
-            line-height: 2;
-
-            color: #34485b;
-        }
-
-        /* =========================
-           BUTTONS
-        ========================= */
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-
-            margin-top: 30px;
-
-            flex-wrap: wrap;
-        }
-
-        .main-btn {
-            min-width: 180px;
-
-            padding: 13px 22px;
-
-            border-radius: 15px;
-
-            font-family: "Cairo", sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-
-            transition: .25s;
-        }
-
-        .products-btn {
-            color: #fff;
-            background: linear-gradient(135deg,#009bc4,#0874a2);
-            box-shadow: 0 8px 20px rgba(0,160,210,.25);
-        }
-
-        .contact-btn {
-            color: #fff;
-            background: linear-gradient(135deg,#172d45,#304b63);
-            border: 1px solid rgba(255,255,255,.18);
-        }
-
-        .main-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           FEATURES
-        ========================= */
-
+        /* Features */
         .features-grid {
-            width: min(100%, 850px);
-
-            margin: 28px auto 0;
-            padding: 0 12px 35px;
-
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
+            max-width: 1200px; margin: 40px auto 80px; padding: 0 5%;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
         }
-
         .feature-card {
-            padding: 17px 9px;
-
-            text-align: center;
-
-            border-radius: 18px;
-
-            background: rgba(8,32,54,.62);
-            border: 1px solid rgba(105,224,255,.17);
-
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
-            box-shadow: 0 8px 25px rgba(0,0,0,.12);
+            background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: .3s ease;
+            animation: popIn 0.8s ease forwards;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
+        .feature-icon {
+            width: 50px; height: 50px; border-radius: 14px; background: #eff6ff;
+            color: #2563eb; display: grid; place-items: center; font-size: 22px; margin-bottom: 15px;
         }
 
-        .feature-card i {
-            font-size: 25px;
-            color: #5fe3ff;
-            margin-bottom: 8px;
+        /* Sidebar */
+        .sidebar {
+            position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+            background: #fff; z-index: 1100; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: .3s ease; padding: 30px 20px;
+        }
+        .sidebar.active { right: 0; }
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1050;
+            display: none;
+        }
+        .overlay.active { display: block; }
+
+        /* Keyframes */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.92) translateY(15px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .feature-card h3 {
-            font-size: clamp(11px, 3vw, 16px);
-            font-weight: 800;
-        }
-
-        .feature-card p {
-            margin-top: 5px;
-
-            font-size: clamp(8px, 2.4vw, 12px);
-            line-height: 1.6;
-
-            color: #b8ccdc;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            width: 100%;
-            padding: 18px 15px 25px;
-
-            text-align: center;
-
-            color: #91a9bb;
-            font-size: 12px;
-
-            background: rgba(2,17,30,.32);
-            border-top: 1px solid rgba(255,255,255,.06);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 500px) {
-
-            .topbar {
-                height: 74px;
-            }
-
-            .nav-inner {
-                padding: 0 20px;
-            }
-
-            .nav-logo-circle {
-                width: 48px;
-                height: 48px;
-            }
-
-            .brand-name {
-                font-size: 25px;
-            }
-
-            .brand-name .registered {
-                top: -6px;
-                right: -8px;
-                font-size: 9px;
-            }
-
-            .menu-btn {
-                width: 60px;
-                height: 60px;
-            }
-
-            .hero {
-                padding-top: 78px;
-            }
-
-            .main-logo-circle {
-                width: 88px;
-                height: 88px;
-            }
-
-            .main-brand {
-                font-size: 37px;
-                margin-top: 19px;
-            }
-
-            .tagline {
-                font-size: 18px;
-                margin-top: 23px;
-            }
-
-            .welcome-card {
-                margin-top: 42px;
-                padding: 35px 18px 38px;
-                border-radius: 35px;
-            }
-
-            .welcome-card p {
-                font-size: 16px;
-            }
-
-            .features-grid {
-                gap: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-
-            .feature-card {
-                padding: 15px 6px;
-            }
-        }
-
-        @media (max-width: 360px) {
-
-            .brand-name {
-                font-size: 22px;
-            }
-
-            .nav-logo-circle {
-                width: 45px;
-                height: 45px;
-            }
-
-            .menu-btn {
-                width: 55px;
-                height: 55px;
-            }
-
-            .main-brand {
-                font-size: 33px;
-            }
-
-            .tagline {
-                font-size: 16px;
-            }
+        @media(max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding-top: 100px; }
         }
     </style>
 </head>
-
 <body>
-
-    <!-- NAVBAR -->
     <header class="topbar">
-        <div class="nav-inner">
-
-            <div class="nav-brand">
-                <div class="nav-logo-circle">
-                    <img src="logo.png" alt="HAyDenTra Logo">
-                </div>
-
-                <div class="brand-name">
-                    HAyDenTra
-                    <span class="registered">®</span>
-                </div>
-            </div>
-
-            <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
+        <div class="nav-brand">
+            <div class="nav-logo-circle"><img src="logo.png" alt="HAyDenTra"></div>
+            <div class="brand-name">HAyDenTra<span class="registered">®</span></div>
         </div>
+        <button class="menu-btn" onclick="openMenu()"><i class="fa-solid fa-bars"></i></button>
     </header>
 
-    <!-- OVERLAY -->
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-
-        <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div class="sidebar-header">
-
-            <div class="sidebar-logo">
-                <img src="logo.png" alt="HAyDenTra Logo">
-            </div>
-
-            <div class="sidebar-brand">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
-        </div>
-
-        <a href="index.html" class="side-link active">
-            <i class="fa-solid fa-house"></i>
-            <span>الرئيسية</span>
-        </a>
-
-        <a href="products.html" class="side-link">
-            <i class="fa-solid fa-tooth"></i>
-            <span>المنتجات</span>
-        </a>
-
-        <a href="contact.html" class="side-link">
-            <i class="fa-solid fa-phone"></i>
-            <span>تواصل معنا</span>
-        </a>
-
+        <h2 style="margin-bottom: 20px;">القائمة</h2>
+        <a href="index.html" style="display:block; padding: 10px 0; font-weight:700; color:#2563eb;">الرئيسية</a>
+        <a href="products.html" style="display:block; padding: 10px 0; font-weight:700;">المنتجات</a>
+        <a href="contact.html" style="display:block; padding: 10px 0; font-weight:700;">تواصل معنا</a>
     </aside>
 
-    <!-- MAIN -->
     <main>
-
         <section class="hero">
-
-            <div class="main-logo-circle">
-                <img src="logo.png" alt="HAyDenTra Logo">
-            </div>
-
-            <div class="main-brand">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
-            <p class="tagline">
-                Your Trusted Partner in Dental Solutions
-            </p>
-
-            <div class="welcome-card">
-
-                <h1>
-                    مرحباً بكم في عالم<br>
-                    مستلزمات الأسنان<br>
-                    المتطورة
-                </h1>
-
-                <p>
-                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
-                    المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
-                </p>
-
+            <div class="hero-text">
+                <span class="hero-badge">شريكك الموثوق في طب الأسنان</span>
+                <h1 class="hero-title">مستلزمات الأسنان المتطورة لأعلى معايير الجودة</h1>
+                <p class="hero-desc">نقدم لعيادتك أحدث الأجهزة والمواد الطبية المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.</p>
                 <div class="hero-buttons">
-
-                    <a href="products.html" class="main-btn products-btn">
-                        <i class="fa-solid fa-box-open"></i>
-                        استكشف المنتجات
-                    </a>
-
-                    <a href="contact.html" class="main-btn contact-btn">
-                        <i class="fa-solid fa-comments"></i>
-                        تواصل معنا
-                    </a>
-
+                    <a href="products.html" class="btn-primary"><i class="fa-solid fa-box-open"></i> المنتجات</a>
+                    <a href="contact.html" class="btn-secondary"><i class="fa-solid fa-phone"></i> تواصل معنا</a>
                 </div>
-
             </div>
-
+            <div class="hero-card">
+                <img src="logo.png" style="width: 100%; height: auto; max-height: 250px; object-fit: contain;">
+            </div>
         </section>
 
-        <!-- الكروت فقط بدون عنوان مميزات الشركة -->
         <section class="features-grid">
-
             <div class="feature-card">
-                <i class="fa-solid fa-headset"></i>
-                <h3>خدمة العملاء</h3>
-                <p>دعم ومتابعة مستمرة</p>
+                <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>دعم مستمر</h3>
+                <p style="color:#64748b; font-size: 14px; margin-top:5px;">خدمة عملاء ومتابعة على مدار الساعة.</p>
             </div>
-
             <div class="feature-card">
-                <i class="fa-solid fa-truck-fast"></i>
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
                 <h3>توصيل سريع</h3>
-                <p>توصيل آمن وسريع</p>
+                <p style="color:#64748b; font-size: 14px; margin-top:5px;">توصيل آمن لجميع المستلزمات الطبية.</p>
             </div>
-
             <div class="feature-card">
-                <i class="fa-solid fa-certificate"></i>
+                <div class="feature-icon"><i class="fa-solid fa-certificate"></i></div>
                 <h3>جودة عالية</h3>
-                <p>منتجات موثوقة</p>
+                <p style="color:#64748b; font-size: 14px; margin-top:5px;">منتجات موثوقة بمعايير عالمية.</p>
             </div>
-
         </section>
-
     </main>
 
-    <footer>
+    <footer style="text-align: center; padding: 20px; color:#94a3b8; border-top:1px solid #e2e8f0; font-size: 13px;">
         © 2026 HAyDenTra® - جميع الحقوق محفوظة
     </footer>
 
     <script>
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
-
-        function openMenu() {
-            sidebar.classList.add("active");
-            overlay.classList.add("active");
-            document.body.classList.add("menu-open");
-        }
-
-        function closeMenu() {
-            sidebar.classList.remove("active");
-            overlay.classList.remove("active");
-            document.body.classList.remove("menu-open");
-        }
-
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") {
-                closeMenu();
-            }
-        });
+        function openMenu(){ document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active'); }
+        function closeMenu(){ document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active'); }
     </script>
-
 </body>
 </html>
