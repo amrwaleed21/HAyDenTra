@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-    <title>HAyDenTra® | تواصل معنا</title>
-
+    <title>تواصل معنا | HAyDenTra®</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -17,80 +17,61 @@
           href="https://fonts.gstatic.com"
           crossorigin>
 
-
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
+        rel="stylesheet"
+    >
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
 
     <style>
 
         * {
-
             box-sizing: border-box;
-
-            margin: 0;
-            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-
 
         html {
-
             min-height: 100%;
 
-            background: #061522;
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    #0b4f70 0%,
+                    #062f48 45%,
+                    #031a2a 100%
+                );
         }
-
 
         body {
 
+            margin: 0;
+
             min-height: 100dvh;
 
-            font-family: "Cairo", sans-serif;
+            font-family:
+                "Cairo",
+                sans-serif;
 
             color: white;
 
             background:
                 radial-gradient(
-                    circle at 50% 25%,
-                    rgba(0,190,255,.17),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    180deg,
-                    #061522 0%,
-                    #07395a 55%,
-                    #06243a 100%
+                    circle at 50% 30%,
+                    #0b4f70 0%,
+                    #062f48 45%,
+                    #031a2a 100%
                 );
 
             overflow-x: hidden;
         }
 
-
         body.menu-open {
-
             overflow: hidden;
         }
-
-
-        a {
-
-            color: inherit;
-
-            text-decoration: none;
-        }
-
-
-        button {
-
-            font-family: inherit;
-        }
-
 
         /* ================= NAVBAR ================= */
 
@@ -99,15 +80,15 @@
             position: fixed;
 
             top: 0;
-            right: 0;
             left: 0;
+            right: 0;
+
+            height: 76px;
 
             z-index: 1000;
 
-            min-height: 74px;
-
             background:
-                rgba(5,22,42,.58);
+                rgba(3,24,40,.68);
 
             border-bottom:
                 1px solid rgba(255,255,255,.13);
@@ -122,12 +103,11 @@
                 0 8px 30px rgba(0,0,0,.25);
         }
 
+        .nav-container {
 
-        .nav-inner {
+            width: min(1200px,94%);
 
-            width: min(1100px,94%);
-
-            min-height: 74px;
+            height: 100%;
 
             margin: auto;
 
@@ -137,117 +117,13 @@
 
             justify-content: space-between;
 
-            padding: 8px 0;
-        }
-
-
-        /* ================= BRAND ================= */
-
-        .brand {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
             direction: ltr;
-
-            font-size: 20px;
-
-            font-weight: 900;
         }
-
-
-        .brand-name {
-
-            position: relative;
-
-            display: inline-block;
-
-            direction: ltr;
-
-            white-space: nowrap;
-
-            font-size: 20px;
-
-            font-weight: 900;
-
-            line-height: 1;
-
-            letter-spacing: -.5px;
-        }
-
-
-        .brand-name::before {
-
-            content: "®";
-
-            position: absolute;
-
-            right: -2px;
-
-            top: -11px;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            line-height: 1;
-
-            color: white;
-        }
-
-
-        /* ================= LOGO ================= */
-
-        .logo-wrap {
-
-            width: 50px;
-            height: 50px;
-
-            flex-shrink: 0;
-
-            border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #fff 0%,
-                    #fff 58%,
-                    #f2fbff 76%,
-                    rgba(255,255,255,.75) 100%
-                );
-
-            border:
-                1px solid rgba(255,255,255,.95);
-
-            box-shadow:
-                0 0 9px rgba(255,255,255,.95),
-                0 0 24px rgba(0,229,255,.8),
-                0 0 45px rgba(0,229,255,.35);
-        }
-
-
-        .logo-wrap img {
-
-            width: 72%;
-            height: 72%;
-
-            object-fit: contain;
-        }
-
-
-        /* ================= MENU ================= */
 
         .menu-btn {
 
-            width: 54px;
-            height: 54px;
+            width: 58px;
+            height: 58px;
 
             border-radius: 18px;
 
@@ -259,23 +135,106 @@
 
             color: white;
 
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
             font-size: 29px;
+
+            cursor: pointer;
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+        }
+
+        /* ================= BRAND ================= */
+
+        .brand {
 
             display: flex;
 
             align-items: center;
 
-            justify-content: center;
+            gap: 12px;
 
-            cursor: pointer;
-
-            backdrop-filter: blur(12px);
-
-            -webkit-backdrop-filter: blur(12px);
+            direction: rtl;
         }
 
+        .logo-circle {
 
-        /* ================= OVERLAY ================= */
+            width: 62px;
+            height: 62px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #fff 0%,
+                    #fff 65%,
+                    #f2fbff 82%,
+                    rgba(255,255,255,.75) 100%
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid rgba(255,255,255,.95);
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,.95),
+                0 0 25px rgba(0,229,255,.85),
+                0 0 48px rgba(0,229,255,.45);
+
+            flex-shrink: 0;
+        }
+
+        .logo-circle img {
+
+            width: 73%;
+            height: 73%;
+
+            object-fit: contain;
+        }
+
+        .brand-name {
+
+            position: relative;
+
+            display: inline-block;
+
+            font-size: 27px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            color: white;
+        }
+
+        .brand-name .registered {
+
+            position: absolute;
+
+            top: -0.08em;
+
+            right: -0.38em;
+
+            font-size: .45em;
+
+            font-weight: 700;
+
+            line-height: 1;
+        }
+
+        /* ================= SIDEBAR ================= */
 
         .overlay {
 
@@ -288,9 +247,11 @@
             background:
                 rgba(0,0,0,.42);
 
-            backdrop-filter: blur(2px);
+            backdrop-filter:
+                blur(2px);
 
-            -webkit-backdrop-filter: blur(2px);
+            -webkit-backdrop-filter:
+                blur(2px);
 
             opacity: 0;
 
@@ -299,16 +260,12 @@
             transition: .3s ease;
         }
 
-
         .overlay.active {
 
             opacity: 1;
 
             visibility: visible;
         }
-
-
-        /* ================= SIDEBAR ================= */
 
         .sidebar {
 
@@ -317,19 +274,19 @@
             top: 0;
             right: 0;
 
-            z-index: 1100;
-
-            width: min(82%,350px);
+            width: min(350px,82%);
 
             height: 100dvh;
 
-            padding: 25px 20px;
+            z-index: 1100;
+
+            padding: 30px 20px;
 
             background:
-                rgba(7,29,53,.68);
+                rgba(5,28,48,.72);
 
             border-left:
-                1px solid rgba(255,255,255,.16);
+                1px solid rgba(255,255,255,.15);
 
             backdrop-filter:
                 blur(24px) saturate(160%);
@@ -338,10 +295,10 @@
                 blur(24px) saturate(160%);
 
             box-shadow:
-                -10px 0 40px rgba(0,0,0,.3);
+                -15px 0 45px rgba(0,0,0,.35);
 
             transform:
-                translateX(105%);
+                translateX(110%);
 
             transition:
                 transform .35s cubic-bezier(.4,0,.2,1);
@@ -349,56 +306,38 @@
             overflow-y: auto;
         }
 
-
         .sidebar.active {
 
             transform:
                 translateX(0);
         }
 
-
-        .sidebar-head {
+        .sidebar-header {
 
             display: flex;
 
-            align-items: center;
+            justify-content: center;
 
-            justify-content: space-between;
-
-            padding-bottom: 20px;
-
-            margin-bottom: 15px;
-
-            border-bottom:
-                1px solid rgba(255,255,255,.12);
+            margin-bottom: 35px;
         }
 
+        .sidebar .logo-circle {
 
-        .sidebar-logo {
-
-            width: 72px;
-            height: 72px;
+            width: 82px;
+            height: 82px;
         }
 
+        .close-menu {
 
-        .sidebar-title {
+            position: absolute;
 
-            direction: ltr;
+            top: 18px;
+            left: 18px;
 
-            font-size: 17px;
+            width: 42px;
+            height: 42px;
 
-            font-weight: 800;
-
-            margin-top: 5px;
-        }
-
-
-        .close-btn {
-
-            width: 44px;
-            height: 44px;
-
-            border-radius: 14px;
+            border-radius: 50%;
 
             border:
                 1px solid rgba(255,255,255,.18);
@@ -408,375 +347,336 @@
 
             color: white;
 
-            font-size: 22px;
+            font-size: 20px;
 
             cursor: pointer;
         }
 
-
-        .side-links {
+        .sidebar-links {
 
             display: flex;
 
             flex-direction: column;
 
-            gap: 10px;
+            gap: 12px;
         }
 
+        .sidebar-links a {
 
-        .side-links a {
+            color: white;
+
+            text-decoration: none;
+
+            padding: 15px 18px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid rgba(255,255,255,.10);
+
+            background:
+                rgba(255,255,255,.06);
+
+            font-size: 16px;
+
+            font-weight: 700;
 
             display: flex;
 
             align-items: center;
 
-            gap: 14px;
-
-            padding: 15px;
-
-            border-radius: 15px;
-
-            background:
-                rgba(255,255,255,.07);
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            font-weight: 700;
+            gap: 13px;
 
             transition: .25s ease;
         }
 
-
-        .side-links a:hover,
-        .side-links a.active {
+        .sidebar-links a:hover {
 
             background:
-                rgba(0,200,255,.16);
+                rgba(0,210,255,.15);
 
             border-color:
-                rgba(0,220,255,.35);
-
-            transform:
-                translateX(-4px);
+                rgba(0,229,255,.35);
         }
-
-
-        .side-links i {
-
-            width: 25px;
-
-            text-align: center;
-
-            color: #75eaff;
-        }
-
 
         /* ================= MAIN ================= */
 
         main {
 
-            width: min(800px,94%);
+            width: min(900px,94%);
 
             margin: auto;
 
-            padding-top:
-                calc(105px + env(safe-area-inset-top));
-
-            padding-bottom:
-                calc(30px + env(safe-area-inset-bottom));
+            padding:
+                calc(76px + env(safe-area-inset-top) + 45px)
+                0
+                30px;
         }
 
+        /* ================= CONTACT ================= */
 
-        /* ================= HEADER ================= */
-
-        .contact-header {
+        .contact-wrapper {
 
             text-align: center;
-
-            margin-bottom: 25px;
         }
 
+        .contact-logo {
 
-        .page-logo {
+            width: 180px;
+            height: 180px;
 
-            width: 100px;
-            height: 100px;
+            margin: 0 auto 22px;
 
-            margin:
-                0 auto 15px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #fff 0%,
+                    #fff 65%,
+                    #f5fcff 82%,
+                    rgba(255,255,255,.7) 100%
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                2px solid rgba(255,255,255,.9);
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,.95),
+                0 0 35px rgba(0,229,255,.85),
+                0 0 70px rgba(0,229,255,.45);
         }
 
+        .contact-logo img {
 
-        .page-brand {
+            width: 73%;
+            height: 73%;
+
+            object-fit: contain;
+        }
+
+        .contact-brand {
 
             position: relative;
 
             display: inline-block;
 
-            direction: ltr;
+            font-size: 55px;
 
-            font-size: 42px;
+            font-weight: 900;
 
             line-height: 1;
 
-            font-weight: 900;
-
-            letter-spacing: -.8px;
+            color: white;
 
             text-shadow:
-                0 0 10px rgba(255,255,255,.8),
-                0 0 25px rgba(0,220,255,.5);
+                0 0 10px rgba(255,255,255,.45),
+                0 0 22px rgba(0,229,255,.30);
         }
 
-
-        .page-brand::before {
-
-            content: "®";
+        .contact-brand .registered {
 
             position: absolute;
 
-            right: -4px;
+            top: -0.08em;
 
-            top: -13px;
+            right: -0.38em;
 
-            font-size: 12px;
+            font-size: .45em;
 
-            font-weight: 800;
+            font-weight: 700;
+
+            line-height: 1;
         }
 
+        .contact-subtitle {
 
-        .contact-header p {
+            margin-top: 20px;
 
-            margin-top: 13px;
+            color: #bfd3e2;
 
-            color: #b9cfdf;
-
-            font-size: 15px;
+            font-size: 19px;
         }
-
-
-        /* ================= CARD ================= */
 
         .contact-card {
 
-            padding: 30px 20px;
+            margin-top: 45px;
 
-            text-align: center;
+            padding: 35px 25px;
+
+            border-radius: 32px;
 
             background:
-                rgba(239,244,249,.96);
+                linear-gradient(
+                    145deg,
+                    rgba(239,244,249,.97),
+                    rgba(216,227,237,.97)
+                );
 
-            color: #102338;
+            color: #071b31;
 
             border:
-                4px solid #6ee7ff;
-
-            border-radius: 30px;
+                5px solid #65dcf7;
 
             box-shadow:
-                0 0 13px rgba(110,231,255,.75),
-                0 0 35px rgba(0,200,255,.25);
+                0 0 15px rgba(92,224,255,.9),
+                0 0 45px rgba(0,210,255,.35);
         }
 
+        .contact-card h1 {
 
-        .contact-card h2 {
+            margin: 0 0 15px;
 
             font-size:
-                clamp(23px,6vw,32px);
+                clamp(29px,5vw,43px);
 
             font-weight: 900;
-
-            margin-bottom: 12px;
         }
 
+        .contact-card p {
 
-        .contact-card > p {
+            margin: 0 0 28px;
 
-            color: #536679;
+            color: #506174;
+
+            font-size: 17px;
 
             line-height: 1.9;
-
-            font-size: 15px;
-
-            margin-bottom: 25px;
         }
 
+        .contact-buttons {
 
-        /* ================= OPTIONS ================= */
+            display: flex;
 
-        .contact-options {
+            flex-direction: column;
 
-            display: grid;
-
-            grid-template-columns:
-                repeat(2,minmax(0,1fr));
-
-            gap: 12px;
+            gap: 14px;
         }
-
-
-        .contact-option {
-
-            min-width: 0;
-
-            padding: 20px 10px;
-
-            border-radius: 18px;
-
-            background: #edf2f6;
-
-            border:
-                1px solid #d6e0e7;
-
-            transition: .25s ease;
-        }
-
-
-        .contact-option:hover {
-
-            transform:
-                translateY(-3px);
-        }
-
-
-        .contact-icon {
-
-            width: 55px;
-            height: 55px;
-
-            margin: 0 auto 10px;
-
-            border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
-
-            background: #dceef6;
-
-            color: #075b7d;
-
-            font-size: 23px;
-        }
-
-
-        .contact-option h3 {
-
-            font-size: 16px;
-
-            margin-bottom: 5px;
-        }
-
-
-        .contact-option p {
-
-            color: #637688;
-
-            font-size: 12px;
-
-            margin-bottom: 12px;
-        }
-
-
-        /* ================= BUTTONS ================= */
 
         .contact-btn {
 
-            display: inline-flex;
+            min-height: 58px;
+
+            border-radius: 15px;
+
+            display: flex;
 
             align-items: center;
 
             justify-content: center;
 
-            gap: 7px;
+            gap: 10px;
 
-            width: 100%;
+            text-decoration: none;
 
-            padding: 10px;
+            font-family: inherit;
 
-            border-radius: 12px;
+            font-size: 17px;
 
             font-weight: 800;
 
-            transition: .2s ease;
+            transition: .25s ease;
         }
 
+        .whatsapp-btn {
 
-        .whatsapp {
-
-            background: #1eaf61;
+            background:
+                linear-gradient(
+                    135deg,
+                    #172c42,
+                    #536273
+                );
 
             color: white;
         }
 
+        .phone-btn {
 
-        .phone {
-
-            background: #102f4a;
+            background:
+                linear-gradient(
+                    135deg,
+                    #087fae,
+                    #05b7dc
+                );
 
             color: white;
         }
-
 
         .contact-btn:hover {
 
             transform:
-                translateY(-2px);
+                translateY(-3px);
         }
-
-
-        /* ================= FOOTER ================= */
 
         footer {
 
-            width: min(800px,94%);
-
-            margin: 25px auto 0;
-
-            padding:
-                18px 10px
-                calc(18px + env(safe-area-inset-bottom));
-
             text-align: center;
 
-            color: #a9c0d4;
+            margin-top: 35px;
+
+            padding-bottom: 20px;
+
+            color: #9fb4c5;
 
             font-size: 13px;
         }
 
-
         /* ================= MOBILE ================= */
 
-        @media(max-width:500px) {
+        @media(max-width:600px) {
 
-            .contact-options {
-
-                grid-template-columns: 1fr;
+            .brand-name {
+                font-size: 24px;
             }
 
+            .logo-circle {
+                width: 58px;
+                height: 58px;
+            }
+
+            main {
+                width: 94%;
+            }
+
+            .contact-logo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .contact-brand {
+                font-size: 48px;
+            }
 
             .contact-card {
-
-                padding: 25px 14px;
-
-                border-radius: 25px;
-            }
-
-
-            .page-brand {
-
-                font-size: 42px;
+                margin-top: 38px;
+                padding: 30px 18px;
             }
 
         }
 
+        @media(max-width:380px) {
 
-        @media(max-width:360px) {
+            .brand-name {
+                font-size: 21px;
+            }
 
-            .page-brand {
+            .logo-circle {
+                width: 52px;
+                height: 52px;
+            }
 
-                font-size: 37px;
+            .contact-logo {
+                width: 155px;
+                height: 155px;
+            }
+
+            .contact-brand {
+                font-size: 40px;
             }
 
         }
@@ -785,323 +685,201 @@
 
 </head>
 
-
 <body>
 
-
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
 
     <header class="topbar">
 
-        <div class="nav-inner">
-
-
-            <a
-                href="index.html"
-                class="brand">
-
-
-                <span class="brand-name">
-                    HAyDenTra
-                </span>
-
-
-                <span class="logo-wrap">
-
-                    <img
-                        src="logo.png"
-                        alt="HAyDenTra">
-
-                </span>
-
-
-            </a>
-
+        <div class="nav-container">
 
             <button
                 class="menu-btn"
-                id="menuBtn">
-
-                <i class="fas fa-bars"></i>
-
+                onclick="openMenu()"
+                aria-label="فتح القائمة"
+            >
+                <i class="fa-solid fa-bars"></i>
             </button>
 
+            <div class="brand">
+
+                <div class="brand-name">
+
+                    HAyDenTra
+
+                    <span class="registered">
+                        ®
+                    </span>
+
+                </div>
+
+                <div class="logo-circle">
+
+                    <img
+                        src="logo.png"
+                        alt="HAyDenTra Logo"
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
     </header>
 
-
-
-    <!-- OVERLAY -->
+    <!-- ================= SIDEBAR ================= -->
 
     <div
         class="overlay"
-        id="overlay">
-    </div>
-
-
-
-    <!-- SIDEBAR -->
+        id="overlay"
+        onclick="closeMenu()"
+    ></div>
 
     <aside
         class="sidebar"
-        id="sidebar">
+        id="sidebar"
+    >
 
+        <button
+            class="close-menu"
+            onclick="closeMenu()"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
 
-        <div class="sidebar-head">
+        <div class="sidebar-header">
 
-
-            <div>
-
-
-                <div class="logo-wrap sidebar-logo">
-
-                    <img
-                        src="logo.png"
-                        alt="HAyDenTra">
-
-                </div>
-
-
-                <div class="sidebar-title">
-                    HAyDenTra
-                </div>
-
-
-            </div>
-
-
-            <button
-                class="close-btn"
-                id="closeBtn">
-
-                <i class="fas fa-xmark"></i>
-
-            </button>
-
-
-        </div>
-
-
-
-        <nav class="side-links">
-
-
-            <a href="index.html">
-
-                <i class="fas fa-house"></i>
-
-                <span>
-                    الرئيسية
-                </span>
-
-            </a>
-
-
-            <a href="products.html">
-
-                <i class="fas fa-tooth"></i>
-
-                <span>
-                    المنتجات
-                </span>
-
-            </a>
-
-
-            <a
-                href="contact.html"
-                class="active">
-
-                <i class="fas fa-phone"></i>
-
-                <span>
-                    تواصل معنا
-                </span>
-
-            </a>
-
-
-        </nav>
-
-
-    </aside>
-
-
-
-    <!-- MAIN -->
-
-    <main>
-
-
-        <section class="contact-header">
-
-
-            <div class="logo-wrap page-logo">
+            <div class="logo-circle">
 
                 <img
                     src="logo.png"
-                    alt="HAyDenTra">
+                    alt="HAyDenTra Logo"
+                >
 
             </div>
 
+        </div>
 
-            <div class="page-brand">
+        <nav class="sidebar-links">
+
+            <a href="index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                الرئيسية
+
+            </a>
+
+            <a href="products.html">
+
+                <i class="fa-solid fa-tooth"></i>
+
+                المنتجات
+
+            </a>
+
+            <a href="contact.html">
+
+                <i class="fa-solid fa-phone"></i>
+
+                تواصل معنا
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <section class="contact-wrapper">
+
+            <div class="contact-logo">
+
+                <img
+                    src="logo.png"
+                    alt="HAyDenTra Logo"
+                >
+
+            </div>
+
+            <div class="contact-brand">
+
                 HAyDenTra
+
+                <span class="registered">
+                    ®
+                </span>
+
             </div>
 
-
-            <p>
-                نحن هنا لمساعدتك والإجابة على جميع استفساراتك
-            </p>
-
+            <div class="contact-subtitle">
+                نحن هنا لمساعدتك
+            </div>
 
         </section>
-
-
 
         <!-- CONTACT CARD -->
 
         <section class="contact-card">
 
-
-            <h2>
-                يسعدنا تواصلك معنا
-            </h2>
-
+            <h1>
+                تواصل معنا
+            </h1>
 
             <p>
-
-                يمكنك التواصل معنا من خلال واتساب
-                أو الاتصال مباشرة للحصول على
-                المعلومات وطلب المنتجات.
-
+                للاستفسار عن المنتجات أو الأسعار أو لطلب أي من
+                مستلزمات الأسنان، يمكنك التواصل معنا مباشرة.
             </p>
 
+            <div class="contact-buttons">
 
+                <a
+                    class="contact-btn whatsapp-btn"
+                    href="https://wa.me/201223859088"
+                    target="_blank"
+                    rel="noopener"
+                >
 
-            <div class="contact-options">
+                    <i class="fa-brands fa-whatsapp"></i>
 
+                    تواصل معنا عبر واتساب
 
-                <!-- WHATSAPP -->
+                </a>
 
-                <div class="contact-option">
+                <a
+                    class="contact-btn phone-btn"
+                    href="tel:201224828849"
+                >
 
+                    <i class="fa-solid fa-phone"></i>
 
-                    <div class="contact-icon">
+                    اتصل بنا
 
-                        <i class="fab fa-whatsapp"></i>
-
-                    </div>
-
-
-                    <h3>
-                        واتساب
-                    </h3>
-
-
-                    <p>
-                        تواصل معنا مباشرة عبر واتساب
-                    </p>
-
-
-                    <a
-                        class="contact-btn whatsapp"
-                        href="https://wa.me/201223859088"
-                        target="_blank"
-                        rel="noopener">
-
-
-                        <i class="fab fa-whatsapp"></i>
-
-                        افتح واتساب
-
-
-                    </a>
-
-
-                </div>
-
-
-
-                <!-- PHONE -->
-
-                <div class="contact-option">
-
-
-                    <div class="contact-icon">
-
-                        <i class="fas fa-phone"></i>
-
-                    </div>
-
-
-                    <h3>
-                        الهاتف
-                    </h3>
-
-
-                    <p>
-                        اتصل بنا مباشرة
-                    </p>
-
-
-                    <a
-                        class="contact-btn phone"
-                        href="tel:201224828849">
-
-
-                        <i class="fas fa-phone"></i>
-
-                        اتصل الآن
-
-
-                    </a>
-
-
-                </div>
-
+                </a>
 
             </div>
 
-
         </section>
 
+        <footer>
+
+            © 2026 HAyDenTra® — جميع الحقوق محفوظة
+
+        </footer>
 
     </main>
 
-
-
-    <footer>
-
-        © 2026 HAyDenTra® — جميع الحقوق محفوظة
-
-    </footer>
-
-
-
-    <!-- JAVASCRIPT -->
-
     <script>
-
-
-        const menuBtn =
-            document.getElementById("menuBtn");
-
-
-        const closeBtn =
-            document.getElementById("closeBtn");
-
 
         const sidebar =
             document.getElementById("sidebar");
 
-
         const overlay =
             document.getElementById("overlay");
-
-
 
         function openMenu() {
 
@@ -1113,8 +891,6 @@
 
         }
 
-
-
         function closeMenu() {
 
             sidebar.classList.remove("active");
@@ -1125,39 +901,18 @@
 
         }
 
+        document.addEventListener(
+            "keydown",
+            function(e) {
 
+                if (e.key === "Escape") {
+                    closeMenu();
+                }
 
-        menuBtn.addEventListener(
-            "click",
-            openMenu
+            }
         );
-
-
-        closeBtn.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        document
-            .querySelectorAll(".side-links a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    closeMenu
-                );
-
-            });
 
     </script>
-
 
 </body>
 </html>
