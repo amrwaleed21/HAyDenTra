@@ -23,18 +23,16 @@
 
         html {
             min-height: 100%;
-            background:
-                radial-gradient(circle at 50% 25%, rgba(0, 210, 255, .14), transparent 35%),
-                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #e6f4f8 50%, #d8eff6 100%);
         }
 
         body {
             min-height: 100dvh;
             font-family: "Cairo", sans-serif;
-            color: #fff;
+            color: #1e3a8a;
             background:
-                radial-gradient(circle at 50% 28%, rgba(0, 210, 255, .12), transparent 35%),
-                linear-gradient(180deg, #061d31 0%, #07334d 48%, #062338 100%);
+                radial-gradient(circle at 50% 28%, rgba(186, 230, 253, 0.4), transparent 45%),
+                linear-gradient(180deg, #ffffff 0%, #e8f5f9 50%, #dbeffe 100%);
             overflow-x: hidden;
         }
 
@@ -59,13 +57,13 @@
             height: 74px;
             z-index: 1000;
 
-            background: rgba(4, 22, 40, .68);
-            border-bottom: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, 0.82);
+            border-bottom: 1px solid rgba(186, 230, 253, 0.6);
 
             backdrop-filter: blur(18px) saturate(150%);
             -webkit-backdrop-filter: blur(18px) saturate(150%);
 
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+            box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
         }
 
         .nav-inner {
@@ -98,12 +96,11 @@
             display: grid;
             place-items: center;
 
-            border: 1px solid rgba(255, 255, 255, .9);
+            border: 1px solid rgba(14, 165, 233, 0.3);
 
             box-shadow:
-                0 0 8px rgba(255, 255, 255, .9),
-                0 0 20px rgba(0, 229, 255, .65),
-                0 0 34px rgba(0, 229, 255, .25);
+                0 0 8px rgba(186, 230, 253, 0.8),
+                0 0 15px rgba(56, 189, 248, 0.2);
         }
 
         .nav-logo-circle img {
@@ -120,12 +117,8 @@
             font-weight: 900;
             font-size: 27px;
             line-height: 1;
-            color: #fff;
+            color: #0284c7;
             white-space: nowrap;
-
-            text-shadow:
-                0 0 5px rgba(255, 255, 255, .8),
-                0 0 13px rgba(0, 229, 255, .35);
         }
 
         .brand-name .registered {
@@ -144,13 +137,13 @@
             height: 58px;
 
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, .22);
+            border: 1px solid rgba(14, 165, 233, 0.2);
 
-            background: rgba(255, 255, 255, .08);
+            background: rgba(240, 249, 255, 0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
-            color: #fff;
+            color: #0284c7;
             font-size: 31px;
 
             display: flex;
@@ -160,14 +153,14 @@
             cursor: pointer;
 
             box-shadow:
-                0 8px 22px rgba(0, 0, 0, .18),
-                inset 0 1px rgba(255, 255, 255, .08);
+                0 4px 15px rgba(186, 230, 253, 0.3),
+                inset 0 1px rgba(255, 255, 255, 0.8);
 
             transition: .25s;
         }
 
         .menu-btn:hover {
-            background: rgba(255, 255, 255, .14);
+            background: rgba(224, 242, 254, 0.9);
             transform: translateY(-1px);
         }
 
@@ -180,9 +173,9 @@
             inset: 0;
             z-index: 1050;
 
-            background: rgba(0, 0, 0, .38);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
 
             opacity: 0;
             visibility: hidden;
@@ -207,13 +200,13 @@
 
             padding: 28px 20px;
 
-            background: rgba(6, 27, 48, .72);
-            border-left: 1px solid rgba(255, 255, 255, .15);
+            background: rgba(255, 255, 255, 0.92);
+            border-left: 1px solid rgba(186, 230, 253, 0.5);
 
             backdrop-filter: blur(24px) saturate(160%);
             -webkit-backdrop-filter: blur(24px) saturate(160%);
 
-            box-shadow: -15px 0 45px rgba(0, 0, 0, .25);
+            box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
 
             transform: translateX(110%);
             transition: transform .35s ease;
@@ -234,7 +227,7 @@
             padding-bottom: 25px;
             margin-bottom: 20px;
 
-            border-bottom: 1px solid rgba(255, 255, 255, .12);
+            border-bottom: 1px solid rgba(186, 230, 253, 0.5);
         }
 
         .sidebar-logo {
@@ -248,8 +241,9 @@
             place-items: center;
 
             box-shadow:
-                0 0 10px rgba(255, 255, 255, .9),
-                0 0 25px rgba(0, 229, 255, .65);
+                0 0 10px rgba(186, 230, 253, 0.8),
+                0 0 20px rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(14, 165, 233, 0.2);
         }
 
         .sidebar-logo img {
@@ -268,6 +262,7 @@
             font-size: 25px;
             font-weight: 900;
             direction: ltr;
+            color: #0284c7;
         }
 
         .sidebar-brand .registered {
@@ -286,10 +281,10 @@
             height: 42px;
 
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, .18);
+            border: 1px solid rgba(14, 165, 233, 0.2);
 
-            background: rgba(255, 255, 255, .08);
-            color: #fff;
+            background: rgba(240, 249, 255, 0.8);
+            color: #0284c7;
 
             font-size: 20px;
             cursor: pointer;
@@ -305,11 +300,12 @@
 
             border-radius: 15px;
 
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid rgba(255, 255, 255, .08);
+            background: rgba(240, 249, 255, 0.6);
+            border: 1px solid rgba(186, 230, 253, 0.5);
 
             font-size: 16px;
             font-weight: 700;
+            color: #0369a1;
 
             transition: .25s;
         }
@@ -317,13 +313,14 @@
         .side-link i {
             width: 25px;
             text-align: center;
-            color: #55ddff;
+            color: #0284c7;
         }
 
         .side-link:hover,
         .side-link.active {
-            background: rgba(0, 210, 255, .13);
-            border-color: rgba(80, 220, 255, .28);
+            background: #e0f2fe;
+            border-color: #38bdf8;
+            color: #0284c7;
             transform: translateX(-3px);
         }
 
@@ -355,9 +352,10 @@
             place-items: center;
 
             box-shadow:
-                0 0 10px rgba(255, 255, 255, .95),
-                0 0 26px rgba(0, 229, 255, .75),
-                0 0 48px rgba(0, 229, 255, .32);
+                0 10px 25px rgba(186, 230, 253, 0.6),
+                0 0 30px rgba(56, 189, 248, 0.25);
+            border: 4px solid #ffffff;
+            outline: 1px solid rgba(14, 165, 233, 0.3);
         }
 
         .main-logo-circle img {
@@ -378,11 +376,8 @@
             font-weight: 900;
             direction: ltr;
 
-            color: #fff;
-
-            text-shadow:
-                0 0 6px rgba(255, 255, 255, .85),
-                0 0 17px rgba(0, 229, 255, .35);
+            color: #0284c7;
+            letter-spacing: .5px;
         }
 
         .main-brand .registered {
@@ -397,9 +392,10 @@
         .tagline {
             margin-top: 25px;
 
-            color: #bdd3e7;
+            color: #0369a1;
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: .2px;
         }
 
         /* =========================
@@ -412,22 +408,26 @@
             margin: 45px auto 0;
             padding: 38px 25px 42px;
 
-            border-radius: 38px;
+            border-radius: 28px;
 
-            background: rgba(239, 244, 249, .96);
-            color: #081d33;
+            position: relative;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.88), rgba(240, 249, 255, 0.92)),
+                url("DentalTools.jpg") center / cover;
+            color: #0f172a;
 
-            border: 5px solid #63ddff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
 
             box-shadow:
-                0 0 13px rgba(100, 225, 255, .85),
-                0 0 35px rgba(0, 200, 255, .25);
+                0 15px 35px rgba(186, 230, 253, 0.4),
+                0 0 25px rgba(56, 189, 248, 0.15);
         }
 
         .welcome-card h1 {
             font-size: clamp(31px, 7vw, 48px);
             line-height: 1.55;
             font-weight: 900;
+            color: #0284c7;
         }
 
         .welcome-card p {
@@ -436,7 +436,18 @@
             font-size: clamp(16px, 3.5vw, 21px);
             line-height: 2;
 
-            color: #34485b;
+            color: #334155;
+        }
+
+        .welcome-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 12%;
+            left: 12%;
+            height: 3px;
+            border-radius: 0 0 8px 8px;
+            background: #0284c7;
         }
 
         /* =========================
@@ -474,14 +485,15 @@
 
         .products-btn {
             color: #fff;
-            background: linear-gradient(135deg, #009bc4, #0874a2);
-            box-shadow: 0 8px 20px rgba(0, 160, 210, .25);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
         }
 
         .contact-btn {
-            color: #fff;
-            background: linear-gradient(135deg, #172d45, #304b63);
-            border: 1px solid rgba(255, 255, 255, .18);
+            color: #0284c7;
+            background: #ffffff;
+            border: 1px solid rgba(2, 132, 199, 0.3);
+            box-shadow: 0 4px 12px rgba(186, 230, 253, 0.3);
         }
 
         .main-btn:hover {
@@ -510,24 +522,25 @@
 
             border-radius: 18px;
 
-            background: rgba(8, 32, 54, .62);
-            border: 1px solid rgba(105, 224, 255, .17);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(186, 230, 253, 0.8);
 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .12);
+            box-shadow: 0 8px 20px rgba(186, 230, 253, 0.3);
         }
 
         .feature-card i {
             font-size: 25px;
-            color: #5fe3ff;
+            color: #0284c7;
             margin-bottom: 8px;
         }
 
         .feature-card h3 {
             font-size: clamp(11px, 3vw, 16px);
             font-weight: 800;
+            color: #0f172a;
         }
 
         .feature-card p {
@@ -536,7 +549,7 @@
             font-size: clamp(8px, 2.4vw, 12px);
             line-height: 1.6;
 
-            color: #b8ccdc;
+            color: #475569;
         }
 
         /* =========================
@@ -549,11 +562,11 @@
 
             text-align: center;
 
-            color: #91a9bb;
+            color: #0369a1;
             font-size: 12px;
 
-            background: rgba(2, 17, 30, .32);
-            border-top: 1px solid rgba(255, 255, 255, .06);
+            background: rgba(224, 242, 254, 0.5);
+            border-top: 1px solid rgba(186, 230, 253, 0.6);
         }
 
         /* =========================
@@ -591,7 +604,7 @@
             }
 
             .hero {
-                padding-top: 78px;
+                padding-top: 86px;
             }
 
             .main-logo-circle {
@@ -661,74 +674,10 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            opacity: .28;
-            background-image: radial-gradient(rgba(255, 255, 255, .16) .7px, transparent .7px);
+            opacity: .4;
+            background-image: radial-gradient(rgba(14, 165, 233, 0.15) .7px, transparent .7px);
             background-size: 18px 18px;
-            mask-image: linear-gradient(to bottom, #000, transparent 72%);
-        }
-
-        .topbar {
-            background: rgba(3, 17, 31, .78);
-            border-bottom-color: rgba(120, 224, 255, .18);
-        }
-
-        .hero {
-            padding-top: 92px;
-        }
-
-        .main-logo-circle {
-            border: 6px solid rgba(255, 255, 255, .92);
-            outline: 1px solid rgba(83, 220, 255, .45);
-        }
-
-        .main-brand {
-            letter-spacing: .5px;
-        }
-
-        .tagline {
-            color: #d3e8f4;
-            letter-spacing: .2px;
-        }
-
-        .welcome-card {
-            position: relative;
-            background:
-                linear-gradient(rgba(4, 29, 48, .68), rgba(4, 29, 48, .78)),
-                url("DentalTools.jpg") center / cover;
-            color: #fff;
-            border: 1px solid rgba(120, 228, 255, .8);
-            border-radius: 28px;
-            box-shadow: 0 24px 60px rgba(0, 12, 24, .28), 0 0 28px rgba(80, 220, 255, .18);
-        }
-
-        .welcome-card p {
-            color: #e0edf4;
-        }
-
-        .welcome-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 12%;
-            left: 12%;
-            height: 3px;
-            border-radius: 0 0 8px 8px;
-            background: #27c9ed;
-        }
-
-        .products-btn {
-            background: linear-gradient(135deg, #08aaca, #08779e);
-        }
-
-        .feature-card {
-            border-color: rgba(105, 224, 255, .24);
-            background: rgba(8, 30, 51, .72);
-        }
-
-        @media (max-width: 500px) {
-            .hero {
-                padding-top: 86px;
-            }
+            mask-image: linear-gradient(to bottom, #000, transparent 80%);
         }
     </style>
 </head>
