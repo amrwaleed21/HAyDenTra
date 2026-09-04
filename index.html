@@ -14,25 +14,30 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             min-height: 100%;
-            background: #061d2d;
-            scroll-behavior: smooth;
+            background: #061b2d;
         }
 
         body {
             margin: 0;
             min-height: 100dvh;
-            font-family: "Cairo", sans-serif;
-            color: #fff;
             background:
-                radial-gradient(circle at 50% 35%, rgba(0, 201, 255, .18), transparent 30%),
-                linear-gradient(145deg, #061c2b, #073d59 55%, #061d2d);
+                radial-gradient(circle at 50% 45%, rgba(0, 210, 255, .13), transparent 35%),
+                linear-gradient(145deg, #061b2d, #073653 50%, #06233a);
+            color: white;
+            font-family: "Cairo", sans-serif;
             overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         a {
@@ -47,111 +52,115 @@
             top: 0;
             right: 0;
             left: 0;
-            height: 74px;
+            height: 76px;
             z-index: 1000;
 
-            background: rgba(4, 24, 42, .65);
+            background: rgba(4, 24, 43, .64);
             border-bottom: 1px solid rgba(255,255,255,.12);
 
             backdrop-filter: blur(18px) saturate(150%);
             -webkit-backdrop-filter: blur(18px) saturate(150%);
 
-            box-shadow: 0 8px 30px rgba(0,0,0,.22);
+            box-shadow: 0 8px 30px rgba(0,0,0,.20);
         }
 
         .nav-inner {
-            width: 100%;
             height: 100%;
+            max-width: 1200px;
+            margin: auto;
             padding: 0 20px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+            direction: rtl;
         }
-
-        /* Logo in navbar */
 
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 10px;
-            direction: ltr;
         }
 
         .nav-logo-circle {
             width: 52px;
             height: 52px;
-            flex: 0 0 52px;
-
             border-radius: 50%;
+
             background: #fff;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border: 1px solid rgba(255,255,255,.9);
+            border: 1px solid rgba(255,255,255,.95);
 
             box-shadow:
-                0 0 10px rgba(255,255,255,.8),
-                0 0 22px rgba(0,225,255,.55);
+                0 0 10px rgba(255,255,255,.9),
+                0 0 25px rgba(0,225,255,.65);
         }
 
         .nav-logo-circle img {
             width: 72%;
             height: 72%;
             object-fit: contain;
-            display: block;
         }
 
-        .nav-brand-name {
-            position: relative;
-            font-size: 25px;
-            line-height: 1;
-            font-weight: 900;
-            white-space: nowrap;
+        .brand-name {
             color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,.35);
+            font-size: 25px;
+            font-weight: 900;
+            line-height: 1;
+            white-space: nowrap;
+
+            text-shadow:
+                0 0 7px rgba(255,255,255,.35),
+                0 0 16px rgba(0,220,255,.35);
         }
 
-        /* ® صغير وقريب من الكلمة */
+        /* علامة ® */
 
         .registered {
-            position: absolute;
-            top: -8px;
-            right: -10px;
+            display: inline-block;
+            font-size: .43em;
+            font-weight: 800;
 
-            font-size: 10px;
-            line-height: 1;
-            font-weight: 700;
+            position: relative;
+            top: -.28em;
+
+            margin-right: 3px;
+            vertical-align: baseline;
         }
 
-        /* Menu button */
+        /* زر القائمة */
 
-        .menu-btn {
-            width: 58px;
-            height: 58px;
+        .menu-button {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 22px;
 
             border: 1px solid rgba(255,255,255,.25);
-            border-radius: 18px;
 
             background: rgba(255,255,255,.08);
-            color: #fff;
+
+            color: white;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 30px;
+            font-size: 31px;
+
             cursor: pointer;
 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
-            transition: .25s;
+            transition: .25s ease;
         }
 
-        .menu-btn:active {
+        .menu-button:active {
             transform: scale(.94);
         }
 
@@ -160,15 +169,15 @@
         .overlay {
             position: fixed;
             inset: 0;
-            z-index: 1050;
 
-            background: rgba(0,0,0,.4);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            background: rgba(0,0,0,.42);
 
             opacity: 0;
             visibility: hidden;
-            transition: .3s;
+
+            z-index: 1050;
+
+            transition: .3s ease;
         }
 
         .overlay.active {
@@ -178,28 +187,28 @@
 
         .sidebar {
             position: fixed;
+
             top: 0;
             right: 0;
 
-            width: min(82%, 340px);
+            width: min(80%, 350px);
             height: 100dvh;
 
             z-index: 1100;
 
-            padding: 28px 20px;
+            background: rgba(5, 27, 48, .72);
 
-            background: rgba(5, 27, 47, .72);
             border-left: 1px solid rgba(255,255,255,.14);
 
-            backdrop-filter: blur(22px) saturate(150%);
-            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
 
-            box-shadow: -15px 0 40px rgba(0,0,0,.3);
+            box-shadow: -15px 0 40px rgba(0,0,0,.35);
 
-            transform: translateX(100%);
+            transform: translateX(105%);
             transition: transform .35s ease;
 
-            overflow-y: auto;
+            padding: 28px 20px;
         }
 
         .sidebar.active {
@@ -210,17 +219,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
 
-            margin-bottom: 28px;
+            padding-bottom: 25px;
+            margin-bottom: 18px;
+
+            border-bottom: 1px solid rgba(255,255,255,.12);
         }
 
         .sidebar-logo-circle {
-            width: 70px;
-            height: 70px;
+            width: 72px;
+            height: 72px;
 
             border-radius: 50%;
-            background: #fff;
+
+            background: white;
 
             display: flex;
             align-items: center;
@@ -228,7 +240,7 @@
 
             box-shadow:
                 0 0 12px rgba(255,255,255,.9),
-                0 0 28px rgba(0,225,255,.6);
+                0 0 30px rgba(0,220,255,.65);
         }
 
         .sidebar-logo-circle img {
@@ -238,97 +250,80 @@
         }
 
         .sidebar-brand {
-            margin-top: 13px;
-            font-size: 25px;
+            margin-top: 12px;
+
+            font-size: 24px;
             font-weight: 900;
-            direction: ltr;
-            position: relative;
+
+            color: white;
         }
 
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .sidebar-links a {
-            padding: 15px 16px;
-
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,.1);
-
-            background: rgba(255,255,255,.06);
-
+        .sidebar-link {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
 
-            font-size: 16px;
+            padding: 15px 16px;
+            margin: 8px 0;
+
+            border-radius: 14px;
+
+            color: #eaf8ff;
+
+            background: rgba(255,255,255,.055);
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            font-size: 17px;
             font-weight: 700;
 
-            transition: .25s;
+            transition: .25s ease;
         }
 
-        .sidebar-links a i {
+        .sidebar-link i {
             width: 24px;
             text-align: center;
+            color: #67e7ff;
         }
 
-        .sidebar-links a:hover {
-            background: rgba(0,210,255,.13);
-            transform: translateX(-3px);
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 18px;
-            left: 18px;
-
-            width: 42px;
-            height: 42px;
-
-            border: 1px solid rgba(255,255,255,.15);
-            border-radius: 12px;
-
-            background: rgba(255,255,255,.07);
-            color: white;
-
-            font-size: 20px;
-            cursor: pointer;
+        .sidebar-link:active {
+            transform: scale(.97);
+            background: rgba(0,220,255,.12);
         }
 
         /* ================= MAIN ================= */
 
         main {
-            width: 100%;
-            padding-top: 94px;
+            padding-top: 92px;
+            padding-bottom: 30px;
         }
 
-        /* ================= HERO ================= */
-
         .hero {
-            width: min(92%, 850px);
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 15px auto 0;
+            padding: 20px;
+
             text-align: center;
         }
 
         .hero-logo-circle {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
 
-            margin: 10px auto 20px;
+            margin: 0 auto 20px;
 
             border-radius: 50%;
-            background: #fff;
+
+            background: white;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             box-shadow:
-                0 0 14px rgba(255,255,255,.9),
-                0 0 30px rgba(0,225,255,.7),
-                0 0 55px rgba(0,225,255,.28);
+                0 0 14px rgba(255,255,255,.95),
+                0 0 35px rgba(0,225,255,.72),
+                0 0 65px rgba(0,225,255,.25);
         }
 
         .hero-logo-circle img {
@@ -337,179 +332,183 @@
             object-fit: contain;
         }
 
-        .hero-name {
-            position: relative;
+        .hero-brand {
             display: inline-block;
 
-            direction: ltr;
+            color: white;
 
-            font-size: clamp(42px, 10vw, 62px);
+            font-size: 48px;
             line-height: 1;
+
             font-weight: 900;
 
-            color: #fff;
-
             text-shadow:
-                0 0 8px rgba(255,255,255,.8),
-                0 0 20px rgba(0,225,255,.35);
+                0 0 8px rgba(255,255,255,.7),
+                0 0 20px rgba(0,220,255,.45);
         }
 
-        .hero-name .registered {
-            top: -9px;
-            right: -12px;
-            font-size: 12px;
+        .hero-brand .registered {
+            font-size: .42em;
+            top: -.30em;
+            margin-right: 4px;
         }
 
         .tagline {
-            margin: 22px 0 30px;
+            margin-top: 18px;
 
-            color: #b9d3e8;
-            font-size: clamp(17px, 4vw, 25px);
+            color: #b9cce0;
+
+            font-size: 23px;
             font-weight: 500;
         }
 
         /* ================= WELCOME CARD ================= */
 
         .welcome-card {
-            width: 100%;
+            max-width: 650px;
+            margin: 50px auto 0;
 
-            padding: 38px 25px 32px;
+            padding: 42px 30px;
 
-            border-radius: 38px;
+            border-radius: 42px;
 
-            background: rgba(239,244,249,.94);
-            color: #09233a;
+            background: rgba(239,245,251,.95);
 
-            border: 5px solid #63d9f3;
+            color: #071d34;
+
+            border: 5px solid #67ddfa;
 
             box-shadow:
-                0 0 15px rgba(99,217,243,.8),
-                0 0 40px rgba(0,210,255,.25);
-
-            margin-top: 10px;
+                0 0 15px rgba(0,220,255,.7),
+                0 0 45px rgba(0,220,255,.22);
         }
 
         .welcome-card h1 {
-            margin: 0 auto 28px;
+            margin: 0;
 
-            max-width: 650px;
+            font-size: clamp(32px, 6vw, 52px);
 
-            font-size: clamp(32px, 8vw, 54px);
             line-height: 1.55;
 
             font-weight: 900;
         }
 
         .welcome-card p {
-            margin: 0 auto 28px;
+            margin: 25px 0 0;
 
-            max-width: 680px;
+            font-size: clamp(18px, 3.5vw, 25px);
 
-            font-size: clamp(17px, 4vw, 23px);
             line-height: 2;
 
-            color: #344b60;
+            color: #405267;
         }
 
-        .main-buttons {
+        .buttons {
+            margin-top: 30px;
+
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 12px;
+
             flex-wrap: wrap;
         }
 
-        .main-btn {
-            min-width: 180px;
-            padding: 13px 22px;
+        .main-button {
+            border: none;
 
-            border-radius: 14px;
+            padding: 13px 24px;
 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
+            border-radius: 15px;
 
+            font-family: inherit;
             font-size: 16px;
             font-weight: 800;
 
-            transition: .25s;
+            cursor: pointer;
+
+            transition: .25s ease;
         }
 
-        .products-btn {
-            background: linear-gradient(135deg, #079dcc, #075f91);
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(0,130,190,.25);
+        .products-button {
+            background: linear-gradient(135deg,#009ed0,#00c9e9);
+            color: white;
         }
 
-        .contact-btn {
-            background: #0b2238;
-            color: #fff;
+        .contact-button {
+            background: #09263e;
+            color: white;
         }
 
-        .main-btn:active {
-            transform: scale(.97);
+        .main-button:active {
+            transform: scale(.95);
         }
 
         /* ================= FEATURES ================= */
 
         .features-grid {
-            width: 100%;
-            margin-top: 18px;
+            max-width: 900px;
+
+            margin: 28px auto 0;
+
+            padding: 0 15px;
 
             display: grid;
+
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
+
+            gap: 12px;
         }
 
         .feature-card {
-            min-width: 0;
+            padding: 18px 9px;
 
-            padding: 18px 8px;
+            text-align: center;
 
             border-radius: 20px;
 
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.09);
 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,.14);
 
-            text-align: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .feature-card i {
-            font-size: 24px;
+            font-size: 27px;
+            color: #6ce9ff;
+
             margin-bottom: 8px;
-            color: #65ddf5;
         }
 
         .feature-card h3 {
             margin: 0 0 5px;
-            font-size: clamp(12px, 3.2vw, 17px);
+
+            font-size: clamp(12px, 3vw, 17px);
+            font-weight: 800;
         }
 
         .feature-card p {
             margin: 0;
-            color: #bdd1df;
-            font-size: clamp(9px, 2.5vw, 13px);
-            line-height: 1.7;
+
+            color: #b9cde0;
+
+            font-size: clamp(10px, 2.5vw, 13px);
+
+            line-height: 1.6;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
-            width: 100%;
-            padding: 25px 15px;
-            margin-top: 28px;
+            margin-top: 30px;
+            padding: 18px 15px;
 
             text-align: center;
 
-            color: #91afc2;
-            font-size: 13px;
+            color: #8faac0;
 
-            background: rgba(2,18,31,.35);
-            border-top: 1px solid rgba(255,255,255,.08);
+            font-size: 13px;
         }
 
         /* ================= MOBILE ================= */
@@ -517,137 +516,132 @@
         @media (max-width: 600px) {
 
             .topbar {
-                height: 74px;
+                height: 76px;
             }
 
             .nav-inner {
-                padding: 0 20px;
+                padding: 0 16px;
             }
 
-            .menu-btn {
-                width: 58px;
-                height: 58px;
+            .menu-button {
+                width: 62px;
+                height: 62px;
             }
 
             .nav-logo-circle {
-                width: 52px;
-                height: 52px;
+                width: 50px;
+                height: 50px;
             }
 
-            .nav-brand-name {
-                font-size: 24px;
+            .brand-name {
+                font-size: 23px;
             }
 
             main {
-                padding-top: 92px;
+                padding-top: 88px;
+            }
+
+            .hero {
+                padding-top: 20px;
             }
 
             .hero-logo-circle {
-                width: 150px;
-                height: 150px;
-                margin-top: 8px;
+                width: 125px;
+                height: 125px;
+
+                margin-bottom: 20px;
             }
 
-            .hero-name {
-                font-size: 48px;
+            .hero-brand {
+                font-size: 40px;
             }
 
             .tagline {
-                margin-top: 20px;
-                margin-bottom: 28px;
+                font-size: 19px;
+                margin-top: 17px;
             }
 
             .welcome-card {
-                padding: 30px 18px 26px;
-                border-radius: 32px;
-            }
+                margin-top: 42px;
 
-            .welcome-card h1 {
-                font-size: 35px;
-                line-height: 1.55;
-            }
+                padding: 34px 20px;
 
-            .welcome-card p {
-                font-size: 17px;
-                line-height: 1.95;
+                border-radius: 35px;
             }
 
             .features-grid {
                 gap: 8px;
+                padding: 0 10px;
             }
 
             .feature-card {
-                padding: 15px 5px;
-                border-radius: 16px;
+                border-radius: 17px;
+                padding: 15px 6px;
             }
         }
 
         @media (max-width: 380px) {
 
-            .nav-brand-name {
-                font-size: 21px;
+            .brand-name {
+                font-size: 20px;
             }
 
             .nav-logo-circle {
-                width: 48px;
-                height: 48px;
-                flex-basis: 48px;
-            }
-
-            .menu-btn {
-                width: 54px;
-                height: 54px;
+                width: 46px;
+                height: 46px;
             }
 
             .hero-logo-circle {
-                width: 135px;
-                height: 135px;
+                width: 115px;
+                height: 115px;
             }
 
-            .hero-name {
-                font-size: 42px;
+            .hero-brand {
+                font-size: 36px;
             }
 
-            .welcome-card h1 {
-                font-size: 31px;
+            .tagline {
+                font-size: 17px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
+
     <header class="topbar">
+
         <div class="nav-inner">
 
-            <a href="index.html" class="nav-brand">
+            <div class="nav-brand">
+
                 <div class="nav-logo-circle">
                     <img src="logo.png" alt="HAyDenTra Logo">
                 </div>
 
-                <div class="nav-brand-name">
-                    HAyDenTra
-                    <span class="registered">®</span>
+                <div class="brand-name">
+                    HAyDenTra<span class="registered">®</span>
                 </div>
-            </a>
 
-            <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
+            </div>
+
+            <button class="menu-button" onclick="openMenu()" aria-label="فتح القائمة">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
         </div>
+
     </header>
 
-    <!-- OVERLAY -->
+
+    <!-- ================= SIDEBAR ================= -->
+
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-
-        <button class="close-menu" onclick="closeMenu()">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
 
         <div class="sidebar-logo">
 
@@ -656,34 +650,31 @@
             </div>
 
             <div class="sidebar-brand">
-                HAyDenTra
-                <span class="registered">®</span>
+                HAyDenTra<span class="registered">®</span>
             </div>
 
         </div>
 
-        <nav class="sidebar-links">
+        <a href="index.html" class="sidebar-link">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
+        </a>
 
-            <a href="index.html">
-                <i class="fa-solid fa-house"></i>
-                الرئيسية
-            </a>
+        <a href="products.html" class="sidebar-link">
+            <i class="fa-solid fa-tooth"></i>
+            <span>المنتجات</span>
+        </a>
 
-            <a href="products.html">
-                <i class="fa-solid fa-tooth"></i>
-                المنتجات
-            </a>
-
-            <a href="contact.html">
-                <i class="fa-solid fa-phone"></i>
-                تواصل معنا
-            </a>
-
-        </nav>
+        <a href="contact.html" class="sidebar-link">
+            <i class="fa-solid fa-phone"></i>
+            <span>تواصل معنا</span>
+        </a>
 
     </aside>
 
-    <!-- MAIN -->
+
+    <!-- ================= MAIN ================= -->
+
     <main>
 
         <section class="hero">
@@ -692,95 +683,118 @@
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
 
-            <div class="hero-name">
-                HAyDenTra
-                <span class="registered">®</span>
+            <div class="hero-brand">
+                HAyDenTra<span class="registered">®</span>
             </div>
 
             <div class="tagline">
                 Your Trusted Partner in Dental Solutions
             </div>
 
-            <div class="welcome-card">
+        </section>
 
-                <h1>
-                    مرحباً بكم في عالم<br>
-                    مستلزمات الأسنان<br>
-                    المتطورة
-                </h1>
 
-                <p>
-                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
-                    المعتمدة بأعلى معايير الجودة العالمية
-                    وبأسعار تنافسية.
-                </p>
+        <section class="welcome-card">
 
-                <div class="main-buttons">
+            <h1>
+                مرحباً بكم في عالم
+                <br>
+                مستلزمات الأسنان
+                <br>
+                المتطورة
+            </h1>
 
-                    <a href="products.html" class="main-btn products-btn">
-                        <i class="fa-solid fa-box-open"></i>
-                        استكشف المنتجات
-                    </a>
+            <p>
+                نقدم لعيادتك أحدث الأجهزة والمواد الطبية
+                المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
+            </p>
 
-                    <a href="contact.html" class="main-btn contact-btn">
-                        <i class="fa-solid fa-comments"></i>
-                        تواصل معنا
-                    </a>
+            <div class="buttons">
 
-                </div>
+                <a href="products.html" class="main-button products-button">
+                    <i class="fa-solid fa-box-open"></i>
+                    استكشف المنتجات
+                </a>
+
+                <a href="contact.html" class="main-button contact-button">
+                    <i class="fa-solid fa-comments"></i>
+                    تواصل معنا
+                </a>
 
             </div>
 
-            <!-- كروت المميزات فقط بدون عنوان -->
-            <div class="features-grid">
+        </section>
 
-                <div class="feature-card">
-                    <i class="fa-solid fa-headset"></i>
-                    <h3>خدمة العملاء</h3>
-                    <p>دعم ومتابعة مستمرة</p>
-                </div>
 
-                <div class="feature-card">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <h3>توصيل سريع</h3>
-                    <p>سرعة وأمان في التوصيل</p>
-                </div>
+        <!-- كروت المميزات فقط بدون عنوان -->
 
-                <div class="feature-card">
-                    <i class="fa-solid fa-award"></i>
-                    <h3>جودة عالية</h3>
-                    <p>منتجات بمعايير عالمية</p>
-                </div>
+        <section class="features-grid">
 
+            <div class="feature-card">
+                <i class="fa-solid fa-headset"></i>
+
+                <h3>خدمة العملاء</h3>
+
+                <p>
+                    دعم ومساعدة مستمرة
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <h3>توصيل سريع</h3>
+
+                <p>
+                    توصيل سريع وآمن
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <i class="fa-solid fa-award"></i>
+
+                <h3>جودة عالية</h3>
+
+                <p>
+                    منتجات موثوقة
+                </p>
             </div>
 
         </section>
 
     </main>
 
+
     <footer>
-        © 2026 HAyDenTra® — جميع الحقوق محفوظة
+        © 2026 HAyDenTra® - جميع الحقوق محفوظة
     </footer>
 
+
     <script>
+
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
 
         function openMenu() {
             sidebar.classList.add("active");
             overlay.classList.add("active");
-            document.body.style.overflow = "hidden";
+            document.body.classList.add("menu-open");
         }
 
         function closeMenu() {
             sidebar.classList.remove("active");
             overlay.classList.remove("active");
-            document.body.style.overflow = "";
+            document.body.classList.remove("menu-open");
         }
 
-        document.querySelectorAll(".sidebar a").forEach(link => {
-            link.addEventListener("click", closeMenu);
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                closeMenu();
+            }
         });
+
     </script>
 
 </body>
