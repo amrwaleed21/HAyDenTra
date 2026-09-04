@@ -1,536 +1,765 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAyDenTra® - الصفحة الرئيسية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-bg: #081b33;
-            --secondary-bg: #102d4f;
-            --accent-glow: #00d2ff;
-            --whatsapp-green: #25d366;
-            --text-dark: #081b33;
-            --text-main: #ffffff;
-            --text-muted: #b0c4de;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+    <title>HAyDenTra® | مستلزمات الأسنان</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html {
-            background-color: var(--primary-bg);
-            height: 100%;
+            width: 100%;
+            min-height: 100%;
+            background: #06172c;
         }
 
         body {
-            background: linear-gradient(135deg, #081b33 0%, #102d4f 50%, #061527 100%);
-            color: var(--text-main);
-            font-family: 'Cairo', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            animation: fadeInPage 0.5s ease forwards;
-        }
-
-        body.sidebar-open {
-            overflow: hidden;
-            position: fixed;
             width: 100%;
+            min-height: 100dvh;
+            background:
+                radial-gradient(circle at 50% 25%, rgba(0, 183, 255, 0.10), transparent 35%),
+                linear-gradient(180deg, #071d35 0%, #092b4d 50%, #06172c 100%);
+            color: white;
+            font-family: "Cairo", sans-serif;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* =========================
+           NAVBAR
+        ========================= */
 
-        body.fade-out {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        /* شريط علوي ثابت تماماً ولا يتحرك نهائياً */
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.7rem 1.2rem;
-            background: rgba(8, 27, 51, 0.92);
             position: fixed;
             top: 0;
+            right: 0;
             left: 0;
-            width: 100%;
-            z-index: 99999;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.35);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
 
-        .nav-logo-right {
+            width: 100%;
+            height: 72px;
+
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
+            justify-content: space-between;
+
+            padding: 0 18px;
+
+            z-index: 100000;
+
+            /* Glass Effect */
+            background: rgba(5, 22, 40, 0.58);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(90, 220, 255, 0.22);
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.20),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        .nav-logo-right img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
-        }
-
-        .nav-logo-right .brand-text {
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
+        .navbar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            filter:
+                drop-shadow(0 0 8px rgba(0, 220, 255, 0.55));
         }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            font-size: 1.2rem;
+            width: 46px;
+            height: 46px;
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+
+            font-size: 22px;
+
             cursor: pointer;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            transition: 0.25s ease;
         }
 
         .menu-btn:hover {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
+            background: rgba(0, 200, 255, 0.15);
+            border-color: rgba(0, 220, 255, 0.45);
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.48);
+
+            opacity: 0;
+            visibility: hidden;
+
+            z-index: 99998;
+
+            transition: 0.3s ease;
+
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .sidebar {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 78%;
-            height: 100vh;
+            right: -85%;
+
+            width: min(78%, 360px);
             height: 100dvh;
-            background: linear-gradient(145deg, rgba(16, 45, 79, 0.98) 0%, rgba(8, 27, 51, 0.99) 100%);
-            backdrop-filter: blur(18px);
-            z-index: 100000;
-            padding: 1.5rem 1.2rem;
-            transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(8, 30, 53, 0.97),
+                    rgba(4, 19, 35, 0.98)
+                );
+
+            border-left: 1px solid rgba(0, 210, 255, 0.25);
+
+            box-shadow: -15px 0 40px rgba(0, 0, 0, 0.35);
+
+            z-index: 100001;
+
+            padding: 95px 22px 30px;
+
+            transition: right 0.35s ease;
+
             overflow-y: auto;
-            border-left: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .sidebar.active {
             right: 0;
         }
 
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 99999;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .sidebar-logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .sidebar-logo-area img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-        }
-
-        .sidebar-logo-area .brand-text {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
-
-        .close-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 0, 0, 0.2);
-            border-color: rgba(255, 0, 0, 0.4);
-        }
-
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .sidebar-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.85rem 1.1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .sidebar-links a:hover,
-        .sidebar-links a:active {
-            background: rgba(0, 210, 255, 0.25);
-            border-color: rgba(0, 210, 255, 0.5);
-            padding-right: 1.3rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-        }
-
-        .hero-container {
-            max-width: 700px;
-            margin: 5.5rem auto 1rem auto;
-            padding: 1rem 1.2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .sidebar-title {
             text-align: center;
-            flex: 1;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #ffffff;
         }
 
-        .hero-logo-box {
+        .sidebar a {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
+            gap: 14px;
 
-        .hero-logo-box img {
-            width: 95px;
-            height: 95px;
-            border-radius: 50%;
-            background: #fff;
-            padding: 4px;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
-            animation: pulseLogo 3s infinite ease-in-out;
-        }
+            padding: 15px 17px;
+            margin-bottom: 12px;
 
-        @keyframes pulseLogo {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
-            50% { box-shadow: 0 0 35px rgba(0, 210, 255, 0.9); }
-        }
-
-        .hero-logo-box .brand-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
-            direction: ltr;
-            unicode-bidi: embed;
-        }
-
-        .hero-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.8rem;
-            font-weight: 600;
-        }
-
-        .welcome-white-card {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            color: var(--text-dark);
-            width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(0, 210, 255, 0.35);
-            text-align: center;
-        }
-
-        .welcome-white-card h3 {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: #081b33;
-            margin-bottom: 0.5rem;
-        }
-
-        .welcome-white-card p {
-            font-size: 0.85rem;
-            color: #334155;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 1.8rem;
-        }
-
-        .action-main-btn {
-            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
-            color: #081b33;
-            border: 2px solid #00d2ff;
-            padding: 1rem 1.5rem;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 900;
+            color: white;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
+
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
             transition: 0.25s ease;
         }
 
-        .action-main-btn:hover {
-            background: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-            transform: translateY(-2px);
+        .sidebar a:hover {
+            background: rgba(0, 210, 255, 0.12);
+            border-color: rgba(0, 210, 255, 0.35);
+            transform: translateX(-4px);
         }
 
-        .action-secondary-btn {
-            background: linear-gradient(135deg, #f0f4f8 0%, #cbd5e1 100%);
-            color: #081b33;
-            border: 2px solid #25d366;
-            padding: 1rem 1.5rem;
-            border-radius: 16px;
-            font-size: 1.1rem;
+        .sidebar a i {
+            width: 25px;
+            text-align: center;
+            color: #13cfff;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: 100%;
+            padding-top: 72px;
+            min-height: auto;
+        }
+
+        .hero {
+            width: min(100%, 900px);
+            margin: 0 auto;
+            padding: 55px 20px 35px;
+
+            text-align: center;
+        }
+
+        .hero-logo {
+            width: 105px;
+            height: 105px;
+            object-fit: contain;
+
+            border-radius: 50%;
+
+            filter:
+                drop-shadow(0 0 15px rgba(0, 210, 255, 0.65));
+
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter:
+                    drop-shadow(0 0 12px rgba(0, 210, 255, 0.45));
+            }
+
+            50% {
+                filter:
+                    drop-shadow(0 0 27px rgba(0, 220, 255, 0.85));
+            }
+        }
+
+        .brand-name {
+            margin-top: 28px;
+
+            font-size: clamp(38px, 9vw, 62px);
             font-weight: 900;
-            text-decoration: none;
+
+            direction: ltr;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.30),
+                0 0 25px rgba(0, 210, 255, 0.25);
+        }
+
+        .brand-subtitle {
+            margin-top: 22px;
+
+            font-size: clamp(17px, 4.2vw, 25px);
+            font-weight: 500;
+
+            color: #b8cde2;
+        }
+
+        /* =========================
+           WELCOME CARD
+        ========================= */
+
+        .welcome-card {
+            margin: 50px auto 40px;
+
+            width: 100%;
+            max-width: 850px;
+
+            padding: 38px 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(247, 250, 255, 0.96),
+                    rgba(220, 230, 242, 0.94)
+                );
+
+            color: #071b33;
+
+            border-radius: 30px;
+
+            border: 3px solid rgba(70, 220, 255, 0.60);
+
+            box-shadow:
+                0 0 30px rgba(0, 205, 255, 0.20);
+
+            text-align: center;
+        }
+
+        .welcome-card h1 {
+            font-size: clamp(25px, 6vw, 42px);
+            line-height: 1.6;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        .welcome-card p {
+            font-size: clamp(17px, 4vw, 24px);
+            line-height: 1.9;
+            color: #344255;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .home-buttons {
+            width: 100%;
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        .main-btn {
+            width: 100%;
+
+            min-height: 90px;
+
+            padding: 18px 25px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
-            transition: 0.25s ease;
+            gap: 15px;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            font-size: clamp(21px, 5vw, 30px);
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(247, 250, 255, 0.97),
+                    rgba(218, 228, 240, 0.95)
+                );
+
+            color: #071b33;
+
+            border: 3px solid #10c9ff;
+
+            box-shadow:
+                0 0 20px rgba(0, 200, 255, 0.18);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        .action-secondary-btn:hover {
-            background: #ffffff;
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
-            transform: translateY(-2px);
+        .main-btn:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 10px 30px rgba(0, 200, 255, 0.25);
         }
 
-        .features-card-container {
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            color: #081b33;
+        .main-btn.whatsapp {
+            border-color: #25d366;
+
+            box-shadow:
+                0 0 25px rgba(37, 211, 102, 0.20);
+        }
+
+        .main-btn.whatsapp i {
+            color: #25d366;
+        }
+
+        .main-btn.products i {
+            color: #078ec4;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
             width: 100%;
-            max-width: 600px;
-            border-radius: 20px;
-            padding: 1.3rem 1rem;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1rem;
-            border: 2px solid rgba(0, 210, 255, 0.3);
+            max-width: 1000px;
+
+            margin: 50px auto 0;
+
+            padding: 0 20px 30px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
         }
 
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .feature-card {
+            padding: 25px 15px;
+
             text-align: center;
-            flex: 1;
-            padding: 0 5px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(120, 220, 255, 0.15);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .feature-item i {
-            font-size: 1.4rem;
-            color: #0077b6;
-            margin-bottom: 0.4rem;
+        .feature-card i {
+            font-size: 30px;
+            color: #16ceff;
+            margin-bottom: 12px;
         }
 
-        .feature-title {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: #081b33;
-            margin-bottom: 0.15rem;
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 7px;
         }
 
-        .feature-desc {
-            font-size: 0.7rem;
-            color: #475569;
-            font-weight: 600;
+        .feature-card p {
+            color: #aebfd1;
+            font-size: 14px;
+            line-height: 1.7;
         }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+            width: 100%;
+
+            margin-top: 35px;
+            padding: 25px 20px 30px;
+
             text-align: center;
-            padding: 1.2rem 1rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: transparent;
-            margin-top: auto;
+
+            background: rgba(3, 17, 32, 0.55);
+
+            border-top: 1px solid rgba(90, 220, 255, 0.12);
+        }
+
+        footer p {
+            color: #91a9c0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: 66px;
+                padding: 0 14px;
+            }
+
+            .navbar-logo {
+                width: 44px;
+                height: 44px;
+            }
+
+            .menu-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            main {
+                padding-top: 66px;
+            }
+
+            .hero {
+                padding-top: 42px;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .welcome-card {
+                margin-top: 40px;
+                padding: 30px 20px;
+                border-radius: 27px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+        }
+
+        /* =========================
+           PREVENT SCROLL WHEN MENU OPEN
+        ========================= */
+
+        body.sidebar-open {
+            overflow: hidden;
+        }
+
+        /* =========================
+           PAGE TRANSITION
+        ========================= */
+
+        body.fade-out {
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo-right">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <span class="brand-text">HAyDenTra®</span>
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <img src="logo.png"
+             class="navbar-logo"
+             alt="HAyDenTra Logo">
+
+        <button class="menu-btn"
+                id="menuBtn"
+                aria-label="فتح القائمة">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </header>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-title">
+            HAyDenTra®
+        </div>
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
         </a>
-        <button class="menu-btn" id="openSidebar"><i class="fa-solid fa-bars"></i></button>
-    </nav>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="index.html" class="sidebar-logo-area">
-                <img src="logo.png" alt="HAyDenTra Logo">
-                <span class="brand-text">HAyDenTra®</span>
-            </a>
-            <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="sidebar-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="products.html">المنتجات والمستلزمات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </div>
-    </div>
+        <a href="products.html">
+            <i class="fa-solid fa-box-open"></i>
+            <span>المنتجات والمستلزمات</span>
+        </a>
 
-    <div class="hero-container">
-        <div class="hero-logo-box">
-            <img src="logo.png" alt="HAyDenTra Logo">
-            <h1 class="brand-title">HAyDenTra®</h1>
-        </div>
-        <p class="hero-subtitle">Your Trusted Partner in Dental Solutions</p>
+        <a href="contact.html">
+            <i class="fa-solid fa-phone"></i>
+            <span>تواصل معنا</span>
+        </a>
 
-        <div class="welcome-white-card">
-            <h3>مرحباً بكم في عالم مستلزمات الأسنان المتطورة</h3>
-            <p>نقدم لعيادتك أحدث الأجهزة والمواد الطبية المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.</p>
-        </div>
+    </aside>
 
-        <div class="hero-actions">
-            <a href="products.html" class="action-main-btn">
-                <i class="fa-solid fa-box-open" style="color: #0077b6;"></i> عرض المنتجات والمستلزمات
-            </a>
-            <a href="https://wa.me/201224828849" target="_blank" class="action-secondary-btn">
-                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.3rem;"></i> تواصل معنا مباشرة
-            </a>
-        </div>
+    <!-- MAIN -->
+    <main>
 
-        <div class="features-card-container">
-            <div class="feature-item">
+        <section class="hero">
+
+            <img src="logo.png"
+                 class="hero-logo"
+                 alt="HAyDenTra">
+
+            <div class="brand-name">
+                HAyDenTra®
+            </div>
+
+            <div class="brand-subtitle">
+                Your Trusted Partner in Dental Solutions
+            </div>
+
+            <!-- Welcome -->
+            <div class="welcome-card">
+
+                <h1>
+                    مرحباً بكم في عالم مستلزمات الأسنان المتطورة
+                </h1>
+
+                <p>
+                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
+                    المعتمدة بأعلى معايير الجودة العالمية
+                    وبأسعار تنافسية.
+                </p>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="home-buttons">
+
+                <a href="products.html"
+                   class="main-btn products">
+
+                    <span>عرض المنتجات والمستلزمات</span>
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                </a>
+
+                <a href="https://wa.me/201224828849"
+                   class="main-btn whatsapp"
+                   target="_blank"
+                   rel="noopener">
+
+                    <span>تواصل معنا مباشرة</span>
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- FEATURES -->
+        <section class="features">
+
+            <div class="feature-card">
+
                 <i class="fa-solid fa-headset"></i>
-                <span class="feature-title">خدمة العملاء</span>
-                <span class="feature-desc">تجاوب فوري</span>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <span class="feature-title">توصيل سريع</span>
-                <span class="feature-desc">شحن مباشر</span>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span class="feature-title">جودة عالية</span>
-                <span class="feature-desc">خامات معتمدة</span>
-            </div>
-        </div>
-    </div>
 
-    <footer>HAyDenTra® - Dental Supplies & Solutions</footer>
+                <h3>
+                    خدمة العملاء
+                </h3>
+
+                <p>
+                    دعم ومساعدة سريعة لتلبية احتياجاتك.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <h3>
+                    توصيل سريع
+                </h3>
+
+                <p>
+                    سرعة في تجهيز وتسليم طلباتك.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-medal"></i>
+
+                <h3>
+                    جودة عالية
+                </h3>
+
+                <p>
+                    منتجات موثوقة بمعايير جودة عالية.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 HAyDenTra® — جميع الحقوق محفوظة
+        </p>
+
+    </footer>
 
     <script>
-        const openSidebar = document.getElementById('openSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-        function toggleSidebar(open) {
-            if (open) {
-                sidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                document.body.classList.add('sidebar-open');
-            } else {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                document.body.classList.remove('sidebar-open');
-            }
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        function openMenu() {
+
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+            document.body.classList.add("sidebar-open");
+
         }
 
-        if (openSidebar) openSidebar.addEventListener('click', () => toggleSidebar(true));
-        if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+        function closeMenu() {
 
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('http') && !href.startsWith('#')) {
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => { window.location.href = href; }, 400);
-                }
-            });
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+            document.body.classList.remove("sidebar-open");
+
+        }
+
+        menuBtn.addEventListener("click", () => {
+
+            if (sidebar.classList.contains("active")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+
         });
-    </script>
-</body>
 
+        overlay.addEventListener("click", closeMenu);
+
+        /* Internal page transition */
+
+        document.querySelectorAll('a[href]').forEach(link => {
+
+            link.addEventListener("click", function (e) {
+
+                const href = this.getAttribute("href");
+
+                if (
+                    !href ||
+                    href.startsWith("#") ||
+                    href.startsWith("http") ||
+                    href.startsWith("tel:")
+                ) {
+                    return;
+                }
+
+                e.preventDefault();
+
+                closeMenu();
+
+                document.body.classList.add("fade-out");
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 350);
+
+            });
+
+        });
+
+    </script>
+
+</body>
 </html>
