@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>المنتجات | HAyDenTra®</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet">
+
+
+    <!-- Font Awesome -->
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,25 +32,71 @@
 
     <style>
 
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
         }
 
-        html {
+
+        html,
+        body {
+
+            width: 100%;
+
             min-height: 100%;
-            background: #061a2e;
         }
 
-        body {
-            min-height: 100vh;
 
-            font-family: "Cairo", sans-serif;
+        html {
 
             background:
-                radial-gradient(circle at 50% 10%, rgba(0,180,255,0.1), transparent 35%),
-                linear-gradient(135deg, #061827, #08294a, #061a2e);
+
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(0,180,255,0.12),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #061827,
+                    #08294a,
+                    #061a2e
+                );
+        }
+
+
+        body {
+
+            min-height: 100vh;
+            min-height: 100svh;
+
+            font-family:
+                "Cairo",
+                sans-serif;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(0,180,255,0.12),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #061827,
+                    #08294a,
+                    #061a2e
+                );
 
             color: white;
 
@@ -45,74 +104,116 @@
         }
 
 
-        /* ================= NAVBAR ================= */
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
 
         .navbar {
+
             position: fixed;
 
             top: 0;
+
             left: 0;
+
             right: 0;
+
+            width: 100%;
 
             height: 72px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding: 8px 22px;
 
-            background: rgba(5,24,40,0.68);
+            background:
+                rgba(5,24,40,0.68);
 
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
 
-            border-bottom: 1px solid rgba(97,220,255,0.28);
+            border-bottom:
+                1px solid
+                rgba(97,220,255,0.28);
 
             box-shadow:
-                0 8px 30px rgba(0,0,0,0.28),
-                0 0 25px rgba(0,190,255,0.08);
+
+                0 8px 30px
+                rgba(0,0,0,0.28),
+
+                0 0 25px
+                rgba(0,190,255,0.08);
 
             z-index: 99999;
         }
 
 
         .nav-logo {
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
 
             color: white;
+
             text-decoration: none;
 
             font-size: 20px;
+
             font-weight: 800;
         }
 
 
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
         .logo-circle {
+
             width: 48px;
             height: 48px;
 
+            flex-shrink: 0;
+
             border-radius: 50%;
 
-            background: white;
+            background: #ffffff;
 
             padding: 5px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             box-shadow:
-                0 0 10px rgba(255,255,255,0.9),
-                0 0 25px rgba(0,220,255,0.8),
-                0 0 45px rgba(0,200,255,0.35);
+
+                0 0 8px rgba(255,255,255,1),
+
+                0 0 18px rgba(255,255,255,0.95),
+
+                0 0 35px rgba(0,220,255,0.95),
+
+                0 0 60px rgba(0,190,255,0.65);
+
+            animation:
+                logoGlow 2.5s
+                ease-in-out
+                infinite alternate;
         }
 
 
         .logo-circle img {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: contain;
@@ -121,19 +222,63 @@
         }
 
 
+        @keyframes logoGlow {
+
+            0% {
+
+                box-shadow:
+
+                    0 0 8px rgba(255,255,255,1),
+
+                    0 0 18px rgba(255,255,255,0.9),
+
+                    0 0 30px rgba(0,220,255,0.75),
+
+                    0 0 45px rgba(0,190,255,0.4);
+            }
+
+
+            100% {
+
+                box-shadow:
+
+                    0 0 12px rgba(255,255,255,1),
+
+                    0 0 25px rgba(255,255,255,1),
+
+                    0 0 45px rgba(0,220,255,1),
+
+                    0 0 75px rgba(0,190,255,0.75);
+            }
+
+        }
+
+
+        /* =====================================================
+           MENU
+        ===================================================== */
+
         .menu-btn {
+
             width: 48px;
+
             height: 48px;
 
-            border: 1px solid rgba(255,255,255,0.25);
+            border:
+                1px solid
+                rgba(255,255,255,0.25);
+
             border-radius: 14px;
 
-            background: rgba(255,255,255,0.09);
+            background:
+                rgba(255,255,255,0.09);
 
             color: white;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             font-size: 21px;
@@ -147,22 +292,35 @@
 
 
         .menu-btn:hover {
-            background: rgba(0,200,255,0.18);
-            transform: scale(1.05);
+
+            background:
+                rgba(0,200,255,0.18);
+
+            transform:
+                scale(1.05);
         }
 
 
-        /* ================= SIDEBAR ================= */
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
 
         .overlay {
+
             position: fixed;
+
             inset: 0;
 
-            background: rgba(0,0,0,0.45);
+            width: 100%;
+            height: 100%;
+
+            background:
+                rgba(0,0,0,0.45);
 
             backdrop-filter: blur(4px);
 
             opacity: 0;
+
             visibility: hidden;
 
             transition: 0.3s;
@@ -172,83 +330,129 @@
 
 
         .overlay.active {
+
             opacity: 1;
+
             visibility: visible;
         }
 
 
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
         .sidebar {
+
             position: fixed;
 
             top: 10px;
+
             right: 10px;
 
-            width: min(340px, calc(100% - 20px));
-            height: calc(100vh - 20px);
+            width:
+                min(
+                    340px,
+                    calc(100% - 20px)
+                );
 
-            padding: 25px 18px;
+            height:
+                calc(100svh - 20px);
 
-            background: rgba(6,28,48,0.78);
+            padding:
+                25px 18px;
 
-            border: 1px solid rgba(111,224,255,0.3);
+            background:
+                rgba(6,28,48,0.78);
+
+            border:
+                1px solid
+                rgba(111,224,255,0.3);
 
             border-radius: 25px;
 
             backdrop-filter: blur(25px);
+
             -webkit-backdrop-filter: blur(25px);
 
             box-shadow:
-                -15px 0 50px rgba(0,0,0,0.4),
-                0 0 35px rgba(0,190,255,0.12);
 
-            transform: translateX(120%);
+                -15px 0 50px
+                rgba(0,0,0,0.4),
 
-            transition: transform 0.35s ease;
+                0 0 35px
+                rgba(0,190,255,0.12);
+
+            transform:
+                translateX(120%);
+
+            transition:
+                transform 0.35s ease;
 
             z-index: 100001;
+
+            overflow-y: auto;
         }
 
 
         .sidebar.active {
-            transform: translateX(0);
+
+            transform:
+                translateX(0);
         }
 
 
         .sidebar-header {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding-bottom: 20px;
+
             margin-bottom: 20px;
 
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
         }
 
 
         .sidebar-brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
 
             font-weight: 800;
+
+            font-size: 17px;
         }
 
 
         .sidebar .logo-circle {
+
             width: 52px;
+
             height: 52px;
         }
 
 
         .close-btn {
+
             width: 42px;
+
             height: 42px;
 
             border: none;
+
             border-radius: 12px;
 
-            background: rgba(255,255,255,0.08);
+            background:
+                rgba(255,255,255,0.08);
 
             color: white;
 
@@ -259,7 +463,9 @@
 
 
         .sidebar-links {
+
             display: flex;
+
             flex-direction: column;
 
             gap: 12px;
@@ -267,22 +473,30 @@
 
 
         .sidebar-links a {
+
             display: flex;
+
             align-items: center;
+
             gap: 14px;
 
             padding: 15px 17px;
 
             color: white;
+
             text-decoration: none;
 
-            background: rgba(255,255,255,0.07);
+            background:
+                rgba(255,255,255,0.07);
 
-            border: 1px solid rgba(255,255,255,0.1);
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
 
             border-radius: 15px;
 
             font-size: 16px;
+
             font-weight: 700;
 
             transition: 0.25s;
@@ -290,6 +504,7 @@
 
 
         .sidebar-links a i {
+
             width: 28px;
 
             text-align: center;
@@ -300,20 +515,28 @@
 
         .sidebar-links a:hover,
         .sidebar-links a.active {
-            background: rgba(0,194,255,0.15);
 
-            border-color: rgba(73,220,255,0.4);
+            background:
+                rgba(0,194,255,0.15);
 
-            transform: translateX(-4px);
+            border-color:
+                rgba(73,220,255,0.4);
+
+            transform:
+                translateX(-4px);
         }
 
 
-        /* ================= MAIN ================= */
+        /* =====================================================
+           MAIN
+        ===================================================== */
 
         main {
+
             width: 100%;
 
             min-height: 100vh;
+            min-height: 100svh;
 
             padding:
                 110px
@@ -323,13 +546,20 @@
 
 
         .container {
-            width: min(1100px, 100%);
+
+            width:
+                min(1100px,100%);
 
             margin: auto;
         }
 
 
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
         .page-title {
+
             text-align: center;
 
             margin-bottom: 30px;
@@ -337,16 +567,20 @@
 
 
         .page-title h1 {
-            font-size: clamp(27px, 6vw, 42px);
+
+            font-size:
+                clamp(27px,6vw,42px);
 
             font-weight: 900;
 
             text-shadow:
-                0 0 15px rgba(0,210,255,0.3);
+                0 0 15px
+                rgba(0,210,255,0.3);
         }
 
 
         .page-title p {
+
             color: #abc1d6;
 
             margin-top: 8px;
@@ -355,9 +589,12 @@
         }
 
 
-        /* ================= FILTER ================= */
+        /* =====================================================
+           FILTERS
+        ===================================================== */
 
         .filters {
+
             display: flex;
 
             flex-wrap: wrap;
@@ -369,19 +606,24 @@
 
 
         .search-box {
-            flex: 1 1 300px;
+
+            flex:
+                1 1 300px;
 
             position: relative;
         }
 
 
         .search-box i {
+
             position: absolute;
 
             right: 16px;
+
             top: 50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
             color: #159dcc;
         }
@@ -389,21 +631,26 @@
 
         .search-box input,
         .sort-select {
+
             width: 100%;
 
             height: 52px;
 
             border-radius: 15px;
 
-            border: 1px solid rgba(96,220,255,0.3);
+            border:
+                1px solid
+                rgba(96,220,255,0.3);
 
-            background: rgba(255,255,255,0.09);
+            background:
+                rgba(255,255,255,0.09);
 
             color: white;
 
             outline: none;
 
-            padding: 0 48px 0 15px;
+            padding:
+                0 48px 0 15px;
 
             font-family: inherit;
 
@@ -412,18 +659,23 @@
 
 
         .sort-select {
-            flex: 0 1 210px;
 
-            padding: 0 15px;
+            flex:
+                0 1 210px;
+
+            padding:
+                0 15px;
         }
 
 
         .sort-select option {
+
             color: #071b31;
         }
 
 
         .categories {
+
             display: flex;
 
             flex-wrap: wrap;
@@ -435,13 +687,18 @@
 
 
         .category-btn {
-            border: 1px solid rgba(255,255,255,0.15);
 
-            background: rgba(255,255,255,0.07);
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            background:
+                rgba(255,255,255,0.07);
 
             color: #dceaf5;
 
-            padding: 9px 17px;
+            padding:
+                9px 17px;
 
             border-radius: 30px;
 
@@ -457,28 +714,43 @@
 
         .category-btn.active,
         .category-btn:hover {
-            background: rgba(0,190,255,0.18);
 
-            border-color: #36d7ff;
+            background:
+                rgba(0,190,255,0.18);
+
+            border-color:
+                #36d7ff;
 
             color: white;
         }
 
 
-        /* ================= PRODUCTS ================= */
+        /* =====================================================
+           PRODUCTS GRID
+        ===================================================== */
 
         .products-grid {
+
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
+                repeat(
+                    auto-fit,
+                    minmax(280px,1fr)
+                );
 
             gap: 22px;
         }
 
 
+        /* =====================================================
+           PRODUCT CARD
+        ===================================================== */
+
         .product-card {
+
             background:
+
                 linear-gradient(
                     145deg,
                     rgba(245,248,250,0.98),
@@ -491,10 +763,13 @@
 
             overflow: hidden;
 
-            border: 2px solid rgba(60,214,255,0.65);
+            border:
+                2px solid
+                rgba(60,214,255,0.65);
 
             box-shadow:
-                0 12px 35px rgba(0,0,0,0.25);
+                0 12px 35px
+                rgba(0,0,0,0.25);
 
             transition:
                 transform 0.25s,
@@ -503,51 +778,70 @@
 
 
         .product-card:hover {
-            transform: translateY(-6px);
+
+            transform:
+                translateY(-6px);
 
             box-shadow:
-                0 18px 40px rgba(0,0,0,0.35),
-                0 0 25px rgba(0,200,255,0.15);
+
+                0 18px 40px
+                rgba(0,0,0,0.35),
+
+                0 0 25px
+                rgba(0,200,255,0.15);
         }
 
 
         .product-image {
+
             height: 190px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             background:
+
                 radial-gradient(
                     circle,
                     rgba(0,190,255,0.22),
                     transparent 60%
                 );
 
-            border-bottom: 1px solid rgba(0,0,0,0.08);
+            border-bottom:
+                1px solid
+                rgba(0,0,0,0.08);
         }
 
 
         .product-image i {
+
             font-size: 75px;
 
             color: #087da9;
 
             filter:
-                drop-shadow(0 5px 10px rgba(0,0,0,0.18));
+                drop-shadow(
+                    0 5px 10px
+                    rgba(0,0,0,0.18)
+                );
         }
 
 
         .product-content {
+
             padding: 20px;
         }
 
 
         .product-category {
+
             display: inline-block;
 
-            padding: 5px 10px;
+            padding:
+                5px 10px;
 
             border-radius: 20px;
 
@@ -564,6 +858,7 @@
 
 
         .product-content h2 {
+
             font-size: 20px;
 
             margin-bottom: 9px;
@@ -573,6 +868,7 @@
 
 
         .product-content p {
+
             color: #435364;
 
             font-size: 14px;
@@ -584,6 +880,7 @@
 
 
         .product-bottom {
+
             display: flex;
 
             align-items: center;
@@ -597,6 +894,7 @@
 
 
         .price {
+
             font-size: 21px;
 
             font-weight: 900;
@@ -605,15 +903,18 @@
         }
 
 
-        /* =================
-           زرار الشراء
-           رصاصي + كحلي
-        ================= */
+        /* =====================================================
+           ORDER BUTTON
+           رمادي + كحلي
+        ===================================================== */
 
         .order-btn {
-            border: 1px solid #142b43;
+
+            border:
+                1px solid #142b43;
 
             background:
+
                 linear-gradient(
                     135deg,
                     #6f7880,
@@ -624,7 +925,8 @@
 
             text-decoration: none;
 
-            padding: 11px 17px;
+            padding:
+                11px 17px;
 
             border-radius: 13px;
 
@@ -635,27 +937,36 @@
             cursor: pointer;
 
             box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.22),
-                0 5px 12px rgba(0,0,0,0.2);
+
+                inset 0 1px 0
+                rgba(255,255,255,0.22),
+
+                0 5px 12px
+                rgba(0,0,0,0.2);
 
             transition: 0.2s;
         }
 
 
         .order-btn:hover {
+
             background:
+
                 linear-gradient(
                     135deg,
                     #7e8992,
                     #172d43
                 );
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
 
         .no-results {
-            grid-column: 1 / -1;
+
+            grid-column:
+                1 / -1;
 
             text-align: center;
 
@@ -666,6 +977,7 @@
 
 
         footer {
+
             text-align: center;
 
             margin-top: 45px;
@@ -678,43 +990,65 @@
         }
 
 
-        /* ================= MOBILE ================= */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width:700px) {
 
             .navbar {
+
                 height: 66px;
 
-                padding: 7px 14px;
+                padding:
+                    7px 14px;
             }
 
+
             .nav-logo {
+
                 font-size: 16px;
             }
 
+
             .nav-logo .logo-circle {
+
                 width: 43px;
+
                 height: 43px;
             }
 
+
             .menu-btn {
+
                 width: 44px;
+
                 height: 44px;
             }
 
+
             main {
+
+                min-height: 100svh;
+
                 padding:
                     95px
                     14px
                     35px;
             }
 
+
             .product-bottom {
-                align-items: stretch;
+
+                align-items:
+                    stretch;
             }
 
+
             .order-btn {
-                padding: 10px 13px;
+
+                padding:
+                    10px 13px;
             }
 
         }
@@ -727,22 +1061,31 @@
 <body>
 
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
 
     <header class="navbar">
 
-        <a href="index.html" class="nav-logo">
+        <a href="index.html"
+           class="nav-logo">
 
             <div class="logo-circle">
-                <img src="logo.png" alt="HAyDenTra">
+
+                <img src="logo.png"
+                     alt="HAyDenTra">
+
             </div>
 
-            <span>HAyDenTra®</span>
+            <span>
+                HAyDenTra®
+            </span>
 
         </a>
 
 
-        <button class="menu-btn" id="menuBtn">
+        <button class="menu-btn"
+                id="menuBtn">
 
             <i class="fa-solid fa-bars"></i>
 
@@ -751,29 +1094,42 @@
     </header>
 
 
-    <!-- ================= SIDEBAR ================= -->
+    <!-- OVERLAY -->
 
-    <div class="overlay" id="overlay"></div>
+    <div class="overlay"
+         id="overlay">
+    </div>
 
 
-    <aside class="sidebar" id="sidebar">
+    <!-- =====================================================
+         SIDEBAR
+    ===================================================== -->
+
+    <aside class="sidebar"
+           id="sidebar">
+
 
         <div class="sidebar-header">
+
 
             <div class="sidebar-brand">
 
                 <div class="logo-circle">
 
-                    <img src="logo.png" alt="HAyDenTra">
+                    <img src="logo.png"
+                         alt="HAyDenTra">
 
                 </div>
 
-                <span>HAyDenTra®</span>
+                <span>
+                    HAyDenTra®
+                </span>
 
             </div>
 
 
-            <button class="close-btn" id="closeBtn">
+            <button class="close-btn"
+                    id="closeBtn">
 
                 <i class="fa-solid fa-xmark"></i>
 
@@ -784,20 +1140,26 @@
 
         <nav class="sidebar-links">
 
+
             <a href="index.html">
 
                 <i class="fa-solid fa-house"></i>
 
-                <span>الرئيسية</span>
+                <span>
+                    الرئيسية
+                </span>
 
             </a>
 
 
-            <a href="products.html" class="active">
+            <a href="products.html"
+               class="active">
 
                 <i class="fa-solid fa-box-open"></i>
 
-                <span>المنتجات والمستلزمات</span>
+                <span>
+                    المنتجات والمستلزمات
+                </span>
 
             </a>
 
@@ -806,16 +1168,21 @@
 
                 <i class="fa-solid fa-phone"></i>
 
-                <span>تواصل معنا</span>
+                <span>
+                    تواصل معنا
+                </span>
 
             </a>
+
 
         </nav>
 
     </aside>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
 
     <main>
 
@@ -853,7 +1220,9 @@
                 </div>
 
 
-                <select id="sortSelect" class="sort-select">
+                <select
+                    id="sortSelect"
+                    class="sort-select">
 
                     <option value="default">
                         الترتيب الافتراضي
@@ -872,30 +1241,55 @@
 
                 <div class="categories">
 
-                    <button class="category-btn active" data-category="all">
+
+                    <button
+                        class="category-btn active"
+                        data-category="all">
+
                         الكل
+
                     </button>
 
-                    <button class="category-btn" data-category="materials">
+
+                    <button
+                        class="category-btn"
+                        data-category="materials">
+
                         المواد
+
                     </button>
 
-                    <button class="category-btn" data-category="devices">
+
+                    <button
+                        class="category-btn"
+                        data-category="devices">
+
                         الأجهزة
+
                     </button>
 
-                    <button class="category-btn" data-category="tools">
+
+                    <button
+                        class="category-btn"
+                        data-category="tools">
+
                         الأدوات
+
                     </button>
+
 
                 </div>
 
             </section>
 
 
-            <!-- PRODUCTS -->
+            <!-- =================================================
+                 PRODUCTS
+            ================================================= -->
 
-            <section class="products-grid" id="productsGrid">
+            <section
+                class="products-grid"
+                id="productsGrid">
 
 
                 <!-- PRODUCT 1 -->
@@ -904,8 +1298,8 @@
                     class="product-card"
                     data-name="مادة كومبوزيت حشو تجميلي"
                     data-category="materials"
-                    data-price="2450"
-                >
+                    data-price="2450">
+
 
                     <div class="product-image">
 
@@ -916,13 +1310,16 @@
 
                     <div class="product-content">
 
+
                         <span class="product-category">
                             مواد
                         </span>
 
+
                         <h2>
                             مادة كومبوزيت حشو تجميلي
                         </h2>
+
 
                         <p>
                             مادة عالية الجودة للحشوات التجميلية
@@ -936,6 +1333,7 @@
                                 2450 ج.م
                             </span>
 
+
                             <a
                                 href="#"
                                 class="order-btn"
@@ -945,6 +1343,7 @@
                             </a>
 
                         </div>
+
 
                     </div>
 
@@ -957,8 +1356,8 @@
                     class="product-card"
                     data-name="جهاز تسنين Light Cure"
                     data-category="devices"
-                    data-price="4800"
-                >
+                    data-price="4800">
+
 
                     <div class="product-image">
 
@@ -969,13 +1368,16 @@
 
                     <div class="product-content">
 
+
                         <span class="product-category">
                             أجهزة
                         </span>
 
+
                         <h2>
                             جهاز تسنين Light Cure
                         </h2>
+
 
                         <p>
                             جهاز إضاءة متخصص للاستخدام
@@ -989,6 +1391,7 @@
                                 4800 ج.م
                             </span>
 
+
                             <a
                                 href="#"
                                 class="order-btn"
@@ -998,6 +1401,7 @@
                             </a>
 
                         </div>
+
 
                     </div>
 
@@ -1010,8 +1414,8 @@
                     class="product-card"
                     data-name="أدوات فحص الأسنان Diagnostic Set"
                     data-category="tools"
-                    data-price="1200"
-                >
+                    data-price="1200">
+
 
                     <div class="product-image">
 
@@ -1022,13 +1426,16 @@
 
                     <div class="product-content">
 
+
                         <span class="product-category">
                             أدوات
                         </span>
 
+
                         <h2>
                             أدوات فحص الأسنان
                         </h2>
+
 
                         <p>
                             Diagnostic Set احترافي للفحص
@@ -1042,6 +1449,7 @@
                                 1200 ج.م
                             </span>
 
+
                             <a
                                 href="#"
                                 class="order-btn"
@@ -1051,6 +1459,7 @@
                             </a>
 
                         </div>
+
 
                     </div>
 
@@ -1063,8 +1472,8 @@
                     class="product-card"
                     data-name="معجون تلميع الأسنان Prophy Paste"
                     data-category="materials"
-                    data-price="650"
-                >
+                    data-price="650">
+
 
                     <div class="product-image">
 
@@ -1075,13 +1484,16 @@
 
                     <div class="product-content">
 
+
                         <span class="product-category">
                             مواد
                         </span>
 
+
                         <h2>
                             معجون تلميع الأسنان
                         </h2>
+
 
                         <p>
                             Prophy Paste لتلميع الأسنان
@@ -1095,6 +1507,7 @@
                                 650 ج.م
                             </span>
 
+
                             <a
                                 href="#"
                                 class="order-btn"
@@ -1105,6 +1518,7 @@
 
                         </div>
 
+
                     </div>
 
                 </article>
@@ -1114,126 +1528,198 @@
 
 
             <footer>
+
                 © 2026 HAyDenTra® — جميع الحقوق محفوظة
+
             </footer>
+
 
         </div>
 
     </main>
 
 
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
     <script>
 
-        /* ================= MENU ================= */
 
-        const menuBtn = document.getElementById("menuBtn");
-        const closeBtn = document.getElementById("closeBtn");
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
+        /* =========================
+           MENU
+        ========================= */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+
+        const closeBtn =
+            document.getElementById("closeBtn");
+
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+
+        const overlay =
+            document.getElementById("overlay");
 
 
         function openMenu() {
 
             sidebar.classList.add("active");
+
             overlay.classList.add("active");
 
-            document.body.style.overflow = "hidden";
-
+            document.body.style.overflow =
+                "hidden";
         }
 
 
         function closeMenu() {
 
             sidebar.classList.remove("active");
+
             overlay.classList.remove("active");
 
-            document.body.style.overflow = "";
-
+            document.body.style.overflow =
+                "";
         }
 
 
-        menuBtn.addEventListener("click", openMenu);
-        closeBtn.addEventListener("click", closeMenu);
-        overlay.addEventListener("click", closeMenu);
+        menuBtn.addEventListener(
+            "click",
+            openMenu
+        );
 
 
-        document.querySelectorAll(".sidebar a").forEach(link => {
+        closeBtn.addEventListener(
+            "click",
+            closeMenu
+        );
 
-            link.addEventListener("click", closeMenu);
 
-        });
+        overlay.addEventListener(
+            "click",
+            closeMenu
+        );
 
 
-        /* ================= PRODUCTS ================= */
+        document
+            .querySelectorAll(".sidebar a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+
+
+        /* =========================
+           PRODUCT FILTER
+        ========================= */
 
         const searchInput =
-            document.getElementById("searchInput");
+            document.getElementById(
+                "searchInput"
+            );
+
 
         const sortSelect =
-            document.getElementById("sortSelect");
+            document.getElementById(
+                "sortSelect"
+            );
+
 
         const productsGrid =
-            document.getElementById("productsGrid");
+            document.getElementById(
+                "productsGrid"
+            );
+
 
         const categoryButtons =
-            document.querySelectorAll(".category-btn");
+            document.querySelectorAll(
+                ".category-btn"
+            );
+
 
         let currentCategory = "all";
 
 
         function updateProducts() {
 
+
             const search =
-                searchInput.value.trim().toLowerCase();
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
 
             const cards =
                 Array.from(
-                    document.querySelectorAll(".product-card")
+                    document.querySelectorAll(
+                        ".product-card"
+                    )
                 );
 
 
-            let visibleCards = cards.filter(card => {
-
-                const name =
-                    card.dataset.name.toLowerCase();
-
-                const category =
-                    card.dataset.category;
+            let visibleCards =
+                cards.filter(card => {
 
 
-                const matchesSearch =
-                    name.includes(search);
-
-                const matchesCategory =
-                    currentCategory === "all" ||
-                    category === currentCategory;
+                    const name =
+                        card.dataset.name
+                            .toLowerCase();
 
 
-                return matchesSearch && matchesCategory;
+                    const category =
+                        card.dataset.category;
 
-            });
+
+                    const matchesSearch =
+                        name.includes(search);
+
+
+                    const matchesCategory =
+                        currentCategory === "all" ||
+                        category === currentCategory;
+
+
+                    return (
+                        matchesSearch &&
+                        matchesCategory
+                    );
+
+                });
 
 
             cards.forEach(card => {
 
-                card.style.display = "none";
+                card.style.display =
+                    "none";
 
             });
 
 
             visibleCards.forEach(card => {
 
-                card.style.display = "";
+                card.style.display =
+                    "";
 
             });
 
 
             /* SORT */
 
-            if (sortSelect.value === "high") {
+            if (
+                sortSelect.value === "high"
+            ) {
 
                 visibleCards.sort(
-                    (a, b) =>
+                    (a,b) =>
                         Number(b.dataset.price) -
                         Number(a.dataset.price)
                 );
@@ -1241,10 +1727,12 @@
             }
 
 
-            if (sortSelect.value === "low") {
+            if (
+                sortSelect.value === "low"
+            ) {
 
                 visibleCards.sort(
-                    (a, b) =>
+                    (a,b) =>
                         Number(a.dataset.price) -
                         Number(b.dataset.price)
                 );
@@ -1254,7 +1742,9 @@
 
             visibleCards.forEach(card => {
 
-                productsGrid.appendChild(card);
+                productsGrid.appendChild(
+                    card
+                );
 
             });
 
@@ -1262,31 +1752,55 @@
             /* NO RESULTS */
 
             const oldMessage =
-                document.querySelector(".no-results");
+                document.querySelector(
+                    ".no-results"
+                );
+
 
             if (oldMessage) {
+
                 oldMessage.remove();
             }
 
 
-            if (visibleCards.length === 0) {
+            if (
+                visibleCards.length === 0
+            ) {
 
                 const message =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
-                message.className = "no-results";
+
+                message.className =
+                    "no-results";
+
 
                 message.innerHTML = `
-                    <i class="fa-solid fa-magnifying-glass"
-                       style="font-size:40px;margin-bottom:15px;">
-                    </i>
 
-                    <h2>لا توجد منتجات مطابقة</h2>
+                    <i
+                        class="fa-solid fa-magnifying-glass"
+                        style="
+                            font-size:40px;
+                            margin-bottom:15px;
+                        "
+                    ></i>
 
-                    <p>جرب البحث عن منتج آخر.</p>
+                    <h2>
+                        لا توجد منتجات مطابقة
+                    </h2>
+
+                    <p>
+                        جرب البحث عن منتج آخر.
+                    </p>
+
                 `;
 
-                productsGrid.appendChild(message);
+
+                productsGrid.appendChild(
+                    message
+                );
 
             }
 
@@ -1307,42 +1821,69 @@
 
         categoryButtons.forEach(button => {
 
-            button.addEventListener("click", () => {
+            button.addEventListener(
+                "click",
+                () => {
 
-                categoryButtons.forEach(btn => {
-                    btn.classList.remove("active");
-                });
 
-                button.classList.add("active");
+                    categoryButtons.forEach(
+                        btn => {
 
-                currentCategory =
-                    button.dataset.category;
+                            btn.classList.remove(
+                                "active"
+                            );
 
-                updateProducts();
+                        }
+                    );
 
-            });
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    currentCategory =
+                        button.dataset.category;
+
+
+                    updateProducts();
+
+                }
+            );
 
         });
 
 
-        /* ================= WHATSAPP ORDER ================= */
+        /* =========================
+           WHATSAPP ORDER
+        ========================= */
 
-        function orderProduct(productName) {
+        function orderProduct(
+            productName
+        ) {
+
 
             const message =
                 `مرحباً، أريد طلب المنتج التالي: ${productName}`;
 
+
             const whatsappNumber =
                 "201223859088";
 
+
             window.open(
+
                 `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+
                 "_blank"
+
             );
 
         }
 
     </script>
 
+
 </body>
+
 </html>
