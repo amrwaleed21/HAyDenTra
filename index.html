@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>HAyDenTra® | مستلزمات الأسنان</title>
 
@@ -14,35 +14,25 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-
         * {
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
         }
 
         html {
             min-height: 100%;
-            background: #061b2d;
+            background: #061d2d;
         }
 
         body {
-            margin: 0;
             min-height: 100dvh;
-            background:
-                radial-gradient(circle at 50% 45%, rgba(0, 210, 255, .13), transparent 35%),
-                linear-gradient(145deg, #061b2d, #073653 50%, #06233a);
-            color: white;
             font-family: "Cairo", sans-serif;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(0, 210, 255, .18), transparent 35%),
+                linear-gradient(180deg, #061d2d 0%, #073c59 55%, #062437 100%);
+            color: white;
             overflow-x: hidden;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
         }
 
         /* ================= NAVBAR ================= */
@@ -50,41 +40,43 @@
         .topbar {
             position: fixed;
             top: 0;
-            right: 0;
             left: 0;
+            right: 0;
             height: 76px;
             z-index: 1000;
 
-            background: rgba(4, 24, 43, .64);
+            background: rgba(4, 25, 43, .68);
             border-bottom: 1px solid rgba(255,255,255,.12);
 
-            backdrop-filter: blur(18px) saturate(150%);
-            -webkit-backdrop-filter: blur(18px) saturate(150%);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
 
-            box-shadow: 0 8px 30px rgba(0,0,0,.20);
+            box-shadow: 0 8px 30px rgba(0,0,0,.25);
         }
 
-        .nav-inner {
+        .nav-content {
             height: 100%;
             max-width: 1200px;
             margin: auto;
-            padding: 0 20px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-            direction: rtl;
+
+            padding: 0 22px;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 10px;
+            direction: rtl;
         }
 
-        .nav-logo-circle {
-            width: 52px;
-            height: 52px;
+        /* اللوجو الصغير في الـNAV */
+        .nav-logo {
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
 
             background: #fff;
@@ -93,75 +85,81 @@
             align-items: center;
             justify-content: center;
 
-            border: 1px solid rgba(255,255,255,.95);
+            padding: 6px;
 
             box-shadow:
-                0 0 10px rgba(255,255,255,.9),
-                0 0 25px rgba(0,225,255,.65);
+                0 0 10px rgba(255,255,255,.8),
+                0 0 22px rgba(0,220,255,.55);
         }
 
-        .nav-logo-circle img {
-            width: 72%;
-            height: 72%;
+        .nav-logo img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
+        /* اسم الشركة */
         .brand-name {
+            position: relative;
+            display: inline-block;
+
+            direction: ltr;
+
             color: #fff;
             font-size: 25px;
             font-weight: 900;
             line-height: 1;
-            white-space: nowrap;
 
-            text-shadow:
-                0 0 7px rgba(255,255,255,.35),
-                0 0 16px rgba(0,220,255,.35);
+            text-shadow: 0 0 10px rgba(255,255,255,.45);
+
+            white-space: nowrap;
         }
 
-        /* علامة ® */
+        /* ® فوق الكلمة من اليمين */
+        .brand-name .registered {
+            position: absolute;
 
-        .registered {
-            display: inline-block;
-            font-size: .43em;
-            font-weight: 800;
+            top: -9px;
+            right: -10px;
 
-            position: relative;
-            top: -.28em;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
 
-            margin-right: 3px;
-            vertical-align: baseline;
+            line-height: 1;
+
+            color: #fff;
         }
 
         /* زر القائمة */
+        .menu-btn {
+            width: 58px;
+            height: 58px;
 
-        .menu-button {
-            width: 62px;
-            height: 62px;
-
-            border-radius: 22px;
+            border-radius: 18px;
 
             border: 1px solid rgba(255,255,255,.25);
 
             background: rgba(255,255,255,.08);
 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
             color: white;
+            font-size: 30px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 31px;
-
             cursor: pointer;
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            transition: .25s ease;
+            transition: .25s;
         }
 
-        .menu-button:active {
-            transform: scale(.94);
+        .menu-btn:hover {
+            background: rgba(255,255,255,.15);
+            transform: scale(1.03);
         }
 
         /* ================= SIDEBAR ================= */
@@ -172,12 +170,15 @@
 
             background: rgba(0,0,0,.42);
 
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+
             opacity: 0;
             visibility: hidden;
 
-            z-index: 1050;
+            transition: .3s;
 
-            transition: .3s ease;
+            z-index: 1050;
         }
 
         .overlay.active {
@@ -187,28 +188,25 @@
 
         .sidebar {
             position: fixed;
-
             top: 0;
             right: 0;
 
-            width: min(80%, 350px);
+            width: min(80%, 340px);
             height: 100dvh;
 
             z-index: 1100;
 
-            background: rgba(5, 27, 48, .72);
+            background: rgba(5, 29, 49, .72);
 
-            border-left: 1px solid rgba(255,255,255,.14);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
 
-            backdrop-filter: blur(25px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
-
-            box-shadow: -15px 0 40px rgba(0,0,0,.35);
+            border-left: 1px solid rgba(255,255,255,.15);
 
             transform: translateX(105%);
             transition: transform .35s ease;
 
-            padding: 28px 20px;
+            padding: 25px 20px;
         }
 
         .sidebar.active {
@@ -219,9 +217,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 10px;
 
             padding-bottom: 25px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
 
             border-bottom: 1px solid rgba(255,255,255,.12);
         }
@@ -231,226 +230,200 @@
             height: 72px;
 
             border-radius: 50%;
-
             background: white;
+
+            padding: 8px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             box-shadow:
-                0 0 12px rgba(255,255,255,.9),
-                0 0 30px rgba(0,220,255,.65);
+                0 0 12px rgba(255,255,255,.85),
+                0 0 28px rgba(0,220,255,.55);
         }
 
         .sidebar-logo-circle img {
-            width: 72%;
-            height: 72%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
-        .sidebar-brand {
-            margin-top: 12px;
-
-            font-size: 24px;
-            font-weight: 900;
-
-            color: white;
+        .sidebar .brand-name {
+            font-size: 23px;
         }
 
-        .sidebar-link {
+        .sidebar .brand-name .registered {
+            font-size: 9px;
+            top: -7px;
+            right: -9px;
+        }
+
+        .sidebar a {
             display: flex;
             align-items: center;
             gap: 14px;
 
             padding: 15px 16px;
-            margin: 8px 0;
+            margin-bottom: 9px;
+
+            color: white;
+            text-decoration: none;
 
             border-radius: 14px;
 
-            color: #eaf8ff;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.08);
 
-            background: rgba(255,255,255,.055);
-
-            border: 1px solid rgba(255,255,255,.07);
-
-            font-size: 17px;
-            font-weight: 700;
-
-            transition: .25s ease;
+            transition: .25s;
         }
 
-        .sidebar-link i {
+        .sidebar a:hover {
+            background: rgba(0,210,255,.14);
+            transform: translateX(-3px);
+        }
+
+        .sidebar a i {
             width: 24px;
             text-align: center;
-            color: #67e7ff;
-        }
-
-        .sidebar-link:active {
-            transform: scale(.97);
-            background: rgba(0,220,255,.12);
+            color: #64ddff;
         }
 
         /* ================= MAIN ================= */
 
         main {
-            padding-top: 92px;
-            padding-bottom: 30px;
+            padding-top: 76px;
         }
 
         .hero {
-            max-width: 900px;
-            margin: 15px auto 0;
-            padding: 20px;
-
             text-align: center;
+            padding: 85px 18px 35px;
         }
 
-        .hero-logo-circle {
-            width: 140px;
-            height: 140px;
+        /* لوجو الصفحة */
+        .hero-logo {
+            width: 100px;
+            height: 100px;
 
-            margin: 0 auto 20px;
+            margin: 0 auto 22px;
 
             border-radius: 50%;
-
             background: white;
+
+            padding: 11px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             box-shadow:
-                0 0 14px rgba(255,255,255,.95),
-                0 0 35px rgba(0,225,255,.72),
-                0 0 65px rgba(0,225,255,.25);
+                0 0 15px rgba(255,255,255,.95),
+                0 0 32px rgba(0,220,255,.7),
+                0 0 60px rgba(0,220,255,.3);
         }
 
-        .hero-logo-circle img {
-            width: 72%;
-            height: 72%;
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
-        .hero-brand {
-            display: inline-block;
-
-            color: white;
-
-            font-size: 48px;
-            line-height: 1;
-
-            font-weight: 900;
-
-            text-shadow:
-                0 0 8px rgba(255,255,255,.7),
-                0 0 20px rgba(0,220,255,.45);
+        .hero .brand-name {
+            font-size: 50px;
+            margin-bottom: 18px;
         }
 
-        .hero-brand .registered {
-            font-size: .42em;
-            top: -.30em;
-            margin-right: 4px;
+        .hero .brand-name .registered {
+            top: -8px;
+            right: -12px;
+            font-size: 12px;
         }
 
         .tagline {
-            margin-top: 18px;
-
-            color: #b9cce0;
-
-            font-size: 23px;
+            color: #b9d4e7;
+            font-size: 22px;
             font-weight: 500;
         }
 
         /* ================= WELCOME CARD ================= */
 
-        .welcome-card {
-            max-width: 650px;
-            margin: 50px auto 0;
+        .welcome {
+            width: min(92%, 700px);
+            margin: 15px auto 35px;
 
-            padding: 42px 30px;
+            padding: 45px 30px;
 
+            background: rgba(239,245,250,.94);
+            color: #071b30;
+
+            border: 5px solid #5ee5ff;
             border-radius: 42px;
 
-            background: rgba(239,245,251,.95);
-
-            color: #071d34;
-
-            border: 5px solid #67ddfa;
-
             box-shadow:
-                0 0 15px rgba(0,220,255,.7),
-                0 0 45px rgba(0,220,255,.22);
+                0 0 18px rgba(0,220,255,.65),
+                0 0 45px rgba(0,220,255,.18);
+
+            text-align: center;
         }
 
-        .welcome-card h1 {
-            margin: 0;
-
-            font-size: clamp(32px, 6vw, 52px);
-
-            line-height: 1.55;
-
+        .welcome h1 {
+            font-size: clamp(30px, 7vw, 50px);
+            line-height: 1.65;
             font-weight: 900;
+
+            margin-bottom: 22px;
         }
 
-        .welcome-card p {
-            margin: 25px 0 0;
-
-            font-size: clamp(18px, 3.5vw, 25px);
-
+        .welcome p {
+            font-size: clamp(17px, 4vw, 23px);
             line-height: 2;
 
-            color: #405267;
+            color: #3e5265;
+
+            margin-bottom: 28px;
         }
 
         .buttons {
-            margin-top: 30px;
-
             display: flex;
             justify-content: center;
             gap: 12px;
-
             flex-wrap: wrap;
         }
 
-        .main-button {
-            border: none;
+        .btn {
+            text-decoration: none;
 
             padding: 13px 24px;
 
-            border-radius: 15px;
+            border-radius: 14px;
 
-            font-family: inherit;
-            font-size: 16px;
             font-weight: 800;
+            font-size: 16px;
 
-            cursor: pointer;
-
-            transition: .25s ease;
+            transition: .25s;
         }
 
-        .products-button {
-            background: linear-gradient(135deg,#009ed0,#00c9e9);
+        .btn-products {
             color: white;
+            background: linear-gradient(135deg,#008dbd,#00b9dc);
+            box-shadow: 0 6px 20px rgba(0,180,220,.3);
         }
 
-        .contact-button {
-            background: #09263e;
-            color: white;
+        .btn-contact {
+            color: #08243b;
+            background: #dfe7ed;
+            border: 1px solid #aebdca;
         }
 
-        .main-button:active {
-            transform: scale(.95);
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
-        /* ================= FEATURES ================= */
+        /* ================= FEATURE CARDS ================= */
 
         .features-grid {
-            max-width: 900px;
-
-            margin: 28px auto 0;
-
-            padding: 0 15px;
+            width: min(92%, 850px);
+            margin: 0 auto 40px;
 
             display: grid;
 
@@ -460,15 +433,15 @@
         }
 
         .feature-card {
-            padding: 18px 9px;
-
             text-align: center;
+
+            padding: 20px 10px;
 
             border-radius: 20px;
 
             background: rgba(255,255,255,.09);
 
-            border: 1px solid rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.15);
 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -476,171 +449,137 @@
 
         .feature-card i {
             font-size: 27px;
-            color: #6ce9ff;
-
-            margin-bottom: 8px;
+            color: #64ddff;
+            margin-bottom: 10px;
         }
 
         .feature-card h3 {
-            margin: 0 0 5px;
-
-            font-size: clamp(12px, 3vw, 17px);
-            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 6px;
         }
 
         .feature-card p {
-            margin: 0;
-
-            color: #b9cde0;
-
-            font-size: clamp(10px, 2.5vw, 13px);
-
-            line-height: 1.6;
+            color: #bdd1df;
+            font-size: 12px;
+            line-height: 1.7;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
-            margin-top: 30px;
-            padding: 18px 15px;
-
             text-align: center;
-
-            color: #8faac0;
-
+            padding: 25px 15px;
+            color: #91adbf;
             font-size: 13px;
         }
-
-        /* ================= MOBILE ================= */
 
         @media (max-width: 600px) {
 
             .topbar {
-                height: 76px;
+                height: 74px;
             }
 
-            .nav-inner {
-                padding: 0 16px;
+            .nav-content {
+                padding: 0 20px;
             }
 
-            .menu-button {
-                width: 62px;
-                height: 62px;
-            }
-
-            .nav-logo-circle {
-                width: 50px;
-                height: 50px;
+            .nav-logo {
+                width: 44px;
+                height: 44px;
             }
 
             .brand-name {
-                font-size: 23px;
+                font-size: 24px;
+            }
+
+            .menu-btn {
+                width: 58px;
+                height: 58px;
             }
 
             main {
-                padding-top: 88px;
+                padding-top: 74px;
             }
 
             .hero {
-                padding-top: 20px;
+                padding-top: 80px;
             }
 
-            .hero-logo-circle {
-                width: 125px;
-                height: 125px;
-
-                margin-bottom: 20px;
+            .hero-logo {
+                width: 94px;
+                height: 94px;
             }
 
-            .hero-brand {
-                font-size: 40px;
+            .hero .brand-name {
+                font-size: 43px;
             }
 
             .tagline {
-                font-size: 19px;
-                margin-top: 17px;
+                font-size: 18px;
             }
 
-            .welcome-card {
-                margin-top: 42px;
-
-                padding: 34px 20px;
-
+            .welcome {
+                padding: 38px 20px;
                 border-radius: 35px;
             }
 
             .features-grid {
                 gap: 8px;
-                padding: 0 10px;
             }
 
             .feature-card {
-                border-radius: 17px;
-                padding: 15px 6px;
+                padding: 17px 6px;
+            }
+
+            .feature-card i {
+                font-size: 23px;
+            }
+
+            .feature-card h3 {
+                font-size: 12px;
+            }
+
+            .feature-card p {
+                font-size: 10px;
             }
         }
 
-        @media (max-width: 380px) {
-
-            .brand-name {
-                font-size: 20px;
-            }
-
-            .nav-logo-circle {
-                width: 46px;
-                height: 46px;
-            }
-
-            .hero-logo-circle {
-                width: 115px;
-                height: 115px;
-            }
-
-            .hero-brand {
-                font-size: 36px;
-            }
-
-            .tagline {
-                font-size: 17px;
-            }
+        body.menu-open {
+            overflow: hidden;
         }
-
     </style>
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
+    <!-- NAVBAR -->
     <header class="topbar">
+        <div class="nav-content">
 
-        <div class="nav-inner">
+            <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
 
             <div class="nav-brand">
 
-                <div class="nav-logo-circle">
-                    <img src="logo.png" alt="HAyDenTra Logo">
+                <div class="brand-name">
+                    HAyDenTra
+                    <span class="registered">®</span>
                 </div>
 
-                <div class="brand-name">
-                    HAyDenTra<span class="registered">®</span>
+                <div class="nav-logo">
+                    <img src="logo.png" alt="HAyDenTra Logo">
                 </div>
 
             </div>
 
-            <button class="menu-button" onclick="openMenu()" aria-label="فتح القائمة">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
         </div>
-
     </header>
 
-
-    <!-- ================= SIDEBAR ================= -->
-
+    <!-- OVERLAY -->
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-logo">
@@ -649,75 +588,74 @@
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
 
-            <div class="sidebar-brand">
-                HAyDenTra<span class="registered">®</span>
+            <div class="brand-name">
+                HAyDenTra
+                <span class="registered">®</span>
             </div>
 
         </div>
 
-        <a href="index.html" class="sidebar-link">
-            <i class="fa-solid fa-house"></i>
+        <a href="index.html">
+            <i class="fas fa-house"></i>
             <span>الرئيسية</span>
         </a>
 
-        <a href="products.html" class="sidebar-link">
-            <i class="fa-solid fa-tooth"></i>
+        <a href="products.html">
+            <i class="fas fa-tooth"></i>
             <span>المنتجات</span>
         </a>
 
-        <a href="contact.html" class="sidebar-link">
-            <i class="fa-solid fa-phone"></i>
+        <a href="contact.html">
+            <i class="fas fa-phone"></i>
             <span>تواصل معنا</span>
         </a>
 
     </aside>
 
-
-    <!-- ================= MAIN ================= -->
-
     <main>
 
+        <!-- HERO -->
         <section class="hero">
 
-            <div class="hero-logo-circle">
+            <div class="hero-logo">
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
 
-            <div class="hero-brand">
-                HAyDenTra<span class="registered">®</span>
+            <div class="brand-name">
+                HAyDenTra
+                <span class="registered">®</span>
             </div>
 
-            <div class="tagline">
+            <p class="tagline">
                 Your Trusted Partner in Dental Solutions
-            </div>
+            </p>
 
         </section>
 
-
-        <section class="welcome-card">
+        <!-- WELCOME -->
+        <section class="welcome">
 
             <h1>
-                مرحباً بكم في عالم
-                <br>
-                مستلزمات الأسنان
-                <br>
+                مرحباً بكم في عالم<br>
+                مستلزمات الأسنان<br>
                 المتطورة
             </h1>
 
             <p>
                 نقدم لعيادتك أحدث الأجهزة والمواد الطبية
-                المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
+                المعتمدة بأعلى معايير الجودة العالمية
+                وبأسعار تنافسية.
             </p>
 
             <div class="buttons">
 
-                <a href="products.html" class="main-button products-button">
-                    <i class="fa-solid fa-box-open"></i>
+                <a href="products.html" class="btn btn-products">
+                    <i class="fas fa-box-open"></i>
                     استكشف المنتجات
                 </a>
 
-                <a href="contact.html" class="main-button contact-button">
-                    <i class="fa-solid fa-comments"></i>
+                <a href="contact.html" class="btn btn-contact">
+                    <i class="fas fa-comments"></i>
                     تواصل معنا
                 </a>
 
@@ -725,55 +663,36 @@
 
         </section>
 
-
-        <!-- كروت المميزات فقط بدون عنوان -->
-
+        <!-- كروت المميزات فقط -->
         <section class="features-grid">
 
             <div class="feature-card">
-                <i class="fa-solid fa-headset"></i>
-
+                <i class="fas fa-headset"></i>
                 <h3>خدمة العملاء</h3>
-
-                <p>
-                    دعم ومساعدة مستمرة
-                </p>
+                <p>دعم ومساعدة مستمرة</p>
             </div>
 
-
             <div class="feature-card">
-                <i class="fa-solid fa-truck-fast"></i>
-
+                <i class="fas fa-truck-fast"></i>
                 <h3>توصيل سريع</h3>
-
-                <p>
-                    توصيل سريع وآمن
-                </p>
+                <p>سرعة في تجهيز الطلبات</p>
             </div>
 
-
             <div class="feature-card">
-                <i class="fa-solid fa-award"></i>
-
+                <i class="fas fa-medal"></i>
                 <h3>جودة عالية</h3>
-
-                <p>
-                    منتجات موثوقة
-                </p>
+                <p>منتجات موثوقة ومعتمدة</p>
             </div>
 
         </section>
 
+        <footer>
+            © 2026 HAyDenTra® — جميع الحقوق محفوظة
+        </footer>
+
     </main>
 
-
-    <footer>
-        © 2026 HAyDenTra® - جميع الحقوق محفوظة
-    </footer>
-
-
     <script>
-
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
 
@@ -794,7 +713,6 @@
                 closeMenu();
             }
         });
-
     </script>
 
 </body>
