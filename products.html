@@ -51,8 +51,6 @@
             color: inherit;
         }
 
-        /* NAVBAR */
-
         .topbar {
             position: fixed;
             top: 0;
@@ -171,8 +169,6 @@
 
             transition: .25s;
         }
-
-        /* SIDEBAR */
 
         .overlay {
             position: fixed;
@@ -328,8 +324,6 @@
             border-color: rgba(80,220,255,.28);
         }
 
-        /* PAGE */
-
         main {
             padding-top: 74px;
         }
@@ -404,8 +398,6 @@
             color: #b8d0e2;
             font-size: 16px;
         }
-
-        /* FILTERS */
 
         .filters {
             width: min(100% - 30px,1000px);
@@ -493,8 +485,6 @@
             border-color: #4fdcff;
             color: #fff;
         }
-
-        /* PRODUCTS */
 
         .products-grid {
             width: min(100% - 30px,1100px);
@@ -650,8 +640,6 @@
             background: rgba(2,17,30,.32);
             border-top: 1px solid rgba(255,255,255,.06);
         }
-
-        /* MOBILE */
 
         @media(max-width:600px) {
 
@@ -865,10 +853,6 @@
 
 <script>
 
-/* =========================
-   SUPABASE
-========================= */
-
 const SUPABASE_URL =
     "https://hcvajgyjiflkcsdjvzib.supabase.co";
 
@@ -882,9 +866,7 @@ const supabaseClient =
     );
 
 
-/* =========================
-   MENU
-========================= */
+/* MENU */
 
 const sidebar =
     document.getElementById("sidebar");
@@ -917,9 +899,7 @@ document.addEventListener("keydown", function(e) {
 });
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 const productsGrid =
     document.getElementById("productsGrid");
@@ -1092,9 +1072,7 @@ function renderProducts(products) {
 }
 
 
-/* =========================
-   SEARCH / FILTER / SORT
-========================= */
+/* SEARCH / FILTER / SORT */
 
 function updateProducts() {
 
@@ -1222,9 +1200,7 @@ chips.forEach(chip => {
 });
 
 
-/* =========================
-   WHATSAPP
-========================= */
+/* WHATSAPP */
 
 function orderProduct(name, price) {
 
@@ -1234,22 +1210,18 @@ function orderProduct(name, price) {
     const message =
         `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${Number(price).toLocaleString("en-US")} ج.م`;
 
-    const url =
-        "https://wa.me/" +
+    const whatsappURL =
+        "https://api.whatsapp.com/send?phone=" +
         phone +
-        "?text=" +
+        "&text=" +
         encodeURIComponent(message);
 
-    window.open(
-        url,
-        "_blank"
-    );
+    window.location.href =
+        whatsappURL;
 }
 
 
-/* =========================
-   SECURITY
-========================= */
+/* SECURITY */
 
 function escapeHTML(text) {
 
@@ -1262,8 +1234,6 @@ function escapeHTML(text) {
         .replace(/'/g, "&#039;");
 }
 
-
-/* START */
 
 loadProducts();
 
