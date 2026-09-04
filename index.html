@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAyDenTra® - Dental Supplies & Solutions</title>
+    <title>HAyDenTra® - Your Trusted Partner in Dental Solutions</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,12 +13,12 @@
         }
 
         body {
-            background: linear-gradient(180deg, #07101e 0%, #0a192f 50%, #030712 100%);
+            background: linear-gradient(180deg, #071224 0%, #0c203b 50%, #06101e 100%);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
         }
 
         /* الشريط العلوي الثابت */
@@ -28,215 +28,222 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(7, 16, 30, 0.9);
+            background: rgba(7, 18, 36, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 20px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .menu-btn {
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
         }
 
-        .brand-logo {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #fff;
+        .brand-header {
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
         }
 
-        .brand-logo img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+        .brand-header img, .brand-header .logo-svg-small {
+            width: 26px;
+            height: 26px;
         }
 
         /* المحتوى الرئيسي */
-        .main-content {
-            margin-top: 90px;
+        .content-wrapper {
+            margin-top: 100px;
+            width: 100%;
+            max-width: 480px;
             padding: 20px;
-            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
-        .hero-logo-container {
-            margin-bottom: 15px;
-        }
-
-        .hero-logo {
-            width: 90px;
-            height: 90px;
+        /* اللوجو الدائري المتوهج (Glowing Logo) */
+        .glowing-logo-box {
+            width: 105px;
+            height: 105px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
-            margin: 0 auto;
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7), 0 0 15px rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
         }
 
-        .hero-logo svg {
-            width: 50px;
-            height: 50px;
-            fill: #0a192f;
+        .glowing-logo-box svg {
+            width: 60px;
+            height: 60px;
+            fill: #0c203b;
         }
 
-        h1.title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
+        .site-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 6px;
             letter-spacing: 1px;
+            color: #ffffff;
         }
 
-        p.subtitle {
-            font-size: 0.95rem;
+        .site-subtitle {
+            font-size: 0.9rem;
             color: #94a3b8;
             margin-bottom: 30px;
         }
 
-        /* الأزرار الرئيسية */
-        .btn-group {
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .custom-btn {
+        /* زر عرض المستلزمات والتواصل */
+        .action-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             width: 100%;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.5);
             padding: 14px;
-            border-radius: 30px;
+            border-radius: 35px;
             font-size: 1.05rem;
             font-weight: bold;
             text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            background: rgba(14, 30, 54, 0.8);
-            color: #ffffff;
-            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4);
+            margin-bottom: 12px;
+            transition: transform 0.2s ease;
         }
 
-        .custom-btn:hover {
-            background: rgba(56, 189, 248, 0.2);
-            border-color: #38bdf8;
+        .action-btn.contact-btn {
+            background: rgba(12, 32, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: none;
         }
 
-        /* بطاقات المميزات السفلى */
-        .features-card {
+        .action-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* بطاقات المميزات البيضاء السفلى */
+        .features-container {
             background: #ffffff;
             color: #0f172a;
             width: 100%;
-            max-width: 500px;
             border-radius: 20px;
-            padding: 20px 10px;
+            padding: 18px 10px;
             display: flex;
             justify-content: space-around;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 25px;
+            margin-bottom: 30px;
         }
 
-        .feature-item {
+        .feature-box {
             flex: 1;
-            padding: 0 5px;
+            padding: 0 4px;
         }
 
-        .feature-item .icon {
+        .feature-box .f-icon {
             font-size: 1.4rem;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .feature-item h4 {
-            font-size: 0.9rem;
+        .feature-box h4 {
+            font-size: 0.85rem;
             font-weight: bold;
             color: #0f172a;
             margin-bottom: 2px;
         }
 
-        .feature-item p {
-            font-size: 0.75rem;
+        .feature-box p {
+            font-size: 0.7rem;
             color: #64748b;
         }
 
-        footer {
+        /* قسم مستلزمات وتجهيز العيادات الإضافي بالأسفل */
+        .section-title-box {
             text-align: center;
-            padding: 15px;
-            font-size: 0.8rem;
-            color: #64748b;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .section-title-box h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .section-title-box p {
+            font-size: 0.85rem;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي الثابت -->
+    <!-- الشريط العلوي -->
     <header class="navbar">
         <button class="menu-btn">☰</button>
-        <div class="brand-logo">
-            HAyDenTra®
+        <div class="brand-header">
+            <span>®HAyDenTra</span>
+            <svg class="logo-svg-small" viewBox="0 0 24 24"><path fill="#38bdf8" d="M12,2C8,2 5,5 5,9C5,11.5 6.5,13.8 8.5,15C9.2,15.4 9.5,16.2 9.2,17C8.8,18 8.5,19 8.5,20C8.5,21.4 9.6,22.5 11,22.5C12,22.5 12.8,21.8 13.2,21C13.8,19.8 14.5,19.2 15.5,19.2C16.5,19.2 17.2,19.8 17.8,21C18.2,21.8 19,22.5 20,22.5C21.4,22.5 22.5,21.4 22.5,20C22.5,19 22.2,18 21.8,17C21.5,16.2 21.8,15.4 22.5,15C24.5,13.8 26,11.5 26,9C26,5 23,2 19,2C16.5,2 14.3,3.3 13,5.3C11.7,3.3 9.5,2 7,2H12Z"/></svg>
         </div>
     </header>
 
-    <!-- المحتوى -->
-    <main class="main-content">
-        <div class="hero-logo-container">
-            <div class="hero-logo">
-                <!-- أيقونة الأسنان -->
-                <svg viewBox="0 0 24 24"><path d="M12,2C8,2 5,5 5,9C5,11.5 6.5,13.8 8.5,15C9.2,15.4 9.5,16.2 9.2,17C8.8,18 8.5,19 8.5,20C8.5,21.4 9.6,22.5 11,22.5C12,22.5 12.8,21.8 13.2,21C13.8,19.8 14.5,19.2 15.5,19.2C16.5,19.2 17.2,19.8 17.8,21C18.2,21.8 19,22.5 20,22.5C21.4,22.5 22.5,21.4 22.5,20C22.5,19 22.2,18 21.8,17C21.5,16.2 21.8,15.4 22.5,15C24.5,13.8 26,11.5 26,9C26,5 23,2 19,2C16.5,2 14.3,3.3 13,5.3C11.7,3.3 9.5,2 7,2H12Z"/></svg>
-            </div>
+    <!-- المحتوى الرئيسي -->
+    <div class="content-wrapper">
+        <!-- اللوجو الدائري المتوهج -->
+        <div class="glowing-logo-box">
+            <svg viewBox="0 0 24 24"><path d="M12,2C8,2 5,5 5,9C5,11.5 6.5,13.8 8.5,15C9.2,15.4 9.5,16.2 9.2,17C8.8,18 8.5,19 8.5,20C8.5,21.4 9.6,22.5 11,22.5C12,22.5 12.8,21.8 13.2,21C13.8,19.8 14.5,19.2 15.5,19.2C16.5,19.2 17.2,19.8 17.8,21C18.2,21.8 19,22.5 20,22.5C21.4,22.5 22.5,21.4 22.5,20C22.5,19 22.2,18 21.8,17C21.5,16.2 21.8,15.4 22.5,15C24.5,13.8 26,11.5 26,9C26,5 23,2 19,2C16.5,2 14.3,3.3 13,5.3C11.7,3.3 9.5,2 7,2H12Z"/></svg>
         </div>
 
-        <h1 class="title">HAyDenTra®</h1>
-        <p class="subtitle">Your Trusted Partner in Dental Solutions</p>
+        <h1 class="site-title">HAyDenTra</h1>
+        <p class="site-subtitle">Your Trusted Partner in Dental Solutions</p>
 
-        <div class="btn-group">
-            <a href="products.html" class="custom-btn">
-                📦 عرض المنتجات والمستلزمات
-            </a>
-            <a href="contact.html" class="custom-btn">
-                📞 تواصل معنا مباشرة
-            </a>
-        </div>
+        <!-- أزرار التوجيه -->
+        <a href="products.html" class="action-btn">
+            <span>←</span> عرض مستلزمات العيادة
+        </a>
+        <a href="contact.html" class="action-btn contact-btn">
+            <span>📞</span> تواصل معنا مباشرة
+        </a>
 
-        <div class="features-card">
-            <div class="feature-item">
-                <div class="icon">🎧</div>
+        <!-- البطاقات البيضاء -->
+        <div class="features-container">
+            <div class="feature-box">
+                <div class="f-icon">🎧</div>
                 <h4>خدمة العملاء</h4>
-                <p>تجاوب فوري</p>
+                <p>دعم واستجابة</p>
             </div>
-            <div class="feature-item">
-                <div class="icon">🚚</div>
+            <div class="feature-box">
+                <div class="f-icon">🚚</div>
                 <h4>توصيل سريع</h4>
-                <p>شحن مباشر</p>
+                <p>لكافة العيادات</p>
             </div>
-            <div class="feature-item">
-                <div class="icon">🛡️</div>
+            <div class="feature-box">
+                <div class="f-icon">🛡️</div>
                 <h4>جودة عالية</h4>
                 <p>خامات معتمدة</p>
             </div>
         </div>
-    </main>
 
-    <footer>
-        © HAyDenTra® - Dental Supplies & Solutions
-    </footer>
+        <div class="section-title-box">
+            <h2>مستلزمات وتجهيز العيادات</h2>
+            <p>اختر ما تحتاجه لعيادتك واطلبه فوراً عبر الواتساب</p>
+        </div>
+    </div>
 
 </body>
 </html>
