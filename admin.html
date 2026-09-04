@@ -19,7 +19,7 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.gstatic.com"
+        href="https://fonts.googleapis.com"
         crossorigin
     >
 
@@ -329,6 +329,18 @@
         }
 
 
+        .topbar-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .home-btn,
         .logout-btn {
 
             padding: 10px 15px;
@@ -347,6 +359,42 @@
             font-family: "Cairo";
 
             cursor: pointer;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            transition: .25s;
+
+        }
+
+
+        .home-btn:hover {
+
+            background:
+                rgba(0,210,255,.14);
+
+            border-color:
+                rgba(80,220,255,.35);
+
+            color: #55ddff;
+
+        }
+
+
+        .logout-btn:hover {
+
+            background:
+                rgba(255,89,100,.12);
+
+            border-color:
+                rgba(255,89,100,.35);
 
         }
 
@@ -665,6 +713,53 @@
 
         @media(max-width:600px) {
 
+            .topbar {
+
+                padding: 0 12px;
+
+            }
+
+            .nav-brand {
+
+                gap: 7px;
+
+            }
+
+            .nav-logo {
+
+                width: 42px;
+                height: 42px;
+
+            }
+
+            .nav-brand-name {
+
+                font-size: 21px;
+
+            }
+
+            .topbar-actions {
+
+                gap: 5px;
+
+            }
+
+            .home-btn,
+            .logout-btn {
+
+                padding: 9px 10px;
+
+                font-size: 12px;
+
+            }
+
+            .home-btn span,
+            .logout-btn span {
+
+                display: none;
+
+            }
+
             .product {
 
                 align-items: flex-start;
@@ -795,16 +890,37 @@
         </div>
 
 
-        <button
-            class="logout-btn"
-            onclick="logout()"
-        >
+        <div class="topbar-actions">
 
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <a
+                href="index.html"
+                class="home-btn"
+            >
 
-            خروج
+                <i class="fa-solid fa-house"></i>
 
-        </button>
+                <span>
+                    الرئيسية
+                </span>
+
+            </a>
+
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    خروج
+                </span>
+
+            </button>
+
+        </div>
+
 
     </header>
 
@@ -1029,6 +1145,7 @@ async function login() {
 
     await checkAdmin();
 
+
 }
 
 
@@ -1078,6 +1195,7 @@ async function checkAdmin() {
 
 
     showAdmin();
+
 
 }
 
@@ -1165,6 +1283,7 @@ async function loadProducts() {
         console.error(error);
 
         return;
+
     }
 
 
@@ -1174,6 +1293,7 @@ async function loadProducts() {
             "لا توجد منتجات حتى الآن.";
 
         return;
+
     }
 
 
@@ -1327,6 +1447,7 @@ async function saveProduct() {
             "اكتب اسم المنتج.";
 
         return;
+
     }
 
 
@@ -1336,6 +1457,7 @@ async function saveProduct() {
             "اكتب سعرًا صحيحًا.";
 
         return;
+
     }
 
 
@@ -1383,6 +1505,7 @@ async function saveProduct() {
             console.error(uploadError);
 
             return;
+
         }
 
 
@@ -1439,6 +1562,7 @@ async function saveProduct() {
             console.error(error);
 
             return;
+
         }
 
 
@@ -1480,6 +1604,7 @@ async function saveProduct() {
             console.error(error);
 
             return;
+
         }
 
 
