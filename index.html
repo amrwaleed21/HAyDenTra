@@ -8,7 +8,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet"
@@ -17,31 +16,28 @@
     <style>
         * {
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html {
-            margin: 0;
-            padding: 0;
             min-height: 100%;
-            background:
-                radial-gradient(circle at 50% 35%, #0c5679 0%, #073653 38%, #031a2a 100%);
+            background: #061d2d;
             scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            padding: 0;
             min-height: 100dvh;
             font-family: "Cairo", sans-serif;
-            color: white;
+            color: #fff;
             background:
-                radial-gradient(circle at 50% 35%, #0c5679 0%, #073653 38%, #031a2a 100%);
+                radial-gradient(circle at 50% 35%, rgba(0, 201, 255, .18), transparent 30%),
+                linear-gradient(145deg, #061c2b, #073d59 55%, #061d2d);
             overflow-x: hidden;
         }
 
-        body.menu-open {
-            overflow: hidden;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* ================= NAVBAR ================= */
@@ -49,127 +45,114 @@
         .topbar {
             position: fixed;
             top: 0;
-            left: 0;
             right: 0;
-            height: 76px;
+            left: 0;
+            height: 74px;
             z-index: 1000;
 
-            background: rgba(3, 24, 40, 0.68);
-            border-bottom: 1px solid rgba(255,255,255,0.13);
+            background: rgba(4, 24, 42, .65);
+            border-bottom: 1px solid rgba(255,255,255,.12);
 
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            backdrop-filter: blur(18px) saturate(150%);
+            -webkit-backdrop-filter: blur(18px) saturate(150%);
 
-            box-shadow:
-                0 8px 30px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 30px rgba(0,0,0,.22);
         }
 
-        .nav-container {
-            width: min(1200px, 94%);
+        .nav-inner {
+            width: 100%;
             height: 100%;
-            margin: auto;
+            padding: 0 20px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
 
+        /* Logo in navbar */
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             direction: ltr;
         }
+
+        .nav-logo-circle {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+
+            border-radius: 50%;
+            background: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            box-shadow:
+                0 0 10px rgba(255,255,255,.8),
+                0 0 22px rgba(0,225,255,.55);
+        }
+
+        .nav-logo-circle img {
+            width: 72%;
+            height: 72%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-brand-name {
+            position: relative;
+            font-size: 25px;
+            line-height: 1;
+            font-weight: 900;
+            white-space: nowrap;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,.35);
+        }
+
+        /* ® صغير وقريب من الكلمة */
+
+        .registered {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        /* Menu button */
 
         .menu-btn {
             width: 58px;
             height: 58px;
 
+            border: 1px solid rgba(255,255,255,.25);
             border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.25);
 
-            background: rgba(255,255,255,0.08);
-            color: white;
+            background: rgba(255,255,255,.08);
+            color: #fff;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 29px;
+            font-size: 30px;
             cursor: pointer;
 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
-            transition: 0.25s ease;
+            transition: .25s;
         }
 
-        .menu-btn:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        /* ================= BRAND ================= */
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            direction: rtl;
-        }
-
-        .logo-circle {
-            width: 62px;
-            height: 62px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #ffffff 0%,
-                    #ffffff 65%,
-                    #f2fbff 82%,
-                    rgba(255,255,255,0.75) 100%
-                );
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid rgba(255,255,255,0.95);
-
-            box-shadow:
-                0 0 10px rgba(255,255,255,0.95),
-                0 0 25px rgba(0,229,255,0.85),
-                0 0 48px rgba(0,229,255,0.45);
-
-            flex-shrink: 0;
-        }
-
-        .logo-circle img {
-            width: 73%;
-            height: 73%;
-            object-fit: contain;
-        }
-
-        .brand-name {
-            position: relative;
-            display: inline-block;
-
-            color: #fff;
-            font-size: 27px;
-            font-weight: 900;
-            line-height: 1;
-
-            text-shadow:
-                0 0 8px rgba(255,255,255,0.25);
-        }
-
-        .brand-name .registered {
-            position: absolute;
-
-            top: -0.08em;
-            right: -0.38em;
-
-            font-size: 0.45em;
-            font-weight: 700;
-            line-height: 1;
+        .menu-btn:active {
+            transform: scale(.94);
         }
 
         /* ================= SIDEBAR ================= */
@@ -179,14 +162,13 @@
             inset: 0;
             z-index: 1050;
 
-            background: rgba(0,0,0,0.42);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background: rgba(0,0,0,.4);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
 
             opacity: 0;
             visibility: hidden;
-
-            transition: 0.3s ease;
+            transition: .3s;
         }
 
         .overlay.active {
@@ -199,25 +181,23 @@
             top: 0;
             right: 0;
 
-            width: min(350px, 82%);
+            width: min(82%, 340px);
             height: 100dvh;
 
             z-index: 1100;
 
-            padding: 30px 20px;
+            padding: 28px 20px;
 
-            background: rgba(5, 28, 48, 0.72);
+            background: rgba(5, 27, 47, .72);
+            border-left: 1px solid rgba(255,255,255,.14);
 
-            border-left: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
 
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            box-shadow: -15px 0 40px rgba(0,0,0,.3);
 
-            box-shadow:
-                -15px 0 45px rgba(0,0,0,0.35);
-
-            transform: translateX(110%);
-            transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+            transform: translateX(100%);
+            transition: transform .35s ease;
 
             overflow-y: auto;
         }
@@ -226,50 +206,77 @@
             transform: translateX(0);
         }
 
-        .sidebar-header {
+        .sidebar-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 28px;
+        }
+
+        .sidebar-logo-circle {
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+            background: #fff;
+
             display: flex;
             align-items: center;
             justify-content: center;
 
-            margin-bottom: 35px;
+            box-shadow:
+                0 0 12px rgba(255,255,255,.9),
+                0 0 28px rgba(0,225,255,.6);
         }
 
-        .sidebar .logo-circle {
-            width: 82px;
-            height: 82px;
+        .sidebar-logo-circle img {
+            width: 72%;
+            height: 72%;
+            object-fit: contain;
+        }
+
+        .sidebar-brand {
+            margin-top: 13px;
+            font-size: 25px;
+            font-weight: 900;
+            direction: ltr;
+            position: relative;
         }
 
         .sidebar-links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .sidebar-links a {
-            color: white;
-            text-decoration: none;
+            padding: 15px 16px;
 
-            padding: 15px 18px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,.1);
 
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.10);
+            background: rgba(255,255,255,.06);
 
-            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
             font-size: 16px;
             font-weight: 700;
 
-            display: flex;
-            align-items: center;
-            gap: 13px;
+            transition: .25s;
+        }
 
-            transition: 0.25s ease;
+        .sidebar-links a i {
+            width: 24px;
+            text-align: center;
         }
 
         .sidebar-links a:hover {
-            background: rgba(0,210,255,0.15);
-            border-color: rgba(0,229,255,0.35);
-            transform: translateX(-4px);
+            background: rgba(0,210,255,.13);
+            transform: translateX(-3px);
         }
 
         .close-menu {
@@ -280,10 +287,10 @@
             width: 42px;
             height: 42px;
 
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 12px;
 
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,.07);
             color: white;
 
             font-size: 20px;
@@ -294,274 +301,215 @@
 
         main {
             width: 100%;
-            min-height: 100dvh;
-
-            padding:
-                calc(76px + env(safe-area-inset-top))
-                18px
-                30px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding-top: 94px;
         }
 
         /* ================= HERO ================= */
 
         .hero {
-            width: min(900px, 100%);
+            width: min(92%, 850px);
+            margin: 0 auto;
             text-align: center;
-
-            padding-top: 55px;
         }
 
-        .hero-logo {
-            width: 180px;
-            height: 180px;
+        .hero-logo-circle {
+            width: 150px;
+            height: 150px;
 
-            margin: 0 auto 22px;
+            margin: 10px auto 20px;
 
             border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #fff 0%,
-                    #fff 65%,
-                    #f5fcff 82%,
-                    rgba(255,255,255,0.7) 100%
-                );
+            background: #fff;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border: 2px solid rgba(255,255,255,0.9);
-
             box-shadow:
-                0 0 15px rgba(255,255,255,0.95),
-                0 0 35px rgba(0,229,255,0.85),
-                0 0 70px rgba(0,229,255,0.45);
+                0 0 14px rgba(255,255,255,.9),
+                0 0 30px rgba(0,225,255,.7),
+                0 0 55px rgba(0,225,255,.28);
         }
 
-        .hero-logo img {
-            width: 73%;
-            height: 73%;
+        .hero-logo-circle img {
+            width: 72%;
+            height: 72%;
             object-fit: contain;
         }
 
-        .hero-brand {
+        .hero-name {
             position: relative;
             display: inline-block;
 
-            font-size: 55px;
-            font-weight: 900;
-            line-height: 1;
+            direction: ltr;
 
-            color: white;
+            font-size: clamp(42px, 10vw, 62px);
+            line-height: 1;
+            font-weight: 900;
+
+            color: #fff;
 
             text-shadow:
-                0 0 10px rgba(255,255,255,0.45),
-                0 0 22px rgba(0,229,255,0.30);
+                0 0 8px rgba(255,255,255,.8),
+                0 0 20px rgba(0,225,255,.35);
         }
 
-        .hero-brand .registered {
-            position: absolute;
-
-            top: -0.08em;
-            right: -0.38em;
-
-            font-size: 0.45em;
-            font-weight: 700;
-            line-height: 1;
+        .hero-name .registered {
+            top: -9px;
+            right: -12px;
+            font-size: 12px;
         }
 
         .tagline {
-            margin-top: 25px;
+            margin: 22px 0 30px;
 
-            font-size: clamp(19px, 3vw, 28px);
+            color: #b9d3e8;
+            font-size: clamp(17px, 4vw, 25px);
             font-weight: 500;
-
-            color: #bcd3e7;
         }
 
         /* ================= WELCOME CARD ================= */
 
         .welcome-card {
-            width: min(850px, 100%);
+            width: 100%;
 
-            margin-top: 55px;
-
-            padding: 42px 35px 38px;
+            padding: 38px 25px 32px;
 
             border-radius: 38px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(240,245,250,0.96),
-                    rgba(218,228,238,0.96)
-                );
+            background: rgba(239,244,249,.94);
+            color: #09233a;
 
-            border: 5px solid #65dcf7;
-
-            color: #071b31;
+            border: 5px solid #63d9f3;
 
             box-shadow:
-                0 0 15px rgba(92,224,255,0.9),
-                0 0 45px rgba(0,210,255,0.35);
+                0 0 15px rgba(99,217,243,.8),
+                0 0 40px rgba(0,210,255,.25);
 
-            text-align: center;
+            margin-top: 10px;
         }
 
         .welcome-card h1 {
-            margin: 0 0 25px;
+            margin: 0 auto 28px;
 
-            font-size: clamp(31px, 5vw, 53px);
+            max-width: 650px;
+
+            font-size: clamp(32px, 8vw, 54px);
             line-height: 1.55;
 
             font-weight: 900;
         }
 
         .welcome-card p {
-            margin: 0 auto 30px;
+            margin: 0 auto 28px;
 
-            max-width: 700px;
+            max-width: 680px;
 
-            font-size: clamp(18px, 3vw, 26px);
+            font-size: clamp(17px, 4vw, 23px);
             line-height: 2;
 
-            color: #34475a;
+            color: #344b60;
         }
 
-        .buttons {
+        .main-buttons {
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 14px;
         }
 
         .main-btn {
-            min-width: 200px;
+            min-width: 180px;
+            padding: 13px 22px;
 
-            padding: 14px 22px;
+            border-radius: 14px;
 
-            border-radius: 16px;
-            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
 
-            text-decoration: none;
-
-            font-family: inherit;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
 
-            cursor: pointer;
-
-            transition: 0.25s ease;
+            transition: .25s;
         }
 
         .products-btn {
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #087fae,
-                    #05b7dc
-                );
-
-            box-shadow:
-                0 8px 22px rgba(0,160,220,0.30);
+            background: linear-gradient(135deg, #079dcc, #075f91);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0,130,190,.25);
         }
 
         .contact-btn {
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #172c42,
-                    #536273
-                );
+            background: #0b2238;
+            color: #fff;
         }
 
-        .main-btn:hover {
-            transform: translateY(-3px);
+        .main-btn:active {
+            transform: scale(.97);
         }
 
         /* ================= FEATURES ================= */
 
         .features-grid {
-            width: min(850px, 100%);
-
-            margin-top: 22px;
+            width: 100%;
+            margin-top: 18px;
 
             display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 12px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
         }
 
         .feature-card {
             min-width: 0;
 
-            padding: 22px 10px;
+            padding: 18px 8px;
 
             border-radius: 20px;
 
-            background:
-                rgba(255,255,255,0.10);
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.12);
 
-            border: 1px solid rgba(255,255,255,0.16);
-
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
 
             text-align: center;
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,0.16);
         }
 
         .feature-card i {
-            font-size: 28px;
-            color: #61def8;
-
+            font-size: 24px;
             margin-bottom: 8px;
-
-            text-shadow:
-                0 0 15px rgba(0,229,255,0.7);
+            color: #65ddf5;
         }
 
         .feature-card h3 {
-            margin: 4px 0 5px;
-
-            font-size: clamp(13px, 2.7vw, 19px);
-            font-weight: 800;
+            margin: 0 0 5px;
+            font-size: clamp(12px, 3.2vw, 17px);
         }
 
         .feature-card p {
             margin: 0;
-
-            color: #c3d4e2;
-
-            font-size: clamp(10px, 2.3vw, 14px);
-            line-height: 1.6;
+            color: #bdd1df;
+            font-size: clamp(9px, 2.5vw, 13px);
+            line-height: 1.7;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
             width: 100%;
+            padding: 25px 15px;
+            margin-top: 28px;
+
             text-align: center;
 
-            margin-top: 35px;
-            padding: 15px 10px 25px;
-
-            color: #9fb4c5;
+            color: #91afc2;
             font-size: 13px;
+
+            background: rgba(2,18,31,.35);
+            border-top: 1px solid rgba(255,255,255,.08);
         }
 
         /* ================= MOBILE ================= */
@@ -569,11 +517,11 @@
         @media (max-width: 600px) {
 
             .topbar {
-                height: 76px;
+                height: 74px;
             }
 
-            .nav-container {
-                width: 94%;
+            .nav-inner {
+                padding: 0 20px;
             }
 
             .menu-btn {
@@ -581,48 +529,47 @@
                 height: 58px;
             }
 
-            .logo-circle {
-                width: 58px;
-                height: 58px;
+            .nav-logo-circle {
+                width: 52px;
+                height: 52px;
             }
 
-            .brand-name {
+            .nav-brand-name {
                 font-size: 24px;
             }
 
             main {
-                padding-left: 12px;
-                padding-right: 12px;
-                padding-bottom: 20px;
+                padding-top: 92px;
             }
 
-            .hero {
-                padding-top: 48px;
+            .hero-logo-circle {
+                width: 150px;
+                height: 150px;
+                margin-top: 8px;
             }
 
-            .hero-logo {
-                width: 180px;
-                height: 180px;
-            }
-
-            .hero-brand {
+            .hero-name {
                 font-size: 48px;
             }
 
+            .tagline {
+                margin-top: 20px;
+                margin-bottom: 28px;
+            }
+
             .welcome-card {
-                margin-top: 48px;
-                padding: 35px 18px 30px;
-                border-radius: 34px;
+                padding: 30px 18px 26px;
+                border-radius: 32px;
             }
 
             .welcome-card h1 {
-                font-size: 34px;
+                font-size: 35px;
                 line-height: 1.55;
             }
 
             .welcome-card p {
-                font-size: 18px;
-                line-height: 1.9;
+                font-size: 17px;
+                line-height: 1.95;
             }
 
             .features-grid {
@@ -630,41 +577,39 @@
             }
 
             .feature-card {
-                padding: 17px 5px;
+                padding: 15px 5px;
                 border-radius: 16px;
-            }
-
-            .feature-card i {
-                font-size: 23px;
             }
         }
 
         @media (max-width: 380px) {
 
-            .brand-name {
+            .nav-brand-name {
                 font-size: 21px;
             }
 
-            .logo-circle {
-                width: 52px;
-                height: 52px;
+            .nav-logo-circle {
+                width: 48px;
+                height: 48px;
+                flex-basis: 48px;
             }
 
-            .hero-logo {
-                width: 155px;
-                height: 155px;
+            .menu-btn {
+                width: 54px;
+                height: 54px;
             }
 
-            .hero-brand {
-                font-size: 40px;
+            .hero-logo-circle {
+                width: 135px;
+                height: 135px;
             }
 
-            .feature-card h3 {
-                font-size: 12px;
+            .hero-name {
+                font-size: 42px;
             }
 
-            .feature-card p {
-                font-size: 9px;
+            .welcome-card h1 {
+                font-size: 31px;
             }
         }
     </style>
@@ -672,45 +617,49 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
+    <!-- NAVBAR -->
     <header class="topbar">
-        <div class="nav-container">
+        <div class="nav-inner">
+
+            <a href="index.html" class="nav-brand">
+                <div class="nav-logo-circle">
+                    <img src="logo.png" alt="HAyDenTra Logo">
+                </div>
+
+                <div class="nav-brand-name">
+                    HAyDenTra
+                    <span class="registered">®</span>
+                </div>
+            </a>
 
             <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <div class="brand">
-
-                <div class="brand-name">
-                    HAyDenTra
-                    <span class="registered">®</span>
-                </div>
-
-                <div class="logo-circle">
-                    <img src="logo.png" alt="HAyDenTra Logo">
-                </div>
-
-            </div>
-
         </div>
     </header>
 
-    <!-- ================= SIDEBAR ================= -->
-
+    <!-- OVERLAY -->
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
         <button class="close-menu" onclick="closeMenu()">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <div class="sidebar-header">
-            <div class="logo-circle">
+        <div class="sidebar-logo">
+
+            <div class="sidebar-logo-circle">
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
+
+            <div class="sidebar-brand">
+                HAyDenTra
+                <span class="registered">®</span>
+            </div>
+
         </div>
 
         <nav class="sidebar-links">
@@ -734,17 +683,16 @@
 
     </aside>
 
-    <!-- ================= MAIN ================= -->
-
+    <!-- MAIN -->
     <main>
 
         <section class="hero">
 
-            <div class="hero-logo">
+            <div class="hero-logo-circle">
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
 
-            <div class="hero-brand">
+            <div class="hero-name">
                 HAyDenTra
                 <span class="registered">®</span>
             </div>
@@ -753,110 +701,86 @@
                 Your Trusted Partner in Dental Solutions
             </div>
 
-        </section>
+            <div class="welcome-card">
 
-        <!-- WELCOME -->
+                <h1>
+                    مرحباً بكم في عالم<br>
+                    مستلزمات الأسنان<br>
+                    المتطورة
+                </h1>
 
-        <section class="welcome-card">
+                <p>
+                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
+                    المعتمدة بأعلى معايير الجودة العالمية
+                    وبأسعار تنافسية.
+                </p>
 
-            <h1>
-                مرحباً بكم في عالم<br>
-                مستلزمات الأسنان<br>
-                المتطورة
-            </h1>
+                <div class="main-buttons">
 
-            <p>
-                نقدم لعياداتك أحدث الأجهزة والمواد الطبية
-                المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
-            </p>
+                    <a href="products.html" class="main-btn products-btn">
+                        <i class="fa-solid fa-box-open"></i>
+                        استكشف المنتجات
+                    </a>
 
-            <div class="buttons">
+                    <a href="contact.html" class="main-btn contact-btn">
+                        <i class="fa-solid fa-comments"></i>
+                        تواصل معنا
+                    </a>
 
-                <a href="products.html" class="main-btn products-btn">
-                    <i class="fa-solid fa-box-open"></i>
-                    استكشف المنتجات
-                </a>
-
-                <a href="contact.html" class="main-btn contact-btn">
-                    <i class="fa-solid fa-comments"></i>
-                    تواصل معنا
-                </a>
+                </div>
 
             </div>
 
-        </section>
+            <!-- كروت المميزات فقط بدون عنوان -->
+            <div class="features-grid">
 
-        <!-- FEATURES - بدون عنوان مميزات الشركة -->
+                <div class="feature-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>خدمة العملاء</h3>
+                    <p>دعم ومتابعة مستمرة</p>
+                </div>
 
-        <section class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h3>توصيل سريع</h3>
+                    <p>سرعة وأمان في التوصيل</p>
+                </div>
 
-            <div class="feature-card">
-
-                <i class="fa-solid fa-headset"></i>
-
-                <h3>خدمة العملاء</h3>
-
-                <p>
-                    دعم ومتابعة مستمرة
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-truck-fast"></i>
-
-                <h3>توصيل سريع</h3>
-
-                <p>
-                    سرعة في تجهيز الطلبات
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-award"></i>
-
-                <h3>جودة عالية</h3>
-
-                <p>
-                    منتجات بمعايير عالمية
-                </p>
+                <div class="feature-card">
+                    <i class="fa-solid fa-award"></i>
+                    <h3>جودة عالية</h3>
+                    <p>منتجات بمعايير عالمية</p>
+                </div>
 
             </div>
 
         </section>
-
-        <footer>
-            © 2026 HAyDenTra® — جميع الحقوق محفوظة
-        </footer>
 
     </main>
 
-    <script>
+    <footer>
+        © 2026 HAyDenTra® — جميع الحقوق محفوظة
+    </footer>
 
+    <script>
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
 
         function openMenu() {
             sidebar.classList.add("active");
             overlay.classList.add("active");
-            document.body.classList.add("menu-open");
+            document.body.style.overflow = "hidden";
         }
 
         function closeMenu() {
             sidebar.classList.remove("active");
             overlay.classList.remove("active");
-            document.body.classList.remove("menu-open");
+            document.body.style.overflow = "";
         }
 
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") {
-                closeMenu();
-            }
+        document.querySelectorAll(".sidebar a").forEach(link => {
+            link.addEventListener("click", closeMenu);
         });
-
     </script>
 
 </body>
