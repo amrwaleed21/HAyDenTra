@@ -55,9 +55,11 @@
             letter-spacing: 0.5px;
         }
 
-        .brand-header img, .brand-header .logo-svg-small {
-            width: 26px;
-            height: 26px;
+        .brand-header img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         /* المحتوى الرئيسي */
@@ -72,23 +74,25 @@
             text-align: center;
         }
 
-        /* اللوجو الدائري المتوهج (Glowing Logo) */
+        /* اللوجو الدائري المتوهج باستخدام صورة png */
         .glowing-logo-box {
-            width: 105px;
-            height: 105px;
+            width: 110px;
+            height: 110px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7), 0 0 15px rgba(255, 255, 255, 0.9);
+            /* تأثير التوهج الأزرق المطلوب (Glowing) */
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), 0 0 15px rgba(255, 255, 255, 0.9);
             margin-bottom: 20px;
+            overflow: hidden;
         }
 
-        .glowing-logo-box svg {
-            width: 60px;
-            height: 60px;
-            fill: #0c203b;
+        .glowing-logo-box img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
         }
 
         .site-title {
@@ -198,15 +202,15 @@
         <button class="menu-btn">☰</button>
         <div class="brand-header">
             <span>®HAyDenTra</span>
-            <svg class="logo-svg-small" viewBox="0 0 24 24"><path fill="#38bdf8" d="M12,2C8,2 5,5 5,9C5,11.5 6.5,13.8 8.5,15C9.2,15.4 9.5,16.2 9.2,17C8.8,18 8.5,19 8.5,20C8.5,21.4 9.6,22.5 11,22.5C12,22.5 12.8,21.8 13.2,21C13.8,19.8 14.5,19.2 15.5,19.2C16.5,19.2 17.2,19.8 17.8,21C18.2,21.8 19,22.5 20,22.5C21.4,22.5 22.5,21.4 22.5,20C22.5,19 22.2,18 21.8,17C21.5,16.2 21.8,15.4 22.5,15C24.5,13.8 26,11.5 26,9C26,5 23,2 19,2C16.5,2 14.3,3.3 13,5.3C11.7,3.3 9.5,2 7,2H12Z"/></svg>
+            <img src="logo.png" alt="Logo">
         </div>
     </header>
 
     <!-- المحتوى الرئيسي -->
     <div class="content-wrapper">
-        <!-- اللوجو الدائري المتوهج -->
+        <!-- اللوجو الدائري المتوهج (Glowing Logo) -->
         <div class="glowing-logo-box">
-            <svg viewBox="0 0 24 24"><path d="M12,2C8,2 5,5 5,9C5,11.5 6.5,13.8 8.5,15C9.2,15.4 9.5,16.2 9.2,17C8.8,18 8.5,19 8.5,20C8.5,21.4 9.6,22.5 11,22.5C12,22.5 12.8,21.8 13.2,21C13.8,19.8 14.5,19.2 15.5,19.2C16.5,19.2 17.2,19.8 17.8,21C18.2,21.8 19,22.5 20,22.5C21.4,22.5 22.5,21.4 22.5,20C22.5,19 22.2,18 21.8,17C21.5,16.2 21.8,15.4 22.5,15C24.5,13.8 26,11.5 26,9C26,5 23,2 19,2C16.5,2 14.3,3.3 13,5.3C11.7,3.3 9.5,2 7,2H12Z"/></svg>
+            <img src="logo.png" alt="HAyDenTra Logo">
         </div>
 
         <h1 class="site-title">HAyDenTra</h1>
