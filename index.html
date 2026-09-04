@@ -340,20 +340,20 @@
             position: relative;
         }
 
-        /* إضافة صورة عيادة أسنان خلف الكارت كخلفية مموهة هادئة */
-        .hero::before {
-            content: "";
+        /* إضافة صورة DentalTools.jpg كخلفية شفافة خلف منطقة الـ Hero والكارت */
+        .hero-bg-wrapper {
             position: absolute;
             top: 180px;
             left: 50%;
             transform: translateX(-50%);
             width: min(92%, 650px);
-            height: 380px;
+            height: 420px;
             background: url("DentalTools.jpg") center/cover no-repeat;
-            opacity: 0.15;
-            filter: blur(8px);
+            opacity: 0.35;
+            filter: blur(3px);
             border-radius: 35px;
             z-index: 0;
+            pointer-events: none;
         }
 
         .main-logo-circle {
@@ -421,21 +421,20 @@
         }
 
         /* =========================
-           WELCOME CARD (تعديل التصميم المطابق للصورة)
+           WELCOME CARD
         ========================= */
 
         .welcome-card {
             position: relative;
             z-index: 1;
-            width: min(100%, 600px);
+            width: min(100%, 620px);
 
             margin: 30px auto 0;
             padding: 35px 25px;
 
             border-radius: 28px;
 
-            /* خلفية بيضاء شفافة بأسلوب Glassmorphism مريح للعين */
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -478,16 +477,17 @@
             margin-top: 25px;
 
             width: 100%;
+            flex-wrap: wrap;
         }
 
         .main-btn {
-            width: min(100%, 260px);
-            padding: 14px 22px;
+            min-width: 170px;
+            padding: 13px 20px;
 
             border-radius: 14px;
 
             font-family: "Cairo", sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
 
             display: inline-flex;
@@ -507,6 +507,18 @@
         .products-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 22px rgba(2, 132, 199, 0.4);
+        }
+
+        .contact-btn {
+            color: #0284c7;
+            background: #ffffff;
+            border: 1px solid rgba(2, 132, 199, 0.3);
+            box-shadow: 0 4px 12px rgba(186, 230, 253, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #f8fafc;
         }
 
         /* =========================
@@ -614,6 +626,11 @@
 
             .hero {
                 padding-top: 30px;
+            }
+
+            .hero-bg-wrapper {
+                top: 170px;
+                height: 400px;
             }
 
             .main-logo-circle {
@@ -752,6 +769,8 @@
 
         <section class="hero">
 
+            <div class="hero-bg-wrapper"></div>
+
             <div class="main-logo-circle">
                 <img src="logo.png" alt="HAyDenTra Logo">
             </div>
@@ -776,8 +795,13 @@
 
                 <div class="hero-buttons">
                     <a href="products.html" class="main-btn products-btn">
-                        <i class="fa-solid fa-gift"></i>
+                        <i class="fa-solid fa-box-open"></i>
                         استكشف المنتجات
+                    </a>
+
+                    <a href="contact.html" class="main-btn contact-btn">
+                        <i class="fa-solid fa-comments"></i>
+                        تواصل معنا
                     </a>
                 </div>
 
