@@ -49,13 +49,13 @@
         }
 
         /* =========================
-           POP-UP ANIMATIONS & TRANSITIONS
+           SMOOTH POP-UP ANIMATIONS
         ========================= */
 
         @keyframes popupSmooth {
             0% {
                 opacity: 0;
-                transform: scale(0.92) translateY(20px);
+                transform: scale(0.96) translateY(12px);
             }
             100% {
                 opacity: 1;
@@ -64,7 +64,7 @@
         }
 
         .pop-element {
-            animation: popupSmooth 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: popupSmooth 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
             will-change: transform, opacity;
         }
 
@@ -486,7 +486,7 @@
         }
 
         /* =========================
-           PRODUCT CARDS (3 COLUMNS ON PC, GRAY TO WHITE)
+           PRODUCT CARDS
         ========================= */
 
         .products-grid {
@@ -503,7 +503,7 @@
             background: linear-gradient(180deg, #d1d5db 0%, #f3f4f6 35%, #ffffff 100%);
             border: 1px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, opacity 0.25s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -834,7 +834,7 @@
 
     <main>
 
-        <section class="page-header pop-element" style="animation-delay: 0.1s;">
+        <section class="page-header pop-element" style="animation-delay: 0.05s;">
 
             <div class="main-logo-circle">
                 <img src="logo.png" alt="HAyDenTra Logo">
@@ -853,7 +853,7 @@
 
         </section>
 
-        <section class="filters pop-element" style="animation-delay: 0.2s;">
+        <section class="filters pop-element" style="animation-delay: 0.15s;">
 
             <div class="filter-row">
 
@@ -923,18 +923,10 @@
 
     <script>
 
-        const SUPABASE_URL =
-            "https://hcvajgyjiflkcsdjvzib.supabase.co";
+        const SUPABASE_URL = "https://hcvajgyjiflkcsdjvzib.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
 
-        const SUPABASE_KEY =
-            "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
-
-        const supabaseClient =
-            supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
-
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         /* MENU CONTROLS */
 
@@ -959,7 +951,6 @@
             }
         });
 
-
         /* SUPABASE DATABASE INTEGRATION */
 
         const productsGrid = document.getElementById("productsGrid");
@@ -974,13 +965,10 @@
 
         async function loadProducts() {
 
-            const { data, error } =
-                await supabaseClient
-                    .from("products")
-                    .select("*")
-                    .order("created_at", {
-                        ascending: false
-                    });
+            const { data, error } = await supabaseClient
+                .from("products")
+                .select("*")
+                .order("created_at", { ascending: false });
 
             if (error) {
                 console.error(error);
@@ -1004,13 +992,15 @@
 
             noResults.style.display = "none";
 
+            const fragment = document.createDocumentFragment();
+
             products.forEach((product, index) => {
 
                 const card = document.createElement("article");
                 card.className = "product-card pop-element";
                 
-                // تأثير التتابع في الظهور للألوان والكروت
-                const delay = Math.min(0.05 * (index + 1), 0.4);
+                // حساب التأخير في الظهور بشكل ناعم وسريع
+                const delay = Math.min(0.04 * index, 0.3);
                 card.style.animationDelay = `${delay}s`;
 
                 let imageHTML = "";
@@ -1032,7 +1022,6 @@
                     imageHTML = `<i class="fa-solid ${icon}"></i>`;
                 }
 
-                // تحديد اسم التصنيف بالعربية
                 let categoryName = "مواد";
                 if (product.category === "medicines" || product.category === "medication") categoryName = "أدوية";
                 if (product.category === "devices") categoryName = "أجهزة";
@@ -1081,22 +1070,27 @@
                     </div>
                 `;
 
-                productsGrid.appendChild(card);
+                fragment.appendChild(card);
             });
 
-            updateProducts();
-        }
+            productsGrid.appendChild(fragment);
 
+            // تحذير: تجنب استدعاء updateProducts() المباشر هنا لمنع إعادة تكرار كلاسات الأنيماشن
+        }
 
         /* FILTER / SEARCH / SORT LOGIC */
 
         function updateProducts() {
 
             const searchText = searchInput.value.trim().toLowerCase();
-            let cards = Array.from(productsGrid.querySelectorAll(".product-card"));
+            const cards = Array.from(productsGrid.querySelectorAll(".product-card"));
             let visibleCards = [];
 
             cards.forEach(card => {
+                // إزالة كلاس الأنيماشن بعد التحميل الأول حتى لا يعيد تشغيله أثناء التصفية
+                card.classList.remove("pop-element");
+                card.style.animationDelay = "0s";
+
                 const name = (card.dataset.name || "").toLowerCase();
                 const category = card.dataset.category;
 
@@ -1142,7 +1136,6 @@
             });
         });
 
-
         /* WHATSAPP ACTION */
 
         function orderProduct(name, price) {
@@ -1151,7 +1144,6 @@
             const whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
             window.open(whatsappURL, "_blank", "noopener,noreferrer");
         }
-
 
         /* UTILS & PARALLAX */
 
