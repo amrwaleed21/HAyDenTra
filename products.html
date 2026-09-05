@@ -28,7 +28,7 @@
 
         html {
             min-height: 100%;
-            background: #f1f5f9;
+            background: #ffffff;
             scroll-behavior: smooth;
         }
 
@@ -36,7 +36,7 @@
             min-height: 100dvh;
             font-family: "Cairo", sans-serif;
             color: #1e3a8a;
-            background: linear-gradient(180deg, #ffffff 0%, #e8f5f9 50%, #dbeffe 100%);
+            background: #ffffff;
             overflow-x: hidden;
             position: relative;
         }
@@ -329,7 +329,7 @@
 
         .page-header {
             text-align: center;
-            padding: 40px 18px 15px;
+            padding: 40px 18px 25px;
         }
 
         .main-logo-circle {
@@ -390,19 +390,39 @@
         }
 
         /* =========================
+           CONTENT BODY WRAPPER (WHITE GRADIENT BLEND)
+        ========================= */
+
+        .content-body-wrapper {
+            position: relative;
+            z-index: 2;
+            margin-top: 10px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.55) 70px,
+                rgba(255, 255, 255, 0.88) 140px,
+                #ffffff 220px,
+                #ffffff 100%
+            );
+        }
+
+        /* =========================
            FADED WHITE-BLUE GLASS FILTERS
         ========================= */
 
         .filters {
             width: min(100% - 24px, 1100px);
-            margin: 20px auto 35px;
+            margin: 0 auto 35px;
             padding: 22px;
             border-radius: 28px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(224, 242, 254, 0.12) 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(224, 242, 254, 0.35) 100%);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(14px) saturate(150%);
             -webkit-backdrop-filter: blur(14px) saturate(150%);
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.9);
         }
 
         .filter-row {
@@ -416,8 +436,8 @@
             width: 100%;
             padding: 14px 18px;
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(240, 249, 255, 0.15) 100%);
+            border: 1px solid rgba(224, 242, 254, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: #0f172a;
@@ -431,12 +451,12 @@
         .search-box:focus,
         .sort-select:focus {
             border-color: #38bdf8;
-            background: rgba(255, 255, 255, 0.6);
+            background: #ffffff;
             box-shadow: 0 8px 25px rgba(2, 132, 199, 0.18);
         }
 
         .search-box::placeholder {
-            color: #334155;
+            color: #64748b;
             font-weight: 700;
         }
 
@@ -453,8 +473,8 @@
             flex-shrink: 0;
             padding: 9px 20px;
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(224, 242, 254, 0.18) 100%);
+            border: 1px solid rgba(186, 230, 253, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #0369a1;
@@ -466,7 +486,7 @@
         }
 
         .chip:hover {
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(224, 242, 254, 0.9);
             transform: translateY(-1px);
         }
 
@@ -478,7 +498,7 @@
         }
 
         /* =========================
-           FADED WHITE-BLUE GLASS CARDS (MORE TRANSPARENT)
+           FADED WHITE-BLUE GLASS CARDS
         ========================= */
 
         .products-grid {
@@ -492,12 +512,11 @@
         .product-card {
             overflow: hidden;
             border-radius: 28px;
-            /* الشفافية أصبحت أسهل لرؤية الخلفية خلفها */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(224, 242, 254, 0.08) 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.55);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 249, 255, 0.75) 100%);
+            border: 1.5px solid rgba(224, 242, 254, 0.8);
             backdrop-filter: blur(12px) saturate(160%);
             -webkit-backdrop-filter: blur(12px) saturate(160%);
-            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease, background 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -508,9 +527,9 @@
 
         .product-card:hover {
             transform: translateY(-8px) scale(1.02);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(224, 242, 254, 0.18) 100%);
-            border-color: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 25px 45px -10px rgba(2, 132, 199, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.95);
+            background: #ffffff;
+            border-color: #38bdf8;
+            box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.18), inset 0 1px 3px rgba(255, 255, 255, 1);
         }
 
         .product-image {
@@ -518,11 +537,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(240, 249, 255, 0.6);
             margin: 12px 12px 0 12px;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(224, 242, 254, 0.8);
             padding: 10px;
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
@@ -542,7 +561,7 @@
 
         .product-image i {
             font-size: 65px;
-            color: #ffffff;
+            color: #0284c7;
         }
 
         .product-info {
@@ -553,13 +572,11 @@
             justify-content: space-between;
         }
 
-        /* تم تغيير لون تصنيف المنتج إلى الأبيض */
         .product-category {
-            color: #ffffff;
+            color: #0284c7;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: .3px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .product-name {
@@ -572,7 +589,7 @@
 
         .product-description {
             margin-top: 8px;
-            color: #1e293b;
+            color: #475569;
             font-size: 12px;
             line-height: 1.6;
             font-weight: 600;
@@ -591,15 +608,13 @@
             gap: 10px;
             margin-top: 18px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.35);
+            border-top: 1px solid rgba(224, 242, 254, 0.8);
         }
 
-        /* تم تغيير لون السعر إلى الأبيض */
         .price {
             font-size: 17px;
             font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            color: #0284c7;
         }
 
         .order-btn {
@@ -654,12 +669,12 @@
             position: relative;
             width: min(100%, 720px);
             max-height: 90dvh;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(224, 242, 254, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.9) 100%);
             border-radius: 28px;
-            border: 1.5px solid rgba(255, 255, 255, 0.65);
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(16px) saturate(170%);
             -webkit-backdrop-filter: blur(16px) saturate(170%);
-            box-shadow: 0 25px 50px -10px rgba(2, 132, 199, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.85);
+            box-shadow: 0 25px 50px -10px rgba(2, 132, 199, 0.2), inset 0 1px 3px rgba(255, 255, 255, 1);
             overflow-y: auto;
             transform: scale(0.88) translateY(20px);
             opacity: 0;
@@ -681,7 +696,7 @@
             height: 42px;
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.85);
             color: #0284c7;
             font-size: 20px;
             cursor: pointer;
@@ -698,14 +713,14 @@
         }
 
         .modal-image-wrap {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(240, 249, 255, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             margin: 16px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(224, 242, 254, 0.8);
             position: relative;
             min-height: 280px;
         }
@@ -719,7 +734,7 @@
 
         .modal-image-wrap i {
             font-size: 90px;
-            color: #ffffff;
+            color: #0284c7;
         }
 
         .modal-details {
@@ -729,14 +744,12 @@
             justify-content: space-between;
         }
 
-        /* تصنيف المنتج باللون الأبيض داخل النافذة */
         .modal-category {
-            color: #ffffff;
+            color: #0284c7;
             font-size: 13px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: .5px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .modal-title {
@@ -749,7 +762,7 @@
 
         .modal-description {
             margin-top: 14px;
-            color: #1e293b;
+            color: #334155;
             font-size: 14px;
             line-height: 1.8;
             font-weight: 700;
@@ -762,18 +775,16 @@
         .modal-footer {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(224, 242, 254, 0.8);
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
 
-        /* السعر باللون الأبيض داخل النافذة */
         .modal-price-tag {
             font-size: 22px;
             font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            color: #0284c7;
         }
 
         .modal-order-btn {
@@ -821,17 +832,15 @@
 
         footer {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: 100%;
             padding: 20px 15px 25px;
             text-align: center;
             color: #0369a1;
             font-size: 13px;
             font-weight: 700;
-            background: rgba(224, 242, 254, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: #ffffff;
+            border-top: 1px solid rgba(224, 242, 254, 0.8);
         }
 
         /* =========================
@@ -1054,66 +1063,71 @@
 
         </section>
 
-        <section class="filters pop-element" style="animation-delay: 0.15s;">
+        <!-- بداية الحاوية ذات الخلفية البيضاء المتدرجة المزتجة مع خلفية searchbarbg -->
+        <div class="content-body-wrapper">
 
-            <div class="filter-row">
+            <section class="filters pop-element" style="animation-delay: 0.15s;">
 
-                <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أداة، دواء، جهاز، أو مادة طبية...">
+                <div class="filter-row">
 
-                <select id="sortSelect" class="sort-select">
+                    <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أداة، دواء، جهاز، أو مادة طبية...">
 
-                    <option value="default">
-                        ترتيب التلقائي
-                    </option>
+                    <select id="sortSelect" class="sort-select">
 
-                    <option value="high">
-                        السعر: من الأعلى للأقل
-                    </option>
+                        <option value="default">
+                            ترتيب التلقائي
+                        </option>
 
-                    <option value="low">
-                        السعر: من الأقل للأعلى
-                    </option>
+                        <option value="high">
+                            السعر: من الأعلى للأقل
+                        </option>
 
-                </select>
+                        <option value="low">
+                            السعر: من الأقل للأعلى
+                        </option>
 
+                    </select>
+
+                </div>
+
+                <div class="chips">
+
+                    <button class="chip active" data-category="all">
+                        الكل
+                    </button>
+
+                    <button class="chip" data-category="medicines">
+                        الأدوية
+                    </button>
+
+                    <button class="chip" data-category="materials">
+                        المواد
+                    </button>
+
+                    <button class="chip" data-category="devices">
+                        الأجهزة
+                    </button>
+
+                    <button class="chip" data-category="tools">
+                        الأدوات
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section class="products-grid" id="productsGrid">
+
+                <div class="loading" id="loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل المنتجات من قاعدة البيانات...
+                </div>
+
+            </section>
+
+            <div class="no-results" id="noResults">
+                لا توجد منتجات مطابقة للبحث.
             </div>
 
-            <div class="chips">
-
-                <button class="chip active" data-category="all">
-                    الكل
-                </button>
-
-                <button class="chip" data-category="medicines">
-                    الأدوية
-                </button>
-
-                <button class="chip" data-category="materials">
-                    المواد
-                </button>
-
-                <button class="chip" data-category="devices">
-                    الأجهزة
-                </button>
-
-                <button class="chip" data-category="tools">
-                    الأدوات
-                </button>
-
-            </div>
-
-        </section>
-
-        <section class="products-grid" id="productsGrid">
-
-            <div class="loading" id="loading">
-                <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل المنتجات من قاعدة البيانات...
-            </div>
-
-        </section>
-
-        <div class="no-results" id="noResults">
-            لا توجد منتجات مطابقة للبحث.
         </div>
 
     </main>
