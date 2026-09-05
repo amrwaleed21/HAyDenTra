@@ -27,6 +27,7 @@
         html {
             min-height: 100%;
             background: linear-gradient(180deg, #ffffff 0%, #e6f4f8 50%, #d8eff6 100%);
+            scroll-behavior: smooth;
         }
 
         body {
@@ -49,6 +50,10 @@
             text-decoration: none;
             color: inherit;
         }
+
+        /* =========================
+           NAVBAR
+        ========================= */
 
         .topbar {
             position: fixed;
@@ -333,14 +338,17 @@
             color: #0284c7;
         }
 
+        /* =========================
+           MAIN & HEADER
+        ========================= */
+
         main {
             padding-top: 74px;
         }
 
         .page-header {
             text-align: center;
-
-            padding: 55px 18px 25px;
+            padding: 45px 18px 20px;
         }
 
         .main-logo-circle {
@@ -394,7 +402,7 @@
         }
 
         .page-header h1 {
-            margin-top: 28px;
+            margin-top: 20px;
 
             font-size: clamp(25px, 6vw, 38px);
             font-weight: 900;
@@ -402,130 +410,148 @@
         }
 
         .page-header p {
-            margin-top: 10px;
+            margin-top: 8px;
 
             color: #0369a1;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* صندوق البحث والفلاتر مع صورة searchbarbg.jpg */
+        /* =========================
+           SEARCH & FILTERS (GLASSY + ENLARGED BG)
+        ========================= */
+
         .filters {
-            width: min(100% - 30px, 1000px);
-
-            margin: 25px auto;
-
-            padding: 18px;
-
-            border-radius: 22px;
+            position: relative;
+            width: min(100% - 24px, 950px);
+            margin: 20px auto 30px;
+            padding: 30px 22px;
+            border-radius: 26px;
 
             background:
-                linear-gradient(rgba(255, 255, 255, 0.75), rgba(240, 249, 255, 0.85)),
-                url("searchbarbg.jpg") center / cover no-repeat;
+                linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(240, 249, 255, 0.75) 100%),
+                url("searchbarbg.jpg") center top / cover no-repeat;
 
-            border: 1px solid rgba(186, 230, 253, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.9);
 
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
 
-            box-shadow: 0 10px 30px rgba(186, 230, 253, 0.35);
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            overflow: hidden;
+            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
         }
 
         .filter-row {
             display: grid;
-            grid-template-columns: 1fr 180px;
-
-            gap: 10px;
+            grid-template-columns: 1fr 210px;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .search-box,
         .sort-select {
             width: 100%;
+            padding: 14px 18px;
+            border-radius: 16px;
 
-            padding: 13px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.85);
 
-            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
 
-            border: 1px solid rgba(186, 230, 253, 0.8);
-
-            background: rgba(255, 255, 255, 0.9);
-
-            color: #0369a1;
+            color: #0f172a;
 
             font-family: "Cairo", sans-serif;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 800;
 
             outline: none;
-            transition: .2s;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);
+            transition: .25s ease;
         }
 
         .search-box:focus,
         .sort-select:focus {
-            border-color: #38bdf8;
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            border-color: #0284c7;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.2);
+            transform: translateY(-1px);
         }
 
         .search-box::placeholder {
-            color: #0284c7;
-            opacity: 0.6;
+            color: #334155;
+            font-weight: 700;
         }
 
         .sort-select option {
             color: #0f172a;
             background: #ffffff;
+            font-weight: 700;
         }
 
         .chips {
             display: flex;
-            gap: 8px;
+            gap: 10px;
 
-            margin-top: 12px;
+            margin-top: 16px;
 
             overflow-x: auto;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            position: relative;
+            z-index: 1;
         }
 
         .chip {
             flex-shrink: 0;
 
-            padding: 8px 16px;
+            padding: 9px 20px;
 
             border-radius: 50px;
 
-            border: 1px solid rgba(186, 230, 253, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
 
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
 
             color: #0369a1;
 
             font-family: "Cairo", sans-serif;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
 
             cursor: pointer;
-            transition: .2s;
+            transition: .25s ease;
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.06);
         }
 
         .chip:hover {
-            background: #e0f2fe;
+            background: rgba(224, 242, 254, 0.9);
+            transform: translateY(-1px);
         }
 
         .chip.active {
             background: #0284c7;
             border-color: #0284c7;
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
         }
 
+        /* =========================
+           PRODUCTS GRID
+        ========================= */
+
         .products-grid {
-            width: min(100% - 30px, 1100px);
+            width: min(100% - 24px, 1100px);
 
             margin: 25px auto 40px;
 
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
             gap: 18px;
         }
@@ -542,7 +568,7 @@
 
             box-shadow: 0 10px 25px rgba(186, 230, 253, 0.35);
 
-            transition: .25s;
+            transition: .25s ease;
         }
 
         .product-card:hover {
@@ -576,7 +602,6 @@
             color: #0284c7;
         }
 
-        /* الجزء السفلي لكارت المنتج: رمادي إلى أبيض لامع faded */
         .product-info {
             padding: 18px;
             background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
@@ -660,6 +685,7 @@
             text-align: center;
             color: #0369a1;
             font-weight: 700;
+            font-size: 16px;
         }
 
         .no-results {
@@ -708,7 +734,7 @@
             }
 
             .page-header {
-                padding-top: 65px;
+                padding-top: 40px;
             }
 
             .main-logo-circle {
@@ -725,7 +751,8 @@
             }
 
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
             }
         }
 
@@ -740,7 +767,6 @@
             }
         }
 
-        /* لمسة إضاءة ناعمة عامة خلف الصفحات */
         body::before {
             content: "";
             position: fixed;
@@ -840,16 +866,16 @@
 
         </section>
 
-        <section class="filters">
+        <section class="filters" id="filtersBox">
 
             <div class="filter-row">
 
-                <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن منتج...">
+                <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أداة، جهاز، أو مادة طبية...">
 
                 <select id="sortSelect" class="sort-select">
 
                     <option value="default">
-                        ترتيب المنتجات
+                        ترتيب التلقائي
                     </option>
 
                     <option value="high">
@@ -889,7 +915,7 @@
         <section class="products-grid" id="productsGrid">
 
             <div class="loading" id="loading">
-                جاري تحميل المنتجات...
+                <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل المنتجات من قاعدة البيانات...
             </div>
 
         </section>
@@ -952,7 +978,7 @@
         });
 
 
-        /* PRODUCTS */
+        /* PRODUCTS FROM SUPABASE DATABASE */
 
         const productsGrid =
             document.getElementById("productsGrid");
@@ -992,12 +1018,14 @@
                 console.error(error);
 
                 loading.innerHTML =
-                    "حدث خطأ أثناء تحميل المنتجات.";
+                    "حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات.";
 
                 return;
             }
 
             allProducts = data || [];
+
+            if (loading) loading.remove();
 
             renderProducts(allProducts);
         }
@@ -1063,13 +1091,13 @@
 
 
                 card.dataset.category =
-                    product.category;
+                    product.category || "materials";
 
                 card.dataset.name =
-                    product.name;
+                    product.name || "";
 
                 card.dataset.price =
-                    product.price;
+                    product.price || 0;
 
 
                 card.innerHTML = `
@@ -1147,7 +1175,7 @@
             cards.forEach(card => {
 
                 const name =
-                    card.dataset.name
+                    (card.dataset.name || "")
                         .toLowerCase();
 
                 const category =
@@ -1253,7 +1281,7 @@
         });
 
 
-        /* WHATSAPP */
+        /* WHATSAPP ORDER */
 
         function orderProduct(name, price) {
 
@@ -1277,7 +1305,7 @@
 
         function escapeHTML(text) {
 
-            return String(text)
+            return String(text || "")
 
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
@@ -1286,6 +1314,32 @@
                 .replace(/'/g, "&#039;");
         }
 
+
+        /* PARALLAX SCROLL EFFECT FOR FILTERS BOX */
+
+        const filtersBox = document.getElementById('filtersBox');
+        let latestScrollY = 0;
+        let ticking = false;
+
+        function updateFilterParallax() {
+            const speed = 0.08;
+            const yPos = -(latestScrollY * speed);
+            if (filtersBox) {
+                filtersBox.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            latestScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(updateFilterParallax);
+                ticking = true;
+            }
+        });
+
+
+        /* INITIAL LOAD */
 
         loadProducts();
 
