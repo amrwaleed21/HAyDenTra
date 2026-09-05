@@ -39,7 +39,8 @@
             position: relative;
         }
 
-        body.menu-open {
+        body.menu-open,
+        body.modal-open {
             overflow: hidden;
         }
 
@@ -508,6 +509,7 @@
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -618,6 +620,171 @@
             box-shadow: 0 6px 16px rgba(2, 132, 199, 0.38);
         }
 
+        /* =========================
+           PRODUCT DETAIL MODAL
+        ========================= */
+
+        .product-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+        }
+
+        .product-modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .product-modal-card {
+            position: relative;
+            width: min(100%, 780px);
+            max-height: 90dvh;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.35);
+            overflow-y: auto;
+            transform: scale(0.85) translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .product-modal-backdrop.active .product-modal-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            color: #0284c7;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+            transition: 0.25s;
+        }
+
+        .modal-close-btn:hover {
+            background: #0284c7;
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .modal-image-wrap {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border-left: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            min-height: 320px;
+        }
+
+        .modal-image-wrap img {
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+        }
+
+        .modal-image-wrap i {
+            font-size: 100px;
+            color: #0284c7;
+        }
+
+        .modal-details {
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .modal-category {
+            color: #0284c7;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
+        .modal-description {
+            margin-top: 16px;
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 600;
+            white-space: pre-line;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-left: 5px;
+        }
+
+        .modal-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(226, 232, 240, 0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .modal-price-tag {
+            font-size: 22px;
+            font-weight: 900;
+            color: #0284c7;
+        }
+
+        .modal-order-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 16px;
+            border: 0;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            font-family: "Cairo", sans-serif;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: .25s ease;
+        }
+
+        .modal-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.45);
+        }
+
         .loading {
             grid-column: 1 / -1;
             width: 100%;
@@ -659,6 +826,31 @@
         @media(max-width: 900px) {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 768px) {
+            .product-modal-card {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image-wrap {
+                border-left: none;
+                border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+                min-height: 220px;
+                padding: 20px;
+            }
+
+            .modal-image-wrap img {
+                max-height: 200px;
+            }
+
+            .modal-details {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 20px;
             }
         }
 
@@ -917,6 +1109,33 @@
 
     </main>
 
+    <!-- PRODUCT DETAIL MODAL -->
+    <div class="product-modal-backdrop" id="productModal" onclick="closeProductModal(event)">
+        <div class="product-modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeProductModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-image-wrap" id="modalImageWrap"></div>
+
+            <div class="modal-details">
+                <div>
+                    <div class="modal-category" id="modalCategory"></div>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-description" id="modalDescription"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-price-tag" id="modalPrice"></div>
+                    <button type="button" class="modal-order-btn" id="modalOrderBtn">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        اطلب هذا المنتج الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         © 2026 HAyDenTra® - جميع الحقوق محفوظة
     </footer>
@@ -944,12 +1163,6 @@
             overlay.classList.remove("active");
             document.body.classList.remove("menu-open");
         }
-
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                closeMenu();
-            }
-        });
 
         /* SUPABASE DATABASE INTEGRATION */
 
@@ -999,7 +1212,6 @@
                 const card = document.createElement("article");
                 card.className = "product-card pop-element";
                 
-                // حساب التأخير في الظهور بشكل ناعم وسريع
                 const delay = Math.min(0.04 * index, 0.3);
                 card.style.animationDelay = `${delay}s`;
 
@@ -1031,6 +1243,9 @@
                 card.dataset.name = product.name || "";
                 card.dataset.price = product.price || 0;
 
+                // النقر على كرت المنتج يستدعي نافذة التفاصيل
+                card.onclick = () => openProductModal(product, categoryName, imageHTML);
+
                 card.innerHTML = `
                     <div class="product-image">
                         ${imageHTML}
@@ -1061,7 +1276,7 @@
                                 class="order-btn"
                                 data-name="${escapeHTML(product.name)}"
                                 data-price="${Number(product.price)}"
-                                onclick="orderProduct(this.dataset.name, this.dataset.price)"
+                                onclick="event.stopPropagation(); orderProduct(this.dataset.name, this.dataset.price)"
                             >
                                 <i class="fa-brands fa-whatsapp"></i>
                                 اطلب الآن
@@ -1074,9 +1289,46 @@
             });
 
             productsGrid.appendChild(fragment);
-
-            // تحذير: تجنب استدعاء updateProducts() المباشر هنا لمنع إعادة تكرار كلاسات الأنيماشن
         }
+
+        /* MODAL DETAIL LOGIC */
+
+        const productModal = document.getElementById("productModal");
+        const modalImageWrap = document.getElementById("modalImageWrap");
+        const modalCategory = document.getElementById("modalCategory");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalPrice = document.getElementById("modalPrice");
+        const modalOrderBtn = document.getElementById("modalOrderBtn");
+
+        function openProductModal(product, categoryName, imageHTML) {
+            modalImageWrap.innerHTML = imageHTML;
+            modalCategory.textContent = categoryName;
+            modalTitle.textContent = product.name || "";
+            modalDescription.textContent = product.description || "لا يوجد وصف إضافي متوفر لهذا المنتج.";
+            modalPrice.textContent = `${Number(product.price).toLocaleString("en-US")} ج.م`;
+
+            modalOrderBtn.onclick = () => {
+                orderProduct(product.name, product.price);
+            };
+
+            productModal.classList.add("active");
+            document.body.classList.add("modal-open");
+        }
+
+        function closeProductModal(e) {
+            if (!e || e.target === productModal || e.target.closest(".modal-close-btn")) {
+                productModal.classList.remove("active");
+                document.body.classList.remove("modal-open");
+            }
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeMenu();
+                closeProductModal();
+            }
+        });
 
         /* FILTER / SEARCH / SORT LOGIC */
 
@@ -1087,7 +1339,6 @@
             let visibleCards = [];
 
             cards.forEach(card => {
-                // إزالة كلاس الأنيماشن بعد التحميل الأول حتى لا يعيد تشغيله أثناء التصفية
                 card.classList.remove("pop-element");
                 card.style.animationDelay = "0s";
 
