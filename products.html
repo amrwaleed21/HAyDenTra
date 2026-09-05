@@ -9,12 +9,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         * {
@@ -26,16 +27,17 @@
         html {
             min-height: 100%;
             background: linear-gradient(180deg, #ffffff 0%, #e6f4f8 50%, #d8eff6 100%);
-            scroll-behavior: smooth;
         }
 
         body {
             min-height: 100dvh;
             font-family: "Cairo", sans-serif;
             color: #1e3a8a;
+
             background:
-                radial-gradient(circle at 50% 28%, rgba(186, 230, 253, 0.4), transparent 45%),
+                radial-gradient(circle at 50% 20%, rgba(186, 230, 253, 0.4), transparent 45%),
                 linear-gradient(180deg, #ffffff 0%, #e8f5f9 50%, #dbeffe 100%);
+
             overflow-x: hidden;
         }
 
@@ -44,23 +46,21 @@
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
-
-        /* =========================
-           NAVBAR
-        ========================= */
 
         .topbar {
             position: fixed;
             top: 0;
             right: 0;
             left: 0;
+
             height: 74px;
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.82);
+
             border-bottom: 1px solid rgba(186, 230, 253, 0.6);
 
             backdrop-filter: blur(18px) saturate(150%);
@@ -73,11 +73,13 @@
             height: 100%;
             max-width: 1200px;
             margin: auto;
+
             padding: 0 18px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             direction: ltr;
         }
 
@@ -85,12 +87,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
+
             direction: ltr;
         }
 
         .nav-logo-circle {
             width: 50px;
             height: 50px;
+
             flex-shrink: 0;
 
             border-radius: 50%;
@@ -117,11 +121,15 @@
             display: inline-block;
 
             font-family: Arial, sans-serif;
-            font-weight: 900;
             font-size: 27px;
             line-height: 1;
+
+            font-weight: 900;
+
             color: #0284c7;
+
             white-space: nowrap;
+            direction: ltr;
         }
 
         .brand-name .registered {
@@ -129,10 +137,8 @@
             top: -7px;
             right: -9px;
 
-            font-family: Arial, sans-serif;
             font-size: 10px;
             line-height: 1;
-            font-weight: 700;
         }
 
         .menu-btn {
@@ -140,9 +146,11 @@
             height: 58px;
 
             border-radius: 18px;
+
             border: 1px solid rgba(14, 165, 233, 0.2);
 
             background: rgba(240, 249, 255, 0.8);
+
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -167,16 +175,14 @@
             transform: translateY(-1px);
         }
 
-        /* =========================
-           SIDEBAR
-        ========================= */
-
         .overlay {
             position: fixed;
             inset: 0;
+
             z-index: 1050;
 
             background: rgba(15, 23, 42, 0.3);
+
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(3px);
 
@@ -204,6 +210,7 @@
             padding: 28px 20px;
 
             background: rgba(255, 255, 255, 0.92);
+
             border-left: 1px solid rgba(186, 230, 253, 0.5);
 
             backdrop-filter: blur(24px) saturate(160%);
@@ -225,7 +232,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
 
             padding-bottom: 25px;
             margin-bottom: 20px;
@@ -256,14 +262,14 @@
         }
 
         .sidebar-brand {
-            margin-top: 13px;
-
             position: relative;
-            display: inline-block;
+
+            margin-top: 13px;
 
             font-family: Arial, sans-serif;
             font-size: 25px;
             font-weight: 900;
+
             direction: ltr;
             color: #0284c7;
         }
@@ -287,9 +293,10 @@
             border: 1px solid rgba(14, 165, 233, 0.2);
 
             background: rgba(240, 249, 255, 0.8);
-            color: #0284c7;
 
+            color: #0284c7;
             font-size: 20px;
+
             cursor: pointer;
         }
 
@@ -324,283 +331,304 @@
             background: #e0f2fe;
             border-color: #38bdf8;
             color: #0284c7;
-            transform: translateX(-3px);
         }
-
-        /* =========================
-           MAIN & PARALLAX SEARCH HEADER
-        ========================= */
 
         main {
             padding-top: 74px;
         }
 
-        .products-hero {
-            position: relative;
-            width: 100%;
-            padding: 45px 18px 25px;
+        .page-header {
             text-align: center;
-            overflow: hidden;
+
+            padding: 55px 18px 25px;
         }
 
-        .search-bg-full {
-            position: absolute;
-            top: 25px;
-            left: 0;
-            width: 100%;
-            height: 110%;
-            background: url("searchbarbg.jpg") center top/cover no-repeat;
-            opacity: 0.95;
-            z-index: 0;
-            pointer-events: none;
-            will-change: transform;
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+        .main-logo-circle {
+            width: 92px;
+            height: 92px;
 
-        .search-bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(224, 242, 254, 0.15) 100%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .search-container {
-            position: relative;
-            z-index: 1;
-            width: min(92%, 580px);
             margin: 0 auto;
+
+            border-radius: 50%;
+            background: #fff;
+
+            display: grid;
+            place-items: center;
+
+            box-shadow:
+                0 10px 25px rgba(186, 230, 253, 0.6),
+                0 0 30px rgba(56, 189, 248, 0.25);
+            border: 4px solid #ffffff;
+            outline: 1px solid rgba(14, 165, 233, 0.3);
         }
 
-        .search-box {
-            display: flex;
-            align-items: center;
-
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(16px) saturate(160%);
-            -webkit-backdrop-filter: blur(16px) saturate(160%);
-
-            border: 1px solid rgba(255, 255, 255, 0.75);
-            border-radius: 20px;
-            padding: 6px 18px;
-
-            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.15),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.8);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        .main-logo-circle img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
         }
 
-        .search-box:focus-within {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(2, 132, 199, 0.22);
-            background: rgba(255, 255, 255, 0.65);
-        }
+        .main-brand {
+            position: relative;
+            display: inline-block;
 
-        .search-box i {
-            font-size: 19px;
+            margin-top: 20px;
+
+            font-family: Arial, sans-serif;
+            font-size: 39px;
+            line-height: 1;
+
+            font-weight: 900;
+
+            direction: ltr;
             color: #0284c7;
-            margin-left: 10px;
+            letter-spacing: .5px;
         }
 
-        .search-box input {
+        .main-brand .registered {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+
+            font-size: 13px;
+        }
+
+        .page-header h1 {
+            margin-top: 28px;
+
+            font-size: clamp(25px, 6vw, 38px);
+            font-weight: 900;
+            color: #0f172a;
+        }
+
+        .page-header p {
+            margin-top: 10px;
+
+            color: #0369a1;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* صندوق البحث والفلاتر مع صورة searchbarbg.jpg */
+        .filters {
+            width: min(100% - 30px, 1000px);
+
+            margin: 25px auto;
+
+            padding: 18px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.75), rgba(240, 249, 255, 0.85)),
+                url("searchbarbg.jpg") center / cover no-repeat;
+
+            border: 1px solid rgba(186, 230, 253, 0.9);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow: 0 10px 30px rgba(186, 230, 253, 0.35);
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+
+            gap: 10px;
+        }
+
+        .search-box,
+        .sort-select {
             width: 100%;
-            border: none;
-            outline: none;
-            background: transparent;
+
+            padding: 13px 15px;
+
+            border-radius: 13px;
+
+            border: 1px solid rgba(186, 230, 253, 0.8);
+
+            background: rgba(255, 255, 255, 0.9);
+
+            color: #0369a1;
 
             font-family: "Cairo", sans-serif;
-            font-size: 15px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 600;
+
+            outline: none;
+            transition: .2s;
+        }
+
+        .search-box:focus,
+        .sort-select:focus {
+            border-color: #38bdf8;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        .search-box::placeholder {
+            color: #0284c7;
+            opacity: 0.6;
+        }
+
+        .sort-select option {
             color: #0f172a;
-            padding: 10px 0;
+            background: #ffffff;
         }
 
-        .search-box input::placeholder {
-            color: #334155;
-            font-weight: 700;
-        }
-
-        /* =========================
-           FILTERS SECTION (GLASSY)
-        ========================= */
-
-        .filter-container {
-            position: relative;
-            z-index: 1;
+        .chips {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 8px;
 
-            margin-top: 15px;
-            flex-wrap: wrap;
+            margin-top: 12px;
+
+            overflow-x: auto;
+            padding-bottom: 2px;
         }
 
-        .filter-btn {
+        .chip {
+            flex-shrink: 0;
+
             padding: 8px 16px;
-            border-radius: 12px;
 
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px;
 
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(186, 230, 253, 0.8);
+
+            background: rgba(255, 255, 255, 0.85);
+
             color: #0369a1;
 
             font-family: "Cairo", sans-serif;
             font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
 
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
-            transition: all 0.25s ease;
+            transition: .2s;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: rgba(2, 132, 199, 0.9);
-            color: #ffffff;
+        .chip:hover {
+            background: #e0f2fe;
+        }
+
+        .chip.active {
+            background: #0284c7;
             border-color: #0284c7;
-            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           PRODUCTS GRID (2 COLUMNS)
-        ========================= */
-
-        .products-section {
-            position: relative;
-            z-index: 1;
-            max-width: 950px;
-            margin: 20px auto 40px;
-            padding: 0 12px;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
         }
 
         .products-grid {
+            width: min(100% - 30px, 1100px);
+
+            margin: 25px auto 40px;
+
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-        }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-        @media (min-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 20px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .products-grid {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-                gap: 22px;
-            }
+            gap: 18px;
         }
 
         .product-card {
+            overflow: hidden;
+
             border-radius: 20px;
 
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: #ffffff;
+            color: #0f172a;
 
-            border: 1px solid rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(186, 230, 253, 0.8);
 
-            box-shadow: 0 8px 22px rgba(186, 230, 253, 0.35);
+            box-shadow: 0 10px 25px rgba(186, 230, 253, 0.35);
 
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: .25s;
         }
 
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 14px 30px rgba(2, 132, 199, 0.2);
-            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 15px 35px rgba(186, 230, 253, 0.5), 0 0 0 2px rgba(56, 189, 248, 0.3);
         }
 
-        .product-img-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-
-            border-radius: 14px;
-            background: #ffffff;
-            border: 1px solid rgba(186, 230, 253, 0.5);
+        .product-image {
+            height: 190px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            background:
+                radial-gradient(circle at 50% 35%, rgba(186, 230, 253, 0.4), transparent 60%),
+                #f0f9ff;
+
             overflow: hidden;
-            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(186, 230, 253, 0.4);
         }
 
-        .product-img-wrapper img {
-            width: 82%;
-            height: 82%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .product-title {
-            font-size: clamp(13px, 2.8vw, 15px);
-            font-weight: 800;
-            color: #0f172a;
-            line-height: 1.4;
-            margin-bottom: 4px;
-
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-price {
-            font-size: clamp(12px, 2.5vw, 14px);
-            font-weight: 900;
+        .product-image i {
+            font-size: 65px;
             color: #0284c7;
-            margin-bottom: 6px;
         }
 
-        .product-desc {
-            font-size: clamp(10px, 2.2vw, 12px);
-            font-weight: 600;
-            color: #64748b;
-            margin-bottom: 12px;
+        /* الجزء السفلي لكارت المنتج: رمادي إلى أبيض لامع faded */
+        .product-info {
+            padding: 18px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .product-category {
+            color: #0284c7;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .product-name {
+            margin-top: 6px;
+
+            font-size: 18px;
             line-height: 1.5;
 
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-weight: 900;
+            color: #0f172a;
         }
 
-        .product-btn {
-            width: 100%;
-            padding: 10px 12px;
+        .product-description {
+            margin-top: 8px;
+
+            color: #475569;
+
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-top: 17px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 900;
+            color: #0284c7;
+        }
+
+        .order-btn {
+            border: 0;
+
+            padding: 10px 14px;
 
             border-radius: 12px;
 
@@ -608,32 +636,46 @@
             color: #ffffff;
 
             font-family: "Cairo", sans-serif;
-            font-size: 13px;
-            font-weight: 800;
+            font-size: 12px;
+            font-weight: 900;
 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-
-            border: none;
             cursor: pointer;
 
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            transition: .2s;
         }
 
-        .product-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+        .order-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        .order-btn i {
+            margin-left: 5px;
+        }
+
+        .loading {
+            width: min(100% - 30px, 1100px);
+            margin: 40px auto;
+            text-align: center;
+            color: #0369a1;
+            font-weight: 700;
+        }
+
+        .no-results {
+            text-align: center;
+
+            color: #0369a1;
+            font-weight: 700;
+
+            padding: 40px 20px;
+
+            display: none;
+        }
 
         footer {
             width: 100%;
+
             padding: 18px 15px 25px;
 
             text-align: center;
@@ -645,6 +687,60 @@
             border-top: 1px solid rgba(186, 230, 253, 0.6);
         }
 
+        @media(max-width:600px) {
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-logo-circle {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-name {
+                font-size: 25px;
+            }
+
+            .menu-btn {
+                width: 60px;
+                height: 60px;
+            }
+
+            .page-header {
+                padding-top: 65px;
+            }
+
+            .main-logo-circle {
+                width: 88px;
+                height: 88px;
+            }
+
+            .main-brand {
+                font-size: 37px;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:360px) {
+
+            .brand-name {
+                font-size: 22px;
+            }
+
+            .main-brand {
+                font-size: 33px;
+            }
+        }
+
+        /* لمسة إضاءة ناعمة عامة خلف الصفحات */
         body::before {
             content: "";
             position: fixed;
@@ -661,9 +757,11 @@
 <body>
 
     <header class="topbar">
+
         <div class="nav-inner">
 
             <div class="nav-brand">
+
                 <div class="nav-logo-circle">
                     <img src="logo.png" alt="HAyDenTra Logo">
                 </div>
@@ -672,20 +770,22 @@
                     HAyDenTra
                     <span class="registered">®</span>
                 </div>
+
             </div>
 
-            <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
+            <button class="menu-btn" onclick="openMenu()">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
         </div>
+
     </header>
 
     <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
     <aside class="sidebar" id="sidebar">
 
-        <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
+        <button class="close-btn" onclick="closeMenu()">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
@@ -721,72 +821,82 @@
 
     <main>
 
-        <section class="products-hero">
+        <section class="page-header">
 
-            <div class="search-bg-full" id="searchBg"></div>
-            <div class="search-bg-overlay"></div>
+            <div class="main-logo-circle">
+                <img src="logo.png" alt="HAyDenTra Logo">
+            </div>
 
-            <div class="search-container" data-aos="zoom-in" data-aos-duration="800">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" placeholder="ابحث عن أداة، جهاز، أو مادة طبية..."
-                        onkeyup="filterProducts()">
-                </div>
+            <div class="main-brand">
+                HAyDenTra
+                <span class="registered">®</span>
+            </div>
 
-                <div class="filter-container" data-aos="fade-up" data-aos-delay="200">
-                    <button class="filter-btn active" id="btnAll" onclick="sortProducts('default')">
-                        <i class="fa-solid fa-list-check"></i> الكل
-                    </button>
-                    <button class="filter-btn" id="btnHigh" onclick="sortProducts('high')">
-                        <i class="fa-solid fa-arrow-down-wide-short"></i> الأعلى سعراً
-                    </button>
-                    <button class="filter-btn" id="btnLow" onclick="sortProducts('low')">
-                        <i class="fa-solid fa-arrow-up-wide-short"></i> الأقل سعراً
-                    </button>
-                </div>
+            <h1>منتجات ومستلزمات الأسنان</h1>
+
+            <p>
+                مجموعة مختارة من المواد والأجهزة والأدوات الطبية
+            </p>
+
+        </section>
+
+        <section class="filters">
+
+            <div class="filter-row">
+
+                <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن منتج...">
+
+                <select id="sortSelect" class="sort-select">
+
+                    <option value="default">
+                        ترتيب المنتجات
+                    </option>
+
+                    <option value="high">
+                        السعر: من الأعلى للأقل
+                    </option>
+
+                    <option value="low">
+                        السعر: من الأقل للأعلى
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="chips">
+
+                <button class="chip active" data-category="all">
+                    الكل
+                </button>
+
+                <button class="chip" data-category="materials">
+                    المواد
+                </button>
+
+                <button class="chip" data-category="devices">
+                    الأجهزة
+                </button>
+
+                <button class="chip" data-category="tools">
+                    الأدوات
+                </button>
+
             </div>
 
         </section>
 
-        <section class="products-section">
-            <div class="products-grid" id="productsGrid">
+        <section class="products-grid" id="productsGrid">
 
-                <div class="product-card" data-price="3500" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">قبضة أسنان عالية السرعة (High Speed Handpiece)</h3>
-                            <div class="product-price">3,500 ج.م</div>
-                            <p class="product-desc">أداء عالي وإضاءة LED مع نظام تبريد ثلاثي متطور.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-price="8200" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">جهاز حشو العصب (Endo Motor)</h3>
-                            <div class="product-price">8,200 ج.م</div>
-                            <p class="product-desc">دقة متناهية وإعدادات مسبقة لجميع أنواع المبرد.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                </div>
-
+            <div class="loading" id="loading">
+                جاري تحميل المنتجات...
             </div>
+
         </section>
+
+        <div class="no-results" id="noResults">
+            لا توجد منتجات مطابقة للبحث.
+        </div>
 
     </main>
 
@@ -794,98 +904,391 @@
         © 2026 HAyDenTra® - جميع الحقوق محفوظة
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
     <script>
-        // تفعيل مكتبة الظهور Pop-Up
-        AOS.init({
-            once: true,
-            easing: 'ease-out-cubic'
-        });
 
-        // القائمة الجانبية
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
+        const SUPABASE_URL =
+            "https://hcvajgyjiflkcsdjvzib.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* MENU */
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const overlay =
+            document.getElementById("overlay");
 
         function openMenu() {
+
             sidebar.classList.add("active");
             overlay.classList.add("active");
+
             document.body.classList.add("menu-open");
         }
 
         function closeMenu() {
+
             sidebar.classList.remove("active");
             overlay.classList.remove("active");
+
             document.body.classList.remove("menu-open");
         }
 
         document.addEventListener("keydown", function (e) {
+
             if (e.key === "Escape") {
                 closeMenu();
             }
+
         });
 
-        // تأثير Parallax ناعم لخلفية السيرش بار
-        const searchBg = document.getElementById('searchBg');
-        let latestScrollY = 0;
-        let ticking = false;
 
-        function updateSearchParallax() {
-            const speed = 0.25;
-            const yPos = -(latestScrollY * speed);
-            if (searchBg) {
-                searchBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        /* PRODUCTS */
+
+        const productsGrid =
+            document.getElementById("productsGrid");
+
+        const loading =
+            document.getElementById("loading");
+
+        const noResults =
+            document.getElementById("noResults");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const sortSelect =
+            document.getElementById("sortSelect");
+
+        const chips =
+            document.querySelectorAll(".chip");
+
+        let allProducts = [];
+
+        let currentCategory = "all";
+
+
+        async function loadProducts() {
+
+            const { data, error } =
+                await supabaseClient
+                    .from("products")
+                    .select("*")
+                    .order("created_at", {
+                        ascending: false
+                    });
+
+            if (error) {
+
+                console.error(error);
+
+                loading.innerHTML =
+                    "حدث خطأ أثناء تحميل المنتجات.";
+
+                return;
             }
-            ticking = false;
+
+            allProducts = data || [];
+
+            renderProducts(allProducts);
         }
 
-        window.addEventListener('scroll', function () {
-            latestScrollY = window.scrollY;
-            if (!ticking) {
-                window.requestAnimationFrame(updateSearchParallax);
-                ticking = true;
+
+        function renderProducts(products) {
+
+            productsGrid.innerHTML = "";
+
+            if (products.length === 0) {
+
+                noResults.style.display = "block";
+
+                return;
             }
-        });
 
-        // البحث السريع داخل الكروت المطبوعة
-        function filterProducts() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.getElementsByClassName('product-card');
+            noResults.style.display = "none";
 
-            Array.from(cards).forEach(card => {
-                const title = card.querySelector('.product-title')?.innerText.toLowerCase() || '';
-                const desc = card.querySelector('.product-desc')?.innerText.toLowerCase() || '';
 
-                if (title.includes(input) || desc.includes(input)) {
-                    card.style.display = "flex";
+            products.forEach(product => {
+
+                const card =
+                    document.createElement("article");
+
+                card.className = "product-card";
+
+                let imageHTML = "";
+
+                if (product.image_url) {
+
+                    imageHTML = `
+                <img
+                    src="${escapeHTML(product.image_url)}"
+                    alt="${escapeHTML(product.name)}"
+                    loading="lazy"
+                >
+            `;
+
                 } else {
-                    card.style.display = "none";
+
+                    let icon =
+                        "fa-tooth";
+
+                    if (product.category === "devices")
+                        icon = "fa-lightbulb";
+
+                    if (product.category === "tools")
+                        icon = "fa-toolbox";
+
+                    imageHTML = `
+                <i class="fa-solid ${icon}"></i>
+            `;
                 }
+
+
+                let categoryName = "مواد";
+
+                if (product.category === "devices")
+                    categoryName = "أجهزة";
+
+                if (product.category === "tools")
+                    categoryName = "أدوات";
+
+
+                card.dataset.category =
+                    product.category;
+
+                card.dataset.name =
+                    product.name;
+
+                card.dataset.price =
+                    product.price;
+
+
+                card.innerHTML = `
+
+            <div class="product-image">
+                ${imageHTML}
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${categoryName}
+                </div>
+
+                <h2 class="product-name">
+                    ${escapeHTML(product.name)}
+                </h2>
+
+                <p class="product-description">
+                    ${escapeHTML(product.description || "")}
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ${Number(product.price).toLocaleString("en-US")} ج.م
+                    </span>
+
+                    <button
+                        type="button"
+                        class="order-btn"
+                        data-name="${escapeHTML(product.name)}"
+                        data-price="${Number(product.price)}"
+                        onclick="orderProduct(this.dataset.name, this.dataset.price)"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        اطلب الآن
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+                productsGrid.appendChild(card);
+
             });
+
+            updateProducts();
         }
 
-        // ترتيب الكروت المطبوعة مباشرة في الصفحة حسب السعر (data-price)
-        function sortProducts(mode) {
-            const grid = document.getElementById('productsGrid');
-            const cards = Array.from(grid.getElementsByClassName('product-card'));
 
-            document.getElementById('btnAll').classList.remove('active');
-            document.getElementById('btnHigh').classList.remove('active');
-            document.getElementById('btnLow').classList.remove('active');
+        /* SEARCH / FILTER / SORT */
 
-            if (mode === 'default') {
-                document.getElementById('btnAll').classList.add('active');
-            } else if (mode === 'high') {
-                document.getElementById('btnHigh').classList.add('active');
-                cards.sort((a, b) => parseFloat(b.getAttribute('data-price') || 0) - parseFloat(a.getAttribute('data-price') || 0));
-            } else if (mode === 'low') {
-                document.getElementById('btnLow').classList.add('active');
-                cards.sort((a, b) => parseFloat(a.getAttribute('data-price') || 0) - parseFloat(b.getAttribute('data-price') || 0));
+        function updateProducts() {
+
+            const searchText =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+            let cards =
+                Array.from(
+                    productsGrid.querySelectorAll(
+                        ".product-card"
+                    )
+                );
+
+            let visibleCards = [];
+
+
+            cards.forEach(card => {
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+                const category =
+                    card.dataset.category;
+
+
+                const matchesSearch =
+                    name.includes(searchText);
+
+                const matchesCategory =
+                    currentCategory === "all" ||
+                    category === currentCategory;
+
+
+                if (
+                    matchesSearch &&
+                    matchesCategory
+                ) {
+
+                    card.style.display = "";
+
+                    visibleCards.push(card);
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            const sortValue =
+                sortSelect.value;
+
+
+            if (sortValue !== "default") {
+
+                visibleCards.sort((a, b) => {
+
+                    const priceA =
+                        Number(a.dataset.price);
+
+                    const priceB =
+                        Number(b.dataset.price);
+
+
+                    return sortValue === "high"
+                        ? priceB - priceA
+                        : priceA - priceB;
+
+                });
+
+
+                visibleCards.forEach(card => {
+
+                    productsGrid.appendChild(card);
+
+                });
+
             }
 
-            // إعادة ترتيب العناصر داخل الـ Container
-            cards.forEach(card => grid.appendChild(card));
+
+            noResults.style.display =
+                visibleCards.length === 0
+                    ? "block"
+                    : "none";
         }
+
+
+        searchInput.addEventListener(
+            "input",
+            updateProducts
+        );
+
+
+        sortSelect.addEventListener(
+            "change",
+            updateProducts
+        );
+
+
+        chips.forEach(chip => {
+
+            chip.addEventListener(
+                "click",
+                function () {
+
+                    chips.forEach(c =>
+                        c.classList.remove("active")
+                    );
+
+                    this.classList.add("active");
+
+                    currentCategory =
+                        this.dataset.category;
+
+                    updateProducts();
+
+                }
+            );
+
+        });
+
+
+        /* WHATSAPP */
+
+        function orderProduct(name, price) {
+
+            const phone =
+                "201223859088";
+
+            const message =
+                `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${Number(price).toLocaleString("en-US")} ج.م`;
+
+            const whatsappURL =
+                "https://wa.me/" +
+                phone +
+                "?text=" +
+                encodeURIComponent(message);
+
+            window.open(whatsappURL, "_blank", "noopener,noreferrer");
+        }
+
+
+        /* SECURITY */
+
+        function escapeHTML(text) {
+
+            return String(text)
+
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        loadProducts();
+
     </script>
 
 </body>
