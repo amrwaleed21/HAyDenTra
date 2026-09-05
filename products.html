@@ -373,7 +373,7 @@
         ========================= */
 
         .filters {
-            width: min(100% - 24px, 950px);
+            width: min(100% - 24px, 1100px);
             margin: 20px auto 35px;
             padding: 22px;
             border-radius: 24px;
@@ -433,6 +433,7 @@
             margin-top: 16px;
             overflow-x: auto;
             padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .chip {
@@ -465,27 +466,29 @@
         }
 
         /* =========================
-           PRODUCT CARDS (GRAY TO WHITE FADED)
+           PRODUCT CARDS (3 COLUMNS ON PC, GRAY TO WHITE)
         ========================= */
 
         .products-grid {
             width: min(100% - 24px, 1100px);
             margin: 20px auto 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 products per row on desktop */
+            gap: 22px;
         }
 
         .product-card {
             overflow: hidden;
             border-radius: 22px;
-            background: linear-gradient(180deg, #e2e8f0 0%, #f8fafc 40%, #ffffff 100%);
+            /* التدرج اللوني المطلوب: رصاصي في أبيض لامع */
+            background: linear-gradient(180deg, #d1d5db 0%, #f3f4f6 35%, #ffffff 100%);
             border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
             transition: .3s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            width: 100%;
         }
 
         .product-card:hover {
@@ -494,19 +497,19 @@
         }
 
         .product-image {
-            height: 195px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.9), rgba(226, 232, 240, 0.6));
+            background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.95), rgba(209, 213, 219, 0.4));
             overflow: hidden;
-            border-bottom: 1px solid rgba(203, 213, 225, 0.5);
-            padding: 10px;
+            border-bottom: 1px solid rgba(203, 213, 225, 0.6);
+            padding: 12px;
         }
 
         .product-image img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
@@ -522,7 +525,7 @@
 
         .product-info {
             padding: 18px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, #ffffff 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, #ffffff 100%);
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -568,7 +571,7 @@
         }
 
         .price {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
             color: #0284c7;
         }
@@ -588,6 +591,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
         }
 
         .order-btn:hover {
@@ -596,7 +600,8 @@
         }
 
         .loading {
-            width: min(100% - 30px, 1100px);
+            grid-column: 1 / -1;
+            width: 100%;
             margin: 40px auto;
             text-align: center;
             color: #0369a1;
@@ -605,6 +610,7 @@
         }
 
         .no-results {
+            grid-column: 1 / -1;
             text-align: center;
             color: #0369a1;
             font-weight: 800;
@@ -627,7 +633,17 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
-        @media(max-width:600px) {
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media(max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 products on tablets */
+            }
+        }
+
+        @media(max-width: 600px) {
 
             .hero-bg-section,
             .hero-bg-overlay {
@@ -665,13 +681,18 @@
                 font-size: 35px;
             }
 
+            .filters {
+                padding: 16px;
+            }
+
             .filter-row {
                 grid-template-columns: 1fr;
             }
 
             .products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(2, 1fr); /* 2 products per row on mobile for standard view */
                 gap: 12px;
+                width: min(100% - 16px, 1100px);
             }
 
             .product-image {
@@ -687,7 +708,7 @@
             }
 
             .price {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .order-btn {
@@ -696,9 +717,9 @@
             }
         }
 
-        @media(max-width:360px) {
+        @media(max-width: 420px) {
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 product on small phone screens to fit perfectly without overflow */
             }
 
             .brand-name {
