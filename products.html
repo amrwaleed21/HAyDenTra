@@ -22,6 +22,9 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* إلغاء التظليل الأزرق المربعي عند الضغط في المتصفحات مثل جوجل كروم */
+            -webkit-tap-highlight-color: transparent;
+            outline: none !important;
         }
 
         html {
@@ -50,22 +53,24 @@
         }
 
         /* =========================
-           SMOOTH POP-UP ANIMATIONS
+           APPLE-STYLE POP-UP ANIMATIONS
         ========================= */
 
-        @keyframes popupSmooth {
+        @keyframes appleGlassAppear {
             0% {
                 opacity: 0;
-                transform: scale(0.96) translateY(12px);
+                transform: scale(0.92) translateY(20px);
+                backdrop-filter: blur(0px);
             }
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
+                backdrop-filter: blur(20px) saturate(180%);
             }
         }
 
         .pop-element {
-            animation: popupSmooth 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+            animation: appleGlassAppear 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
             will-change: transform, opacity;
         }
 
@@ -109,11 +114,11 @@
             left: 0;
             height: 74px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(186, 230, 253, 0.6);
-            backdrop-filter: blur(18px) saturate(150%);
-            -webkit-backdrop-filter: blur(18px) saturate(150%);
-            box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
+            background: rgba(255, 255, 255, 0.65);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(2, 132, 199, 0.08);
         }
 
         .nav-inner {
@@ -150,6 +155,7 @@
             width: 72%;
             height: 72%;
             object-fit: contain;
+            border-radius: 50%;
         }
 
         .brand-name {
@@ -176,23 +182,23 @@
             width: 58px;
             height: 58px;
             border-radius: 18px;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            background: rgba(240, 249, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             color: #0284c7;
-            font-size: 31px;
+            font-size: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(186, 230, 253, 0.3), inset 0 1px rgba(255, 255, 255, 0.8);
-            transition: .25s;
+            box-shadow: 0 4px 15px rgba(186, 230, 253, 0.3);
+            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .menu-btn:hover {
-            background: rgba(224, 242, 254, 0.9);
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.04);
         }
 
         .overlay {
@@ -200,11 +206,11 @@
             inset: 0;
             z-index: 1050;
             background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             opacity: 0;
             visibility: hidden;
-            transition: .3s;
+            transition: .35s ease;
         }
 
         .overlay.active {
@@ -220,13 +226,13 @@
             height: 100dvh;
             z-index: 1100;
             padding: 28px 20px;
-            background: rgba(255, 255, 255, 0.92);
-            border-left: 1px solid rgba(186, 230, 253, 0.5);
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-            box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
+            background: rgba(255, 255, 255, 0.75);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            box-shadow: -10px 0 35px rgba(2, 132, 199, 0.15);
             transform: translateX(110%);
-            transition: transform .35s ease;
+            transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1);
             overflow-y: auto;
         }
 
@@ -258,6 +264,7 @@
             width: 72%;
             height: 72%;
             object-fit: contain;
+            border-radius: 50%;
         }
 
         .sidebar-brand {
@@ -284,11 +291,17 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            background: rgba(240, 249, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.6);
             color: #0284c7;
             font-size: 20px;
             cursor: pointer;
+            transition: .25s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: scale(1.05);
         }
 
         .side-link {
@@ -297,9 +310,9 @@
             gap: 14px;
             padding: 15px 16px;
             margin-bottom: 10px;
-            border-radius: 15px;
-            background: rgba(240, 249, 255, 0.6);
-            border: 1px solid rgba(186, 230, 253, 0.5);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             font-size: 16px;
             font-weight: 700;
             color: #0369a1;
@@ -314,7 +327,7 @@
 
         .side-link:hover,
         .side-link.active {
-            background: #e0f2fe;
+            background: rgba(224, 242, 254, 0.8);
             border-color: #38bdf8;
             color: #0284c7;
         }
@@ -351,6 +364,7 @@
             width: 70%;
             height: 70%;
             object-fit: contain;
+            border-radius: 50%;
         }
 
         .main-brand {
@@ -399,10 +413,10 @@
             padding: 22px;
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
-            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.12);
         }
 
         .filter-row {
@@ -417,34 +431,26 @@
             padding: 14px 18px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #0f172a;
             font-family: "Cairo", sans-serif;
             font-size: 15px;
             font-weight: 800;
-            outline: none;
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.05);
             transition: .25s ease;
         }
 
         .search-box:focus,
         .sort-select:focus {
-            border-color: #0284c7;
-            background: rgba(255, 255, 255, 0.95);
+            border-color: #38bdf8;
+            background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 8px 25px rgba(2, 132, 199, 0.2);
-            transform: translateY(-1px);
         }
 
         .search-box::placeholder {
             color: #334155;
-            font-weight: 700;
-        }
-
-        .sort-select option {
-            color: #0f172a;
-            background: #ffffff;
             font-weight: 700;
         }
 
@@ -462,20 +468,19 @@
             padding: 9px 20px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.85);
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: #0369a1;
             font-family: "Cairo", sans-serif;
             font-size: 13px;
             font-weight: 800;
             cursor: pointer;
-            transition: .25s ease;
-            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.06);
+            transition: .25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .chip:hover {
-            background: rgba(224, 242, 254, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             transform: translateY(-1px);
         }
 
@@ -487,7 +492,7 @@
         }
 
         /* =========================
-           PRODUCT CARDS
+           PURE APPLE GLASS PRODUCT CARDS
         ========================= */
 
         .products-grid {
@@ -500,11 +505,14 @@
 
         .product-card {
             overflow: hidden;
-            border-radius: 22px;
-            background: linear-gradient(180deg, #d1d5db 0%, #f3f4f6 35%, #ffffff 100%);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, opacity 0.25s ease;
+            border-radius: 26px;
+            /* خلفية زجاجية بالكامل عالية النقاء */
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -513,18 +521,23 @@
         }
 
         .product-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 18px 35px rgba(2, 132, 199, 0.22), 0 0 0 2px rgba(56, 189, 248, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 25px 45px -10px rgba(2, 132, 199, 0.25), inset 0 1px 3px rgba(255, 255, 255, 1);
         }
 
+        /* حواف الصورة الناعمة المدورة داخل الكرت */
         .product-image {
             height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 12px 12px 0 12px;
+            border-radius: 18px;
             overflow: hidden;
-            border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             padding: 10px;
         }
 
@@ -532,11 +545,12 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            border-radius: 14px; /* حواف ناعمة مدورة للصورة نفسها */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .product-image i {
@@ -546,7 +560,6 @@
 
         .product-info {
             padding: 18px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, #ffffff 100%);
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -570,7 +583,7 @@
 
         .product-description {
             margin-top: 8px;
-            color: #475569;
+            color: #334155;
             font-size: 12px;
             line-height: 1.6;
 
@@ -588,7 +601,7 @@
             gap: 10px;
             margin-top: 18px;
             padding-top: 12px;
-            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .price {
@@ -600,15 +613,15 @@
         .order-btn {
             border: 0;
             padding: 10px 16px;
-            border-radius: 12px;
+            border-radius: 14px;
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
             font-family: "Cairo", sans-serif;
             font-size: 12px;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-            transition: .2s ease;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -616,28 +629,28 @@
         }
 
         .order-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.38);
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.42);
         }
 
         /* =========================
-           PRODUCT DETAIL MODAL
+           PURE GLASS PRODUCT MODAL
         ========================= */
 
         .product-modal-backdrop {
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px) saturate(180%);
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
         }
 
         .product-modal-backdrop.active {
@@ -649,14 +662,16 @@
             position: relative;
             width: min(100%, 780px);
             max-height: 90dvh;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.35);
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            box-shadow: 0 30px 60px -15px rgba(2, 132, 199, 0.35);
             overflow-y: auto;
-            transform: scale(0.85) translateY(20px);
+            transform: scale(0.88) translateY(20px);
             opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -673,29 +688,32 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             color: #0284c7;
             font-size: 20px;
             cursor: pointer;
             z-index: 10;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
-            transition: 0.25s;
+            transition: 0.3s ease;
         }
 
         .modal-close-btn:hover {
             background: #0284c7;
             color: #ffffff;
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.05);
         }
 
+        /* حواف ناعمة مدورة لصورة المنتج داخل النافذة Pop-up */
         .modal-image-wrap {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
-            border-left: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 24px;
+            margin: 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
             position: relative;
             min-height: 320px;
         }
@@ -704,6 +722,7 @@
             max-width: 100%;
             max-height: 320px;
             object-fit: contain;
+            border-radius: 16px; /* حواف ناعمة مدورة */
         }
 
         .modal-image-wrap i {
@@ -712,7 +731,7 @@
         }
 
         .modal-details {
-            padding: 32px 28px;
+            padding: 32px 28px 32px 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -749,7 +768,7 @@
         .modal-footer {
             margin-top: 24px;
             padding-top: 20px;
-            border-top: 1px solid rgba(226, 232, 240, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -777,11 +796,11 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: .25s ease;
+            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .modal-order-btn:hover {
-            transform: translateY(-2px);
+            transform: scale(1.02);
             box-shadow: 0 12px 25px rgba(2, 132, 199, 0.45);
         }
 
@@ -813,10 +832,10 @@
             color: #0369a1;
             font-size: 13px;
             font-weight: 700;
-            background: rgba(224, 242, 254, 0.6);
-            border-top: 1px solid rgba(186, 230, 253, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(224, 242, 254, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         /* =========================
@@ -835,10 +854,9 @@
             }
 
             .modal-image-wrap {
-                border-left: none;
-                border-bottom: 1px solid rgba(226, 232, 240, 0.8);
                 min-height: 220px;
-                padding: 20px;
+                padding: 16px;
+                margin: 12px;
             }
 
             .modal-image-wrap img {
@@ -846,7 +864,7 @@
             }
 
             .modal-details {
-                padding: 20px;
+                padding: 16px 20px 24px;
             }
 
             .modal-title {
@@ -908,6 +926,7 @@
 
             .product-image {
                 height: 140px;
+                margin: 8px 8px 0 8px;
             }
 
             .product-info {
@@ -1212,7 +1231,7 @@
                 const card = document.createElement("article");
                 card.className = "product-card pop-element";
                 
-                const delay = Math.min(0.04 * index, 0.3);
+                const delay = Math.min(0.05 * index, 0.4);
                 card.style.animationDelay = `${delay}s`;
 
                 let imageHTML = "";
@@ -1243,7 +1262,6 @@
                 card.dataset.name = product.name || "";
                 card.dataset.price = product.price || 0;
 
-                // النقر على كرت المنتج يستدعي نافذة التفاصيل
                 card.onclick = () => openProductModal(product, categoryName, imageHTML);
 
                 card.innerHTML = `
