@@ -338,20 +338,20 @@
         .products-hero {
             position: relative;
             width: 100%;
-            padding: 30px 18px 15px;
+            padding: 45px 18px 25px;
             text-align: center;
             overflow: hidden;
         }
 
-        /* خلفية searchbarbg.jpg في أعلى منتصف الصفحة مع تأثير Parallax */
+        /* تم تنزيل الصورة لأسفل قليلاً وتوضيحها وزيادة نسبة الرؤية */
         .search-bg-full {
             position: absolute;
-            top: 0;
+            top: 25px;
             left: 0;
             width: 100%;
-            height: 125%;
+            height: 110%;
             background: url("searchbarbg.jpg") center top/cover no-repeat;
-            opacity: 0.85;
+            opacity: 0.95;
             z-index: 0;
             pointer-events: none;
             will-change: transform;
@@ -364,7 +364,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(224, 242, 254, 0.25) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(224, 242, 254, 0.15) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -372,34 +372,36 @@
         .search-container {
             position: relative;
             z-index: 1;
-            width: min(92%, 550px);
+            width: min(92%, 580px);
             margin: 0 auto;
         }
 
+        /* السيرش بار أصبح Glassy شفاف بلوري */
         .search-box {
             display: flex;
             align-items: center;
 
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
 
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.75);
             border-radius: 20px;
-            padding: 6px 16px;
+            padding: 6px 18px;
 
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.15),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
 
         .search-box:focus-within {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(2, 132, 199, 0.2);
-            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 16px 40px rgba(2, 132, 199, 0.22);
+            background: rgba(255, 255, 255, 0.65);
         }
 
         .search-box i {
-            font-size: 18px;
+            font-size: 19px;
             color: #0284c7;
             margin-left: 10px;
         }
@@ -412,14 +414,63 @@
 
             font-family: "Cairo", sans-serif;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 800;
             color: #0f172a;
             padding: 10px 0;
         }
 
         .search-box input::placeholder {
-            color: #64748b;
-            font-weight: 600;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FILTERS SECTION (GLASSY)
+        ========================= */
+
+        .filter-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 12px;
+
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            color: #0369a1;
+
+            font-family: "Cairo", sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(2, 132, 199, 0.9);
+            color: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
+            transform: translateY(-2px);
         }
 
         /* =========================
@@ -440,7 +491,6 @@
             gap: 12px;
         }
 
-        /* الكروت على أجهزة الكمبيوتر شاشة واسعة */
         @media (min-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -520,13 +570,20 @@
             font-weight: 800;
             color: #0f172a;
             line-height: 1.4;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
 
             display: -webkit-box;
             -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+
+        .product-price {
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 900;
+            color: #0284c7;
+            margin-bottom: 6px;
         }
 
         .product-desc {
@@ -590,7 +647,6 @@
             border-top: 1px solid rgba(186, 230, 253, 0.6);
         }
 
-        /* Background grid polish */
         body::before {
             content: "";
             position: fixed;
@@ -676,82 +732,27 @@
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="searchInput" placeholder="ابحث عن أداة، جهاز، أو مادة طبية..."
-                        onkeyup="filterProducts()">
+                        onkeyup="handleSearchAndFilter()">
+                </div>
+
+                <div class="filter-container" data-aos="fade-up" data-aos-delay="200">
+                    <button class="filter-btn active" id="btnAll" onclick="setSortMode('default')">
+                        <i class="fa-solid fa-list-check"></i> الكل
+                    </button>
+                    <button class="filter-btn" id="btnHigh" onclick="setSortMode('high')">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i> الأعلى سعراً
+                    </button>
+                    <button class="filter-btn" id="btnLow" onclick="setSortMode('low')">
+                        <i class="fa-solid fa-arrow-up-wide-short"></i> الأقل سعراً
+                    </button>
                 </div>
             </div>
 
         </section>
 
         <section class="products-section">
-
             <div class="products-grid" id="productsGrid">
-
-                <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">قبضة أسنان عالية السرعة (High Speed Handpiece)</h3>
-                            <p class="product-desc">أداء عالي وإضاءة LED مع نظام تبريد ثلاثي متطور.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
                 </div>
-
-                <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">جهاز حشو العصب (Endo Motor)</h3>
-                            <p class="product-desc">دقة متناهية وإعدادات مسبقة لجميع أنواع المبرد.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">جهاز تبييض الأسنان الضوئي</h3>
-                            <p class="product-desc">تقنية ضوئية حديثة لتبييض سريع وآمن للعيادات.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="700">
-                    <div class="product-img-wrapper">
-                        <img src="logo.png" alt="منتج أسنان">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">مستلزمات الحشوات التجميلية Composite</h3>
-                            <p class="product-desc">مجموعة حشوات عالية الجودة ومقاومة للتآكل.</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
         </section>
 
     </main>
@@ -767,6 +768,116 @@
         AOS.init({
             once: true,
             easing: 'ease-out-cubic'
+        });
+
+        // ===============================================
+        //  DATABASE PRODUCTS ARRAY (يمكنك استبدالها بـ fetch من الـ Database)
+        // ===============================================
+        let productsData = [
+            {
+                id: 1,
+                title: "قبضة أسنان عالية السرعة (High Speed)",
+                price: 3500,
+                image: "logo.png",
+                desc: "أداء عالي وإضاءة LED مع نظام تبريد ثلاثي متطور."
+            },
+            {
+                id: 2,
+                title: "جهاز حشو العصب (Endo Motor)",
+                price: 8200,
+                image: "logo.png",
+                desc: "دقة متناهية وإعدادات مسبقة لجميع أنواع المبرد."
+            },
+            {
+                id: 3,
+                title: "جهاز تبييض الأسنان الضوئي",
+                price: 5400,
+                image: "logo.png",
+                desc: "تقنية ضوئية حديثة لتبييض سريع وآمن للعيادات."
+            },
+            {
+                id: 4,
+                title: "مستلزمات الحشوات Composite",
+                price: 1200,
+                image: "logo.png",
+                desc: "مجموعة حشوات عالية الجودة ومقاومة للتآكل."
+            }
+        ];
+
+        let currentSortMode = 'default';
+
+        // دالة بناء وعرض المنتجات ديناميكياً
+        function renderProducts(data) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b; font-weight:700; padding: 20px;">لا توجد منتجات مطابقة للبحث.</p>`;
+                return;
+            }
+
+            data.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index * 80).toString());
+
+                card.innerHTML = `
+                    <div class="product-img-wrapper">
+                        <img src="${product.image}" alt="${product.title}">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">${product.price.toLocaleString()} ج.م</div>
+                            <p class="product-desc">${product.desc}</p>
+                        </div>
+                        <a href="contact.html" class="product-btn">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            طلب المنتج
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // دالة الفلترة والبحث والترتيب
+        function handleSearchAndFilter() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            let filtered = productsData.filter(p => 
+                p.title.toLowerCase().includes(query) || 
+                p.desc.toLowerCase().includes(query)
+            );
+
+            if (currentSortMode === 'high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSortMode === 'low') {
+                filtered.sort((a, b) => a.price - b.price);
+            }
+
+            renderProducts(filtered);
+        }
+
+        // تغيير وضع الفلتر وتنشيط الأزرار
+        function setSortMode(mode) {
+            currentSortMode = mode;
+
+            document.getElementById('btnAll').classList.remove('active');
+            document.getElementById('btnHigh').classList.remove('active');
+            document.getElementById('btnLow').classList.remove('active');
+
+            if (mode === 'default') document.getElementById('btnAll').classList.add('active');
+            if (mode === 'high') document.getElementById('btnHigh').classList.add('active');
+            if (mode === 'low') document.getElementById('btnLow').classList.add('active');
+
+            handleSearchAndFilter();
+        }
+
+        // التشغيل الأولي عند فتح الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(productsData);
         });
 
         // القائمة الجانبية
@@ -791,13 +902,13 @@
             }
         });
 
-        // تأثير تحريك خلفية شريط البحث بتأخر ناعم Parallax
+        // تأثير Parallax ناعم لخلفية السيرش بار
         const searchBg = document.getElementById('searchBg');
         let latestScrollY = 0;
         let ticking = false;
 
         function updateSearchParallax() {
-            const speed = 0.3;
+            const speed = 0.25;
             const yPos = -(latestScrollY * speed);
             if (searchBg) {
                 searchBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
@@ -812,23 +923,6 @@
                 ticking = true;
             }
         });
-
-        // تصفية المنتجات عند البحث
-        function filterProducts() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.getElementsByClassName('product-card');
-
-            Array.from(cards).forEach(card => {
-                const title = card.querySelector('.product-title').innerText.toLowerCase();
-                const desc = card.querySelector('.product-desc').innerText.toLowerCase();
-
-                if (title.includes(input) || desc.includes(input)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        }
     </script>
 
 </body>
