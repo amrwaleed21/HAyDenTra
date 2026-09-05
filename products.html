@@ -343,7 +343,6 @@
             overflow: hidden;
         }
 
-        /* تم تنزيل الصورة لأسفل قليلاً وتوضيحها وزيادة نسبة الرؤية */
         .search-bg-full {
             position: absolute;
             top: 25px;
@@ -376,7 +375,6 @@
             margin: 0 auto;
         }
 
-        /* السيرش بار أصبح Glassy شفاف بلوري */
         .search-box {
             display: flex;
             align-items: center;
@@ -732,17 +730,17 @@
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="searchInput" placeholder="ابحث عن أداة، جهاز، أو مادة طبية..."
-                        onkeyup="handleSearchAndFilter()">
+                        onkeyup="filterProducts()">
                 </div>
 
                 <div class="filter-container" data-aos="fade-up" data-aos-delay="200">
-                    <button class="filter-btn active" id="btnAll" onclick="setSortMode('default')">
+                    <button class="filter-btn active" id="btnAll" onclick="sortProducts('default')">
                         <i class="fa-solid fa-list-check"></i> الكل
                     </button>
-                    <button class="filter-btn" id="btnHigh" onclick="setSortMode('high')">
+                    <button class="filter-btn" id="btnHigh" onclick="sortProducts('high')">
                         <i class="fa-solid fa-arrow-down-wide-short"></i> الأعلى سعراً
                     </button>
-                    <button class="filter-btn" id="btnLow" onclick="setSortMode('low')">
+                    <button class="filter-btn" id="btnLow" onclick="sortProducts('low')">
                         <i class="fa-solid fa-arrow-up-wide-short"></i> الأقل سعراً
                     </button>
                 </div>
@@ -752,7 +750,42 @@
 
         <section class="products-section">
             <div class="products-grid" id="productsGrid">
+
+                <div class="product-card" data-price="3500" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                    <div class="product-img-wrapper">
+                        <img src="logo.png" alt="منتج أسنان">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">قبضة أسنان عالية السرعة (High Speed Handpiece)</h3>
+                            <div class="product-price">3,500 ج.م</div>
+                            <p class="product-desc">أداء عالي وإضاءة LED مع نظام تبريد ثلاثي متطور.</p>
+                        </div>
+                        <a href="contact.html" class="product-btn">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            طلب المنتج
+                        </a>
+                    </div>
                 </div>
+
+                <div class="product-card" data-price="8200" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                    <div class="product-img-wrapper">
+                        <img src="logo.png" alt="منتج أسنان">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">جهاز حشو العصب (Endo Motor)</h3>
+                            <div class="product-price">8,200 ج.م</div>
+                            <p class="product-desc">دقة متناهية وإعدادات مسبقة لجميع أنواع المبرد.</p>
+                        </div>
+                        <a href="contact.html" class="product-btn">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            طلب المنتج
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
     </main>
@@ -768,116 +801,6 @@
         AOS.init({
             once: true,
             easing: 'ease-out-cubic'
-        });
-
-        // ===============================================
-        //  DATABASE PRODUCTS ARRAY (يمكنك استبدالها بـ fetch من الـ Database)
-        // ===============================================
-        let productsData = [
-            {
-                id: 1,
-                title: "قبضة أسنان عالية السرعة (High Speed)",
-                price: 3500,
-                image: "logo.png",
-                desc: "أداء عالي وإضاءة LED مع نظام تبريد ثلاثي متطور."
-            },
-            {
-                id: 2,
-                title: "جهاز حشو العصب (Endo Motor)",
-                price: 8200,
-                image: "logo.png",
-                desc: "دقة متناهية وإعدادات مسبقة لجميع أنواع المبرد."
-            },
-            {
-                id: 3,
-                title: "جهاز تبييض الأسنان الضوئي",
-                price: 5400,
-                image: "logo.png",
-                desc: "تقنية ضوئية حديثة لتبييض سريع وآمن للعيادات."
-            },
-            {
-                id: 4,
-                title: "مستلزمات الحشوات Composite",
-                price: 1200,
-                image: "logo.png",
-                desc: "مجموعة حشوات عالية الجودة ومقاومة للتآكل."
-            }
-        ];
-
-        let currentSortMode = 'default';
-
-        // دالة بناء وعرض المنتجات ديناميكياً
-        function renderProducts(data) {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-
-            if (data.length === 0) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b; font-weight:700; padding: 20px;">لا توجد منتجات مطابقة للبحث.</p>`;
-                return;
-            }
-
-            data.forEach((product, index) => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', (index * 80).toString());
-
-                card.innerHTML = `
-                    <div class="product-img-wrapper">
-                        <img src="${product.image}" alt="${product.title}">
-                    </div>
-                    <div class="product-info">
-                        <div>
-                            <h3 class="product-title">${product.title}</h3>
-                            <div class="product-price">${product.price.toLocaleString()} ج.م</div>
-                            <p class="product-desc">${product.desc}</p>
-                        </div>
-                        <a href="contact.html" class="product-btn">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            طلب المنتج
-                        </a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // دالة الفلترة والبحث والترتيب
-        function handleSearchAndFilter() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-
-            let filtered = productsData.filter(p => 
-                p.title.toLowerCase().includes(query) || 
-                p.desc.toLowerCase().includes(query)
-            );
-
-            if (currentSortMode === 'high') {
-                filtered.sort((a, b) => b.price - a.price);
-            } else if (currentSortMode === 'low') {
-                filtered.sort((a, b) => a.price - b.price);
-            }
-
-            renderProducts(filtered);
-        }
-
-        // تغيير وضع الفلتر وتنشيط الأزرار
-        function setSortMode(mode) {
-            currentSortMode = mode;
-
-            document.getElementById('btnAll').classList.remove('active');
-            document.getElementById('btnHigh').classList.remove('active');
-            document.getElementById('btnLow').classList.remove('active');
-
-            if (mode === 'default') document.getElementById('btnAll').classList.add('active');
-            if (mode === 'high') document.getElementById('btnHigh').classList.add('active');
-            if (mode === 'low') document.getElementById('btnLow').classList.add('active');
-
-            handleSearchAndFilter();
-        }
-
-        // التشغيل الأولي عند فتح الصفحة
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProducts(productsData);
         });
 
         // القائمة الجانبية
@@ -923,6 +846,46 @@
                 ticking = true;
             }
         });
+
+        // البحث السريع داخل الكروت المطبوعة
+        function filterProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('product-card');
+
+            Array.from(cards).forEach(card => {
+                const title = card.querySelector('.product-title')?.innerText.toLowerCase() || '';
+                const desc = card.querySelector('.product-desc')?.innerText.toLowerCase() || '';
+
+                if (title.includes(input) || desc.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // ترتيب الكروت المطبوعة مباشرة في الصفحة حسب السعر (data-price)
+        function sortProducts(mode) {
+            const grid = document.getElementById('productsGrid');
+            const cards = Array.from(grid.getElementsByClassName('product-card'));
+
+            document.getElementById('btnAll').classList.remove('active');
+            document.getElementById('btnHigh').classList.remove('active');
+            document.getElementById('btnLow').classList.remove('active');
+
+            if (mode === 'default') {
+                document.getElementById('btnAll').classList.add('active');
+            } else if (mode === 'high') {
+                document.getElementById('btnHigh').classList.add('active');
+                cards.sort((a, b) => parseFloat(b.getAttribute('data-price') || 0) - parseFloat(a.getAttribute('data-price') || 0));
+            } else if (mode === 'low') {
+                document.getElementById('btnLow').classList.add('active');
+                cards.sort((a, b) => parseFloat(a.getAttribute('data-price') || 0) - parseFloat(b.getAttribute('data-price') || 0));
+            }
+
+            // إعادة ترتيب العناصر داخل الـ Container
+            cards.forEach(card => grid.appendChild(card));
+        }
     </script>
 
 </body>
