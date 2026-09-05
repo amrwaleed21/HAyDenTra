@@ -22,7 +22,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* إلغاء التظليل الأزرق المربعي عند الضغط في المتصفحات مثل جوجل كروم */
             -webkit-tap-highlight-color: transparent;
             outline: none !important;
         }
@@ -53,29 +52,27 @@
         }
 
         /* =========================
-           APPLE-STYLE POP-UP ANIMATIONS
+           POP-UP ANIMATIONS
         ========================= */
 
         @keyframes appleGlassAppear {
             0% {
                 opacity: 0;
-                transform: scale(0.92) translateY(20px);
-                backdrop-filter: blur(0px);
+                transform: scale(0.94) translateY(15px);
             }
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
-                backdrop-filter: blur(20px) saturate(180%);
             }
         }
 
         .pop-element {
-            animation: appleGlassAppear 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+            animation: appleGlassAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
             will-change: transform, opacity;
         }
 
         /* =========================
-           FULLSCREEN HERO BG
+           HERO BG (RESTORED ORIGINAL)
         ========================= */
 
         .hero-bg-section {
@@ -83,22 +80,8 @@
             top: 74px;
             left: 0;
             width: 100%;
-            height: 520px;
+            height: 480px;
             background: url("searchbarbg.jpg") center top / cover no-repeat;
-            z-index: 0;
-            pointer-events: none;
-            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
-            will-change: transform;
-        }
-
-        .hero-bg-overlay {
-            position: absolute;
-            top: 74px;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(224, 242, 254, 0.4) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -404,19 +387,19 @@
         }
 
         /* =========================
-           GLASSY SEARCH & FILTER
+           GLASSY SEARCH & FILTER (iOS GLASS)
         ========================= */
 
         .filters {
             width: min(100% - 24px, 1100px);
             margin: 20px auto 35px;
             padding: 22px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.12);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
 
         .filter-row {
@@ -429,11 +412,11 @@
         .sort-select {
             width: 100%;
             padding: 14px 18px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             color: #0f172a;
             font-family: "Cairo", sans-serif;
             font-size: 15px;
@@ -445,8 +428,8 @@
         .search-box:focus,
         .sort-select:focus {
             border-color: #38bdf8;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.18);
         }
 
         .search-box::placeholder {
@@ -467,8 +450,8 @@
             flex-shrink: 0;
             padding: 9px 20px;
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #0369a1;
@@ -480,7 +463,7 @@
         }
 
         .chip:hover {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.75);
             transform: translateY(-1px);
         }
 
@@ -492,7 +475,7 @@
         }
 
         /* =========================
-           PURE APPLE GLASS PRODUCT CARDS
+           iOS LIQUID GLASS PRODUCT CARDS
         ========================= */
 
         .products-grid {
@@ -505,14 +488,14 @@
 
         .product-card {
             overflow: hidden;
-            border-radius: 26px;
-            /* خلفية زجاجية بالكامل عالية النقاء */
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.9);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+            border-radius: 28px;
+            /* خلفية زجاج آيفون ناعمة شبه شفافة */
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease, background 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -522,22 +505,21 @@
 
         .product-card:hover {
             transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(255, 255, 255, 1);
-            box-shadow: 0 25px 45px -10px rgba(2, 132, 199, 0.25), inset 0 1px 3px rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 25px 45px -10px rgba(2, 132, 199, 0.2), inset 0 1px 3px rgba(255, 255, 255, 1);
         }
 
-        /* حواف الصورة الناعمة المدورة داخل الكرت */
         .product-image {
             height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.4);
             margin: 12px 12px 0 12px;
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             padding: 10px;
         }
 
@@ -545,7 +527,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 14px; /* حواف ناعمة مدورة للصورة نفسها */
+            border-radius: 14px;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -601,7 +583,7 @@
             gap: 10px;
             margin-top: 18px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .price {
@@ -634,14 +616,14 @@
         }
 
         /* =========================
-           PURE GLASS PRODUCT MODAL
+           PRODUCT MODAL
         ========================= */
 
         .product-modal-backdrop {
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(15, 23, 42, 0.45);
+            background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(15px) saturate(180%);
             -webkit-backdrop-filter: blur(15px) saturate(180%);
             display: flex;
@@ -704,7 +686,6 @@
             transform: rotate(90deg) scale(1.05);
         }
 
-        /* حواف ناعمة مدورة لصورة المنتج داخل النافذة Pop-up */
         .modal-image-wrap {
             background: rgba(255, 255, 255, 0.6);
             display: flex;
@@ -722,7 +703,7 @@
             max-width: 100%;
             max-height: 320px;
             object-fit: contain;
-            border-radius: 16px; /* حواف ناعمة مدورة */
+            border-radius: 16px;
         }
 
         .modal-image-wrap i {
@@ -874,8 +855,7 @@
 
         @media(max-width: 600px) {
 
-            .hero-bg-section,
-            .hero-bg-overlay {
+            .hero-bg-section {
                 height: 480px;
             }
 
@@ -978,7 +958,6 @@
 <body>
 
     <div class="hero-bg-section" id="heroBg"></div>
-    <div class="hero-bg-overlay"></div>
 
     <header class="topbar">
 
@@ -1414,7 +1393,7 @@
             window.open(whatsappURL, "_blank", "noopener,noreferrer");
         }
 
-        /* UTILS & PARALLAX */
+        /* UTILS */
 
         function escapeHTML(text) {
             return String(text || "")
@@ -1424,27 +1403,6 @@
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
         }
-
-        const heroBg = document.getElementById('heroBg');
-        let latestScrollY = 0;
-        let ticking = false;
-
-        function updateParallax() {
-            const speed = 0.2;
-            const yPos = -(latestScrollY * speed);
-            if (heroBg) {
-                heroBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
-            }
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', function () {
-            latestScrollY = window.scrollY;
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        });
 
         loadProducts();
 
