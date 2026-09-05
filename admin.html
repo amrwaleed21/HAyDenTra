@@ -47,7 +47,11 @@
             z-index: 0;
         }
 
-        /* LOGIN */
+        /* LOGIN - شاشة تسجيل الدخول مجمعة في سكشن واحد */
+
+        #loginSection {
+            display: none; /* مخفية افتراضياً */
+        }
 
         .login-wrapper {
             position: relative;
@@ -194,12 +198,12 @@
             font-weight: 700;
         }
 
-        /* ADMIN */
+        /* ADMIN - لوحة الأدمن مجمعة في سكشن واحد */
 
-        #adminPanel {
+        #adminDashboard {
             position: relative;
             z-index: 1;
-            display: none;
+            display: none; /* مخفية افتراضياً */
         }
 
         .topbar {
@@ -572,188 +576,114 @@
 
 <body>
 
-<div class="login-wrapper" id="loginScreen">
+<!-- شاشة تسجيل الدخول المجمعة -->
+<div id="loginSection">
+    <div class="login-wrapper">
 
-    <div class="login-box">
+        <div class="login-box">
 
-        <div class="logo-circle">
+            <div class="logo-circle">
+                <img src="logo.png" alt="HAyDenTra">
+            </div>
 
-            <img src="logo.png" alt="HAyDenTra">
+            <div class="brand">
+                HAyDenTra
+                <span class="registered">®</span>
+            </div>
+
+            <div class="login-title">
+                لوحة الإدارة
+            </div>
+
+            <input class="input" id="email" type="email" placeholder="البريد الإلكتروني">
+            <input class="input" id="password" type="password" placeholder="كلمة المرور">
+
+            <button class="main-btn" onclick="handleLogin()">
+                تسجيل الدخول
+            </button>
+
+            <a href="index.html" class="login-home-btn">
+                <i class="fa-solid fa-house"></i>
+                العودة إلى الصفحة الرئيسية
+            </a>
+
+            <div class="error" id="loginError"></div>
 
         </div>
-
-        <div class="brand">
-
-            HAyDenTra
-
-            <span class="registered">
-                ®
-            </span>
-
-        </div>
-
-        <div class="login-title">
-            لوحة الإدارة
-        </div>
-
-        <input class="input" id="email" type="email" placeholder="البريد الإلكتروني">
-
-        <input class="input" id="password" type="password" placeholder="كلمة المرور">
-
-        <button class="main-btn" onclick="login()">
-            تسجيل الدخول
-        </button>
-
-        <a href="index.html" class="login-home-btn">
-
-            <i class="fa-solid fa-house"></i>
-
-            العودة إلى الصفحة الرئيسية
-
-        </a>
-
-        <div class="error" id="loginError"></div>
 
     </div>
-
 </div>
 
-<div id="adminPanel">
+<!-- لوحة الأدمن المجمعة -->
+<div id="adminDashboard">
 
     <header class="topbar">
 
         <div class="nav-brand">
-
             <img class="nav-logo" src="logo.png">
-
             <div class="nav-brand-name">
-
                 HAyDenTra
-
-                <span class="registered">
-                    ®
-                </span>
-
+                <span class="registered">®</span>
             </div>
-
         </div>
 
         <div class="topbar-actions">
-
             <a href="index.html" class="home-btn">
-
                 <i class="fa-solid fa-house"></i>
-
-                <span>
-                    الرئيسية
-                </span>
-
+                <span>الرئيسية</span>
             </a>
-
-            <button class="logout-btn" onclick="logout()">
-
+            <button class="logout-btn" onclick="handleLogout()">
                 <i class="fa-solid fa-right-from-bracket"></i>
-
-                <span>
-                    خروج
-                </span>
-
+                <span>خروج</span>
             </button>
-
         </div>
 
     </header>
 
     <main class="container">
 
-        <h1 class="title">
-            إدارة المنتجات
-        </h1>
+        <h1 class="title">إدارة المنتجات</h1>
 
         <section class="panel">
+            <h2 id="formTitle">إضافة منتج جديد</h2>
 
-            <h2 id="formTitle">
-                إضافة منتج جديد
-            </h2>
-
-            <label>
-                اسم المنتج
-            </label>
-
+            <label>اسم المنتج</label>
             <input id="productName" placeholder="مثال: مسكن بندول">
 
-            <label>
-                السعر
-            </label>
-
+            <label>السعر</label>
             <input id="productPrice" type="number" min="0" placeholder="مثال: 2450">
 
-            <label>
-                التصنيف
-            </label>
-
+            <label>التصنيف</label>
             <select id="productCategory">
-
-                <option value="medicines">
-                    الأدوية
-                </option>
-
-                <option value="materials">
-                    المواد
-                </option>
-
-                <option value="devices">
-                    الأجهزة
-                </option>
-
-                <option value="tools">
-                    الأدوات
-                </option>
-
+                <option value="medicines">الأدوية</option>
+                <option value="materials">المواد</option>
+                <option value="devices">الأجهزة</option>
+                <option value="tools">الأدوات</option>
             </select>
 
-            <label>
-                وصف المنتج
-            </label>
-
+            <label>وصف المنتج</label>
             <textarea id="productDescription" placeholder="اكتب وصف المنتج..."></textarea>
 
-            <label>
-                صورة المنتج
-            </label>
-
+            <label>صورة المنتج</label>
             <input id="productImage" type="file" accept="image/*">
 
             <button class="save-btn" onclick="saveProduct()">
-
                 <i class="fa-solid fa-floppy-disk"></i>
-
                 حفظ المنتج
-
             </button>
 
             <button class="cancel-btn" onclick="resetForm()">
-
                 إلغاء
-
             </button>
 
             <div class="status" id="status"></div>
-
         </section>
 
         <section class="panel">
-
-            <h2>
-                المنتجات الحالية
-            </h2>
-
+            <h2>المنتجات الحالية</h2>
             <div class="products-list" id="productsList">
-
                 جاري تحميل المنتجات...
-
             </div>
-
         </section>
 
     </main>
@@ -762,681 +692,304 @@
 
 <script>
 
-const SUPABASE_URL =
-    "https://hcvajgyjiflkcsdjvzib.supabase.co";
+const SUPABASE_URL = "https://hcvajgyjiflkcsdjvzib.supabase.co";
+const SUPABASE_KEY = "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW"; // استخدام مفتاح publishable للفرونت إند
 
-const SUPABASE_KEY =
-    "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
-
-const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let editingId = null;
-
 let oldImageUrl = "";
 
-/* LOGIN */
+// سلكتورز مجمعة للسكاشن الكبيرة
+const loginSection = document.getElementById("loginSection");
+const adminDashboard = document.getElementById("adminDashboard");
 
-async function login() {
+/* --- نظام التحقق (AUTH) --- */
 
-    const email =
-        document
-            .getElementById("email")
-            .value
-            .trim();
+// دالة التحقق فور تحميل الصفحة
+async function checkInitialAuth() {
+    // الحصول على الجلسة الحالية
+    const { data: { session } } = await supabaseClient.auth.getSession();
 
-    const password =
-        document
-            .getElementById("password")
-            .value;
+    if (session) {
+        // لو مسجل دخول -> اظهر الأدمن
+        showAdminPanel();
+    } else {
+        // لو مش مسجل -> اظهر اللوجن
+        showLoginScreen();
+    }
+}
 
-    const errorBox =
-        document.getElementById("loginError");
+function showAdminPanel() {
+    loginSection.style.display = "none";
+    adminDashboard.style.display = "block";
+    loadProducts(); // تحميل المنتجات فقط عند عرض اللوحة
+}
 
-    errorBox.textContent = "";
+function showLoginScreen() {
+    loginSection.style.display = "block";
+    adminDashboard.style.display = "none";
+}
+
+// دالة تسجيل الدخول
+async function handleLogin() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const errorBox = document.getElementById("loginError");
+
+    errorBox.textContent = ""; // مسح الأخطاء السابقة
 
     if (!email || !password) {
-
-        errorBox.textContent =
-            "اكتب البريد الإلكتروني وكلمة المرور.";
-
+        errorBox.textContent = "يرجى ملء كافة الحقول.";
         return;
-
     }
 
-    const { error } =
-        await supabaseClient.auth.signInWithPassword({
-
-            email: email,
-
-            password: password
-
-        });
+    // محاولة الدخول عبر سوبابيز
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
 
     if (error) {
-
-        errorBox.textContent =
-            "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-
-        console.error(error);
-
+        errorBox.textContent = "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+        console.error("Login error:", error.message);
         return;
-
     }
 
-    await checkAdmin();
-
+    // نجح الدخول -> اظهر لوحة الأدمن
+    showAdminPanel();
 }
 
-/* CHECK ADMIN */
-
-async function checkAdmin() {
-
-    const {
-        data: {
-            user
-        }
-    } =
-        await supabaseClient.auth.getUser();
-
-    if (!user) {
-
-        showLogin();
-
-        return;
-
-    }
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .rpc("is_admin");
-
-    if (error || !data) {
-
-        await supabaseClient.auth.signOut();
-
-        document
-            .getElementById("loginError")
-            .textContent =
-                "هذا الحساب ليس لديه صلاحية الإدارة.";
-
-        return;
-
-    }
-
-    showAdmin();
-
-}
-
-/* SHOW ADMIN */
-
-function showAdmin() {
-
-    document
-        .getElementById("loginScreen")
-        .style.display = "none";
-
-    document
-        .getElementById("adminPanel")
-        .style.display = "block";
-
-    loadProducts();
-
-}
-
-function showLogin() {
-
-    document
-        .getElementById("loginScreen")
-        .style.display = "flex";
-
-    document
-        .getElementById("adminPanel")
-        .style.display = "none";
-
-}
-
-/* LOGOUT */
-
-async function logout() {
-
+// دالة تسجيل الخروج
+async function handleLogout() {
     await supabaseClient.auth.signOut();
-
-    window.location.href = "index.html";
-
+    window.location.reload(); // إعادة تحميل الصفحة للعودة للوجن سكرين
 }
 
-/* LOAD PRODUCTS */
 
+/* --- إدارة المنتجات (CRUD) --- */
+
+// تحميل المنتجات
 async function loadProducts() {
+    const list = document.getElementById("productsList");
+    list.innerHTML = "جاري تحميل المنتجات...";
 
-    const list =
-        document
-            .getElementById("productsList");
-
-    list.innerHTML =
-        "جاري تحميل المنتجات...";
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("products")
-            .select("*")
-            .order("created_at", {
-                ascending: false
-            });
+    const { data, error } = await supabaseClient
+        .from("products")
+        .select("*")
+        .order("created_at", { ascending: false });
 
     if (error) {
-
-        list.innerHTML =
-            "حدث خطأ أثناء تحميل المنتجات.";
-
-        console.error(error);
-
+        list.innerHTML = "حدث خطأ أثناء تحميل المنتجات.";
+        console.error("Fetch error:", error.message);
         return;
-
     }
 
     if (!data || data.length === 0) {
-
-        list.innerHTML =
-            "لا توجد منتجات حتى الآن.";
-
+        list.innerHTML = "لا توجد منتجات حتى الآن.";
         return;
-
     }
 
-    list.innerHTML = "";
+    list.innerHTML = ""; // مسح جملة التحميل
 
     data.forEach(product => {
-
-        const item =
-            document.createElement("div");
-
+        const item = document.createElement("div");
         item.className = "product";
 
-        let image = "";
-
+        // التعامل مع الصورة
+        let imageHTML = "";
         if (product.image_url) {
-
-            image = `
-                <img
-                    src="${escapeHTML(product.image_url)}"
-                    alt="${escapeHTML(product.name)}"
-                >
-            `;
-
+            imageHTML = `<img src="${escapeHTML(product.image_url)}" alt="${escapeHTML(product.name)}">`;
         } else {
-
-            let icon =
-                "fa-tooth";
-
-            if (product.category === "medicines" || product.category === "medication")
-                icon = "fa-pills";
-
-            if (product.category === "devices")
-                icon = "fa-lightbulb";
-
-            if (product.category === "tools")
-                icon = "fa-toolbox";
-
-            image = `
-                <i class="fa-solid ${icon}"></i>
-            `;
-
+            let icon = "fa-tooth"; // ديفولت
+            if (product.category === "medicines" || product.category === "medication") icon = "fa-pills";
+            if (product.category === "devices") icon = "fa-lightbulb";
+            if (product.category === "tools") icon = "fa-toolbox";
+            imageHTML = `<i class="fa-solid ${icon}"></i>`;
         }
 
         item.innerHTML = `
-
-            <div class="product-img">
-                ${image}
-            </div>
-
+            <div class="product-img">${imageHTML}</div>
             <div class="product-info">
-
-                <div class="product-name">
-                    ${escapeHTML(product.name)}
-                </div>
-
-                <div class="product-price">
-                    ${Number(product.price).toLocaleString("en-US")}
-                    ج.م
-                </div>
-
+                <div class="product-name">${escapeHTML(product.name)}</div>
+                <div class="product-price">${Number(product.price).toLocaleString("en-US")} ج.م</div>
             </div>
-
             <div class="product-actions">
-
-                <button
-                    class="edit-btn"
-                    onclick="editProduct(${product.id})"
-                >
-
-                    <i class="fa-solid fa-pen"></i>
-
-                    تعديل
-
+                <button class="edit-btn" onclick="editProduct(${product.id})">
+                    <i class="fa-solid fa-pen"></i> تعديل
                 </button>
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteProduct(${product.id})"
-                >
-
-                    <i class="fa-solid fa-trash"></i>
-
-                    حذف
-
+                <button class="delete-btn" onclick="deleteProduct(${product.id})">
+                    <i class="fa-solid fa-trash"></i> حذف
                 </button>
-
             </div>
-
         `;
-
         list.appendChild(item);
-
     });
-
 }
 
-/* SAVE PRODUCT */
-
+// حفظ المنتج (إضافة أو تعديل)
 async function saveProduct() {
+    const name = document.getElementById("productName").value.trim();
+    const price = Number(document.getElementById("productPrice").value);
+    const category = document.getElementById("productCategory").value;
+    const description = document.getElementById("productDescription").value.trim();
+    const imageFile = document.getElementById("productImage").files[0];
+    const status = document.getElementById("status");
 
-    const name =
-        document
-            .getElementById("productName")
-            .value
-            .trim();
-
-    const price =
-        Number(
-            document
-                .getElementById("productPrice")
-                .value
-        );
-
-    const category =
-        document
-            .getElementById("productCategory")
-            .value;
-
-    const description =
-        document
-            .getElementById("productDescription")
-            .value
-            .trim();
-
-    const imageFile =
-        document
-            .getElementById("productImage")
-            .files[0];
-
-    const status =
-        document.getElementById("status");
-
-    if (!name) {
-
-        status.textContent =
-            "اكتب اسم المنتج.";
-
+    // تحويل السعر من String لـ Number والتأكد منه
+    if (!name || isNaN(price) || price < 0) {
+        status.textContent = "يرجى إدخال اسم وصفر صحيح للسعر.";
+        status.style.color = "red";
         return;
-
     }
 
-    if (price < 0 || isNaN(price)) {
+    status.textContent = "جاري الحفظ...";
+    status.style.color = "blue";
 
-        status.textContent =
-            "اكتب سعرًا صحيحًا.";
-
-        return;
-
-    }
-
-    status.textContent =
-        "جاري الحفظ...";
-
-    let imageUrl =
-        oldImageUrl;
+    // معالجة الصورة (رفع جديد أو استخدام القديمة)
+    let imageUrl = oldImageUrl; // افتراضياً نستخدم القديمة لو تعديل
 
     if (imageFile) {
+        // إذا اختار ملف جديد -> نرفعه أولاً
+        const { data: authData } = await supabaseClient.auth.getUser();
+        if (!authData.user) { status.textContent="انتهت الجلسة، اعد الدخول"; showLoginScreen(); return; }
 
-        const extension =
-            imageFile.name
-                .split(".")
-                .pop();
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${crypto.randomUUID()}.${fileExt}`; // اسم فريد لمنع التكرار
 
-        const fileName =
-            crypto.randomUUID() +
-            "." +
-            extension;
-
-        const {
-            error: uploadError
-        } =
-            await supabaseClient
-                .storage
-                .from("products")
-                .upload(
-                    fileName,
-                    imageFile
-                );
+        // محاولة الرفع لـ Storage Bucket اسمه 'products'
+        const { error: uploadError } = await supabaseClient.storage
+            .from("products")
+            .upload(fileName, imageFile);
 
         if (uploadError) {
-
-            status.textContent =
-                "فشل رفع الصورة.";
-
-            console.error(uploadError);
-
+            status.textContent = "فشل رفع الصورة.";
+            console.error("Upload error:", uploadError.message);
             return;
-
         }
 
-        const {
-            data
-        } =
-            supabaseClient
-                .storage
-                .from("products")
-                .getPublicUrl(
-                    fileName
-                );
+        // الحصول على رابط الصورة العلني (Public URL)
+        const { data: publicUrlData } = supabaseClient.storage
+            .from("products")
+            .getPublicUrl(fileName);
 
-        imageUrl =
-            data.publicUrl;
-
+        imageUrl = publicUrlData.publicUrl;
     }
+
+    const productData = {
+        name: name,
+        price: price,
+        category: category,
+        description: description,
+        image_url: imageUrl
+    };
 
     if (editingId) {
-
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("products")
-                .update({
-
-                    name: name,
-
-                    price: price,
-
-                    category: category,
-
-                    description: description,
-
-                    image_url: imageUrl
-
-                })
-                .eq(
-                    "id",
-                    editingId
-                );
+        // حالة التعديل
+        const { error } = await supabaseClient
+            .from("products")
+            .update(productData)
+            .eq("id", editingId);
 
         if (error) {
-
-            status.textContent =
-                "حدث خطأ أثناء التعديل.";
-
-            console.error(error);
-
+            status.textContent = "حدث خطأ أثناء التعديل.";
+            status.style.color = "red";
+            console.error("Update error:", error.message);
             return;
-
         }
-
-        status.textContent =
-            "تم تعديل المنتج بنجاح ✅";
-
-    }
-
-    else {
-
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("products")
-                .insert({
-
-                    name: name,
-
-                    price: price,
-
-                    category: category,
-
-                    description: description,
-
-                    image_url: imageUrl
-
-                });
+        status.textContent = "تم تعديل المنتج بنجاح ✅";
+    } else {
+        // حالة الإضافة الجديدة
+        const { error } = await supabaseClient
+            .from("products")
+            .insert([productData]);
 
         if (error) {
-
-            status.textContent =
-                "حدث خطأ أثناء إضافة المنتج.";
-
-            console.error(error);
-
+            status.textContent = "حدث خطأ أثناء إضافة المنتج.";
+            status.style.color = "red";
+            console.error("Insert error:", error.message);
             return;
-
         }
-
-        status.textContent =
-            "تم إضافة المنتج بنجاح ✅";
-
+        status.textContent = "تم إضافة المنتج بنجاح ✅";
     }
 
+    status.style.color = "green";
     resetForm();
-
     loadProducts();
-
 }
 
-/* EDIT */
-
+// دالة التعديل (تحضير الفورم)
 async function editProduct(id) {
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("products")
-            .select("*")
-            .eq("id", id)
-            .single();
+    const { data, error } = await supabaseClient
+        .from("products")
+        .select("*")
+        .eq("id", id)
+        .single(); // نتوقع منتج واحد فقط
 
     if (error) {
-
-        alert("حدث خطأ.");
-
+        alert("حدث خطأ أثناء جلب بيانات المنتج.");
         return;
-
     }
 
-    editingId =
-        id;
+    editingId = id;
+    oldImageUrl = data.image_url || ""; // حفظ الرابط القديم للاستخدام لو لم يتم تغيير الصورة
 
-    oldImageUrl =
-        data.image_url || "";
+    document.getElementById("productName").value = data.name;
+    document.getElementById("productPrice").value = data.price;
+    document.getElementById("productCategory").value = data.category;
+    document.getElementById("productDescription").value = data.description || "";
+    document.getElementById("productImage").value = ""; // مسح الفايل إنبوت القديم
 
-    document
-        .getElementById("productName")
-        .value =
-            data.name;
-
-    document
-        .getElementById("productPrice")
-        .value =
-            data.price;
-
-    document
-        .getElementById("productCategory")
-        .value =
-            data.category;
-
-    document
-        .getElementById("productDescription")
-        .value =
-            data.description || "";
-
-    document
-        .getElementById("productImage")
-        .value =
-            "";
-
-    document
-        .getElementById("formTitle")
-        .textContent =
-            "تعديل المنتج";
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
+    document.getElementById("formTitle").textContent = "تعديل المنتج";
+    
+    // سكرول لأعلى لرؤية الفورم
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* DELETE */
-
+// حذف المنتج
 async function deleteProduct(id) {
+    const confirmed = confirm("هل أنت متأكد من حذف هذا المنتج؟ لا يمكن التراجع عن هذه الخطوة.");
+    if (!confirmed) return;
 
-    const confirmed =
-        confirm(
-            "هل أنت متأكد من حذف المنتج؟"
-        );
-
-    if (!confirmed)
-        return;
-
-    const {
-        error
-    } =
-        await supabaseClient
-            .from("products")
-            .delete()
-            .eq("id", id);
+    const { error } = await supabaseClient
+        .from("products")
+        .delete()
+        .eq("id", id);
 
     if (error) {
-
-        alert(
-            "حدث خطأ أثناء حذف المنتج."
-        );
-
-        console.error(error);
-
+        alert("حدث خطأ أثناء حذف المنتج.");
+        console.error("Delete error:", error.message);
         return;
-
     }
 
-    alert(
-        "تم حذف المنتج بنجاح ✅"
-    );
-
+    alert("تم حذف المنتج بنجاح ✅");
     loadProducts();
-
 }
 
-/* RESET */
-
+// تفريغ الفورم
 function resetForm() {
-
     editingId = null;
-
     oldImageUrl = "";
-
-    document
-        .getElementById("productName")
-        .value = "";
-
-    document
-        .getElementById("productPrice")
-        .value = "";
-
-    document
-        .getElementById("productDescription")
-        .value = "";
-
-    document
-        .getElementById("productImage")
-        .value = "";
-
-    document
-        .getElementById("productCategory")
-        .value =
-            "medicines";
-
-    document
-        .getElementById("formTitle")
-        .textContent =
-            "إضافة منتج جديد";
-
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productDescription").value = "";
+    document.getElementById("productImage").value = "";
+    document.getElementById("productCategory").value = "medicines";
+    document.getElementById("formTitle").textContent = "إضافة منتج جديد";
 }
 
-/* ESCAPE */
-
+// دالة حماية النصوص
 function escapeHTML(text) {
-
     return String(text)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
-/* START */
-
-async function start() {
-
-    const {
-        data
-    } =
-        await supabaseClient
-            .auth
-            .getSession();
-
-    if (data.session) {
-
-        await checkAdmin();
-
-    }
-
-}
-
-start();
+/* --- تشغيل الفحص فور التحميل --- */
+checkInitialAuth();
 
 </script>
 
