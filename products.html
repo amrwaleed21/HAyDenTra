@@ -398,11 +398,10 @@
             margin: 20px auto 35px;
             padding: 22px;
             border-radius: 28px;
-            /* خلفية متدرجة ابيض في لبني ناعم جداً شفافة */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(224, 242, 254, 0.2) 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(224, 242, 254, 0.12) 100%);
+            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
             box-shadow: 0 10px 30px rgba(2, 132, 199, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
@@ -418,7 +417,7 @@
             padding: 14px 18px;
             border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 249, 255, 0.25) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(240, 249, 255, 0.15) 100%);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: #0f172a;
@@ -432,7 +431,7 @@
         .search-box:focus,
         .sort-select:focus {
             border-color: #38bdf8;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 25px rgba(2, 132, 199, 0.18);
         }
 
@@ -455,7 +454,7 @@
             padding: 9px 20px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(224, 242, 254, 0.25) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(224, 242, 254, 0.18) 100%);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #0369a1;
@@ -467,7 +466,7 @@
         }
 
         .chip:hover {
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.55);
             transform: translateY(-1px);
         }
 
@@ -479,7 +478,7 @@
         }
 
         /* =========================
-           FADED WHITE-BLUE GLASS CARDS
+           FADED WHITE-BLUE GLASS CARDS (MORE TRANSPARENT)
         ========================= */
 
         .products-grid {
@@ -493,11 +492,11 @@
         .product-card {
             overflow: hidden;
             border-radius: 28px;
-            /* خلفية تدرج أبيض ول بني ناعم وشفاف */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(224, 242, 254, 0.15) 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            /* الشفافية أصبحت أسهل لرؤية الخلفية خلفها */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(224, 242, 254, 0.08) 100%);
+            border: 1.5px solid rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
             box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease, background 0.3s ease;
             display: flex;
@@ -509,8 +508,8 @@
 
         .product-card:hover {
             transform: translateY(-8px) scale(1.02);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(224, 242, 254, 0.3) 100%);
-            border-color: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(224, 242, 254, 0.18) 100%);
+            border-color: rgba(255, 255, 255, 0.85);
             box-shadow: 0 25px 45px -10px rgba(2, 132, 199, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.95);
         }
 
@@ -519,14 +518,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             margin: 12px 12px 0 12px;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             padding: 10px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
         }
 
         .product-image img {
@@ -543,7 +542,7 @@
 
         .product-image i {
             font-size: 65px;
-            color: #0284c7;
+            color: #ffffff;
         }
 
         .product-info {
@@ -554,11 +553,13 @@
             justify-content: space-between;
         }
 
+        /* تم تغيير لون تصنيف المنتج إلى الأبيض */
         .product-category {
-            color: #0284c7;
-            font-size: 12px;
+            color: #ffffff;
+            font-size: 13px;
             font-weight: 800;
             letter-spacing: .3px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .product-name {
@@ -593,10 +594,12 @@
             border-top: 1px solid rgba(255, 255, 255, 0.35);
         }
 
+        /* تم تغيير لون السعر إلى الأبيض */
         .price {
             font-size: 17px;
             font-weight: 900;
-            color: #0284c7;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .order-btn {
@@ -623,7 +626,7 @@
         }
 
         /* =========================
-           FADED GLASS PRODUCT MODAL (MATCHED TO IMAGE)
+           FADED GLASS PRODUCT MODAL
         ========================= */
 
         .product-modal-backdrop {
@@ -651,12 +654,11 @@
             position: relative;
             width: min(100%, 720px);
             max-height: 90dvh;
-            /* الشفافية والتدرج الأبيض واللبني المماثل للفلتر والكروت */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(224, 242, 254, 0.18) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(224, 242, 254, 0.1) 100%);
             border-radius: 28px;
-            border: 1.5px solid rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1.5px solid rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px) saturate(170%);
+            -webkit-backdrop-filter: blur(16px) saturate(170%);
             box-shadow: 0 25px 50px -10px rgba(2, 132, 199, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.85);
             overflow-y: auto;
             transform: scale(0.88) translateY(20px);
@@ -696,14 +698,14 @@
         }
 
         .modal-image-wrap {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             margin: 16px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             position: relative;
             min-height: 280px;
         }
@@ -717,7 +719,7 @@
 
         .modal-image-wrap i {
             font-size: 90px;
-            color: #0284c7;
+            color: #ffffff;
         }
 
         .modal-details {
@@ -727,12 +729,14 @@
             justify-content: space-between;
         }
 
+        /* تصنيف المنتج باللون الأبيض داخل النافذة */
         .modal-category {
-            color: #0284c7;
+            color: #ffffff;
             font-size: 13px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: .5px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .modal-title {
@@ -764,10 +768,12 @@
             gap: 14px;
         }
 
+        /* السعر باللون الأبيض داخل النافذة */
         .modal-price-tag {
             font-size: 22px;
             font-weight: 900;
-            color: #0284c7;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
         .modal-order-btn {
@@ -1112,7 +1118,7 @@
 
     </main>
 
-    <!-- PRODUCT DETAIL MODAL (GLASSY MATCHING IMAGE) -->
+    <!-- PRODUCT DETAIL MODAL -->
     <div class="product-modal-backdrop" id="productModal" onclick="closeProductModal(event)">
         <div class="product-modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeProductModal()">
