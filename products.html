@@ -390,7 +390,7 @@
         }
 
         /* =========================
-           CONTENT BODY WRAPPER (WHITE GRADIENT BLEND)
+           CONTENT BODY WRAPPER
         ========================= */
 
         .content-body-wrapper {
@@ -498,7 +498,7 @@
         }
 
         /* =========================
-           NEW iOS GLASS PRODUCT CARDS
+           iOS GLASS PRODUCT CARDS
         ========================= */
 
         .products-grid {
@@ -514,15 +514,14 @@
             overflow: hidden;
             border-radius: 28px;
             
-            /* iOS Liquid Glass Effect */
-            background: rgba(255, 255, 255, 0.42);
-            border: 1px solid rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(20px) saturate(190%);
-            -webkit-backdrop-filter: blur(20px) saturate(190%);
+            /* iOS Glass Effect (Dark Frosted Glass Style) */
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
             
-            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.08), 
-                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
-                        inset 0 -1px 1px 0 rgba(2, 132, 199, 0.05);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.2), 
+                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
                         
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                         box-shadow 0.4s ease, 
@@ -536,7 +535,6 @@
             cursor: pointer;
         }
 
-        /* Glass light reflection highlight */
         .product-card::before {
             content: "";
             position: absolute;
@@ -544,17 +542,16 @@
             left: 0;
             right: 0;
             height: 40%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
             pointer-events: none;
             border-radius: 28px 28px 0 0;
         }
 
         .product-card:hover {
             transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(15, 23, 42, 0.6);
             border-color: rgba(56, 189, 248, 0.8);
-            box-shadow: 0 22px 45px -8px rgba(2, 132, 199, 0.18), 
-                        inset 0 1px 2px rgba(255, 255, 255, 1);
+            box-shadow: 0 22px 45px -8px rgba(2, 132, 199, 0.3);
         }
 
         .product-image {
@@ -562,15 +559,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.1);
             margin: 12px 12px 0 12px;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 10px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.8);
         }
 
         .product-image img {
@@ -587,7 +583,7 @@
 
         .product-image i {
             font-size: 65px;
-            color: #0284c7;
+            color: #38bdf8;
         }
 
         .product-info {
@@ -600,24 +596,28 @@
             z-index: 1;
         }
 
+        /* تعديل الخط ولون نوع المنتج للون الأبيض */
         .product-category {
-            color: #0284c7;
+            color: #ffffff;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: .3px;
+            opacity: 0.9;
         }
 
+        /* تعديل لون اسم المنتج للون الأبيض */
         .product-name {
             margin-top: 6px;
             font-size: 17px;
             line-height: 1.45;
             font-weight: 900;
-            color: #0f172a;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .product-description {
             margin-top: 8px;
-            color: #475569;
+            color: #e2e8f0;
             font-size: 12px;
             line-height: 1.6;
             font-weight: 600;
@@ -636,13 +636,13 @@
             gap: 10px;
             margin-top: 18px;
             padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .price {
             font-size: 17px;
             font-weight: 900;
-            color: #0284c7;
+            color: #38bdf8;
         }
 
         .order-btn {
@@ -655,7 +655,7 @@
             font-size: 12px;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
             transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
@@ -665,20 +665,20 @@
 
         .order-btn:hover {
             transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.42);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.6);
         }
 
         /* =========================
-           NEW iOS GLASS PRODUCT MODAL
+           iOS GLASS PRODUCT MODAL
         ========================= */
 
         .product-modal-backdrop {
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(15, 23, 42, 0.35);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -698,15 +698,15 @@
             width: min(100%, 720px);
             max-height: 90dvh;
             
-            /* Ultra Glass Effect */
-            background: rgba(255, 255, 255, 0.65);
+            /* Glassmorphism Dark Mode for iOS look */
+            background: rgba(15, 23, 42, 0.75);
             border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(30px) saturate(200%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(35px) saturate(200%);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
             
-            box-shadow: 0 30px 60px -12px rgba(2, 132, 199, 0.22), 
-                        inset 0 1.5px 2px rgba(255, 255, 255, 1);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), 
+                        inset 0 1.5px 2px rgba(255, 255, 255, 0.3);
                         
             overflow-y: auto;
             transform: scale(0.88) translateY(20px);
@@ -728,15 +728,14 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.6);
-            color: #0284c7;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
             font-size: 20px;
             cursor: pointer;
             z-index: 10;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
             transition: 0.3s ease;
         }
 
@@ -747,19 +746,18 @@
         }
 
         .modal-image-wrap {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             margin: 16px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             position: relative;
             min-height: 280px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.9);
         }
 
         .modal-image-wrap img {
@@ -771,7 +769,7 @@
 
         .modal-image-wrap i {
             font-size: 90px;
-            color: #0284c7;
+            color: #38bdf8;
         }
 
         .modal-details {
@@ -781,25 +779,29 @@
             justify-content: space-between;
         }
 
+        /* تعديل لون نوع المنتج في المودال للأبيض */
         .modal-category {
-            color: #0284c7;
+            color: #ffffff;
             font-size: 13px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: .5px;
+            opacity: 0.9;
         }
 
+        /* تعديل اسم المنتج في المودال للأبيض */
         .modal-title {
             font-size: 23px;
             font-weight: 900;
-            color: #0f172a;
+            color: #ffffff;
             margin-top: 6px;
             line-height: 1.3;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
         .modal-description {
             margin-top: 14px;
-            color: #334155;
+            color: #cbd5e1;
             font-size: 14px;
             line-height: 1.8;
             font-weight: 700;
@@ -812,7 +814,7 @@
         .modal-footer {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -821,7 +823,7 @@
         .modal-price-tag {
             font-size: 22px;
             font-weight: 900;
-            color: #0284c7;
+            color: #38bdf8;
         }
 
         .modal-order-btn {
@@ -835,7 +837,7 @@
             font-size: 15px;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -845,7 +847,7 @@
 
         .modal-order-btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.45);
+            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.6);
         }
 
         .loading {
@@ -1100,7 +1102,6 @@
 
         </section>
 
-        <!-- بداية الحاوية ذات الخلفية البيضاء المتدرجة الممزوجة مع خلفية searchbarbg -->
         <div class="content-body-wrapper">
 
             <section class="filters pop-element" style="animation-delay: 0.15s;">
@@ -1169,7 +1170,6 @@
 
     </main>
 
-    <!-- iOS GLASS PRODUCT DETAIL MODAL -->
     <div class="product-modal-backdrop" id="productModal" onclick="closeProductModal(event)">
         <div class="product-modal-card" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeProductModal()">
