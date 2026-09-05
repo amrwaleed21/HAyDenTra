@@ -402,8 +402,8 @@
             background: linear-gradient(
                 to bottom,
                 rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.55) 70px,
-                rgba(255, 255, 255, 0.88) 140px,
+                rgba(255, 255, 255, 0.45) 70px,
+                rgba(255, 255, 255, 0.8) 140px,
                 #ffffff 220px,
                 #ffffff 100%
             );
@@ -418,10 +418,10 @@
             margin: 0 auto 35px;
             padding: 22px;
             border-radius: 28px;
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
             box-shadow: 0 12px 35px rgba(2, 132, 199, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
         }
 
@@ -437,7 +437,7 @@
             padding: 14px 18px;
             border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: #0f172a;
@@ -474,7 +474,7 @@
             padding: 9px 20px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #0369a1;
@@ -498,7 +498,7 @@
         }
 
         /* =========================
-           ENHANCED iOS PRODUCT CARDS
+           NEW iOS GLASS PRODUCT CARDS
         ========================= */
 
         .products-grid {
@@ -512,17 +512,23 @@
         .product-card {
             position: relative;
             overflow: hidden;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.06),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.9);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.35s ease,
-                        background 0.3s ease,
-                        border-color 0.3s ease;
+            border-radius: 28px;
+            
+            /* Enhanced iOS Liquid Glass Effect */
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(22px) saturate(200%);
+            -webkit-backdrop-filter: blur(22px) saturate(200%);
+            
+            box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.08), 
+                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+                        inset 0 -1px 1px 0 rgba(2, 132, 199, 0.05);
+                        
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s ease, 
+                        border-color 0.3s ease, 
+                        background 0.3s ease;
+                        
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -530,62 +536,64 @@
             cursor: pointer;
         }
 
+        /* Glass light reflection highlight */
         .product-card::before {
             content: "";
             position: absolute;
             top: 0;
-            right: 0;
             left: 0;
-            height: 50%;
+            right: 0;
+            height: 40%;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
             pointer-events: none;
-            border-radius: 24px 24px 0 0;
+            border-radius: 28px 28px 0 0;
         }
 
         .product-card:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(56, 189, 248, 0.6);
-            box-shadow: 0 18px 40px rgba(2, 132, 199, 0.15),
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.55);
+            border-color: rgba(56, 189, 248, 0.8);
+            box-shadow: 0 22px 45px -8px rgba(2, 132, 199, 0.18), 
                         inset 0 1px 2px rgba(255, 255, 255, 1);
         }
 
+        /* Transparent Glass Image Area */
         .product-image {
-            height: 190px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.2);
             margin: 12px 12px 0 12px;
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 10px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.9);
-            position: relative;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6);
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 14px;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            mix-blend-mode: multiply; /* Blends image smoothly with white/glass bg */
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .product-image i {
-            font-size: 60px;
+            font-size: 65px;
             color: #0284c7;
         }
 
         .product-info {
-            padding: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -594,33 +602,31 @@
             z-index: 1;
         }
 
+        /* WHITE & CLEAR CATEGORY TEXT */
         .product-category {
-            display: inline-block;
-            align-self: flex-start;
-            color: #0284c7;
-            background: rgba(224, 242, 254, 0.7);
-            border: 1px solid rgba(186, 230, 253, 0.8);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 11px;
+            color: #ffffff !important;
+            font-size: 13px;
             font-weight: 800;
-            letter-spacing: .2px;
+            letter-spacing: .4px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(2, 132, 199, 0.5);
+            display: inline-block;
         }
 
         .product-name {
-            margin-top: 8px;
-            font-size: 16px;
-            line-height: 1.4;
+            margin-top: 6px;
+            font-size: 17px;
+            line-height: 1.45;
             font-weight: 900;
             color: #0f172a;
         }
 
         .product-description {
-            margin-top: 6px;
-            color: #64748b;
+            margin-top: 8px;
+            color: #334155;
             font-size: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
             font-weight: 600;
+
             display: -webkit-box;
             -webkit-line-clamp: 2;
             line-clamp: 2;
@@ -633,29 +639,37 @@
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            margin-top: 16px;
+            margin-top: 18px;
             padding-top: 12px;
-            border-top: 1px solid rgba(226, 232, 240, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
         }
 
+        /* WHITE & CLEAR PRICE TEXT */
         .price {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 900;
-            color: #0284c7;
+            color: #ffffff !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 12px rgba(2, 132, 199, 0.6);
+            background: rgba(2, 132, 199, 0.35);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .order-btn {
             border: 0;
-            padding: 9px 15px;
-            border-radius: 12px;
+            padding: 10px 16px;
+            border-radius: 14px;
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
             font-family: "Cairo", sans-serif;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -663,12 +677,12 @@
         }
 
         .order-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.38);
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.42);
         }
 
         /* =========================
-           iOS GLASS PRODUCT MODAL
+           NEW iOS GLASS PRODUCT MODAL (POP-UP)
         ========================= */
 
         .product-modal-backdrop {
@@ -676,8 +690,8 @@
             inset: 0;
             z-index: 2000;
             background: rgba(15, 23, 42, 0.35);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -693,788 +707,286 @@
         }
 
         .product-modal-card {
-            position: relative;
-            width: min(100%, 720px);
-            max-height: 90dvh;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(30px) saturate(200%);
             -webkit-backdrop-filter: blur(30px) saturate(200%);
-            box-shadow: 0 30px 60px -12px rgba(2, 132, 199, 0.22), 
-                        inset 0 1.5px 2px rgba(255, 255, 255, 1);
-            overflow-y: auto;
-            transform: scale(0.88) translateY(20px);
-            opacity: 0;
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            border-radius: 32px;
+            width: min(100%, 480px);
+            padding: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .product-modal-backdrop.active .product-modal-card {
             transform: scale(1) translateY(0);
-            opacity: 1;
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 16px;
-            left: 16px;
-            width: 42px;
-            height: 42px;
+            top: 18px;
+            left: 18px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.8);
             background: rgba(255, 255, 255, 0.6);
             color: #0284c7;
-            font-size: 20px;
+            font-size: 18px;
+            display: grid;
+            place-items: center;
             cursor: pointer;
+            transition: 0.25s;
             z-index: 10;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
-            transition: 0.3s ease;
         }
 
         .modal-close-btn:hover {
-            background: #0284c7;
-            color: #ffffff;
-            transform: rotate(90deg) scale(1.05);
+            background: rgba(255, 255, 255, 0.95);
+            transform: scale(1.08);
         }
 
-        .modal-image-wrap {
-            background: rgba(255, 255, 255, 0.4);
+        .modal-product-img {
+            width: 100%;
+            height: 240px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            margin: 16px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            position: relative;
-            min-height: 280px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.9);
+            overflow: hidden;
+            padding: 15px;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.7);
         }
 
-        .modal-image-wrap img {
+        .modal-product-img img {
             max-width: 100%;
-            max-height: 280px;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 16px;
+            mix-blend-mode: multiply;
         }
 
-        .modal-image-wrap i {
-            font-size: 90px;
-            color: #0284c7;
-        }
-
-        .modal-details {
-            padding: 28px 24px 28px 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .modal-category {
-            color: #0284c7;
-            font-size: 13px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .modal-title {
-            font-size: 23px;
-            font-weight: 900;
-            color: #0f172a;
-            margin-top: 6px;
-            line-height: 1.3;
-        }
-
-        .modal-description {
-            margin-top: 14px;
-            color: #334155;
+        .modal-product-category {
+            margin-top: 16px;
             font-size: 14px;
-            line-height: 1.8;
-            font-weight: 700;
-            white-space: pre-line;
-            max-height: 180px;
-            overflow-y: auto;
-            padding-left: 5px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(2, 132, 199, 0.5);
+            display: inline-block;
         }
 
-        .modal-footer {
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .modal-price-tag {
+        .modal-product-title {
+            margin-top: 4px;
             font-size: 22px;
             font-weight: 900;
-            color: #0284c7;
+            color: #0f172a;
         }
 
-        .modal-order-btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 16px;
-            border: 0;
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: #ffffff;
-            font-family: "Cairo", sans-serif;
-            font-size: 15px;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+        .modal-product-desc {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .modal-product-bottom {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+            justify-content: space-between;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        .modal-order-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.45);
+        .modal-product-price {
+            font-size: 20px;
+            font-weight: 900;
+            color: #ffffff !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 12px rgba(2, 132, 199, 0.6);
+            background: rgba(2, 132, 199, 0.35);
+            padding: 5px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
-        .loading {
-            grid-column: 1 / -1;
-            width: 100%;
-            margin: 40px auto;
-            text-align: center;
-            color: #0369a1;
-            font-weight: 800;
-            font-size: 16px;
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            color: #0369a1;
-            font-weight: 800;
-            padding: 40px 20px;
-            display: none;
-        }
-
-        footer {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            padding: 20px 15px 25px;
-            text-align: center;
-            color: #0369a1;
-            font-size: 13px;
-            font-weight: 700;
-            background: #ffffff;
-            border-top: 1px solid rgba(224, 242, 254, 0.8);
-        }
-
-        /* =========================
-           RESPONSIVE DESIGN
-        ========================= */
-
-        @media(max-width: 900px) {
+        /* Responsive Layout Grid */
+        @media (max-width: 992px) {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media(max-width: 768px) {
-            .product-modal-card {
+        @media (max-width: 640px) {
+            .products-grid {
                 grid-template-columns: 1fr;
             }
-
-            .modal-image-wrap {
-                min-height: 220px;
-                padding: 16px;
-                margin: 12px;
-            }
-
-            .modal-image-wrap img {
-                max-height: 200px;
-            }
-
-            .modal-details {
-                padding: 16px 20px 24px;
-            }
-
-            .modal-title {
-                font-size: 20px;
-            }
-        }
-
-        @media(max-width: 600px) {
-
-            .nav-inner {
-                padding: 0 18px;
-            }
-
-            .nav-logo-circle {
-                width: 48px;
-                height: 48px;
-            }
-
-            .brand-name {
-                font-size: 24px;
-            }
-
-            .menu-btn {
-                width: 54px;
-                height: 54px;
-            }
-
-            .page-header {
-                padding-top: 25px;
-            }
-
-            .main-logo-circle {
-                width: 85px;
-                height: 85px;
-            }
-
-            .main-brand {
-                font-size: 35px;
-            }
-
-            .filters {
-                padding: 16px;
-            }
-
             .filter-row {
                 grid-template-columns: 1fr;
             }
-
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                width: min(100% - 16px, 1100px);
-            }
-
-            .product-image {
-                height: 140px;
-                margin: 8px 8px 0 8px;
-            }
-
-            .product-info {
-                padding: 12px;
-            }
-
-            .product-name {
-                font-size: 14px;
-            }
-
-            .price {
-                font-size: 14px;
-            }
-
-            .order-btn {
-                padding: 8px 10px;
-                font-size: 11px;
-            }
-        }
-
-        @media(max-width: 420px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .brand-name {
-                font-size: 21px;
-            }
-
-            .main-brand {
-                font-size: 30px;
-            }
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: .35;
-            background-image: radial-gradient(rgba(14, 165, 233, 0.15) .7px, transparent .7px);
-            background-size: 18px 18px;
-            mask-image: linear-gradient(to bottom, #000, transparent 80%);
-            z-index: 0;
         }
     </style>
 </head>
 
 <body>
 
+    <!-- HERO BACKGROUND WITH PARALLAX EFFECT -->
     <div class="hero-bg-section" id="heroBg"></div>
 
+    <!-- NAVBAR -->
     <header class="topbar">
-
         <div class="nav-inner">
-
-            <div class="nav-brand">
-
-                <div class="nav-logo-circle">
-                    <img src="logo.png" alt="HAyDenTra Logo">
-                </div>
-
-                <div class="brand-name">
-                    HAyDenTra
-                    <span class="registered">®</span>
-                </div>
-
-            </div>
-
-            <button class="menu-btn" onclick="openMenu()">
+            <button class="menu-btn" id="openMenu" aria-label="القائمة">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
+            <div class="nav-brand">
+                <div class="nav-logo-circle">
+                    <img src="logo.png" alt="HAyDenTra® Logo">
+                </div>
+                <span class="brand-name">HAyDenTra<span class="registered">®</span></span>
+            </div>
         </div>
-
     </header>
 
-    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    <!-- SIDEBAR OVERLAY -->
+    <div class="overlay" id="overlay"></div>
 
+    <!-- SIDEBAR MENU -->
     <aside class="sidebar" id="sidebar">
-
-        <button class="close-btn" onclick="closeMenu()">
+        <button class="close-btn" id="closeMenu" aria-label="إغلاق القائمة">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
         <div class="sidebar-header">
-
             <div class="sidebar-logo">
-                <img src="logo.png" alt="HAyDenTra Logo">
+                <img src="logo.png" alt="HAyDenTra® Logo">
             </div>
-
-            <div class="sidebar-brand">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
+            <div class="sidebar-brand">HAyDenTra<span class="registered">®</span></div>
         </div>
 
         <a href="index.html" class="side-link">
-            <i class="fa-solid fa-house"></i>
-            <span>الرئيسية</span>
+            <i class="fa-solid fa-house"></i> الرئيسية
         </a>
-
         <a href="products.html" class="side-link active">
-            <i class="fa-solid fa-tooth"></i>
-            <span>المنتجات</span>
+            <i class="fa-solid fa-tooth"></i> المنتجات
         </a>
-
+        <a href="about.html" class="side-link">
+            <i class="fa-solid fa-circle-info"></i> عن الشركة
+        </a>
         <a href="contact.html" class="side-link">
-            <i class="fa-solid fa-phone"></i>
-            <span>تواصل معنا</span>
+            <i class="fa-solid fa-envelope"></i> اتصل بنا
         </a>
-
     </aside>
 
+    <!-- MAIN CONTENT -->
     <main>
-
-        <section class="page-header pop-element" style="animation-delay: 0.05s;">
-
+        <section class="page-header pop-element">
             <div class="main-logo-circle">
-                <img src="logo.png" alt="HAyDenTra Logo">
+                <img src="logo.png" alt="HAyDenTra® Logo">
             </div>
-
-            <div class="main-brand">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
-            <h1>منتجات ومستلزمات الأسنان</h1>
-
-            <p>
-                مجموعة مختارة من المواد والأدوية والأجهزة والأدوات الطبية
-            </p>
-
+            <span class="main-brand">HAyDenTra<span class="registered">®</span></span>
+            <h1>مستلزمات وطب الأسنان</h1>
+            <p>كتالوج المنتجات والأدوات الطبية الاحترافية</p>
         </section>
 
-        <!-- بداية الحاوية ذات الخلفية البيضاء المتدرجة الممزوجة مع خلفية searchbarbg -->
         <div class="content-body-wrapper">
-
-            <section class="filters pop-element" style="animation-delay: 0.15s;">
-
+            <!-- FILTERS -->
+            <section class="filters pop-element">
                 <div class="filter-row">
-
-                    <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن أداة، دواء، جهاز، أو مادة طبية...">
-
+                    <input type="text" id="searchInput" class="search-box" placeholder="ابحث باسم المنتج أو النوع...">
                     <select id="sortSelect" class="sort-select">
-
-                        <option value="default">
-                            ترتيب التلقائي
-                        </option>
-
-                        <option value="high">
-                            السعر: من الأعلى للأقل
-                        </option>
-
-                        <option value="low">
-                            السعر: من الأقل للأعلى
-                        </option>
-
+                        <option value="default">الترتيب الافتراضي</option>
+                        <option value="price-asc">السعر: من الأقل للأعلى</option>
+                        <option value="price-desc">السعر: من الأعلى للأقل</option>
                     </select>
-
                 </div>
 
-                <div class="chips">
-
-                    <button class="chip active" data-category="all">
-                        الكل
-                    </button>
-
-                    <button class="chip" data-category="medicines">
-                        الأدوية
-                    </button>
-
-                    <button class="chip" data-category="materials">
-                        المواد
-                    </button>
-
-                    <button class="chip" data-category="devices">
-                        الأجهزة
-                    </button>
-
-                    <button class="chip" data-category="tools">
-                        الأدوات
-                    </button>
-
+                <div class="chips" id="chipsContainer">
+                    <button class="chip active" data-category="all">الكل</button>
+                    <!-- Categories will load dynamically -->
                 </div>
-
             </section>
 
-            <section class="products-grid" id="productsGrid">
-
-                <div class="loading" id="loading">
-                    <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل المنتجات من قاعدة البيانات...
-                </div>
-
+            <!-- PRODUCTS GRID -->
+            <section class="products-grid pop-element" id="productsGrid">
+                <!-- Products cards will load dynamically via JavaScript -->
             </section>
-
-            <div class="no-results" id="noResults">
-                لا توجد منتجات مطابقة للبحث.
-            </div>
-
         </div>
-
     </main>
 
-    <!-- iOS GLASS PRODUCT DETAIL MODAL -->
-    <div class="product-modal-backdrop" id="productModal" onclick="closeProductModal(event)">
-        <div class="product-modal-card" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeProductModal()">
+    <!-- POP-UP PRODUCT MODAL (GLASS) -->
+    <div class="product-modal-backdrop" id="productModal">
+        <div class="product-modal-card">
+            <button class="modal-close-btn" id="modalCloseBtn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
-            <div class="modal-image-wrap" id="modalImageWrap"></div>
-
-            <div class="modal-details">
-                <div>
-                    <div class="modal-category" id="modalCategory"></div>
-                    <h2 class="modal-title" id="modalTitle"></h2>
-                    <div class="modal-description" id="modalDescription"></div>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="modal-price-tag" id="modalPrice"></div>
-                    <button type="button" class="modal-order-btn" id="modalOrderBtn">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        اطلب هذا المنتج الآن
-                    </button>
-                </div>
+            <div class="modal-product-img" id="modalImgContainer">
+                <img id="modalImg" src="" alt="صورة المنتج">
+            </div>
+            <span class="modal-product-category" id="modalCategory">الفئة</span>
+            <h2 class="modal-product-title" id="modalTitle">اسم المنتج</h2>
+            <p class="modal-product-desc" id="modalDesc">تفاصيل المنتج ووصفه كاملاً يظهر هنا في هذه النافذة الزجاجية المميزة.</p>
+            <div class="modal-product-bottom">
+                <span class="modal-product-price" id="modalPrice">0 ج.م</span>
+                <button class="order-btn" id="modalOrderBtn">
+                    <i class="fa-solid fa-cart-shopping"></i> طلب المنتج
+                </button>
             </div>
         </div>
     </div>
 
-    <footer>
-        © 2026 HAyDenTra® - جميع الحقوق محفوظة
-    </footer>
-
+    <!-- JAVASCRIPT & LOGIC -->
     <script>
+        // Interactive Menu Toggle
+        const openMenu = document.getElementById('openMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
 
-        const SUPABASE_URL = "https://hcvajgyjiflkcsdjvzib.supabase.co";
-        const SUPABASE_KEY = "sb_publishable_NhB5QvshhLY4rPpOTLjGXw_dBjCbSOW";
+        function toggleSidebar(show) {
+            if (show) {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.classList.add('menu-open');
+            } else {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        }
 
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        openMenu.addEventListener('click', () => toggleSidebar(true));
+        closeMenu.addEventListener('click', () => toggleSidebar(false));
+        overlay.addEventListener('click', () => toggleSidebar(false));
 
-        /* PARALLAX EFFECT ON SCROLL */
-
-        const heroBg = document.getElementById("heroBg");
-        window.addEventListener("scroll", () => {
+        // Parallax Effect for Background
+        window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
+            const heroBg = document.getElementById('heroBg');
             if (heroBg) {
-                heroBg.style.transform = `translateY(-${scrolled * 0.35}px)`;
+                heroBg.style.transform = `translateY(${scrolled * 0.25}px)`;
             }
         });
 
-        /* MENU CONTROLS */
+        // Modal Controls
+        const productModal = document.getElementById('productModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
-
-        function openMenu() {
-            sidebar.classList.add("active");
-            overlay.classList.add("active");
-            document.body.classList.add("menu-open");
+        function closeModal() {
+            productModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
         }
 
-        function closeMenu() {
-            sidebar.classList.remove("active");
-            overlay.classList.remove("active");
-            document.body.classList.remove("menu-open");
-        }
-
-        /* SUPABASE DATABASE INTEGRATION */
-
-        const productsGrid = document.getElementById("productsGrid");
-        const loading = document.getElementById("loading");
-        const noResults = document.getElementById("noResults");
-        const searchInput = document.getElementById("searchInput");
-        const sortSelect = document.getElementById("sortSelect");
-        const chips = document.querySelectorAll(".chip");
-
-        let allProducts = [];
-        let currentCategory = "all";
-
-        async function loadProducts() {
-
-            const { data, error } = await supabaseClient
-                .from("products")
-                .select("*")
-                .order("created_at", { ascending: false });
-
-            if (error) {
-                console.error(error);
-                loading.innerHTML = "حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات.";
-                return;
-            }
-
-            allProducts = data || [];
-            if (loading) loading.remove();
-            renderProducts(allProducts);
-        }
-
-        function renderProducts(products) {
-
-            productsGrid.innerHTML = "";
-
-            if (products.length === 0) {
-                noResults.style.display = "block";
-                return;
-            }
-
-            noResults.style.display = "none";
-
-            const fragment = document.createDocumentFragment();
-
-            products.forEach((product, index) => {
-
-                const card = document.createElement("article");
-                card.className = "product-card pop-element";
-                
-                const delay = Math.min(0.05 * index, 0.4);
-                card.style.animationDelay = `${delay}s`;
-
-                let imageHTML = "";
-
-                if (product.image_url) {
-                    imageHTML = `
-                        <img
-                            src="${escapeHTML(product.image_url)}"
-                            alt="${escapeHTML(product.name)}"
-                            loading="lazy"
-                        >
-                    `;
-                } else {
-                    let icon = "fa-tooth";
-                    if (product.category === "medicines" || product.category === "medication") icon = "fa-pills";
-                    if (product.category === "devices") icon = "fa-lightbulb";
-                    if (product.category === "tools") icon = "fa-toolbox";
-
-                    imageHTML = `<i class="fa-solid ${icon}"></i>`;
-                }
-
-                let categoryName = "مواد";
-                if (product.category === "medicines" || product.category === "medication") categoryName = "أدوية";
-                if (product.category === "devices") categoryName = "أجهزة";
-                if (product.category === "tools") categoryName = "أدوات";
-
-                card.dataset.category = product.category || "materials";
-                card.dataset.name = product.name || "";
-                card.dataset.price = product.price || 0;
-
-                card.onclick = () => openProductModal(product, categoryName, imageHTML);
-
-                card.innerHTML = `
-                    <div class="product-image">
-                        ${imageHTML}
-                    </div>
-
-                    <div class="product-info">
-                        <div>
-                            <div class="product-category">
-                                ${categoryName}
-                            </div>
-
-                            <h2 class="product-name">
-                                ${escapeHTML(product.name)}
-                            </h2>
-
-                            <p class="product-description">
-                                ${escapeHTML(product.description || "")}
-                            </p>
-                        </div>
-
-                        <div class="product-bottom">
-                            <span class="price">
-                                ${Number(product.price).toLocaleString("en-US")} ج.م
-                            </span>
-
-                            <button
-                                type="button"
-                                class="order-btn"
-                                data-name="${escapeHTML(product.name)}"
-                                data-price="${Number(product.price)}"
-                                onclick="event.stopPropagation(); orderProduct(this.dataset.name, this.dataset.price)"
-                            >
-                                <i class="fa-brands fa-whatsapp"></i>
-                                اطلب الآن
-                            </button>
-                        </div>
-                    </div>
-                `;
-
-                fragment.appendChild(card);
-            });
-
-            productsGrid.appendChild(fragment);
-        }
-
-        /* MODAL DETAIL LOGIC */
-
-        const productModal = document.getElementById("productModal");
-        const modalImageWrap = document.getElementById("modalImageWrap");
-        const modalCategory = document.getElementById("modalCategory");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDescription = document.getElementById("modalDescription");
-        const modalPrice = document.getElementById("modalPrice");
-        const modalOrderBtn = document.getElementById("modalOrderBtn");
-
-        function openProductModal(product, categoryName, imageHTML) {
-            modalImageWrap.innerHTML = imageHTML;
-            modalCategory.textContent = categoryName;
-            modalTitle.textContent = product.name || "";
-            modalDescription.textContent = product.description || "لا يوجد وصف إضافي متوفر لهذا المنتج.";
-            modalPrice.textContent = `${Number(product.price).toLocaleString("en-US")} ج.م`;
-
-            modalOrderBtn.onclick = () => {
-                orderProduct(product.name, product.price);
-            };
-
-            productModal.classList.add("active");
-            document.body.classList.add("modal-open");
-        }
-
-        function closeProductModal(e) {
-            if (!e || e.target === productModal || e.target.closest(".modal-close-btn")) {
-                productModal.classList.remove("active");
-                document.body.classList.remove("modal-open");
-            }
-        }
-
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                closeMenu();
-                closeProductModal();
-            }
+        modalCloseBtn.addEventListener('click', closeModal);
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) closeModal();
         });
-
-        /* FILTER / SEARCH / SORT LOGIC */
-
-        function updateProducts() {
-
-            const searchText = searchInput.value.trim().toLowerCase();
-            const cards = Array.from(productsGrid.querySelectorAll(".product-card"));
-            let visibleCards = [];
-
-            cards.forEach(card => {
-                card.classList.remove("pop-element");
-                card.style.animationDelay = "0s";
-
-                const name = (card.dataset.name || "").toLowerCase();
-                const category = card.dataset.category;
-
-                const matchesSearch = name.includes(searchText);
-                const matchesCategory = currentCategory === "all" || category === currentCategory || 
-                                        (currentCategory === "medicines" && category === "medication");
-
-                if (matchesSearch && matchesCategory) {
-                    card.style.display = "flex";
-                    visibleCards.push(card);
-                } else {
-                    card.style.display = "none";
-                }
-            });
-
-            const sortValue = sortSelect.value;
-
-            if (sortValue !== "default") {
-                visibleCards.sort((a, b) => {
-                    const priceA = Number(a.dataset.price);
-                    const priceB = Number(b.dataset.price);
-
-                    return sortValue === "high" ? priceB - priceA : priceA - priceB;
-                });
-
-                visibleCards.forEach(card => {
-                    productsGrid.appendChild(card);
-                });
-            }
-
-            noResults.style.display = visibleCards.length === 0 ? "block" : "none";
-        }
-
-        searchInput.addEventListener("input", updateProducts);
-        sortSelect.addEventListener("change", updateUpdates);
-
-        chips.forEach(chip => {
-            chip.addEventListener("click", function () {
-                chips.forEach(c => c.classList.remove("active"));
-                this.classList.add("active");
-                currentCategory = this.dataset.category;
-                updateProducts();
-            });
-        });
-
-        /* WHATSAPP ACTION */
-
-        function orderProduct(name, price) {
-            const phone = "201223859088";
-            const message = `مرحباً، أريد طلب المنتج:\n${name}\nالسعر: ${Number(price).toLocaleString("en-US")} ج.م`;
-            const whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-            window.open(whatsappURL, "_blank", "noopener,noreferrer");
-        }
-
-        /* UTILS */
-
-        function escapeHTML(text) {
-            return String(text || "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        loadProducts();
-
     </script>
-
 </body>
 
 </html>
