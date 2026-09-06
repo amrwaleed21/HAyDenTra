@@ -55,6 +55,51 @@
         }
 
         /* =========================
+           BLUR LOADING OVERLAY (الملغوشة حتى يجهز الموديل)
+        ========================= */
+
+        #modelLoaderOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(230, 244, 248, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #modelLoaderOverlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(2, 132, 199, 0.2);
+            border-top-color: #0284c7;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .loader-text {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0284c7;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* =========================
            NAVBAR
         ========================= */
 
@@ -378,17 +423,17 @@
         }
 
         /* =========================
-           3D MODEL - SMOOTH & GLOWING
+           3D MODEL - OVER THE CARD & CENTERED
         ========================= */
 
         .tooth-container {
             position: absolute;
-            top: 175px;
+            top: 145px;
             left: 50%;
             transform: translateX(-50%);
-            width: 220px;
-            height: 220px;
-            z-index: 1;
+            width: 230px;
+            height: 230px;
+            z-index: 3; /* فوق الكارت تماماً */
             pointer-events: none;
         }
 
@@ -397,8 +442,8 @@
             height: 100%;
             --poster-color: transparent;
 
-            /* توهج أزرق ناعم وساطع بشكل أنيق */
-            filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.5));
+            /* توهج أزرق سينمائي راقي ونظيف */
+            filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
         }
 
         model-viewer::part(default-progress-bar) {
@@ -408,7 +453,7 @@
         .tagline {
             position: relative;
             z-index: 2;
-            margin-top: 150px;
+            margin-top: 175px;
 
             color: #0369a1;
             font-size: 21px;
@@ -427,7 +472,7 @@
             width: min(92%, 600px);
 
             margin: 20px auto 0;
-            padding: 35px 25px;
+            padding: 45px 25px 35px; /* مساحة علوية لكي يستقر الموديل فوقه بمنتصفه */
 
             border-radius: 28px;
 
@@ -619,12 +664,12 @@
 
             .tagline {
                 font-size: 17px;
-                margin-top: 135px;
+                margin-top: 160px;
             }
 
             .welcome-card {
                 margin-top: 20px;
-                padding: 30px 18px;
+                padding: 40px 18px 30px;
                 border-radius: 28px;
             }
 
@@ -639,7 +684,7 @@
             }
 
             .tooth-container {
-                top: 165px;
+                top: 135px;
                 width: 200px;
                 height: 200px;
             }
@@ -660,6 +705,12 @@
 </head>
 
 <body>
+
+    <!-- شاشة اللغوشة والتحميل المؤقتة حتى يكتمل دوران الموديل بسلاسة -->
+    <div id="modelLoaderOverlay">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">جاري تجهيز العرض ثلاثي الأبعاد...</div>
+    </div>
 
     <header class="topbar">
         <div class="nav-inner">
@@ -735,7 +786,7 @@
                     loading="eager"
                     reveal="auto"
                     auto-rotate 
-                    rotation-per-second="110deg"
+                    rotation-per-second="100deg"
                     interaction-prompt="none"
                     shadow-intensity="0.2"
                     exposure="1.35"
@@ -810,22 +861,36 @@
             easing: 'ease-out-cubic'
         });
 
-        // ضبط لمعان ونعومة خامة السيراميك فوراً بدون تأخير
         const modelViewer = document.getElementById('modelViewer');
+        const loaderOverlay = document.getElementById('modelLoaderOverlay');
+
         if (modelViewer) {
-            const applyMaterialFix = () => {
+            const handleModelReady = () => {
+                // تظبيط نعومة ولمعان خامة السيراميك
                 if (modelViewer.model && modelViewer.model.materials) {
                     const material = modelViewer.model.materials[0];
                     if (material) {
-                        material.pbrMetallicRoughness.setRoughnessFactor(0.15); // لمعان عالي ونعومة فائقة
+                        material.pbrMetallicRoughness.setRoughnessFactor(0.15);
                         material.pbrMetallicRoughness.setMetallicFactor(0.05);
                     }
                 }
+
+                // إخفاء اللغوشة بنعومة تامة بعد أن يجهز الموديل ويبدأ دورانه
+                setTimeout(() => {
+                    if (loaderOverlay) {
+                        loaderOverlay.classList.add('hidden');
+                    }
+                }, 300);
             };
 
-            modelViewer.addEventListener('load', applyMaterialFix);
-            // محاولة تطبيق فورية احتياطية
-            setTimeout(applyMaterialFix, 100);
+            modelViewer.addEventListener('load', handleModelReady);
+            
+            // حل إضافي احتياطي لو الحدث تم مسبقاً
+            setTimeout(() => {
+                if (loaderOverlay && !loaderOverlay.classList.contains('hidden')) {
+                    handleModelReady();
+                }
+            }, 1200);
         }
 
         // القائمة الجانبية
