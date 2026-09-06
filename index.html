@@ -61,11 +61,11 @@
             position: fixed;
             inset: 0;
             z-index: 1500;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             pointer-events: none;
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 1.2s ease, -webkit-backdrop-filter 1.2s ease;
+            transition: opacity 1s ease, backdrop-filter 1s ease, -webkit-backdrop-filter 1s ease;
         }
 
         .blur-overlay.fade-out {
@@ -376,8 +376,8 @@
             width: 100%;
             padding: 20px 18px 25px;
             text-align: center;
-            overflow: visible; /* تعديل لمنع قص الموديل عند وجوده في الأسفل */
-            min-height: 85vh;
+            overflow: visible;
+            min-height: calc(100vh - 74px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -395,7 +395,6 @@
             z-index: 0;
             pointer-events: none;
             will-change: transform;
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .hero-bg-overlay {
@@ -415,16 +414,17 @@
 
         .tooth-container {
             position: fixed;
-            top: 100vh; /* وضع البداية أسفل إطار الشاشة تماماً */
+            /* الوضع المبدئي: أسفل إطار شاشة المستخدم تماماً خارج الرؤية */
+            top: 110vh;
             left: 50%;
-            transform: translate(-50%, 0%) scale(1.15); /* إزاحة كاملة للأسفل لضمان عدم الخروج الفجائي */
-            width: 280px;
-            height: 280px;
+            transform: translate(-50%, -50%) scale(1.15);
+            width: 260px;
+            height: 260px;
             z-index: 2000;
             pointer-events: none;
-            will-change: transform, top, opacity;
-            transition: top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: top, transform;
+            transition: top 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tooth-container model-viewer {
@@ -437,25 +437,25 @@
             display: none !important;
         }
 
-        /* المرحلة الأولى: الصعود لمنتصف الشاشة */
+        /* المرحلة الأولى: الصعود إلى المنتصف في الشاشة الحالية مباشرة */
         .tooth-container.center-stage {
             top: 50vh;
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* المرحلة الثانية: الاستقرار في المكان النهائي */
+        /* المرحلة الثانية: الهبوط والمكوث المباشر في الموضع النهائي بالنسبة لـ Viewport */
         .tooth-container.settled {
-            top: 290px;
+            top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
             z-index: 1;
-            transition: top 1.3s cubic-bezier(0.34, 1.2, 0.64, 1),
-                        transform 1.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+            transition: top 1.2s cubic-bezier(0.34, 1.25, 0.64, 1),
+                        transform 1.2s cubic-bezier(0.34, 1.25, 0.64, 1);
         }
 
         .tagline {
             position: relative;
             z-index: 2;
-            margin-top: 100px;
+            margin-top: 110px;
 
             color: #0369a1;
             font-size: 21px;
@@ -674,7 +674,7 @@
 
             .tagline {
                 font-size: 17px;
-                margin-top: 95px;
+                margin-top: 105px;
             }
 
             .welcome-card {
@@ -691,6 +691,11 @@
 
             .feature-card {
                 padding: 15px 6px;
+            }
+
+            .tooth-container {
+                width: 220px;
+                height: 220px;
             }
         }
 
@@ -864,24 +869,30 @@
         const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
-        // الانتظار حتى تحميل الموديل بالكامل لضمان الحركة السلسة بدون تقطيع
-        modelViewer.addEventListener('load', () => {
-            // الخطوة 1: الصعود من أسفل الشاشة تماماً لمنتصف الشاشة
+        // تنفيذ الأنيميشن التلقائي بالكامل عند الجاهزية
+        function startIntroAnimation() {
+            // 1. يرتفع السن أوتوماتيكياً من أسفل إطار الشاشة إلى المنتصف
             setTimeout(() => {
                 toothContainer.classList.add('center-stage');
-            }, 100);
+            }, 50);
 
-            // الخطوة 2: هبوط الموديل واستقراره في موضعه النهائى
+            // 2. ينزل ويهبط إلى مقره في الكارت
             setTimeout(() => {
                 toothContainer.classList.remove('center-stage');
                 toothContainer.classList.add('settled');
-            }, 1600);
+            }, 1200);
 
-            // الخطوة 3: اختفاء طبقة التغبيش بعد استقرار الموديل
+            // 3. يختفي البلور بنعومة
             setTimeout(() => {
                 blurOverlay.classList.add('fade-out');
-            }, 2100);
-        });
+            }, 1800);
+        }
+
+        if (modelViewer.loaded) {
+            startIntroAnimation();
+        } else {
+            modelViewer.addEventListener('load', startIntroAnimation);
+        }
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
@@ -903,25 +914,14 @@
             if (e.key === "Escape") closeMenu();
         });
 
-        // تأثير الـ Parallax عند التمرير
+        // تأثير parallax خفيف مع السكرول بعد انتهاء الأنيميشن
         let latestKnownScrollY = 0;
         let ticking = false;
 
         function updateParallax() {
-            const bgSpeed = 0.35;
-            const modelSpeed = 0.22;
-
-            const bgY = -(latestKnownScrollY * bgSpeed);
-            const modelY = (latestKnownScrollY * modelSpeed);
-
             if (heroBg) {
-                heroBg.style.transform = `translate3d(0, ${bgY}px, 0)`;
+                heroBg.style.transform = `translate3d(0, ${-(latestKnownScrollY * 0.3)}px, 0)`;
             }
-
-            if (toothContainer && toothContainer.classList.contains('settled')) {
-                toothContainer.style.transform = `translate(-50%, calc(-50% + ${modelY}px)) scale(0.85)`;
-            }
-
             ticking = false;
         }
 
