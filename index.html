@@ -379,24 +379,25 @@
         }
 
         /* =========================
-           3D MODEL POP & ARC FADE
+           3D MODEL (SMOOTH ROTATION)
         ========================= */
 
         .tooth-container {
             position: fixed;
             top: 50vh;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%);
             width: 260px;
             height: 260px;
             z-index: 10;
             pointer-events: none;
             opacity: 0;
 
+            /* تحديد الخصائص بدقة لعدم إعاقة دوران محرك 3D */
             transition: top 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
                         opacity 0.8s ease,
                         z-index 0s linear;
+            will-change: transform, opacity;
         }
 
         .tooth-container model-viewer {
@@ -427,13 +428,13 @@
             }
         }
 
-        /* هبوط الموديل خلف الكارت وتخفيف شفافيته دون غباشة الشاشة */
+        /* الانتقال لخلف الكارت واستمرار الدوران بدون انقطاع */
         .tooth-container.settled-behind {
             animation: none;
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
             z-index: 1; /* خلف الكارت */
-            opacity: 0.65; /* اندماج ناعم مع خلفية الكارت */
+            opacity: 0.65;
         }
 
         .tagline {
@@ -846,21 +847,22 @@
             if (animationStarted) return;
             animationStarted = true;
 
-            // 1. القفزة الأوليّة
+            // 1. القفزة الأولى
             toothContainer.classList.add('smooth-pop');
 
-            // 2. الانتقال للاندماج السلس خلف الكارت
+            // 2. الانتقال السلس خلف الكارت بدون توقف الدوران
             setTimeout(() => {
-                toothContainer.classList.remove('smooth-pop');
-                toothContainer.classList.add('settled-behind');
-            }, 700); 
+                requestAnimationFrame(() => {
+                    toothContainer.classList.remove('smooth-pop');
+                    toothContainer.classList.add('settled-behind');
+                });
+            }, 750); 
         }
 
-        // تشغيل الحركة بعد تجهيز الموديل
+        // تشغيل الحركة بمجرد تجهيز الموديل
         if (modelViewer) {
             modelViewer.addEventListener('load', triggerSmoothPopup);
             modelViewer.addEventListener('error', (err) => {
-                console.error("خطأ في الموديل:", err);
                 triggerSmoothPopup();
             });
         }
