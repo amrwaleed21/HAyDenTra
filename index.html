@@ -376,7 +376,7 @@
             width: 100%;
             padding: 20px 18px 25px;
             text-align: center;
-            overflow: hidden;
+            overflow: visible; /* تعديل لمنع قص الموديل عند وجوده في الأسفل */
             min-height: 85vh;
             display: flex;
             flex-direction: column;
@@ -415,12 +415,12 @@
 
         .tooth-container {
             position: fixed;
-            top: 130vh; /* البداية من أسفل الشاشة تماماً خارج الرؤية */
+            top: 100vh; /* وضع البداية أسفل إطار الشاشة تماماً */
             left: 50%;
-            transform: translate(-50%, -50%) scale(1.15);
+            transform: translate(-50%, 0%) scale(1.15); /* إزاحة كاملة للأسفل لضمان عدم الخروج الفجائي */
             width: 280px;
             height: 280px;
-            z-index: 2000; /* في البداية أمام الشاشة فوق طبقة الـ Blur */
+            z-index: 2000;
             pointer-events: none;
             will-change: transform, top, opacity;
             transition: top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
@@ -433,22 +433,21 @@
             --poster-color: transparent;
         }
 
-        /* إزالة خط التحميل الرمادي بالكامل */
         model-viewer::part(default-progress-bar) {
             display: none !important;
         }
 
-        /* الموديل يصل لمنتصف الشاشة بينما الشاشة غائمة */
+        /* المرحلة الأولى: الصعود لمنتصف الشاشة */
         .tooth-container.center-stage {
             top: 50vh;
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* الموديل يستقر عند منتصف الكارت خلف العناصر */
+        /* المرحلة الثانية: الاستقرار في المكان النهائي */
         .tooth-container.settled {
-            top: 290px; /* الموضع الدقيق لمنتصف الكارت */
+            top: 290px;
             transform: translate(-50%, -50%) scale(0.85);
-            z-index: 1; /* خلف النص والكارت */
+            z-index: 1;
             transition: top 1.3s cubic-bezier(0.34, 1.2, 0.64, 1),
                         transform 1.3s cubic-bezier(0.34, 1.2, 0.64, 1);
         }
@@ -863,21 +862,22 @@
         const toothContainer = document.getElementById('toothContainer');
         const blurOverlay = document.getElementById('blurOverlay');
         const heroBg = document.getElementById('heroBg');
+        const modelViewer = document.getElementById('modelViewer');
 
-        // تسلسل الأنيميشن عند تحميل الصفحة
-        window.addEventListener('load', () => {
-            // الخطوة 1: صعود الموديل لمنتصف الشاشة مع بقاء التغبيش
+        // الانتظار حتى تحميل الموديل بالكامل لضمان الحركة السلسة بدون تقطيع
+        modelViewer.addEventListener('load', () => {
+            // الخطوة 1: الصعود من أسفل الشاشة تماماً لمنتصف الشاشة
             setTimeout(() => {
                 toothContainer.classList.add('center-stage');
-            }, 300);
+            }, 100);
 
-            // الخطوة 2: هبوط الموديل لاستقراره عند منتصف الكارت
+            // الخطوة 2: هبوط الموديل واستقراره في موضعه النهائى
             setTimeout(() => {
                 toothContainer.classList.remove('center-stage');
                 toothContainer.classList.add('settled');
-            }, 1800);
+            }, 1600);
 
-            // الخطوة 3: إزالة التغبيش بعد استقرار الموديل بنعومة
+            // الخطوة 3: اختفاء طبقة التغبيش بعد استقرار الموديل
             setTimeout(() => {
                 blurOverlay.classList.add('fade-out');
             }, 2100);
@@ -903,7 +903,7 @@
             if (e.key === "Escape") closeMenu();
         });
 
-        // Parallax Effect عند التمرير
+        // تأثير الـ Parallax عند التمرير
         let latestKnownScrollY = 0;
         let ticking = false;
 
