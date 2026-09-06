@@ -409,21 +409,23 @@
         }
 
         /* =========================
-           3D MODEL CONTAINER & ANIMATION
+           3D MODEL POPUP ANIMATION
         ========================= */
 
         .tooth-container {
             position: fixed;
-            top: 110vh;
+            top: 50vh;
             left: 50%;
-            transform: translate(-50%, -50%) scale(1.15);
+            transform: translate(-50%, -50%) scale(0);
             width: 260px;
             height: 260px;
             z-index: 2000;
             pointer-events: none;
-            will-change: top, transform;
-            transition: top 1.1s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            will-change: top, transform, opacity, z-index;
+            transition: top 1.2s cubic-bezier(0.25, 1, 0.3, 1),
+                        transform 1.2s cubic-bezier(0.25, 1, 0.3, 1),
+                        opacity 0.6s ease;
         }
 
         .tooth-container model-viewer {
@@ -436,17 +438,38 @@
             display: none !important;
         }
 
-        .tooth-container.center-stage {
-            top: 50vh;
-            transform: translate(-50%, -50%) scale(1.1);
+        /* مرحلة الظهور الأولي والتكبير/التصغير (Pop & Pulse) */
+        .tooth-container.pop-pulse {
+            opacity: 1;
+            animation: popPulseAnim 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        .tooth-container.settled {
+        /* حركة النبض والارتداد بالـ CSS Keyframes */
+        @keyframes popPulseAnim {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            40% {
+                transform: translate(-50%, -50%) scale(1.35); /* تكبير أول */
+            }
+            65% {
+                transform: translate(-50%, -50%) scale(0.9);  /* تصغير */
+            }
+            85% {
+                transform: translate(-50%, -50%) scale(1.1);  /* تكبير خفيف */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);    /* استقرار */
+            }
+        }
+
+        /* مرحلة الاستقرار والعودة بنعومة خلف الكارت */
+        .tooth-container.settled-behind {
+            animation: none;
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
-            z-index: 1;
-            transition: top 1.2s cubic-bezier(0.34, 1.25, 0.64, 1),
-                        transform 1.2s cubic-bezier(0.34, 1.25, 0.64, 1);
+            z-index: 1; /* الاختفاء خلف بطاقة الترحيب */
+            opacity: 1;
         }
 
         .tagline {
@@ -781,7 +804,6 @@
             <div class="hero-bg-overlay"></div>
 
             <div class="tooth-container" id="toothContainer">
-                <!-- تم تغيير المسار لـ tooth.glb المباشر للتأكد من عدم وجود أخطاء في المسارات -->
                 <model-viewer 
                     id="modelViewer"
                     src="tooth.glb" 
@@ -867,37 +889,35 @@
 
         let animationStarted = false;
 
-        function triggerAnimations() {
+        function triggerPopupSequence() {
             if (animationStarted) return;
             animationStarted = true;
 
-            // 1. الصعود من الأسفل
-            toothContainer.classList.add('center-stage');
+            // 1. إزالة طبقة التغبيش
+            if (blurOverlay) blurOverlay.classList.add('fade-out');
 
-            // 2. الهبوط لمكانه الاستقراري
-            setTimeout(() => {
-                toothContainer.classList.remove('center-stage');
-                toothContainer.classList.add('settled');
-            }, 1000);
+            // 2. تشغيل انيميشن الـ Pop-up والتكبير/التصغير (Pulse)
+            toothContainer.classList.add('pop-pulse');
 
-            // 3. إخفاء البلور
+            // 3. الانتقال بنعومة للاستقرار والرجوع خلف الكارت بعد انتهاء تأثير الـ Pop
             setTimeout(() => {
-                if (blurOverlay) blurOverlay.classList.add('fade-out');
-            }, 1600);
+                toothContainer.classList.remove('pop-pulse');
+                toothContainer.classList.add('settled-behind');
+            }, 1600); // طابق نفس مدة الأنيماشن (1.6 ثانية)
         }
 
-        // تشغيل الأنيميشن عند التحميل أو احتياطياً في حال حدث أي تأخير
+        // تشغيل التسلسل فور تحميل الموديل أو عند حدوث خطأ
         if (modelViewer) {
-            modelViewer.addEventListener('load', triggerAnimations);
+            modelViewer.addEventListener('load', triggerPopupSequence);
             modelViewer.addEventListener('error', (err) => {
-                console.error("فشل تحميل الموديل:", err);
-                triggerAnimations(); // تشغيل الحركة حتى لو فشل الموديل كي لا تتجمد الصفحة
+                console.error("خطأ في الموديل:", err);
+                triggerPopupSequence();
             });
         }
 
-        // مهلة أمان (Fallback) لإزالة التغبيش وتشغيل الأنيميشن مهما كانت سرعة الإنترنت أو الموديل
+        // مهلة أمان احترازية
         setTimeout(() => {
-            triggerAnimations();
+            triggerPopupSequence();
         }, 1200);
 
         // القائمة الجانبية
