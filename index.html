@@ -13,14 +13,18 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- مكتبة عرض مجسمات الـ 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* إلغاء تأثير التظليل/المربع الأزرق عند الضغط على الموبايل */
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -46,6 +50,66 @@
         a {
             color: inherit;
             text-decoration: none;
+        }
+
+        /* =========================
+           3D MODEL & INITIAL BLUR
+        ========================= */
+
+        /* غباش العناصر عند التحميل */
+        .blur-target {
+            filter: blur(12px);
+            opacity: 0.6;
+            transition: filter 1.2s ease, opacity 1.2s ease;
+        }
+
+        .blur-target.unblurred {
+            filter: blur(0px);
+            opacity: 1;
+        }
+
+        /* حاوية موديل 3D */
+        .tooth-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            z-index: 2; /* يظهر أمام الصفحة أثناء الحركة */
+            pointer-events: none;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* أنيميشن التنطط والالتفاف يميناً ويساراً */
+        .tooth-bounce {
+            animation: bounceRotate 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes bounceRotate {
+            0% {
+                transform: translateY(-20px) rotate(-15deg);
+            }
+            100% {
+                transform: translateY(20px) rotate(15deg);
+            }
+        }
+
+        /* موضع السن بعد انتهاء الحركة (ورا العناصر) */
+        .tooth-container.settled {
+            top: 28%;
+            left: 12%;
+            transform: translate(0, 0);
+            width: 220px;
+            height: 220px;
+            z-index: 0; /* ورا كل عناصر الواجهة */
+            opacity: 0.85;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            --poster-color: transparent;
         }
 
         /* =========================
@@ -333,6 +397,8 @@
 
         main {
             padding-top: 74px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero {
@@ -343,7 +409,6 @@
             overflow: hidden;
         }
 
-        /* الصورة الخلفية مع تأثير Parallax ناعم */
         .hero-bg-full {
             position: absolute;
             top: 0;
@@ -369,68 +434,14 @@
             pointer-events: none;
         }
 
-        .main-logo-circle {
-            position: relative;
-            z-index: 1;
-            width: 92px;
-            height: 92px;
-
-            margin: 0 auto;
-
-            border-radius: 50%;
-            background: #fff;
-
-            display: grid;
-            place-items: center;
-
-            box-shadow:
-                0 10px 25px rgba(186, 230, 253, 0.6),
-                0 0 30px rgba(56, 189, 248, 0.25);
-            border: 4px solid #ffffff;
-            outline: 1px solid rgba(14, 165, 233, 0.3);
-        }
-
-        .main-logo-circle img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-        }
-
-        .main-brand {
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-
-            margin-top: 15px;
-
-            font-family: Arial, sans-serif;
-            font-size: 39px;
-            line-height: 1;
-            font-weight: 900;
-            direction: ltr;
-
-            color: #0284c7;
-            letter-spacing: .5px;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
-        }
-
-        .main-brand .registered {
-            position: absolute;
-            top: -6px;
-            right: -10px;
-
-            font-size: 13px;
-            line-height: 1;
-        }
-
         .tagline {
             position: relative;
-            z-index: 1;
-            margin-top: 15px;
+            z-index: 2;
+            margin-top: 25px;
 
             color: #0369a1;
-            font-size: 19px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             letter-spacing: .2px;
             text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
         }
@@ -441,7 +452,7 @@
 
         .welcome-card {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: min(92%, 600px);
 
             margin: 30px auto 0;
@@ -544,7 +555,7 @@
 
         .features-grid {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: min(100%, 850px);
 
             margin: 35px auto 0;
@@ -603,6 +614,8 @@
         ========================= */
 
         footer {
+            position: relative;
+            z-index: 2;
             width: 100%;
             padding: 18px 15px 25px;
 
@@ -620,7 +633,6 @@
         ========================= */
 
         @media (max-width: 500px) {
-
             .topbar {
                 height: 74px;
             }
@@ -653,16 +665,6 @@
                 padding-top: 25px;
             }
 
-            .main-logo-circle {
-                width: 88px;
-                height: 88px;
-            }
-
-            .main-brand {
-                font-size: 37px;
-                margin-top: 15px;
-            }
-
             .tagline {
                 font-size: 17px;
                 margin-top: 12px;
@@ -683,30 +685,13 @@
             .feature-card {
                 padding: 15px 6px;
             }
-        }
 
-        @media (max-width: 360px) {
-
-            .brand-name {
-                font-size: 22px;
-            }
-
-            .nav-logo-circle {
-                width: 45px;
-                height: 45px;
-            }
-
-            .menu-btn {
-                width: 55px;
-                height: 55px;
-            }
-
-            .main-brand {
-                font-size: 33px;
-            }
-
-            .tagline {
-                font-size: 15px;
+            .tooth-container.settled {
+                left: 50%;
+                top: 15%;
+                transform: translateX(-50%);
+                width: 160px;
+                height: 160px;
             }
         }
 
@@ -725,141 +710,170 @@
 
 <body>
 
-    <header class="topbar">
-        <div class="nav-inner">
+    <!-- مجسم 3D السن -->
+    <div class="tooth-container" id="toothContainer">
+        <div class="tooth-bounce" id="toothBounce">
+            <model-viewer src="tooth.glb" alt="3D Tooth Model" auto-rotate camera-controls disable-zoom shadow-intensity="1">
+            </model-viewer>
+        </div>
+    </div>
 
-            <div class="nav-brand">
-                <div class="nav-logo-circle">
+    <!-- العناصر الأساسية محاطة بفئة الغباش الابتدائية -->
+    <div class="blur-target" id="pageContent">
+
+        <header class="topbar">
+            <div class="nav-inner">
+
+                <div class="nav-brand">
+                    <div class="nav-logo-circle">
+                        <img src="logo.png" alt="HAyDenTra Logo">
+                    </div>
+
+                    <div class="brand-name">
+                        HAyDenTra
+                        <span class="registered">®</span>
+                    </div>
+                </div>
+
+                <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+        </header>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+        <aside class="sidebar" id="sidebar">
+
+            <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="sidebar-header">
+
+                <div class="sidebar-logo">
                     <img src="logo.png" alt="HAyDenTra Logo">
                 </div>
 
-                <div class="brand-name">
+                <div class="sidebar-brand">
                     HAyDenTra
                     <span class="registered">®</span>
                 </div>
+
             </div>
 
-            <button class="menu-btn" onclick="openMenu()" aria-label="فتح القائمة">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <a href="index.html" class="side-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>الرئيسية</span>
+            </a>
 
-        </div>
-    </header>
+            <a href="products.html" class="side-link">
+                <i class="fa-solid fa-tooth"></i>
+                <span>المنتجات</span>
+            </a>
 
-    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+            <a href="contact.html" class="side-link">
+                <i class="fa-solid fa-phone"></i>
+                <span>تواصل معنا</span>
+            </a>
 
-    <aside class="sidebar" id="sidebar">
+        </aside>
 
-        <button class="close-btn" onclick="closeMenu()" aria-label="إغلاق">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
+        <main>
 
-        <div class="sidebar-header">
+            <section class="hero">
 
-            <div class="sidebar-logo">
-                <img src="logo.png" alt="HAyDenTra Logo">
-            </div>
+                <div class="hero-bg-full" id="heroBg"></div>
+                <div class="hero-bg-overlay"></div>
 
-            <div class="sidebar-brand">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
-        </div>
-
-        <a href="index.html" class="side-link active">
-            <i class="fa-solid fa-house"></i>
-            <span>الرئيسية</span>
-        </a>
-
-        <a href="products.html" class="side-link">
-            <i class="fa-solid fa-tooth"></i>
-            <span>المنتجات</span>
-        </a>
-
-        <a href="contact.html" class="side-link">
-            <i class="fa-solid fa-phone"></i>
-            <span>تواصل معنا</span>
-        </a>
-
-    </aside>
-
-    <main>
-
-        <section class="hero">
-
-            <div class="hero-bg-full" id="heroBg"></div>
-            <div class="hero-bg-overlay"></div>
-
-            <div class="main-logo-circle" data-aos="zoom-in" data-aos-duration="800">
-                <img src="logo.png" alt="HAyDenTra Logo">
-            </div>
-
-            <div class="main-brand" data-aos="fade-down" data-aos-delay="200" data-aos-duration="800">
-                HAyDenTra
-                <span class="registered">®</span>
-            </div>
-
-            <p class="tagline" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-                Your Trusted Partner in Dental Solutions
-            </p>
-
-            <div class="welcome-card" data-aos="zoom-in-up" data-aos-delay="400" data-aos-duration="1000">
-
-                <h1>مرحباً بكم</h1>
-
-                <p>
-                    نقدم لعيادتك أحدث الأجهزة والمواد الطبية
-                    المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
+                <p class="tagline" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                    Your Trusted Partner in Dental Solutions
                 </p>
 
-                <div class="hero-buttons">
-                    <a href="products.html" class="main-btn products-btn" data-aos="fade-up" data-aos-delay="600">
-                        <i class="fa-solid fa-box-open"></i>
-                        استكشف المنتجات
-                    </a>
+                <div class="welcome-card" data-aos="zoom-in-up" data-aos-delay="400" data-aos-duration="1000">
 
-                    <a href="contact.html" class="main-btn contact-btn" data-aos="fade-up" data-aos-delay="700">
-                        <i class="fa-solid fa-comments"></i>
-                        تواصل معنا
-                    </a>
+                    <h1>مرحباً بكم</h1>
+
+                    <p>
+                        نقدم لعيادتك أحدث الأجهزة والمواد الطبية
+                        المعتمدة بأعلى معايير الجودة العالمية وبأسعار تنافسية.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="products.html" class="main-btn products-btn" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fa-solid fa-box-open"></i>
+                            استكشف المنتجات
+                        </a>
+
+                        <a href="contact.html" class="main-btn contact-btn" data-aos="fade-up" data-aos-delay="700">
+                            <i class="fa-solid fa-comments"></i>
+                            تواصل معنا
+                        </a>
+                    </div>
+
                 </div>
 
-            </div>
+            </section>
 
-        </section>
+            <section class="features-grid">
 
-        <section class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>خدمة العملاء</h3>
+                    <p>دعم ومتابعة مستمرة</p>
+                </div>
 
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <i class="fa-solid fa-headset"></i>
-                <h3>خدمة العملاء</h3>
-                <p>دعم ومتابعة مستمرة</p>
-            </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h3>توصيل سريع</h3>
+                    <p>توصيل آمن وسريع</p>
+                </div>
 
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
-                <i class="fa-solid fa-truck-fast"></i>
-                <h3>توصيل سريع</h3>
-                <p>توصيل آمن وسريع</p>
-            </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>جودة عالية</h3>
+                    <p>منتجات موثوقة</p>
+                </div>
 
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-                <i class="fa-solid fa-certificate"></i>
-                <h3>جودة عالية</h3>
-                <p>منتجات موثوقة</p>
-            </div>
+            </section>
 
-        </section>
+        </main>
 
-    </main>
+        <footer>
+            © 2026 HAyDenTra® - جميع الحقوق محفوظة
+        </footer>
 
-    <footer>
-        © 2026 HAyDenTra® - جميع الحقوق محفوظة
-    </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
+        // أنيميشن بداية الفتح (التنطط والغباش ثم انتقال السن لليسار)
+        window.addEventListener('DOMContentLoaded', () => {
+            const toothContainer = document.getElementById('toothContainer');
+            const toothBounce = document.getElementById('toothBounce');
+            const pageContent = document.getElementById('pageContent');
+
+            // بعد 2.2 ثانية من الحركة في المنتصف:
+            setTimeout(() => {
+                // إلغاء حركة التنطط مؤقتاً لنقله بسلاسة
+                toothBounce.classList.remove('tooth-bounce');
+
+                // نقل الموديل لليسار ووضعه خلف العناصر
+                toothContainer.classList.add('settled');
+
+                // إزالة الغباش عن الموقع
+                pageContent.classList.add('unblurred');
+
+                // إرجاع حركة التفاف خفيفة مستمرة
+                setTimeout(() => {
+                    toothBounce.classList.add('tooth-bounce');
+                }, 1200);
+
+            }, 2200);
+        });
+
         // تفعيل مكتبة ظهور العناصر Pop-Up
         AOS.init({
             once: true,
@@ -888,13 +902,13 @@
             }
         });
 
-        // تأثير تحريك الصورة خلفية بتأخر ناعم (Parallax / Velocity effect)
+        // تأثير تحريك الصورة خلفية بتأخر ناعم (Parallax)
         const heroBg = document.getElementById('heroBg');
         let latestKnownScrollY = 0;
         let ticking = false;
 
         function updateParallax() {
-            const speed = 0.35; // نسبة سرعة تحرك الصورة مقارنة بالتمرير
+            const speed = 0.35;
             const yPos = -(latestKnownScrollY * speed);
             if (heroBg) {
                 heroBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
