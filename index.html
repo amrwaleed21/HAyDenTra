@@ -414,7 +414,7 @@
 
         .tooth-container {
             position: fixed;
-            /* الوضع المبدئي: أسفل إطار شاشة المستخدم تماماً خارج الرؤية */
+            /* الموضع المبدئي: أسفل شاشة أي جهاز بمسافة كافية ليختفي تماماً */
             top: 110vh;
             left: 50%;
             transform: translate(-50%, -50%) scale(1.15);
@@ -437,13 +437,13 @@
             display: none !important;
         }
 
-        /* المرحلة الأولى: الصعود إلى المنتصف في الشاشة الحالية مباشرة */
+        /* المرحلة الأولى: الصعود التلقائي لمنتصف الشاشة */
         .tooth-container.center-stage {
             top: 50vh;
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* المرحلة الثانية: الهبوط والمكوث المباشر في الموضع النهائي بالنسبة لـ Viewport */
+        /* المرحلة الثانية: الهبوط والمكوث المباشر في الموضع النهائي بالنسبة للشاشة */
         .tooth-container.settled {
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
@@ -784,7 +784,7 @@
             <div class="hero-bg-full" id="heroBg"></div>
             <div class="hero-bg-overlay"></div>
 
-            <!-- مجسم السن الـ 3D -->
+            <!-- مجسم السن الـ 3D (تم إلغاء الظلال هنا بـ shadow-intensity="0") -->
             <div class="tooth-container" id="toothContainer">
                 <model-viewer 
                     id="modelViewer"
@@ -793,7 +793,7 @@
                     auto-rotate 
                     rotation-per-second="90deg"
                     interaction-prompt="none"
-                    shadow-intensity="1"
+                    shadow-intensity="0"
                     camera-orbit="0deg 75deg 105%"
                     field-of-view="30deg">
                 </model-viewer>
@@ -869,20 +869,20 @@
         const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
-        // تنفيذ الأنيميشن التلقائي بالكامل عند الجاهزية
+        // تنفيذ الأنيميشن التلقائي فور الجاهزية بدون سكرول
         function startIntroAnimation() {
-            // 1. يرتفع السن أوتوماتيكياً من أسفل إطار الشاشة إلى المنتصف
+            // 1. يرتفع الموديل فوراً من خارج الشاشه بالأسفل لمنتصف الشاشة
             setTimeout(() => {
                 toothContainer.classList.add('center-stage');
             }, 50);
 
-            // 2. ينزل ويهبط إلى مقره في الكارت
+            // 2. يهبط إلى موقعه في الكارت
             setTimeout(() => {
                 toothContainer.classList.remove('center-stage');
                 toothContainer.classList.add('settled');
             }, 1200);
 
-            // 3. يختفي البلور بنعومة
+            // 3. يختفي البلور
             setTimeout(() => {
                 blurOverlay.classList.add('fade-out');
             }, 1800);
@@ -914,7 +914,7 @@
             if (e.key === "Escape") closeMenu();
         });
 
-        // تأثير parallax خفيف مع السكرول بعد انتهاء الأنيميشن
+        // Parallax خفيف لخلفية الصفحة فقط
         let latestKnownScrollY = 0;
         let ticking = false;
 
