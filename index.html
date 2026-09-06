@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
+    <!-- استدعاء مكتبة model-viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
@@ -54,26 +55,6 @@
         }
 
         /* =========================
-           INITIAL BLUR OVERLAY
-        ========================= */
-        .blur-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1500;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            pointer-events: none;
-            transition: opacity 0.8s ease, backdrop-filter 0.8s ease, -webkit-backdrop-filter 0.8s ease;
-        }
-
-        .blur-overlay.fade-out {
-            opacity: 0;
-            backdrop-filter: blur(0px);
-            -webkit-backdrop-filter: blur(0px);
-        }
-
-        /* =========================
            NAVBAR
         ========================= */
 
@@ -85,11 +66,8 @@
             height: 74px;
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(186, 230, 253, 0.6);
-
-            backdrop-filter: blur(18px) saturate(150%);
-            -webkit-backdrop-filter: blur(18px) saturate(150%);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(186, 230, 253, 0.8);
 
             box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
         }
@@ -167,9 +145,7 @@
             border-radius: 18px;
             border: 1px solid rgba(14, 165, 233, 0.2);
 
-            background: rgba(240, 249, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(240, 249, 255, 0.95);
 
             color: #0284c7;
             font-size: 31px;
@@ -188,7 +164,7 @@
         }
 
         .menu-btn:hover {
-            background: rgba(224, 242, 254, 0.9);
+            background: rgba(224, 242, 254, 1);
             transform: translateY(-1px);
         }
 
@@ -201,9 +177,7 @@
             inset: 0;
             z-index: 1050;
 
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            background: rgba(15, 23, 42, 0.4);
 
             opacity: 0;
             visibility: hidden;
@@ -228,277 +202,8 @@
 
             padding: 28px 20px;
 
-            background: rgba(255, 255, 255, 0.92);
-            border-left: 1px solid rgba(186, 230, 253, 0.5);
-
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-
-            box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
-
-            transform: translateX(110%);
-            transition: transform 0.35s ease;
-
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            transform: translateX(0);
-        }
-
-        .sidebar-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            padding-bottom: 25px;
-            margin-bottom: 20px;
-
-            border-bottom: 1px solid rgba(186, 230, 253, 0.5);
-        }
-
-        .sidebar-logo {
-            width: 72px;
-            height: 72px;
-
-            border-radius: 50%;
-            background: #fff;```html
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <title>HAyDenTra® | مستلزمات الأسنان</title>
-
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap](https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap)"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css](https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css)">
-
-    <script type="module" src="[https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js](https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js)"></script>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-        }
-
-        html {
-            min-height: 100%;
-            background: linear-gradient(180deg, #ffffff 0%, #e6f4f8 50%, #d8eff6 100%);
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100dvh;
-            font-family: "Cairo", sans-serif;
-            color: #1e3a8a;
-            background:
-                radial-gradient(circle at 50% 28%, rgba(186, 230, 253, 0.4), transparent 45%),
-                linear-gradient(180deg, #ffffff 0%, #e8f5f9 50%, #dbeffe 100%);
-            overflow-x: hidden;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           INITIAL BLUR OVERLAY
-        ========================= */
-        .blur-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1500;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            pointer-events: none;
-            transition: opacity 0.8s ease, backdrop-filter 0.8s ease, -webkit-backdrop-filter 0.8s ease;
-        }
-
-        .blur-overlay.fade-out {
-            opacity: 0;
-            backdrop-filter: blur(0px);
-            -webkit-backdrop-filter: blur(0px);
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .topbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 74px;
-            z-index: 1000;
-
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(186, 230, 253, 0.6);
-
-            backdrop-filter: blur(18px) saturate(150%);
-            -webkit-backdrop-filter: blur(18px) saturate(150%);
-
-            box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
-        }
-
-        .nav-inner {
-            height: 100%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            direction: ltr;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            direction: ltr;
-        }
-
-        .nav-logo-circle {
-            width: 50px;
-            height: 50px;
-            flex-shrink: 0;
-
-            border-radius: 50%;
-            background: #fff;
-
-            display: grid;
-            place-items: center;
-
-            border: 1px solid rgba(14, 165, 233, 0.3);
-
-            box-shadow:
-                0 0 8px rgba(186, 230, 253, 0.8),
-                0 0 15px rgba(56, 189, 248, 0.2);
-        }
-
-        .nav-logo-circle img {
-            width: 72%;
-            height: 72%;
-            object-fit: contain;
-        }
-
-        .brand-name {
-            position: relative;
-            display: inline-block;
-
-            font-family: Arial, sans-serif;
-            font-weight: 900;
-            font-size: 27px;
-            line-height: 1;
-            color: #0284c7;
-            white-space: nowrap;
-        }
-
-        .brand-name .registered {
-            position: absolute;
-            top: -7px;
-            right: -9px;
-
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            line-height: 1;
-            font-weight: 700;
-        }
-
-        .menu-btn {
-            width: 58px;
-            height: 58px;
-
-            border-radius: 18px;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-
-            background: rgba(240, 249, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            color: #0284c7;
-            font-size: 31px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 4px 15px rgba(186, 230, 253, 0.3),
-                inset 0 1px rgba(255, 255, 255, 0.8);
-
-            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .menu-btn:hover {
-            background: rgba(224, 242, 254, 0.9);
-            transform: translateY(-1px);
-        }
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1050;
-
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-
-            width: min(80%, 350px);
-            height: 100dvh;
-
-            z-index: 1100;
-
-            padding: 28px 20px;
-
-            background: rgba(255, 255, 255, 0.92);
-            border-left: 1px solid rgba(186, 230, 253, 0.5);
-
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            background: #ffffff;
+            border-left: 1px solid rgba(186, 230, 253, 0.8);
 
             box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
 
@@ -604,7 +309,7 @@
 
             border-radius: 15px;
 
-            background: rgba(240, 249, 255, 0.6);
+            background: rgba(240, 249, 255, 0.9);
             border: 1px solid rgba(186, 230, 253, 0.5);
 
             font-size: 16px;
@@ -668,13 +373,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(224, 242, 254, 0.2) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(224, 242, 254, 0.3) 100%);
             z-index: 0;
             pointer-events: none;
         }
 
         /* =========================
-           3D MODEL SMOOTH POPUP ANIMATION
+           3D MODEL POP & ARC FADE
         ========================= */
 
         .tooth-container {
@@ -687,11 +392,9 @@
             z-index: 10;
             pointer-events: none;
             opacity: 0;
-            will-change: top, transform, opacity, z-index;
-            
-            /* انتقالات ناعمة وسلسة جداً للمواضع والشفافية */
-            transition: top 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+
+            transition: top 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
                         opacity 0.8s ease,
                         z-index 0s linear;
         }
@@ -706,32 +409,31 @@
             display: none !important;
         }
 
-        /* 1. مرحلة الظهور الأولي والتكبير بنبضة واحدة خفيفة وناعمة */
+        /* ظهور الموديل بالأول بقفزة ناعمة */
         .tooth-container.smooth-pop {
             opacity: 1;
             animation: singleSoftPop 0.8s cubic-bezier(0.34, 1.3, 0.64, 1) forwards;
         }
 
-        /* أنيميشن Pop ناعم بنبضة واحدة بسيطة جداً */
         @keyframes singleSoftPop {
             0% {
                 transform: translate(-50%, -50%) scale(0);
             }
             70% {
-                transform: translate(-50%, -50%) scale(1.15); /* تكبير خفيف ناعم */
+                transform: translate(-50%, -50%) scale(1.15);
             }
             100% {
-                transform: translate(-50%, -50%) scale(1);    /* استقرار */
+                transform: translate(-50%, -50%) scale(1);
             }
         }
 
-        /* 2. مرحلة الهبوط السلس خلف الكارت (تحريك الموضع والشفافية والطبقة) */
+        /* هبوط الموديل خلف الكارت وتخفيف شفافيته دون غباشة الشاشة */
         .tooth-container.settled-behind {
-            animation: none; /* إلغاء الـ Pop بعد انتهائه */
+            animation: none;
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
-            z-index: 1; /* التواجد خلف الكارت والطبقة الغائمة */
-            opacity: 1;
+            z-index: 1; /* خلف الكارت */
+            opacity: 0.65; /* اندماج ناعم مع خلفية الكارت */
         }
 
         .tagline {
@@ -747,12 +449,12 @@
         }
 
         /* =========================
-           GLASSY WELCOME CARD
+           WELCOMING CARD
         ========================= */
 
         .welcome-card {
             position: relative;
-            z-index: 2; /* أعلى من الموديل بعد استقراره (1) وأعلى من الطبقة الغائمة */
+            z-index: 2;
             width: min(92%, 600px);
 
             margin: 20px auto 0;
@@ -760,11 +462,8 @@
 
             border-radius: 28px;
 
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.9);
 
             box-shadow:
                 0 20px 40px rgba(2, 132, 199, 0.12),
@@ -837,16 +536,14 @@
 
         .contact-btn {
             color: #0284c7;
-            background: rgba(255, 255, 255, 0.85);
+            background: #ffffff;
             border: 1px solid rgba(2, 132, 199, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             box-shadow: 0 4px 14px rgba(186, 230, 253, 0.4);
         }
 
         .contact-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            background: #ffffff;
+            background: #f0f9ff;
         }
 
         /* =========================
@@ -873,11 +570,8 @@
 
             border-radius: 18px;
 
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid rgba(186, 230, 253, 0.8);
-
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
 
             box-shadow: 0 8px 20px rgba(186, 230, 253, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -922,7 +616,7 @@
             color: #0369a1;
             font-size: 12px;
 
-            background: rgba(224, 242, 254, 0.5);
+            background: rgba(224, 242, 254, 0.8);
             border-top: 1px solid rgba(186, 230, 253, 0.6);
         }
 
@@ -996,8 +690,6 @@
 </head>
 
 <body>
-
-    <div class="blur-overlay" id="blurOverlay"></div>
 
     <header class="topbar">
         <div class="nav-inner">
@@ -1136,7 +828,7 @@
         © 2026 HAyDenTra® - جميع الحقوق محفوظة
     </footer>
 
-    <script src="[https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js](https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js)"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
         AOS.init({
@@ -1145,7 +837,6 @@
         });
 
         const toothContainer = document.getElementById('toothContainer');
-        const blurOverlay = document.getElementById('blurOverlay');
         const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
@@ -1155,21 +846,17 @@
             if (animationStarted) return;
             animationStarted = true;
 
-            // 1. إزالة طبقة التغبيش
-            if (blurOverlay) blurOverlay.classList.add('fade-out');
-
-            // 2. تفعيل كلاس الـ Smooth Pop (ظهور ناعم ونبضة واحدة بسيطة)
+            // 1. القفزة الأوليّة
             toothContainer.classList.add('smooth-pop');
 
-            // 3. النزول السلس والانزلاق خلف الكارت بنعومة فائقة ودون اختفاء مفاجئ
-            // تم تنسيق التوقيت (700ms) مع أنيميشن النبضة (0.8s) للانتقال بسلاسة
+            // 2. الانتقال للاندماج السلس خلف الكارت
             setTimeout(() => {
                 toothContainer.classList.remove('smooth-pop');
                 toothContainer.classList.add('settled-behind');
             }, 700); 
         }
 
-        // تشغيل الحركة فور تحميل الموديل أو حدوث خطأ
+        // تشغيل الحركة بعد تجهيز الموديل
         if (modelViewer) {
             modelViewer.addEventListener('load', triggerSmoothPopup);
             modelViewer.addEventListener('error', (err) => {
@@ -1178,7 +865,6 @@
             });
         }
 
-        // احتياطي للتشغيل الأوتوماتيكي
         setTimeout(() => {
             triggerSmoothPopup();
         }, 1000);
