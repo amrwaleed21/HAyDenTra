@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    <!-- استدعاء مكتبة model-viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
@@ -409,7 +408,7 @@
         }
 
         /* =========================
-           3D MODEL POPUP ANIMATION
+           3D MODEL SMOOTH POPUP ANIMATION
         ========================= */
 
         .tooth-container {
@@ -419,12 +418,14 @@
             transform: translate(-50%, -50%) scale(0);
             width: 260px;
             height: 260px;
-            z-index: 2000;
+            z-index: 10;
             pointer-events: none;
             opacity: 0;
-            will-change: top, transform, opacity, z-index;
-            transition: top 1.2s cubic-bezier(0.25, 1, 0.3, 1),
-                        transform 1.2s cubic-bezier(0.25, 1, 0.3, 1),
+            will-change: top, transform, opacity;
+            
+            /* انتقالات ناعمة وسلسة جداً */
+            transition: top 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
                         opacity 0.6s ease;
         }
 
@@ -438,37 +439,30 @@
             display: none !important;
         }
 
-        /* مرحلة الظهور الأولي والتكبير/التصغير (Pop & Pulse) */
-        .tooth-container.pop-pulse {
+        /* 1. ظهور ناعم ونبضة واحدة بسيطة */
+        .tooth-container.smooth-pop {
             opacity: 1;
-            animation: popPulseAnim 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: singlePopAnim 0.8s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
         }
 
-        /* حركة النبض والارتداد بالـ CSS Keyframes */
-        @keyframes popPulseAnim {
+        @keyframes singlePopAnim {
             0% {
                 transform: translate(-50%, -50%) scale(0);
             }
-            40% {
-                transform: translate(-50%, -50%) scale(1.35); /* تكبير أول */
-            }
-            65% {
-                transform: translate(-50%, -50%) scale(0.9);  /* تصغير */
-            }
-            85% {
-                transform: translate(-50%, -50%) scale(1.1);  /* تكبير خفيف */
+            70% {
+                transform: translate(-50%, -50%) scale(1.18); /* تكبير ناعم خفيف */
             }
             100% {
-                transform: translate(-50%, -50%) scale(1);    /* استقرار */
+                transform: translate(-50%, -50%) scale(1);   /* استقرار */
             }
         }
 
-        /* مرحلة الاستقرار والعودة بنعومة خلف الكارت */
+        /* 2. الهبوط السلس خلف الكارت بدون اختفاء أو قفزة */
         .tooth-container.settled-behind {
             animation: none;
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
-            z-index: 1; /* الاختفاء خلف بطاقة الترحيب */
+            z-index: 1; /* التواجد خلف بطاقة الترحيب */
             opacity: 1;
         }
 
@@ -490,7 +484,7 @@
 
         .welcome-card {
             position: relative;
-            z-index: 2;
+            z-index: 2; /* أكثر من زاوية الموديل بعد المستقر (1) */
             width: min(92%, 600px);
 
             margin: 20px auto 0;
@@ -889,36 +883,36 @@
 
         let animationStarted = false;
 
-        function triggerPopupSequence() {
+        function triggerSmoothPopup() {
             if (animationStarted) return;
             animationStarted = true;
 
             // 1. إزالة طبقة التغبيش
             if (blurOverlay) blurOverlay.classList.add('fade-out');
 
-            // 2. تشغيل انيميشن الـ Pop-up والتكبير/التصغير (Pulse)
-            toothContainer.classList.add('pop-pulse');
+            // 2. ظهور خاطف وبسيط (Pop)
+            toothContainer.classList.add('smooth-pop');
 
-            // 3. الانتقال بنعومة للاستقرار والرجوع خلف الكارت بعد انتهاء تأثير الـ Pop
+            // 3. النزول السلس والانزلاق خلف البطاقة بنعومة بدلاً من القفز المباشر
             setTimeout(() => {
-                toothContainer.classList.remove('pop-pulse');
+                toothContainer.classList.remove('smooth-pop');
                 toothContainer.classList.add('settled-behind');
-            }, 1600); // طابق نفس مدة الأنيماشن (1.6 ثانية)
+            }, 750); // توقيت مدروس ينتقل فور اكتمال التكبير الخفيف
         }
 
-        // تشغيل التسلسل فور تحميل الموديل أو عند حدوث خطأ
+        // تشغيل الحركة فور التحميل
         if (modelViewer) {
-            modelViewer.addEventListener('load', triggerPopupSequence);
+            modelViewer.addEventListener('load', triggerSmoothPopup);
             modelViewer.addEventListener('error', (err) => {
                 console.error("خطأ في الموديل:", err);
-                triggerPopupSequence();
+                triggerSmoothPopup();
             });
         }
 
-        // مهلة أمان احترازية
+        // احتياطي للتشغيل الأوتوماتيكي
         setTimeout(() => {
-            triggerPopupSequence();
-        }, 1200);
+            triggerSmoothPopup();
+        }, 1000);
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
