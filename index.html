@@ -65,7 +65,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             pointer-events: none;
-            transition: opacity 1s ease, backdrop-filter 1s ease, -webkit-backdrop-filter 1s ease;
+            transition: opacity 0.8s ease, backdrop-filter 0.8s ease, -webkit-backdrop-filter 0.8s ease;
         }
 
         .blur-overlay.fade-out {
@@ -414,7 +414,6 @@
 
         .tooth-container {
             position: fixed;
-            /* الموضع المبدئي: أسفل شاشة أي جهاز بمسافة كافية ليختفي تماماً */
             top: 110vh;
             left: 50%;
             transform: translate(-50%, -50%) scale(1.15);
@@ -437,13 +436,11 @@
             display: none !important;
         }
 
-        /* المرحلة الأولى: الصعود التلقائي لمنتصف الشاشة */
         .tooth-container.center-stage {
             top: 50vh;
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* المرحلة الثانية: الهبوط والمكوث المباشر في الموضع النهائي بالنسبة للشاشة */
         .tooth-container.settled {
             top: 38vh;
             transform: translate(-50%, -50%) scale(0.85);
@@ -715,7 +712,6 @@
 
 <body>
 
-    <!-- طبقة التغبيش الأولية -->
     <div class="blur-overlay" id="blurOverlay"></div>
 
     <header class="topbar">
@@ -784,11 +780,11 @@
             <div class="hero-bg-full" id="heroBg"></div>
             <div class="hero-bg-overlay"></div>
 
-            <!-- مجسم السن الـ 3D (تم إلغاء الظلال هنا بـ shadow-intensity="0") -->
             <div class="tooth-container" id="toothContainer">
+                <!-- تم تغيير المسار لـ tooth.glb المباشر للتأكد من عدم وجود أخطاء في المسارات -->
                 <model-viewer 
                     id="modelViewer"
-                    src="./tooth.glb" 
+                    src="tooth.glb" 
                     alt="3D Tooth Model" 
                     auto-rotate 
                     rotation-per-second="90deg"
@@ -869,30 +865,40 @@
         const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
-        // تنفيذ الأنيميشن التلقائي فور الجاهزية بدون سكرول
-        function startIntroAnimation() {
-            // 1. يرتفع الموديل فوراً من خارج الشاشه بالأسفل لمنتصف الشاشة
-            setTimeout(() => {
-                toothContainer.classList.add('center-stage');
-            }, 50);
+        let animationStarted = false;
 
-            // 2. يهبط إلى موقعه في الكارت
+        function triggerAnimations() {
+            if (animationStarted) return;
+            animationStarted = true;
+
+            // 1. الصعود من الأسفل
+            toothContainer.classList.add('center-stage');
+
+            // 2. الهبوط لمكانه الاستقراري
             setTimeout(() => {
                 toothContainer.classList.remove('center-stage');
                 toothContainer.classList.add('settled');
-            }, 1200);
+            }, 1000);
 
-            // 3. يختفي البلور
+            // 3. إخفاء البلور
             setTimeout(() => {
-                blurOverlay.classList.add('fade-out');
-            }, 1800);
+                if (blurOverlay) blurOverlay.classList.add('fade-out');
+            }, 1600);
         }
 
-        if (modelViewer.loaded) {
-            startIntroAnimation();
-        } else {
-            modelViewer.addEventListener('load', startIntroAnimation);
+        // تشغيل الأنيميشن عند التحميل أو احتياطياً في حال حدث أي تأخير
+        if (modelViewer) {
+            modelViewer.addEventListener('load', triggerAnimations);
+            modelViewer.addEventListener('error', (err) => {
+                console.error("فشل تحميل الموديل:", err);
+                triggerAnimations(); // تشغيل الحركة حتى لو فشل الموديل كي لا تتجمد الصفحة
+            });
         }
+
+        // مهلة أمان (Fallback) لإزالة التغبيش وتشغيل الأنيميشن مهما كانت سرعة الإنترنت أو الموديل
+        setTimeout(() => {
+            triggerAnimations();
+        }, 1200);
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
@@ -914,7 +920,7 @@
             if (e.key === "Escape") closeMenu();
         });
 
-        // Parallax خفيف لخلفية الصفحة فقط
+        // Parallax
         let latestKnownScrollY = 0;
         let ticking = false;
 
