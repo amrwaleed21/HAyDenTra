@@ -55,6 +55,26 @@
         }
 
         /* =========================
+           INITIAL BLUR OVERLAY
+        ========================= */
+        .blur-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1500;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            pointer-events: none;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 1.2s ease, -webkit-backdrop-filter 1.2s ease;
+        }
+
+        .blur-overlay.fade-out {
+            opacity: 0;
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+        }
+
+        /* =========================
            NAVBAR
         ========================= */
 
@@ -66,8 +86,11 @@
             height: 74px;
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(186, 230, 253, 0.8);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(186, 230, 253, 0.6);
+
+            backdrop-filter: blur(18px) saturate(150%);
+            -webkit-backdrop-filter: blur(18px) saturate(150%);
 
             box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
         }
@@ -145,7 +168,9 @@
             border-radius: 18px;
             border: 1px solid rgba(14, 165, 233, 0.2);
 
-            background: rgba(240, 249, 255, 0.95);
+            background: rgba(240, 249, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
             color: #0284c7;
             font-size: 31px;
@@ -164,7 +189,7 @@
         }
 
         .menu-btn:hover {
-            background: rgba(224, 242, 254, 1);
+            background: rgba(224, 242, 254, 0.9);
             transform: translateY(-1px);
         }
 
@@ -177,7 +202,9 @@
             inset: 0;
             z-index: 1050;
 
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
 
             opacity: 0;
             visibility: hidden;
@@ -202,8 +229,11 @@
 
             padding: 28px 20px;
 
-            background: #ffffff;
-            border-left: 1px solid rgba(186, 230, 253, 0.8);
+            background: rgba(255, 255, 255, 0.92);
+            border-left: 1px solid rgba(186, 230, 253, 0.5);
+
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
 
             box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
 
@@ -309,7 +339,7 @@
 
             border-radius: 15px;
 
-            background: rgba(240, 249, 255, 0.9);
+            background: rgba(240, 249, 255, 0.6);
             border: 1px solid rgba(186, 230, 253, 0.5);
 
             font-size: 16px;
@@ -334,7 +364,7 @@
         }
 
         /* =========================
-           MAIN & HERO
+           MAIN & PARALLAX BACKGROUND
         ========================= */
 
         main {
@@ -346,8 +376,8 @@
             width: 100%;
             padding: 20px 18px 25px;
             text-align: center;
-            overflow: hidden;
-            min-height: calc(100vh - 74px);
+            overflow: visible; /* تعديل لمنع قص الموديل عند وجوده في الأسفل */
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -359,11 +389,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 120%;
             background: url("DentalTools.jpg") center/cover no-repeat;
             opacity: 0.85;
             z-index: 0;
             pointer-events: none;
+            will-change: transform;
+            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .hero-bg-overlay {
@@ -372,43 +404,58 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(224, 242, 254, 0.3) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(224, 242, 254, 0.2) 100%);
             z-index: 0;
             pointer-events: none;
         }
 
         /* =========================
-           3D MODEL - OVER THE CARD & CENTERED
+           3D MODEL CONTAINER & ANIMATION
         ========================= */
 
         .tooth-container {
-            position: absolute;
-            top: 145px;
+            position: fixed;
+            top: 100vh; /* وضع البداية أسفل إطار الشاشة تماماً */
             left: 50%;
-            transform: translateX(-50%);
-            width: 230px;
-            height: 230px;
-            z-index: 3; /* فوق الكارت تماماً */
+            transform: translate(-50%, 0%) scale(1.15); /* إزاحة كاملة للأسفل لضمان عدم الخروج الفجائي */
+            width: 280px;
+            height: 280px;
+            z-index: 2000;
             pointer-events: none;
+            will-change: transform, top, opacity;
+            transition: top 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .tooth-container model-viewer {
             width: 100%;
             height: 100%;
             --poster-color: transparent;
-
-            /* توهج أزرق سينمائي راقي ونظيف */
-            filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
         }
 
         model-viewer::part(default-progress-bar) {
             display: none !important;
         }
 
+        /* المرحلة الأولى: الصعود لمنتصف الشاشة */
+        .tooth-container.center-stage {
+            top: 50vh;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* المرحلة الثانية: الاستقرار في المكان النهائي */
+        .tooth-container.settled {
+            top: 290px;
+            transform: translate(-50%, -50%) scale(0.85);
+            z-index: 1;
+            transition: top 1.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+                        transform 1.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+
         .tagline {
             position: relative;
             z-index: 2;
-            margin-top: 175px;
+            margin-top: 100px;
 
             color: #0369a1;
             font-size: 21px;
@@ -418,7 +465,7 @@
         }
 
         /* =========================
-           WELCOMING CARD
+           GLASSY WELCOME CARD
         ========================= */
 
         .welcome-card {
@@ -427,12 +474,15 @@
             width: min(92%, 600px);
 
             margin: 20px auto 0;
-            padding: 45px 25px 35px;
+            padding: 35px 25px;
 
             border-radius: 28px;
 
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+            border: 1px solid rgba(255, 255, 255, 0.8);
 
             box-shadow:
                 0 20px 40px rgba(2, 132, 199, 0.12),
@@ -505,14 +555,16 @@
 
         .contact-btn {
             color: #0284c7;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(2, 132, 199, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             box-shadow: 0 4px 14px rgba(186, 230, 253, 0.4);
         }
 
         .contact-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            background: #f0f9ff;
+            background: #ffffff;
         }
 
         /* =========================
@@ -539,8 +591,11 @@
 
             border-radius: 18px;
 
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(186, 230, 253, 0.8);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
 
             box-shadow: 0 8px 20px rgba(186, 230, 253, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -585,7 +640,7 @@
             color: #0369a1;
             font-size: 12px;
 
-            background: rgba(224, 242, 254, 0.8);
+            background: rgba(224, 242, 254, 0.5);
             border-top: 1px solid rgba(186, 230, 253, 0.6);
         }
 
@@ -619,12 +674,12 @@
 
             .tagline {
                 font-size: 17px;
-                margin-top: 160px;
+                margin-top: 95px;
             }
 
             .welcome-card {
                 margin-top: 20px;
-                padding: 40px 18px 30px;
+                padding: 30px 18px;
                 border-radius: 28px;
             }
 
@@ -636,12 +691,6 @@
 
             .feature-card {
                 padding: 15px 6px;
-            }
-
-            .tooth-container {
-                top: 135px;
-                width: 200px;
-                height: 200px;
             }
         }
 
@@ -660,6 +709,9 @@
 </head>
 
 <body>
+
+    <!-- طبقة التغبيش الأولية -->
+    <div class="blur-overlay" id="blurOverlay"></div>
 
     <header class="topbar">
         <div class="nav-inner">
@@ -724,22 +776,19 @@
 
         <section class="hero">
 
-            <div class="hero-bg-full"></div>
+            <div class="hero-bg-full" id="heroBg"></div>
             <div class="hero-bg-overlay"></div>
 
-            <div class="tooth-container" data-aos="fade-down" data-aos-duration="1000">
+            <!-- مجسم السن الـ 3D -->
+            <div class="tooth-container" id="toothContainer">
                 <model-viewer 
                     id="modelViewer"
-                    src="tooth.glb" 
+                    src="./tooth.glb" 
                     alt="3D Tooth Model" 
-                    loading="eager"
-                    reveal="auto"
                     auto-rotate 
-                    rotation-per-second="100deg"
+                    rotation-per-second="90deg"
                     interaction-prompt="none"
-                    shadow-intensity="0.2"
-                    exposure="1.35"
-                    environment-image="neutral"
+                    shadow-intensity="1"
                     camera-orbit="0deg 75deg 105%"
                     field-of-view="30deg">
                 </model-viewer>
@@ -810,22 +859,29 @@
             easing: 'ease-out-cubic'
         });
 
+        const toothContainer = document.getElementById('toothContainer');
+        const blurOverlay = document.getElementById('blurOverlay');
+        const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
-        if (modelViewer) {
-            const applyMaterialFix = () => {
-                if (modelViewer.model && modelViewer.model.materials) {
-                    const material = modelViewer.model.materials[0];
-                    if (material) {
-                        material.pbrMetallicRoughness.setRoughnessFactor(0.15);
-                        material.pbrMetallicRoughness.setMetallicFactor(0.05);
-                    }
-                }
-            };
+        // الانتظار حتى تحميل الموديل بالكامل لضمان الحركة السلسة بدون تقطيع
+        modelViewer.addEventListener('load', () => {
+            // الخطوة 1: الصعود من أسفل الشاشة تماماً لمنتصف الشاشة
+            setTimeout(() => {
+                toothContainer.classList.add('center-stage');
+            }, 100);
 
-            modelViewer.addEventListener('load', applyMaterialFix);
-            setTimeout(applyMaterialFix, 50);
-        }
+            // الخطوة 2: هبوط الموديل واستقراره في موضعه النهائى
+            setTimeout(() => {
+                toothContainer.classList.remove('center-stage');
+                toothContainer.classList.add('settled');
+            }, 1600);
+
+            // الخطوة 3: اختفاء طبقة التغبيش بعد استقرار الموديل
+            setTimeout(() => {
+                blurOverlay.classList.add('fade-out');
+            }, 2100);
+        });
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
@@ -845,6 +901,36 @@
 
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape") closeMenu();
+        });
+
+        // تأثير الـ Parallax عند التمرير
+        let latestKnownScrollY = 0;
+        let ticking = false;
+
+        function updateParallax() {
+            const bgSpeed = 0.35;
+            const modelSpeed = 0.22;
+
+            const bgY = -(latestKnownScrollY * bgSpeed);
+            const modelY = (latestKnownScrollY * modelSpeed);
+
+            if (heroBg) {
+                heroBg.style.transform = `translate3d(0, ${bgY}px, 0)`;
+            }
+
+            if (toothContainer && toothContainer.classList.contains('settled')) {
+                toothContainer.style.transform = `translate(-50%, calc(-50% + ${modelY}px)) scale(0.85)`;
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            latestKnownScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
         });
     </script>
 
