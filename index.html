@@ -376,7 +376,7 @@
             width: 100%;
             padding: 20px 18px 25px;
             text-align: center;
-            overflow: visible; /* تعديل لمنع قص الموديل عند وجوده في الأسفل */
+            overflow: visible;
             min-height: 85vh;
             display: flex;
             flex-direction: column;
@@ -415,9 +415,10 @@
 
         .tooth-container {
             position: fixed;
-            top: 100vh; /* وضع البداية أسفل إطار الشاشة تماماً */
+            /* تثبيت الموضع خارج الجزء المرئي من أسفل الشاشة تماماً (Viewport) */
+            top: 100vh;
             left: 50%;
-            transform: translate(-50%, 0%) scale(1.15); /* إزاحة كاملة للأسفل لضمان عدم الخروج الفجائي */
+            transform: translate(-50%, 0%) scale(1.15);
             width: 280px;
             height: 280px;
             z-index: 2000;
@@ -437,13 +438,13 @@
             display: none !important;
         }
 
-        /* المرحلة الأولى: الصعود لمنتصف الشاشة */
+        /* المرحلة الأولى: الصعود إلى منتصف الشاشة المرئية */
         .tooth-container.center-stage {
             top: 50vh;
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* المرحلة الثانية: الاستقرار في المكان النهائي */
+        /* المرحلة الثانية: الاستقرار في الموضع النهائي داخل الكارت */
         .tooth-container.settled {
             top: 290px;
             transform: translate(-50%, -50%) scale(0.85);
@@ -864,24 +865,30 @@
         const heroBg = document.getElementById('heroBg');
         const modelViewer = document.getElementById('modelViewer');
 
-        // الانتظار حتى تحميل الموديل بالكامل لضمان الحركة السلسة بدون تقطيع
-        modelViewer.addEventListener('load', () => {
-            // الخطوة 1: الصعود من أسفل الشاشة تماماً لمنتصف الشاشة
+        // بدء التسلسل الحركي فور اكتمال تحميل ملف الـ 3D
+        function startIntroAnimation() {
+            // الخطوة 1: الصعود المباشر من أسفل الشاشة الشاشة إلى المنتصف
             setTimeout(() => {
                 toothContainer.classList.add('center-stage');
             }, 100);
 
-            // الخطوة 2: هبوط الموديل واستقراره في موضعه النهائى
+            // الخطوة 2: الانخفاض التلقائي والاستقرار في موقعه
             setTimeout(() => {
                 toothContainer.classList.remove('center-stage');
                 toothContainer.classList.add('settled');
-            }, 1600);
+            }, 1500);
 
-            // الخطوة 3: اختفاء طبقة التغبيش بعد استقرار الموديل
+            // الخطوة 3: تلاشي طبقة التغبيش بنعومة
             setTimeout(() => {
                 blurOverlay.classList.add('fade-out');
-            }, 2100);
-        });
+            }, 2000);
+        }
+
+        if (modelViewer.loaded) {
+            startIntroAnimation();
+        } else {
+            modelViewer.addEventListener('load', startIntroAnimation);
+        }
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
