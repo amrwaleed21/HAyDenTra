@@ -96,10 +96,11 @@
             height: 74px;
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(186, 230, 253, 0.8);
-
-            box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3);
+            background: rgba(255, 255, 255, 0.35);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(2, 132, 199, 0.08);
         }
 
         .nav-inner {
@@ -173,9 +174,11 @@
             height: 58px;
 
             border-radius: 18px;
-            border: 1px solid rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.8);
 
-            background: rgba(240, 249, 255, 0.95);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
 
             color: #0284c7;
             font-size: 31px;
@@ -187,14 +190,14 @@
             cursor: pointer;
 
             box-shadow:
-                0 4px 15px rgba(186, 230, 253, 0.3),
+                0 4px 15px rgba(2, 132, 199, 0.08),
                 inset 0 1px rgba(255, 255, 255, 0.8);
 
             transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .menu-btn:hover {
-            background: rgba(224, 242, 254, 1);
+            background: rgba(255, 255, 255, 0.6);
             transform: translateY(-1px);
         }
 
