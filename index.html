@@ -177,7 +177,9 @@
             inset: 0;
             z-index: 1050;
 
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.24);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
 
             opacity: 0;
             visibility: hidden;
@@ -202,10 +204,12 @@
 
             padding: 28px 20px;
 
-            background: #ffffff;
-            border-left: 1px solid rgba(186, 230, 253, 0.8);
+            background: rgba(255, 255, 255, 0.55);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
 
-            box-shadow: -10px 0 35px rgba(186, 230, 253, 0.4);
+            box-shadow: -10px 0 35px rgba(2, 132, 199, 0.15);
 
             transform: translateX(110%);
             transition: transform 0.35s ease;
@@ -364,6 +368,7 @@
             opacity: 0.78;
             z-index: 0;
             pointer-events: none;
+            will-change: transform;
             -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, rgba(0, 0, 0, 0.72) 86%, transparent 100%);
             mask-image: linear-gradient(to bottom, #000 0%, #000 68%, rgba(0, 0, 0, 0.72) 86%, transparent 100%);
         }
@@ -556,7 +561,13 @@
 
         .products-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(2, 132, 199, 0.45);
+            box-shadow: 0 0 18px rgba(14, 165, 233, 0.85), 0 12px 25px rgba(2, 132, 199, 0.45);
+        }
+
+        .products-btn:active,
+        .contact-btn:active {
+            box-shadow: 0 0 24px rgba(14, 165, 233, 0.95), 0 4px 12px rgba(2, 132, 199, 0.28);
+            filter: brightness(1.08);
         }
 
         .contact-btn {
@@ -569,6 +580,7 @@
         .contact-btn:hover {
             transform: translateY(-3px) scale(1.02);
             background: #f0f9ff;
+            box-shadow: 0 0 18px rgba(14, 165, 233, 0.7), 0 8px 20px rgba(2, 132, 199, 0.22);
         }
 
         /* =========================
@@ -901,6 +913,24 @@
             // محاولة تطبيق فورية احتياطية
             setTimeout(applyMaterialFix, 100);
         }
+
+        const heroBackground = document.querySelector('.hero-bg-full');
+        let parallaxFrame = null;
+
+        const updateHeroParallax = () => {
+            if (!heroBackground) return;
+
+            const offset = Math.min(window.scrollY * 0.18, 140);
+            heroBackground.style.transform = `translate3d(0, -${offset}px, 0)`;
+            parallaxFrame = null;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (parallaxFrame === null) {
+                parallaxFrame = requestAnimationFrame(updateHeroParallax);
+            }
+        }, { passive: true });
+        updateHeroParallax();
 
         // القائمة الجانبية
         const sidebar = document.getElementById("sidebar");
